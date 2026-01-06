@@ -4,8 +4,9 @@
  *
  * @link https://developer.wordpress.org/themes/basics/theme-functions/
  *
- * @package tilleuls-cabinet-ortego-theme
- * @since 1.0.0
+ * @package WordPress
+ * @subpackage Twenty_Twenty_Five
+ * @since tilleuls-cabinet-ortego-theme 1.0
  */
 
 /**
@@ -15,6 +16,11 @@
  *
  * @return void
  */
+
+
+require_once realpath(__DIR__ . '/includes/post-types/expertise.php');
+require_once realpath(__DIR__ . '/includes/post-types/union.php');
+
 function tilleuls_cabinet_ortego_theme_styles() {
 	wp_enqueue_style(
 		'tilleuls-cabinet-ortego-theme-style',
