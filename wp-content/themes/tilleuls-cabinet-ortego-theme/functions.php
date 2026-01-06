@@ -15,6 +15,10 @@
  *
  * @return void
  */
+
+
+require_once realpath(__DIR__ . '/includes/post-types/expertise.php');
+
 function tilleuls_cabinet_ortego_theme_styles() {
 	wp_enqueue_style(
 		'tilleuls-cabinet-ortego-theme-style',
