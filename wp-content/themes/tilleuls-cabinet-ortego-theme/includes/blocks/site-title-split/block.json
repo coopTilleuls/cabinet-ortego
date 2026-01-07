@@ -1,0 +1,11 @@
+{
+  "apiVersion": 2,
+  "name": "tilleuls/site-title-split",
+  "title": "Titre du site (séparé)",
+  "category": "theme",
+  "description": "Titre du site avec couleur différenciée",
+  "supports": {
+    "html": false
+  },
+  "render": "file:./render.php"
+}
