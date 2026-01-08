@@ -27,6 +27,9 @@ web.config
 /wp-content/languages/*
 /wp-content/mu-plugins/*
 /wp-content/plugins/*
+!/wp-content/plugins/tilleuls
+/wp-content/plugins/tilleuls/build
+/wp-content/plugins/tilleuls/node_modules
 /wp-content/themes/index.php
 /wp-content/themes/twenty*
 /wp-content/upgrade/*

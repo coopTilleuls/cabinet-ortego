@@ -17,21 +17,11 @@
  * @return void
  */
 
-function tilleuls_cabinet_ortego_theme_register_blocks(): void
-{
-    // On définit le chemin vers le DOSSIER qui contient block.json
-    $block_path = __DIR__ . '/includes/blocks/hero-homepage';
+/**
+ * Theme Block
+ */
 
-    // On tente d'enregistrer
-    $result = register_block_type($block_path);
-
-    // DÉBOGAGE : Si cela échoue, on l'écrit dans le debug.log ou on affiche une erreur admin
-    if ( ! $result ) {
-        error_log( 'ERREUR : Impossible d\'enregistrer le bloc au chemin : ' . $block_path );
-        // Si le fichier block.json est introuvable ou invalide, register_block_type renvoie false
-    }
-}
-add_action('init', 'tilleuls_cabinet_ortego_theme_register_blocks');
+require_once realpath(__DIR__ . '/includes/blocks/register.php');
 
 /**
  *Custom Post Type
@@ -40,13 +30,12 @@ add_action('init', 'tilleuls_cabinet_ortego_theme_register_blocks');
 require_once realpath(__DIR__ . '/includes/post-types/expertise.php');
 require_once realpath(__DIR__ . '/includes/post-types/union.php');
 
-function tilleuls_cabinet_ortego_theme_styles(): void
-{
-	wp_enqueue_style(
-		'tilleuls-cabinet-ortego-theme-style',
-		get_stylesheet_uri(),
-		[],
-		wp_get_theme()->get( 'Version' )
-	);
-}
-add_action( 'wp_enqueue_scripts', 'tilleuls_cabinet_ortego_theme_styles' );
+add_action( 'wp_enqueue_scripts', function () {
+    wp_enqueue_style(
+        'hero-home',
+        get_template_directory_uri() . '/assets/style/hero.css',
+        [],
+        '1.0'
+    );
+});
+
