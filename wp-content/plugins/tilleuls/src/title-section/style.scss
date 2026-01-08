@@ -31,11 +31,11 @@ h2 {
 	height: 4px;
 	background-color: var(--wp--preset--color--accent);
 
-	.left {
+	&.left {
 		margin: 25px 0;
 	}
 
-	.center {
+	&.center {
 		margin: 25px auto;
 	}
 }

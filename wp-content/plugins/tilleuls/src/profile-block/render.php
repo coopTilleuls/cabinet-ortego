@@ -1,15 +1,76 @@
 <?php
 /**
- * PHP file to use when rendering the block type on the server to show on the front end.
+ * Render callback for the block.
  *
- * The following variables are exposed to the file:
- *     $attributes (array): The block attributes.
- *     $content (string): The block default content.
- *     $block (WP_Block): The block instance.
- *
- * @see https://github.com/WordPress/gutenberg/blob/trunk/docs/reference-guides/block-api/block-metadata.md#render
+ * @var array $attributes Block attributes.
+ * @var string $content Block content
+ * @var WP_Block $block Block instance.
  */
+
+declare(strict_types=1);
+
+$attributes = $attributes ?? [];
+
+$bio = $attributes['bio'] ?? '';
+$img_id = $attributes['imgId'] ?? '';
+$img_url = $attributes['imgUrl'] ?? '';
+$languages = $attributes['languages'] ?? '';
+$diplomas = $attributes['diplomas'] ?? '';
+
+$wrapper_attributes = get_block_wrapper_attributes([
+	'class' => 'profile-section',
+]);
+
+var_dump(wp_kses_post( $content ));
+
 ?>
-<p <?php echo get_block_wrapper_attributes(); ?>>
-	<?php esc_html_e( 'Tilleuls – hello from a dynamic block!', 'tilleuls' ); ?>
-</p>
+
+<section <?php
+echo $wrapper_attributes; ?>>
+	<div class="container profile-grid">
+
+		<div class="profile-img-container">
+			<?php
+			if (!empty($img_url)) : ?>
+				<img src="<?php
+				echo esc_url($img_url); ?>" alt="<?php
+				esc_attr_e('Photo de profil', 'tilleuls'); ?>">
+			<?php
+			endif; ?>
+
+			<?php
+			if (!empty($languages)) : ?>
+				<div class="languages-bar">
+					<?php
+					echo $languages; ?>
+				</div>
+			<?php
+			endif; ?>
+		</div>
+
+		<div class="bio-text">
+			<div class="bio-text">
+				<?php echo wp_kses_post( $content ); ?>
+			</div>
+
+			<?php
+			if (!empty($bio)) : ?>
+				<div class="bio-content">
+					<?php
+					echo $bio; ?>
+				</div>
+			<?php
+			endif; ?>
+
+			<?php
+			if (!empty($diplomas)) : ?>
+				<div class="diploma-list">
+					<?php
+					echo $diplomas; ?>
+				</div>
+			<?php
+			endif; ?>
+
+		</div>
+	</div>
+</section>

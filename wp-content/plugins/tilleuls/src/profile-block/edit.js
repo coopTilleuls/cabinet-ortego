@@ -1,40 +1,109 @@
-/**
- * Retrieves the translation of text.
- *
- * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-i18n/
- */
-import { __ } from '@wordpress/i18n';
+import {__} from '@wordpress/i18n';
+import {
+	useBlockProps,
+	RichText,
+	InspectorControls,
+	MediaUpload,
+	MediaUploadCheck,
+	InnerBlocks
+} from '@wordpress/block-editor';
+import {Button, PanelBody} from '@wordpress/components';
 
-/**
- * React hook that is used to mark the block wrapper element.
- * It provides all the necessary props like the class name.
- *
- * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
- */
-import { useBlockProps } from '@wordpress/block-editor';
+export default function Edit({attributes, setAttributes}) {
+	const {
+		bio,
+		imgId,
+		imgUrl,
+		languages,
+		diplomas
+	} = attributes;
 
-/**
- * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
- * Those files can contain any CSS code that gets applied to the editor.
- *
- * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
- */
-import './editor.scss';
+	const INNER_BLOCKS = [
+		['tilleuls-ortego-blocks/title-section', {}]
+	];
 
-/**
- * The edit function describes the structure of your block in the context of the
- * editor. This represents what the editor will render when the block is used.
- *
- * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-edit-save/#edit
- *
- * @return {Element} Element to render.
- */
-export default function Edit({ attributes, setAttributes }) {
-	const { title, subtitle, bio, imgId, imgUrl, languages, diplomas } = attributes;
-	console.log(attributes)
 	return (
-		<p { ...useBlockProps() }>
-			{ __( 'Tilleuls – hello from the editor LOL!', 'tilleuls' ) }
-		</p>
+		<>
+			<InspectorControls>
+				<PanelBody title={__('Image de profil', 'tilleuls')}>
+					<MediaUploadCheck>
+						<MediaUpload
+							onSelect={(media) =>
+								setAttributes({
+									imgId: media.id,
+									imgUrl: media.url
+								})
+							}
+							allowedTypes={['image']}
+							value={imgId}
+							render={({open}) => (
+								<Button onClick={open} isPrimary>
+									{imgUrl
+										? __('Changer l’image', 'tilleuls')
+										: __('Choisir une image', 'tilleuls')}
+								</Button>
+							)}
+						/>
+					</MediaUploadCheck>
+				</PanelBody>
+			</InspectorControls>
+
+			<section className='profile-section' id="profil">
+				<div className="container profile-grid">
+					<div className="profile-img-container">
+						{imgUrl ? (
+							<img
+								src={imgUrl}
+								alt={__('Photo de profil', 'tilleuls')}
+							/>
+						) : (
+							<div className="placeholder-image" style={{
+								background: '#f0f0f0',
+								height: '300px',
+								display: 'flex',
+								alignItems: 'center',
+								justifyContent: 'center',
+								color: '#ccc'
+							}}>
+								{__('Ajouter une image', 'tilleuls')}
+							</div>
+						)}
+
+						<div className="languages-bar">
+							<RichText
+								tagName="div"
+								className="languages-editor"
+								value={languages}
+								allowedFormats={['core/bold', 'core/italic']}
+								placeholder={__('Langues parlées (ex: Français, Anglais...)', 'tilleuls')}
+								onChange={(value) => setAttributes({languages: value})}
+							/>
+						</div>
+					</div>
+					<div className="bio-text">
+						<InnerBlocks
+							template={INNER_BLOCKS}
+							templateLock="all"
+						/>
+						<RichText
+							tagName="div"
+							className="bio-content"
+							multiline="p"
+							value={bio}
+							onChange={(value) => setAttributes({bio: value})}
+							placeholder={__('Rédigez la biographie ici...', 'tilleuls')}
+						/>
+						<div className="diploma-list">
+							<RichText
+								tagName="div"
+								value={diplomas}
+								onChange={(value) => setAttributes({diplomas: value})}
+								placeholder={__('Liste des diplômes et engagements...', 'tilleuls')}
+							/>
+						</div>
+					</div>
+				</div>
+			</section>
+		</>
 	);
 }

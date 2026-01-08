@@ -34,7 +34,6 @@ export default function Edit({ attributes, setAttributes }) {
 						options={[
 							{ label: __('Gauche', 'tilleuls'), value: 'left' },
 							{ label: __('Centre', 'tilleuls'), value: 'center' },
-							{ label: __('Droite', 'tilleuls'), value: 'right' }
 						]}
 						onChange={(value) =>
 							setAttributes({ separatorPosition: value })

@@ -9,29 +9,18 @@
 	"description": "Section de présentation avec photo, bio et compétences.",
 	"supports": {
 		"html": false,
-		"align": ["wide", "full"]
+		"align": ["wide", "full"],
+		"innerBlocks": true
 	},
 	"textdomain": "profile-block",
 	"editorScript": "file:./index.js",
 	"editorStyle": "file:./index.css",
 	"style": "file:./style-index.css",
+	"render": "file:./render.php",
 	"attributes": {
-		"title": {
-			"type": "string",
-			"source": "html",
-			"selector": "h2",
-			"default": "Engagement & Expertise"
-		},
-		"subtitle": {
-			"type": "string",
-			"source": "html",
-			"selector": ".subtitle",
-			"default": "Avocate au Barreau • Prestation de serment 2022"
-		},
 		"bio": {
 			"type": "string",
-			"source": "html",
-			"selector": ".bio-content"
+			"default": ""
 		},
 		"imgId": {
 			"type": "number",
@@ -43,15 +32,11 @@
 		},
 		"languages": {
 			"type": "string",
-			"source": "html",
-			"selector": ".languages-bar",
-			"default": "<span class=\"lang-tag\">Français</span>"
+			"default": ""
 		},
 		"diplomas": {
 			"type": "string",
-			"source": "html",
-			"selector": ".diploma-list",
-			"default": "<div class=\"diploma-item\">Diplôme ici</div>"
+			"default": ""
 		}
 	}
 }
