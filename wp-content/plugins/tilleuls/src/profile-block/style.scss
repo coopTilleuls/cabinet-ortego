@@ -1,8 +1,6 @@
 /**
  * The following styles get applied both on the front of your site
  * and in the editor.
- *
- * Replace them with your own styles or remove the file completely.
  */
 
 .wp-block-tilleuls-ortego-blocks-tilleuls {
@@ -15,36 +13,16 @@
 	width: 100%;
 	max-width: 1100px;
 	margin: 0 auto;
-	padding: 0 25px;
-}
+	padding: 0;
 
-.profile-section {
-	padding: var(--section-spacing) 0;
-	background-color: var(--white);
+	@media (min-width: 768px) {
+		padding: 0 25px;
+	}
 }
-
-.profile-grid {
-	display: grid;
-	grid-template-columns: 1fr 1.2fr;
-	gap: 60px;
-	align-items: start;
-}
-
-.profile-img-container {
-	position: relative;
-	width: 100%;
-}
-
-.profile-img-container img {
-	width: 100%;
-	border-radius: 2px;
-	box-shadow: 10px 10px 0px var(--accent-bg);
-}
-
 
 .profile-section {
 	padding: 80px 0;
-	background-color: var(--white);
+	background-color: var(--white, #fff);
 }
 
 .profile-grid {
@@ -57,12 +35,13 @@
 .profile-img-container {
 	position: relative;
 	width: 100%;
-}
 
-.profile-img-container img {
-	width: 100%;
-	border-radius: 2px;
-	box-shadow: 10px 10px 0 var(--wp--preset--color--tertiary);
+	img {
+		width: 100%;
+		height: auto;
+		border-radius: 2px;
+		box-shadow: 10px 10px 0 var(--wp--preset--color--tertiary, #ddd);
+	}
 }
 
 .languages-bar {
@@ -73,8 +52,8 @@
 }
 
 .lang-tag {
-	background: var(--wp--preset--color--primary);
-	color: var(--wp--preset--color--accent);
+	background: var(--wp--preset--color--primary, #333);
+	color: var(--wp--preset--color--accent, #fff);
 	padding: 5px 12px;
 	font-size: 0.8rem;
 	font-weight: 600;
@@ -82,10 +61,13 @@
 	border: 1px solid #e0dcd0;
 }
 
-.bio-text p {
-	margin-bottom: 15px;
-	text-align: justify;
-	font-size: 1rem;
+.bio-text {
+	p {
+		margin-bottom: 15px;
+		text-align: justify;
+		font-size: 1rem;
+		line-height: 1.6;
+	}
 }
 
 .diploma-list {
@@ -100,12 +82,35 @@
 	gap: 10px;
 	margin-bottom: 10px;
 	font-size: 0.9rem;
-	color: var(--text-dark);
-}
+	color: var(--text-dark, #333);
 
-.diploma-item i {
-	color: var(--primary-color);
-	font-size: 0.8rem;
-	margin-top: 5px;
-	min-width: 15px;
+	i {
+		color: var(--wp--preset--color--accent);
+		font-size: 0.8rem;
+		margin-top: 5px;
+		min-width: 15px;
+	}
+}
+@media (max-width: 768px) {
+	.profile-section {
+		padding: 40px 0;
+	}
+
+	.profile-grid {
+		grid-template-columns: 1fr;
+		gap: 40px;
+	}
+
+	.profile-img-container {
+		max-width: 400px;
+		margin: 0 auto;
+
+		img {
+			box-shadow: 6px 6px 0 var(--wp--preset--color--tertiary, #ddd);
+		}
+	}
+
+	.bio-text p {
+		text-align: left;
+	}
 }

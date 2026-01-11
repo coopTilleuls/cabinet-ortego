@@ -4,7 +4,7 @@
 	"name": "tilleuls-ortego-blocks/profile-block",
 	"version": "0.1.0",
 	"title": "Profil Avocat",
-	"category": "design",
+	"category": "widgets",
 	"icon": "businessperson",
 	"description": "Section de présentation avec photo, bio et compétences.",
 	"supports": {

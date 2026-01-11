@@ -22,6 +22,10 @@ export default function Edit({attributes, setAttributes}) {
 		['tilleuls-ortego-blocks/title-section', {}]
 	];
 
+	const blockProps = useBlockProps({
+		className: 'profile-section',
+	});
+
 	return (
 		<>
 			<InspectorControls>
@@ -48,7 +52,7 @@ export default function Edit({attributes, setAttributes}) {
 				</PanelBody>
 			</InspectorControls>
 
-			<section className='profile-section' id="profil">
+			<section {...blockProps}>
 				<div className="container profile-grid">
 					<div className="profile-img-container">
 						{imgUrl ? (
@@ -83,7 +87,6 @@ export default function Edit({attributes, setAttributes}) {
 					<div className="bio-text">
 						<InnerBlocks
 							template={INNER_BLOCKS}
-							templateLock="all"
 						/>
 						<RichText
 							tagName="div"
