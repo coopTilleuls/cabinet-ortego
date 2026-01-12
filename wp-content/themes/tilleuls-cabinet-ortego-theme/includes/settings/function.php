@@ -23,11 +23,12 @@ function tilleuls_register_contact_settings()
         register_setting(
             'general',
             $option_name,
-            array(
+            [
                 'type' => 'string',
                 'sanitize_callback' => ($option_name === 'tilleuls_contact_email' ? 'sanitize_email' : 'sanitize_text_field'),
-                'default' => ''
-            )
+                'default' => '',
+                'show_in_rest' => true,
+            ]
         );
         add_settings_field(
             $option_name,

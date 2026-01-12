@@ -10,9 +10,11 @@ $attributes = $attributes ?? [];
 $title = $attributes['title'] ?? 'Engagement & Expertise';
 $subtitle = $attributes['subtitle'] ?? '';
 $blockPosition = $attributes['blockPosition'] ?? 'left';
+$size = $attributes['size'] ?? '';
+$color = $attributes['color'] ?? 'left';
 
 $wrapper_attributes = get_block_wrapper_attributes([
-	'class' => 'title-section ' . $blockPosition,
+	'class' => 'title-section ' . $blockPosition . ' ' . $size . ' ' . $color,
 ]);
 ?>
 

@@ -1,12 +1,12 @@
-import { __ } from '@wordpress/i18n';
-import { InspectorControls, useBlockProps } from '@wordpress/block-editor';
-import { PanelBody, TextControl, SelectControl } from '@wordpress/components';
+import {__} from '@wordpress/i18n';
+import {InspectorControls, useBlockProps} from '@wordpress/block-editor';
+import {PanelBody, TextControl, SelectControl} from '@wordpress/components';
 
-export default function Edit({ attributes, setAttributes }) {
-	const { title, subtitle, blockPosition } = attributes;
+export default function Edit({attributes, setAttributes}) {
+	const {title, subtitle, blockPosition, size, color} = attributes;
 
 	const blockProps = useBlockProps({
-		className: `title-section ${blockPosition}`,
+		className: `title-section ${blockPosition} ${size} ${color}`,
 	});
 
 	return (
@@ -20,7 +20,7 @@ export default function Edit({ attributes, setAttributes }) {
 						label={__('Titre', 'tilleuls')}
 						value={title}
 						onChange={(value) =>
-							setAttributes({ title: value })
+							setAttributes({title: value})
 						}
 					/>
 
@@ -28,7 +28,7 @@ export default function Edit({ attributes, setAttributes }) {
 						label={__('Sous-titre', 'tilleuls')}
 						value={subtitle}
 						onChange={(value) =>
-							setAttributes({ subtitle: value })
+							setAttributes({subtitle: value})
 						}
 					/>
 
@@ -36,11 +36,33 @@ export default function Edit({ attributes, setAttributes }) {
 						label={__('Position du block', 'tilleuls')}
 						value={blockPosition}
 						options={[
-							{ label: __('Gauche', 'tilleuls'), value: 'left' },
-							{ label: __('Centre', 'tilleuls'), value: 'center' },
+							{label: __('Gauche', 'tilleuls'), value: 'left'},
+							{label: __('Centre', 'tilleuls'), value: 'center'},
 						]}
 						onChange={(value) =>
-							setAttributes({ blockPosition: value })
+							setAttributes({blockPosition: value})
+						}
+					/>
+					<SelectControl
+						label={__('Taille du block', 'tilleuls')}
+						value={size}
+						options={[
+							{label: __('Petit', 'tilleuls'), value: 'sm'},
+							{label: __('Grand', 'tilleuls'), value: 'lg'},
+						]}
+						onChange={(value) =>
+							setAttributes({size: value})
+						}
+					/>
+					<SelectControl
+						label={__('Theme du block', 'tilleuls')}
+						value={color}
+						options={[
+							{label: __('Classique', 'tilleuls'), value: ''},
+							{label: __('Blanc', 'tilleuls'), value: 'white'},
+						]}
+						onChange={(value) =>
+							setAttributes({color: value})
 						}
 					/>
 
@@ -48,9 +70,15 @@ export default function Edit({ attributes, setAttributes }) {
 			</InspectorControls>
 
 			<div {...blockProps}>
-				<h2>{title}</h2>
+				{
+					size === 'sm' ?
+
+						<h3>{title}</h3>
+						:
+						<h2>{title}</h2>
+				}
 				<span className="subtitle">{subtitle}</span>
-				<div className="separator" />
+				<div className="separator"/>
 			</div>
 		</>
 	);

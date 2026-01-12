@@ -29,6 +29,14 @@
 		"blockPosition": {
 			"type": "string",
 			"default": "left"
+		},
+		"size" : {
+			"type": "string",
+			"default": "lg"
+		},
+		"color": {
+			"type": "string",
+			"default": ""
 		}
 	}
 }

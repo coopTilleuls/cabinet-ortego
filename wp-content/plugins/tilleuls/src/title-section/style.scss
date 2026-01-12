@@ -21,6 +21,36 @@
 		justify-content: center;
 	}
 
+	&.white {
+		color: var(--wp--preset--color--primary);
+
+		> .subtitle {
+			color: var(--wp--preset--color--primary);
+		}
+
+		> .separator {
+			background-color: var(--wp--preset--color--primary);
+		}
+
+	}
+
+	&.sm {
+		> h3 {
+			margin: 1rem 0;
+		}
+
+		> .subtitle {
+			font-size: 0.7rem;
+			font-weight: 500;
+			margin: 0;
+		}
+
+		> .separator {
+			height: 2.5px;
+			margin: 1rem 0;
+		}
+	}
+
 	h2 {
 		font-size: 2.2rem;
 		margin-bottom: 10px;
@@ -32,7 +62,6 @@
 		font-weight: 600;
 		text-transform: uppercase;
 		font-size: 0.9rem;
-		display: block;
 		margin-bottom: 20px;
 	}
 
