@@ -26,7 +26,7 @@
 			"type": "string",
 			"default": "Avocate au Barreau • Prestation de serment 2022"
 		},
-		"separatorPosition": {
+		"blockPosition": {
 			"type": "string",
 			"default": "left"
 		}

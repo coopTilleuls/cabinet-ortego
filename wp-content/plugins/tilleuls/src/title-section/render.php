@@ -9,10 +9,10 @@ $attributes = $attributes ?? [];
 
 $title = $attributes['title'] ?? 'Engagement & Expertise';
 $subtitle = $attributes['subtitle'] ?? '';
-$separator_position = $attributes['separatorPosition'] ?? 'left';
+$blockPosition = $attributes['blockPosition'] ?? 'left';
 
 $wrapper_attributes = get_block_wrapper_attributes([
-	'class' => 'title-section',
+	'class' => 'title-section ' . $blockPosition,
 ]);
 ?>
 
@@ -25,5 +25,5 @@ $wrapper_attributes = get_block_wrapper_attributes([
 		</span>
 	<?php endif; ?>
 
-	<div class="separator <?php echo esc_attr( $separator_position ); ?>" ></div>
+	<div class="separator" ></div>
 </section>

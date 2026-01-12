@@ -1,0 +1,35 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "tilleuls-ortego-blocks/banner-expertise",
+	"version": "0.1.0",
+	"title": "Banner Expertise",
+	"category": "widgets",
+	"icon": "smiley",
+	"description": "Une section colorée avec représentant les domaine d'expertise",
+	"supports": {
+		"html": false,
+		"align": ["wide", "full"],
+		"innerBlocks": true
+	},
+	"textdomain": "banner-expertise",
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css",
+	"render": "file:./render.php",
+	"viewScript": "file:./view.js",
+	"attributes": {
+		"items": {
+			"type": "array",
+			"default": [],
+			"items": {
+				"type": "object",
+				"default": {
+					"icon": "fa-solid fa-gavel",
+					"text": "",
+					"description": ""
+				}
+			}
+		}
+	}
+}
