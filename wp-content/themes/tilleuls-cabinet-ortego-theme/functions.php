@@ -20,15 +20,19 @@
 /**
  * Theme Block
  */
-
 require_once realpath(__DIR__ . '/includes/blocks/register.php');
 
 /**
  *Custom Post Type
  */
-
 require_once realpath(__DIR__ . '/includes/post-types/expertise.php');
 require_once realpath(__DIR__ . '/includes/post-types/union.php');
+
+/**
+ * Settings
+ */
+require_once realpath(__DIR__ . '/includes/settings/function.php');
+
 
 add_action('wp_enqueue_scripts', function () {
     wp_enqueue_style(
