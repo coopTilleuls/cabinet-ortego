@@ -18,14 +18,19 @@ $wrapper_attributes = get_block_wrapper_attributes([
 ]);
 ?>
 
-<section <?php echo $wrapper_attributes; ?>>
-	<h2><?php echo esc_html( $title ); ?></h2>
+<section <?php
+echo $wrapper_attributes; ?>>
+	<h2><?php
+		echo esc_html($title); ?></h2>
 
-	<?php if ( $subtitle ) : ?>
+	<?php
+	if ($subtitle) : ?>
 		<span class="subtitle">
-			<?php echo esc_html( $subtitle ); ?>
+			<?php
+			echo esc_html($subtitle); ?>
 		</span>
-	<?php endif; ?>
+	<?php
+	endif; ?>
 
-	<div class="separator" ></div>
+	<div class="separator"></div>
 </section>
