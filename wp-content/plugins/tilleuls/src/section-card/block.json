@@ -1,18 +1,18 @@
 {
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
-	"name": "tilleuls-ortego-blocks/banner-expertise",
+	"name": "tilleuls-ortego-blocks/section-card",
 	"version": "0.1.0",
-	"title": "Banner Expertise",
+	"title": "Section Card",
 	"category": "widgets",
 	"icon": "smiley",
-	"description": "Une section colorée avec représentant les domaine d'expertise",
+	"description": "Une section colorée avec card",
 	"supports": {
 		"html": false,
 		"align": ["wide", "full"],
 		"innerBlocks": true
 	},
-	"textdomain": "banner-expertise",
+	"textdomain": "section-card",
 	"editorScript": "file:./index.js",
 	"editorStyle": "file:./index.css",
 	"style": "file:./style-index.css",
@@ -30,6 +30,10 @@
 					"description": ""
 				}
 			}
+		},
+		"style": {
+			"type": "string",
+			"default": ""
 		}
 	}
 }

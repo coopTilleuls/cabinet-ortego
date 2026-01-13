@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maître Ilazki ORTEGO SAMPEDRO - Avocate Pau & Pays Basque</title>
+
+    <!-- FontAwesome & Google Fonts -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        /* -------------------------------------------
+           1. VARIABLES & RESET
+        ------------------------------------------- */
+        :root {
+            /* Palette de couleurs raffinée */
+            --primary-color: #8C1818;       /* Rouge Bordeau */
+            --primary-dark: #5e0d0d;
+            --secondary-color: #1a1a1a;     /* Noir Profond */
+            --bg-light: #f9f9f9;            /* Gris très clair */
+            --bg-beige: #f4f1ea;            /* Beige papier */
+            --text-main: #333333;
+            --text-muted: #666666;
+            --white: #ffffff;
+
+            /* Typographie */
+            --font-heading: 'Playfair Display', serif; /* Plus élégant que Merriweather */
+            --font-body: 'Montserrat', sans-serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: var(--font-body);
+            font-size: 16px;
+            line-height: 1.6;
+            color: var(--text-main);
+            background-color: var(--white);
+            overflow-x: hidden;
+        }
+
+        /* Utilitaires */
+        .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 25px; }
+        h1, h2, h3 { font-family: var(--font-heading); color: var(--secondary-color); line-height: 1.2; }
+        a { text-decoration: none; transition: 0.3s; }
+        img { max-width: 100%; height: auto; display: block; }
+
+        .section-padding { padding: 100px 0; }
+        .text-center { text-align: center; }
+
+        /* Boutons Stylisés */
+        .btn {
+            display: inline-block;
+            padding: 15px 35px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: 2px solid transparent;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: var(--white);
+        }
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border-color: var(--secondary-color);
+            color: var(--secondary-color);
+        }
+        .btn-outline:hover {
+            background-color: var(--secondary-color);
+            color: var(--white);
+        }
+
+        /* -------------------------------------------
+           2. HEADER (Moderne & Épuré)
+        ------------------------------------------- */
+        .site-header {
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+            border-bottom: 3px solid var(--primary-color);
+        }
+
+        .header-flex { display: flex; justify-content: space-between; align-items: center; }
+
+        .logo {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--secondary-color);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .logo span { color: var(--primary-color); }
+
+        .nav-links { display: flex; gap: 40px; }
+        .nav-links a {
+            color: var(--secondary-color);
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            position: relative;
+        }
+        /* Petit soulignement animé au survol */
+        .nav-links a::after {
+            content: ''; position: absolute; bottom: -5px; left: 0; width: 0; height: 2px;
+            background: var(--primary-color); transition: width 0.3s;
+        }
+        .nav-links a:hover::after { width: 100%; }
+
+        /* -------------------------------------------
+           3. HERO SECTION (Différent de la page Avocat)
+           Grand visuel, texte à gauche
+        ------------------------------------------- */
+        .hero-home {
+            height: 90vh; /* Presque plein écran */
+            background: linear-gradient(to right, rgba(0,0,0,0.7) 30%, rgba(0,0,0,0.3) 100%),
+            url('https://images.unsplash.com/photo-1505664194779-8beaceb93744?q=80&w=2000&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            color: var(--white);
+            margin-top: 80px; /* Compensation header fixe */
+        }
+
+        .hero-content { max-width: 800px; }
+        .hero-subtitle {
+            display: block;
+            font-family: var(--font-body);
+            font-weight: 500;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--bg-beige);
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+        }
+
+        .hero-home h1 {
+            font-size: 3.5rem;
+            color: var(--white);
+            margin-bottom: 25px;
+            font-weight: 700;
+            line-height: 1.1;
+        }
+
+        .hero-divider {
+            width: 80px; height: 4px; background: var(--primary-color); margin-bottom: 30px;
+        }
+
+        .hero-home p {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            max-width: 600px;
+            opacity: 0.9;
+        }
+
+        /* -------------------------------------------
+           4. DOMAINES D'INTERVENTION (Style "Dark" pour contraster)
+        ------------------------------------------- */
+        .practices-home {
+            background-color: var(--secondary-color);
+            color: var(--white);
+            padding: 80px 0;
+            margin-top: -50px; /* Chevauchement visuel */
+            position: relative;
+            z-index: 10;
+        }
+
+        .practices-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .practice-card {
+            background: rgba(255, 255, 255, 0.05); /* Fond transparent */
+            padding: 30px;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: 0.3s;
+        }
+
+        .practice-card:hover {
+            background: var(--primary-color); /* Devient rouge au survol */
+            border-color: var(--primary-color);
+            transform: translateY(-5px);
+        }
+
+        .practice-card i {
+            font-size: 2.5rem;
+            color: var(--white);
+            margin-bottom: 20px;
+        }
+
+        .practice-card h3 {
+            color: var(--white);
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+        }
+
+        .practice-card p {
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.7);
+            line-height: 1.6;
+        }
+
+        /* -------------------------------------------
+           5. TEASER "LE CABINET" (Split Screen)
+        ------------------------------------------- */
+        .about-teaser {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+        }
+
+        .about-image {
+            height: 100%;
+            min-height: 600px;
+            background: url('https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=1000&auto=format&fit=crop') center/cover;
+        }
+
+        .about-content {
+            padding: 80px;
+            background-color: var(--bg-beige);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .section-title { font-size: 2.5rem; margin-bottom: 20px; }
+        .about-content p { margin-bottom: 25px; color: var(--text-light); }
+
+        .values-list {
+            display: flex; gap: 30px; margin: 30px 0;
+        }
+        .value-item { text-align: center; }
+        .value-item i { color: var(--primary-color); font-size: 1.5rem; margin-bottom: 10px; }
+        .value-item span { display: block; font-weight: 600; font-size: 0.9rem; font-family: var(--font-heading); }
+
+        /* -------------------------------------------
+           6. BANDEAU CONTACT SIMPLE
+        ------------------------------------------- */
+        .cta-section {
+            background-color: var(--primary-color);
+            padding: 60px 0;
+            text-align: center;
+            color: var(--white);
+        }
+        .cta-section h2 { color: var(--white); margin-bottom: 10px; font-size: 2rem; }
+        .cta-section p { margin-bottom: 30px; font-size: 1.1rem; opacity: 0.9; }
+
+        /* Footer */
+        footer { background-color: #111; padding: 40px 0; color: #666; font-size: 0.9rem; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; margin-bottom: 40px; }
+        .footer-col h4 { color: #fff; margin-bottom: 20px; font-size: 1rem; }
+        .footer-col ul li { margin-bottom: 10px; }
+        .footer-col a { color: #666; } .footer-col a:hover { color: var(--primary-color); }
+
+        /* RESPONSIVE */
+        @media (max-width: 992px) {
+            .hero-home h1 { font-size: 2.5rem; }
+            .about-teaser { grid-template-columns: 1fr; }
+            .about-image { min-height: 400px; order: -1; } /* Image en haut */
+            .about-content { padding: 50px 25px; }
+            .practices-home { margin-top: 0; } /* Reset chevauchement */
+        }
+    </style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<header class="site-header">
+    <div class="container header-flex">
+        <a href="#" class="logo">Maître <span>Ortego</span></a>
+        <nav class="nav-links">
+            <a href="home.html">Accueil</a>
+            <a href="lawer.html">Le Cabinet</a> <!-- Lien vers l'autre page -->
+            <a href="#competences">Expertises</a>
+            <a href="#contact" class="btn btn-primary" style="padding: 10px 20px;">Contact</a>
+        </nav>
+    </div>
+</header>
+
+<!-- HERO SECTION -->
+<section class="hero-home">
+    <div class="container">
+        <div class="hero-content">
+            <span class="hero-subtitle">Barreau de Pau & Pays Basque</span>
+            <h1>Défendre vos droits<br>Protéger vos libertés.</h1>
+            <div class="hero-divider"></div>
+            <p>Une expertise juridique rigoureuse en Droit Pénal, Droit des Étrangers et Libertés Fondamentales. Parce que chaque situation mérite une défense combative et humaine.</p>
+
+            <div style="display: flex; gap: 20px;">
+                <a href="#contact" class="btn btn-primary">Prendre Rendez-vous</a>
+                <a href="lawer.html" class="btn btn-outline" style="border-color: white; color: white;">Découvrir le Cabinet</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- COMPÉTENCES (Mis en avant immédiatement) -->
+<section class="practices-home" id="competences">
+    <div class="container">
+        <div class="practices-grid">
+            <!-- Carte 1 -->
+            <div class="practice-card">
+                <i class="fa-solid fa-scale-balanced"></i>
+                <h3>Droit Pénal</h3>
+                <p>Assistance en garde à vue, instruction, tribunal correctionnel. Défense des auteurs et des victimes.</p>
+            </div>
+            <!-- Carte 2 -->
+            <div class="practice-card">
+                <i class="fa-solid fa-earth-europe"></i>
+                <h3>Droit des Étrangers</h3>
+                <p>OQTF, titres de séjour, asile, nationalité. Accompagnement juridique multilingue complet.</p>
+            </div>
+            <!-- Carte 3 -->
+            <div class="practice-card">
+                <i class="fa-solid fa-lock"></i>
+                <h3>Droit Pénitentiaire</h3>
+                <p>Aménagement de peine, commissions de discipline, conditions de détention et droits des détenus.</p>
+            </div>
+            <!-- Carte 4 -->
+            <div class="practice-card">
+                <i class="fa-solid fa-hand-holding-heart"></i>
+                <h3>Libertés Fondamentales</h3>
+                <p>Protection contre les abus de l'administration. Droit public et défense des libertés individuelles.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- TEASER "LE CABINET" (Split Layout) -->
+<section class="about-teaser">
+    <div class="about-image"></div>
+    <div class="about-content">
+        <span class="hero-subtitle" style="color: var(--primary-color);">À propos de l'avocate</span>
+        <h2 class="section-title">Maître Ilazki Ortego Sampedro</h2>
+        <div class="hero-divider"></div>
+
+        <p><strong>"La défense n'est pas un métier de confort, c'est une exigence de justice."</strong></p>
+
+        <p>Engagée pour la défense des droits fondamentaux, je mets mon expertise technique et ma combativité au service de votre dossier. Mon parcours associatif et judiciaire me permet d'appréhender chaque situation avec humanité et rigueur.</p>
+
+        <div class="values-list">
+            <div class="value-item">
+                <i class="fa-regular fa-comments"></i>
+                <span>Écoute</span>
+            </div>
+            <div class="value-item">
+                <i class="fa-solid fa-shield-halved"></i>
+                <span>Combatitivité</span>
+            </div>
+            <div class="value-item">
+                <i class="fa-solid fa-globe"></i>
+                <span>Multilingue</span>
+            </div>
+        </div>
+
+        <a href="lawer.html" class="btn btn-outline" style="align-self: flex-start; margin-top: 20px;">En savoir plus sur mon parcours</a>
+    </div>
+</section>
+
+<!-- BANDEAU APPEL À L'ACTION -->
+<section class="cta-section" id="contact">
+    <div class="container">
+        <h2>Besoin d'une assistance juridique ?</h2>
+        <p>Le cabinet vous reçoit à Pau ou se déplace au Pays Basque pour une première consultation.</p>
+        <div style="margin-top: 30px;">
+            <a href="tel:0559000000" class="btn" style="background: white; color: var(--primary-color); margin-right: 20px;">
+                <i class="fa-solid fa-phone"></i> 05 59 XX XX XX
+            </a>
+            <a href="mailto:contact@cabinet.fr" class="btn" style="border: 1px solid white;">
+                <i class="fa-solid fa-envelope"></i> Nous écrire
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4>Cabinet Ortego Sampedro</h4>
+                <p>Avocate au Barreau de Pau.<br>Défense pénale et droits des étrangers.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Liens Rapides</h4>
+                <ul>
+                    <li><a href="home.html">Accueil</a></li>
+                    <li><a href="lawer.html">Le Cabinet</a></li>
+                    <li><a href="#competences">Expertises</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <ul>
+                    <li><i class="fa-solid fa-location-dot"></i> Pau / Pays Basque</li>
+                    <li><i class="fa-solid fa-envelope"></i> contact@cabinet.fr</li>
+                </ul>
+            </div>
+        </div>
+        <div class="text-center" style="margin-top: 40px; border-top: 1px solid #222; padding-top: 20px;">
+            <p>&copy; 2024 Maître Ilazki Ortego Sampedro. Tous droits réservés. <a href="#">Mentions Légales</a></p>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>

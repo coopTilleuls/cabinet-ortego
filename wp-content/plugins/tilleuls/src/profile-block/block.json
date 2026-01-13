@@ -31,12 +31,24 @@
 			"default": ""
 		},
 		"languages": {
-			"type": "string",
-			"default": ""
+			"type": "array",
+			"default": [],
+			"items": {
+				"type": "object",
+				"default": {
+					"name": ""
+				}
+			}
 		},
 		"diplomas": {
-			"type": "string",
-			"default": ""
+			"type": "array",
+			"default": [],
+			"items": {
+				"type": "object",
+				"default": {
+					"text": ""
+				}
+			}
 		}
 	}
 }

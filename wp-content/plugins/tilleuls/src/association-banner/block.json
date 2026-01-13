@@ -9,7 +9,8 @@
 	"description": "Une section colorée avec une liste répétable d'icônes et de textes.",
 	"supports": {
 		"html": false,
-		"align": ["wide", "full"]
+		"align": ["wide", "full"],
+		"innerBlocks": true
 	},
 	"textdomain": "tilleuls",
 	"editorScript": "file:./index.js",

@@ -13,14 +13,13 @@
 
 .section-expertise {
 	padding: 60px 0;
-	background-color: var(--accent-bg, #f4f4f4);
+	background-color: var(--wp--preset--color--tertiary);
 	margin: 0 !important;
 
 	> .container {
-		width: 100%;
-		max-width: 1100px;
+		padding: 0 1.5rem;
+		max-width: var(--wp--style--global--content-size);
 		margin: 0 auto;
-		padding: 0 20px;
 
 		> p {
 			font-size: 1.2rem;
@@ -28,8 +27,8 @@
 
 		.expertises-grid {
 			display: grid;
-			grid-template-columns: repeat(2, 1fr);
-			gap: 50px;
+			grid-template-columns: repeat(3, 1fr);
+			gap: 25px;
 			margin-top: 50px;
 		}
 
@@ -71,7 +70,7 @@
 			}
 		}
 
-		@media (max-width: 600px) {
+		@media (max-width: 767px) {
 			.expertises-grid {
 				grid-template-columns: 1fr;
 			}
@@ -79,6 +78,24 @@
 			.expertise-card {
 				padding: 30px 20px;
 			}
+		}
+
+		@media (min-width: 768px) and (max-width: 1024px) {
+			.expertises-grid {
+				grid-template-columns: repeat(2, 1fr);
+			}
+
+			.expertise-card {
+				padding: 30px 20px;
+			}
+		}
+	}
+
+	&.white {
+		background-color: var(--wp--preset--color--primary);
+
+		.expertise-card {
+			background: var(--wp--preset--color--tertiary) !important;
 		}
 	}
 }

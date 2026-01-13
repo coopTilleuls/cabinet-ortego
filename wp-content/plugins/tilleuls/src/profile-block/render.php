@@ -8,56 +8,89 @@ $attributes = $attributes ?? [];
 // 1. Récupération des attributs
 $bio = $attributes['bio'] ?? '';
 $img_url = $attributes['imgUrl'] ?? '';
-$languages = $attributes['languages'] ?? '';
-$diplomas = $attributes['diplomas'] ?? '';
+$languages = $attributes['languages'] ?? [];
+$diplomas = $attributes['diplomas'] ?? [];
 
 // 2. Gestion du wrapper (ajoute la classe 'profile-section' et l'ID)
 $wrapper_attributes = get_block_wrapper_attributes([
 	'class' => 'profile-section',
-	'id'    => 'profil' // Comme dans votre edit.js
+	'id' => 'profil' // Comme dans votre edit.js
 ]);
 
 ?>
 
-<section <?php echo $wrapper_attributes; ?>>
-	<div class="container profile-grid">
+<section <?php
+echo $wrapper_attributes; ?>>
+	<div class="container">
+		<div class="profile-grid">
+			<div class="profile-img-container">
+				<?php
+				if (!empty($img_url)) : ?>
+					<img src="<?php
+					echo esc_url($img_url); ?>" alt="<?php
+					esc_attr_e('Photo de profil', 'tilleuls'); ?>">
+				<?php
+				endif; ?>
 
-		<!-- COLONNE GAUCHE : IMAGE + LANGUES -->
-		<div class="profile-img-container">
-			<?php if ( ! empty( $img_url ) ) : ?>
-				<img src="<?php echo esc_url( $img_url ); ?>" alt="<?php esc_attr_e('Photo de profil', 'tilleuls'); ?>">
-			<?php endif; ?>
-
-			<?php if ( ! empty( $languages ) ) : ?>
-				<div class="languages-bar">
-					<div class="languages-editor">
-						<?php echo $languages; // RichText sauvegarde du HTML, on l'affiche tel quel ?>
+				<div class="languages-container">
+					<h4><?php
+						esc_html_e('Langues parlées :', 'tilleuls'); ?></h4>
+					<div>
+						<?php
+						foreach ($languages as $lang) : ?>
+							<?php
+							if (!empty($lang['name'])) : ?>
+								<span class="lang-tag">
+                            <?php
+							echo wp_kses_post($lang['name']); ?>
+                         </span>
+							<?php
+							endif; ?>
+						<?php
+						endforeach; ?>
 					</div>
 				</div>
-			<?php endif; ?>
-		</div>
+			</div>
+			<div class="bio-text">
 
-		<!-- COLONNE DROITE : TITRE + BIO + DIPLOMES -->
-		<div class="bio-text">
+				<?php
+				echo $content;
+				?>
 
-			<?php
-			// C'est ICI que s'affichent les InnerBlocks (votre Title Section)
-			// Si save.js retourne <InnerBlocks.Content />, cette variable contient le HTML du titre.
-			echo $content;
-			?>
+				<?php
+				if (!empty($bio)) : ?>
+					<div class="bio-content">
+						<?php
+						echo $bio; ?>
+					</div>
+				<?php
+				endif; ?>
 
-			<?php if ( ! empty( $bio ) ) : ?>
-				<div class="bio-content">
-					<?php echo $bio; ?>
-				</div>
-			<?php endif; ?>
-
-			<?php if ( ! empty( $diplomas ) ) : ?>
-				<div class="diploma-list">
-					<?php echo $diplomas; ?>
-				</div>
-			<?php endif; ?>
-
+				<?php
+				if (!empty($diplomas)) : ?>
+					<div class="diploma-list">
+						<h4>Formation Universitaire</h4>
+						<ul>
+							<?php
+							foreach ($diplomas as $item) : ?>
+								<li>
+									<i class="fa-solid fa-graduation-cap"></i>
+									<?php
+									if (!empty($item['text'])) : ?>
+										<span>
+								<?php
+								echo wp_kses_post($item['text']); ?>
+							 </span>
+									<?php
+									endif; ?>
+								</li>
+							<?php
+							endforeach; ?>
+						</ul>
+					</div>
+				<?php
+				endif; ?>
+			</div>
 		</div>
 	</div>
 </section>
