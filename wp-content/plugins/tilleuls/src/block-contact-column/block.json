@@ -1,18 +1,17 @@
 {
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
-	"name": "tilleuls-ortego-blocks/contact-map",
+	"name": "tilleuls-ortego-blocks/block-contact-column",
 	"version": "0.1.0",
-	"title": "Contact Map",
+	"title": "Block Contact Column",
 	"category": "widgets",
 	"icon": "smiley",
-	"description": "Affiche une section contenant l'adresse et une carte GoogleMap",
+	"description": "Example block scaffolded with Create Block tool.",
+	"example": {},
 	"supports": {
-		"html": false,
-		"align": ["wide", "full"],
-		"innerBlocks": true
+		"html": false
 	},
-	"textdomain": "contact-map",
+	"textdomain": "block-contact-column",
 	"editorScript": "file:./index.js",
 	"editorStyle": "file:./index.css",
 	"style": "file:./style-index.css",

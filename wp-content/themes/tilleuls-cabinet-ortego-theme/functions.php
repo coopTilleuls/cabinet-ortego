@@ -37,7 +37,7 @@ require_once realpath(__DIR__ . '/includes/settings/function.php');
 add_action('wp_enqueue_scripts', function () {
     wp_enqueue_style(
         'hero-home',
-        get_template_directory_uri() . '/assets/style/hero.css',
+        get_template_directory_uri() . '/assets/style/contact.css',
         [],
         '1.0'
     );
