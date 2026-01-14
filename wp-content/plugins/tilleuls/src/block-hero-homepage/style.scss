@@ -60,6 +60,7 @@
 				@media (max-width: 768px) {
 					flex-direction: column;
 				}
+
 				.cta-first, .cta-second {
 					display: inline-block;
 					padding: 15px 35px;
@@ -73,6 +74,10 @@
 					color: var(--wp--preset--color--primary);
 					text-decoration: none;
 					text-align: center;
+
+					@media (max-width: 992px) {
+						font-size: .7rem;
+					}
 				}
 
 				.cta-first {

@@ -34,6 +34,10 @@
 			flex-direction: column;
 			justify-content: center;
 
+			@media (max-width: 992px) {
+				padding: 30px 1rem;
+			}
+
 			.profile-surtitle {
 				display: block;
 				font-family: 'Montserrat', sans-serif;
@@ -94,10 +98,16 @@
 				cursor: pointer;
 				transition: all 0.3s ease;
 				align-self: flex-start;
-				margin-top: 20px;
+				margin: 20px 0 0;
 				background-color: transparent;
 				color: var(--wp--preset--color--secondary);
 				text-decoration: none;
+
+				@media (max-width: 992px) {
+					font-size: .6rem;
+					margin: 20px auto 0;
+					padding: 15px 30px;
+				}
 
 				&:hover {
 					background-color: var(--wp--preset--color--secondary);

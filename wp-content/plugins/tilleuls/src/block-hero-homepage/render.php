@@ -23,7 +23,7 @@ echo get_block_wrapper_attributes([
 
 	<div class="container">
 		<div class="hero-content">
-			<span><?php echo wp_kses_post($surtitle); ?></span>
+			<span class="surtitle"><?php echo wp_kses_post($surtitle); ?></span>
 			<?php
 			echo $content;
 			?>

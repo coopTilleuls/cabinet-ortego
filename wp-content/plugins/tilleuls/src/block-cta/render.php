@@ -19,20 +19,46 @@ $title = $attributes['title'] ?? '';
 $description = $attributes['description'] ?? '';
 $link = $attributes['link'] ?? '';
 $linkBis = $attributes['linkBis'] ?? '';
+$textBtn = $attributes['textBtn'] ?? '';
+$textBtnBis = $attributes['textBtnBis'] ?? '';
+
+$phone = get_option('tilleuls_contact_phone');
 
 ?>
 
 
-<section <?php echo $blockWrapper ?>>
+<section <?php
+echo $blockWrapper ?>>
 	<div class="container">
 		<div class="cta-body">
-			<h2><?php echo wp_kses_post($title); ?></h2>
-			<p><?php echo wp_kses_post($description); ?></p>
+			<h2><?php
+				echo wp_kses_post($title); ?></h2>
+			<p><?php
+				echo wp_kses_post($description); ?></p>
 			<div class="cta-container">
-				<a href="<?php echo esc_url($link); ?>" class="cta-link">Prendre rendez-vous</a>
-				<?php if ( $linkBis )  : ?>
-				<a href="<?php echo esc_url($link); ?>" class="cta-link-bis">Nous écrire</a>
-				<?php endif; ?>
+				<a href="<?php
+				echo esc_url($link); ?>" class="cta-link">
+					<?php
+					if (!isset($textBtn) || trim($textBtn) === '')  : ?>
+						<i class="fa-solid fa-phone"></i>
+						<?php
+						echo wp_kses_post($phone); ?>
+					<?php
+					else: ?>
+						<?php
+						echo wp_kses_post($textBtn); ?>
+					<?php
+					endif; ?>
+				</a>
+				<?php
+				if ($linkBis)  : ?>
+					<a href="<?php
+					echo esc_url($link); ?>" class="cta-link-bis">
+						<?php
+						echo wp_kses_post($textBtnBis); ?>
+					</a>
+				<?php
+				endif; ?>
 			</div>
 		</div>
 	</div>

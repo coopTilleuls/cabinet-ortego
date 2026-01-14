@@ -29,6 +29,7 @@ Tags: one-column, custom-colors, custom-menu, custom-logo, editor-style, feature
 	font-family: "Montserrat", sans-serif !important;
 	margin: 0;
 	padding: 0;
+	box-sizing: border-box;
 }
 
 a {
@@ -75,4 +76,20 @@ h1, h2, h3, h4, h5, h6, blockquote, caption, figcaption, p {
 
 :where(.wp-site-blocks) > * {
 	margin-block-start: 0 !important;
+}
+
+@font-face {
+	font-family: "Montserrat";
+	src: url('./assets/fonts/montserrat/Montserrat-VF.woff2') format("woff2");
+	font-weight: 300 800;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "Playfair";
+	src: url('./assets/fonts/playfair-display/PlayfairDisplaySC-Regular.woff2') format("woff2");
+	font-weight: 300 800;
+	font-style: normal;
+	font-display: swap;
 }

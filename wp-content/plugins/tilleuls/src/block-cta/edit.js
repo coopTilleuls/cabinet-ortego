@@ -21,6 +21,7 @@ import {InspectorControls, RichText, useBlockProps} from '@wordpress/block-edito
  */
 import './editor.scss';
 import {PanelBody, TextControl} from "@wordpress/components";
+import {useSelect} from "@wordpress/data";
 
 /**
  * The edit function describes the structure of your block in the context of the
@@ -36,8 +37,21 @@ export default function Edit({attributes, setAttributes}) {
 		title,
 		description,
 		link,
-		linkBis
+		linkBis,
+		textBtn,
+		textBtnBis,
 	} = attributes;
+
+	const contactPhone = useSelect(
+		(select) =>
+			select('core').getEntityRecord(
+				'root',
+				'site'
+			)?.tilleuls_contact_phone,
+		[]
+	);
+
+	console.log(textBtn, textBtnBis)
 
 	return (
 		<>
@@ -46,16 +60,31 @@ export default function Edit({attributes, setAttributes}) {
 					<TextControl
 						label={__('Lien (URL)', 'tilleuls')}
 						value={link || ''}
-						onChange={(value) => setAttributes({ link: value })}
+						onChange={(value) => setAttributes({link: value})}
 						placeholder="https://..."
 						help={__('Collez l\'URL de la page interne ou du site externe.', 'tilleuls')}
 					/>
 					<TextControl
+						label={__('Label du bouton', 'tilleuls')}
+						value={textBtn || ''}
+						onChange={(value) => setAttributes({textBtn: value})}
+						help={__('Si vide, numero de téléphone mis par défaut.', 'tilleuls')}
+						placeholder="Prendre rendez-vous"
+					/>
+
+					<TextControl
 						label={__('Lien (URL)', 'tilleuls')}
 						value={linkBis || ''}
-						onChange={(value) => setAttributes({ linkBis: value })}
+						onChange={(value) => setAttributes({linkBis: value})}
 						placeholder="https://..."
 						help={__('Collez l\'URL de la page interne ou du site externe.', 'tilleuls')}
+					/>
+
+					<TextControl
+						label={__('Label du bouton secondaire', 'tilleuls')}
+						value={textBtnBis || ''}
+						onChange={(value) => setAttributes({textBtnBis: value})}
+						placeholder="Prendre rendez-vous"
 					/>
 				</PanelBody>
 			</InspectorControls>
@@ -79,11 +108,19 @@ export default function Edit({attributes, setAttributes}) {
 							allowedFormats={[]}
 						/>
 						<div className="cta-container">
-							<a href={link} className="cta-link"> Prendre rendez-vous</a>
-							{
-								linkBis !== '' ??
-								<a href={linkBis} className="cta-link-bis">Nous écrire</a>
-							}
+							<a href={link} className="cta-link">
+								{
+									!textBtn || textBtn.trim() === '' ?
+										(
+											<>
+												<i className="fa-solid fa-phone"></i>
+												{contactPhone}
+											</>
+										) :
+										textBtn
+								}
+							</a>
+							<a href={linkBis} className="cta-link-bis">{textBtnBis}</a>
 						</div>
 					</div>
 				</div>

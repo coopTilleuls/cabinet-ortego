@@ -16,19 +16,22 @@
            1. VARIABLES & RESET
         ------------------------------------------- */
         :root {
-            /* Palette de couleurs raffinée */
-            --primary-color: #8C1818;       /* Rouge Bordeau */
+            /* Palette de couleurs */
+            --primary-color: #8C1818;
             --primary-dark: #5e0d0d;
-            --secondary-color: #1a1a1a;     /* Noir Profond */
-            --bg-light: #f9f9f9;            /* Gris très clair */
-            --bg-beige: #f4f1ea;            /* Beige papier */
+            --secondary-color: #1a1a1a;
+            --bg-light: #f9f9f9;
+            --bg-beige: #f4f1ea;
             --text-main: #333333;
             --text-muted: #666666;
             --white: #ffffff;
 
             /* Typographie */
-            --font-heading: 'Playfair Display', serif; /* Plus élégant que Merriweather */
+            --font-heading: 'Playfair Display', serif;
             --font-body: 'Montserrat', sans-serif;
+
+            /* Espacements */
+            --section-padding: 100px;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -49,46 +52,24 @@
         a { text-decoration: none; transition: 0.3s; }
         img { max-width: 100%; height: auto; display: block; }
 
-        .section-padding { padding: 100px 0; }
         .text-center { text-align: center; }
 
-        /* Boutons Stylisés */
+        /* Boutons */
         .btn {
-            display: inline-block;
-            padding: 15px 35px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            border: 2px solid transparent;
-            cursor: pointer;
-            transition: all 0.3s ease;
+            display: inline-block; padding: 15px 35px; font-size: 0.9rem; font-weight: 600;
+            text-transform: uppercase; letter-spacing: 1px; border: 2px solid transparent;
+            cursor: pointer; transition: all 0.3s ease; text-align: center;
         }
-
-        .btn-primary {
-            background-color: var(--primary-color);
-            color: var(--white);
-        }
-        .btn-primary:hover {
-            background-color: var(--primary-dark);
-            transform: translateY(-2px);
-        }
-
-        .btn-outline {
-            background-color: transparent;
-            border-color: var(--secondary-color);
-            color: var(--secondary-color);
-        }
-        .btn-outline:hover {
-            background-color: var(--secondary-color);
-            color: var(--white);
-        }
+        .btn-primary { background-color: var(--primary-color); color: var(--white); }
+        .btn-primary:hover { background-color: var(--primary-dark); transform: translateY(-2px); }
+        .btn-outline { background-color: transparent; border-color: var(--secondary-color); color: var(--secondary-color); }
+        .btn-outline:hover { background-color: var(--secondary-color); color: var(--white); }
 
         /* -------------------------------------------
-           2. HEADER (Moderne & Épuré)
+           2. HEADER & NAVIGATION
         ------------------------------------------- */
         .site-header {
-            padding: 20px 0;
+            padding: 15px 0;
             position: fixed;
             width: 100%;
             top: 0;
@@ -103,15 +84,16 @@
 
         .logo {
             font-family: var(--font-heading);
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             font-weight: 700;
             color: var(--secondary-color);
             text-transform: uppercase;
             letter-spacing: 1px;
+            z-index: 1001; /* Au-dessus du menu mobile */
         }
         .logo span { color: var(--primary-color); }
 
-        .nav-links { display: flex; gap: 40px; }
+        .nav-links { display: flex; gap: 30px; align-items: center; }
         .nav-links a {
             color: var(--secondary-color);
             font-size: 0.85rem;
@@ -119,128 +101,96 @@
             text-transform: uppercase;
             position: relative;
         }
-        /* Petit soulignement animé au survol */
         .nav-links a::after {
             content: ''; position: absolute; bottom: -5px; left: 0; width: 0; height: 2px;
             background: var(--primary-color); transition: width 0.3s;
         }
         .nav-links a:hover::after { width: 100%; }
 
+        /* Bouton Burger (Caché sur Desktop) */
+        .mobile-toggle { display: none; font-size: 1.5rem; color: var(--secondary-color); cursor: pointer; z-index: 1001; }
+
         /* -------------------------------------------
-           3. HERO SECTION (Différent de la page Avocat)
-           Grand visuel, texte à gauche
+           3. HERO SECTION
         ------------------------------------------- */
         .hero-home {
-            height: 90vh; /* Presque plein écran */
-            background: linear-gradient(to right, rgba(0,0,0,0.7) 30%, rgba(0,0,0,0.3) 100%),
+            min-height: 90vh; /* Utilisation de min-height pour éviter les coupures sur petits écrans */
+            background: linear-gradient(to right, rgba(0,0,0,0.7) 30%, rgba(0,0,0,0.4) 100%),
             url('https://images.unsplash.com/photo-1505664194779-8beaceb93744?q=80&w=2000&auto=format&fit=crop');
             background-size: cover;
             background-position: center;
             display: flex;
             align-items: center;
             color: var(--white);
-            margin-top: 80px; /* Compensation header fixe */
+            margin-top: 60px; /* Compensation header */
+            padding: 80px 0;
         }
 
-        .hero-content { max-width: 800px; }
+        .hero-content { max-width: 800px; position: relative; z-index: 2; }
         .hero-subtitle {
-            display: block;
-            font-family: var(--font-body);
-            font-weight: 500;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            color: var(--bg-beige);
-            margin-bottom: 15px;
-            font-size: 0.9rem;
+            display: block; font-family: var(--font-body); font-weight: 500; letter-spacing: 2px;
+            text-transform: uppercase; color: var(--bg-beige); margin-bottom: 15px; font-size: 0.9rem;
         }
 
         .hero-home h1 {
-            font-size: 3.5rem;
-            color: var(--white);
-            margin-bottom: 25px;
-            font-weight: 700;
-            line-height: 1.1;
+            font-size: 3.5rem; color: var(--white); margin-bottom: 25px; font-weight: 700; line-height: 1.1;
         }
 
-        .hero-divider {
-            width: 80px; height: 4px; background: var(--primary-color); margin-bottom: 30px;
-        }
+        .hero-divider { width: 80px; height: 4px; background: var(--primary-color); margin-bottom: 30px; }
 
-        .hero-home p {
-            font-size: 1.2rem;
-            margin-bottom: 40px;
-            max-width: 600px;
-            opacity: 0.9;
-        }
+        .hero-home p { font-size: 1.2rem; margin-bottom: 40px; max-width: 600px; opacity: 0.9; }
+
+        .hero-buttons { display: flex; gap: 20px; flex-wrap: wrap; }
 
         /* -------------------------------------------
-           4. DOMAINES D'INTERVENTION (Style "Dark" pour contraster)
+           4. DOMAINES D'INTERVENTION
         ------------------------------------------- */
         .practices-home {
             background-color: var(--secondary-color);
             color: var(--white);
             padding: 80px 0;
-            margin-top: -50px; /* Chevauchement visuel */
             position: relative;
             z-index: 10;
         }
 
         .practices-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 30px;
         }
 
         .practice-card {
-            background: rgba(255, 255, 255, 0.05); /* Fond transparent */
+            background: rgba(255, 255, 255, 0.05);
             padding: 30px;
             border: 1px solid rgba(255,255,255,0.1);
             transition: 0.3s;
         }
-
         .practice-card:hover {
-            background: var(--primary-color); /* Devient rouge au survol */
+            background: var(--primary-color);
             border-color: var(--primary-color);
             transform: translateY(-5px);
         }
-
-        .practice-card i {
-            font-size: 2.5rem;
-            color: var(--white);
-            margin-bottom: 20px;
-        }
-
-        .practice-card h3 {
-            color: var(--white);
-            font-size: 1.2rem;
-            margin-bottom: 15px;
-        }
-
-        .practice-card p {
-            font-size: 0.9rem;
-            color: rgba(255,255,255,0.7);
-            line-height: 1.6;
-        }
+        .practice-card i { font-size: 2.5rem; color: var(--white); margin-bottom: 20px; }
+        .practice-card h3 { color: var(--white); font-size: 1.2rem; margin-bottom: 15px; }
+        .practice-card p { font-size: 0.9rem; color: rgba(255,255,255,0.7); line-height: 1.6; }
 
         /* -------------------------------------------
-           5. TEASER "LE CABINET" (Split Screen)
+           5. TEASER "LE CABINET"
         ------------------------------------------- */
         .about-teaser {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            align-items: center;
+            align-items: stretch; /* Hauteur égale */
         }
 
         .about-image {
-            height: 100%;
-            min-height: 600px;
             background: url('https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=1000&auto=format&fit=crop') center/cover;
+            min-height: 500px;
         }
 
         .about-content {
             padding: 80px;
             background-color: var(--bg-beige);
-            height: 100%;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -249,40 +199,126 @@
         .section-title { font-size: 2.5rem; margin-bottom: 20px; }
         .about-content p { margin-bottom: 25px; color: var(--text-light); }
 
-        .values-list {
-            display: flex; gap: 30px; margin: 30px 0;
-        }
+        .values-list { display: flex; gap: 30px; margin: 30px 0; flex-wrap: wrap; }
         .value-item { text-align: center; }
         .value-item i { color: var(--primary-color); font-size: 1.5rem; margin-bottom: 10px; }
         .value-item span { display: block; font-weight: 600; font-size: 0.9rem; font-family: var(--font-heading); }
 
         /* -------------------------------------------
-           6. BANDEAU CONTACT SIMPLE
+           6. BANDEAU CONTACT
         ------------------------------------------- */
         .cta-section {
             background-color: var(--primary-color);
-            padding: 60px 0;
+            padding: 80px 0;
             text-align: center;
             color: var(--white);
         }
-        .cta-section h2 { color: var(--white); margin-bottom: 10px; font-size: 2rem; }
+        .cta-section h2 { color: var(--white); margin-bottom: 15px; font-size: 2.2rem; }
         .cta-section p { margin-bottom: 30px; font-size: 1.1rem; opacity: 0.9; }
+        .cta-buttons { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
 
         /* Footer */
-        footer { background-color: #111; padding: 40px 0; color: #666; font-size: 0.9rem; }
-        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; margin-bottom: 40px; }
-        .footer-col h4 { color: #fff; margin-bottom: 20px; font-size: 1rem; }
+        footer { background-color: #111; padding: 60px 0 30px; color: #666; font-size: 0.9rem; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; margin-bottom: 40px; }
+        .footer-col h4 { color: #fff; margin-bottom: 20px; font-size: 1.1rem; }
         .footer-col ul li { margin-bottom: 10px; }
         .footer-col a { color: #666; } .footer-col a:hover { color: var(--primary-color); }
 
-        /* RESPONSIVE */
-        @media (max-width: 992px) {
-            .hero-home h1 { font-size: 2.5rem; }
-            .about-teaser { grid-template-columns: 1fr; }
-            .about-image { min-height: 400px; order: -1; } /* Image en haut */
-            .about-content { padding: 50px 25px; }
-            .practices-home { margin-top: 0; } /* Reset chevauchement */
+        /* =================================================================
+           RESPONSIVE (MEDIA QUERIES)
+           ================================================================= */
+
+        /* 1. TABLETTES & PETITS ORDINATEURS (Max 1024px) */
+        @media (max-width: 1024px) {
+            .hero-home h1 { font-size: 3rem; }
+            .about-content { padding: 50px 30px; }
+            .about-teaser { grid-template-columns: 1fr; } /* Image au dessus ou dessous */
+            .about-image { height: 400px; order: -1; } /* Image en premier */
         }
+
+        /* 2. TABLETTES & GRANDS MOBILES (Max 900px) */
+        @media (max-width: 900px) {
+            /* Activation du Menu Mobile */
+            .mobile-toggle { display: block; }
+
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%; /* Caché hors écran */
+                height: 100vh;
+                width: 80%;
+                max-width: 350px;
+                background-color: var(--white);
+                flex-direction: column;
+                justify-content: center;
+                padding: 40px;
+                box-shadow: -5px 0 20px rgba(0,0,0,0.1);
+                transition: right 0.4s ease;
+                z-index: 1000;
+            }
+
+            .nav-links.active { right: 0; } /* Affiché */
+
+            .nav-links a {
+                font-size: 1.1rem;
+                margin-bottom: 20px;
+                width: 100%;
+                text-align: center;
+                padding: 10px 0;
+            }
+
+            /* Bouton "Contact" dans le menu */
+            .nav-links .btn-primary {
+                margin-top: 20px;
+                width: 100%;
+            }
+        }
+
+        /* 3. MOBILES (Max 768px) */
+        @media (max-width: 768px) {
+            :root { --section-padding: 60px; }
+
+            /* Header */
+            .site-header { padding: 10px 0; }
+            .logo { font-size: 1.2rem; }
+
+            /* Hero */
+            .hero-home {
+                text-align: center;
+                justify-content: center;
+                padding: 100px 0 60px;
+                margin-top: 50px;
+            }
+            .hero-content { display: flex; flex-direction: column; align-items: center; }
+            .hero-divider { margin: 20px auto; }
+            .hero-home h1 { font-size: 2.2rem; }
+            .hero-home p { font-size: 1rem; }
+            .hero-buttons { justify-content: center; width: 100%; }
+            .hero-buttons .btn { width: 100%; margin-bottom: 10px; }
+
+            /* Practices */
+            .practices-home { padding: 60px 0; }
+            .practices-grid { gap: 20px; }
+
+            /* About */
+            .section-title { font-size: 2rem; }
+            .about-content { padding: 40px 20px; }
+            .values-list { justify-content: center; gap: 20px; }
+            .value-item { width: 45%; } /* 2 par ligne */
+
+            /* CTA */
+            .cta-section { padding: 60px 0; }
+            .cta-section h2 { font-size: 1.8rem; }
+            .cta-buttons .btn { width: 100%; }
+        }
+
+        /* 4. PETITS MOBILES (Max 480px) */
+        @media (max-width: 480px) {
+            .hero-home h1 { font-size: 1.8rem; }
+            .practice-card { padding: 20px; }
+            .value-item { width: 100%; } /* 1 par ligne */
+        }
+
     </style>
 </head>
 <body>
@@ -291,11 +327,18 @@
 <header class="site-header">
     <div class="container header-flex">
         <a href="#" class="logo">Maître <span>Ortego</span></a>
-        <nav class="nav-links">
-            <a href="home.html">Accueil</a>
-            <a href="lawer.html">Le Cabinet</a> <!-- Lien vers l'autre page -->
-            <a href="#competences">Expertises</a>
-            <a href="#contact" class="btn btn-primary" style="padding: 10px 20px;">Contact</a>
+
+        <!-- Menu Burger (Icone) -->
+        <div class="mobile-toggle" id="mobile-menu-btn">
+            <i class="fa-solid fa-bars"></i>
+        </div>
+
+        <!-- Liens de navigation -->
+        <nav class="nav-links" id="nav-menu">
+            <a href="home.html" onclick="closeMenu()">Accueil</a>
+            <a href="lawer.html" onclick="closeMenu()">Le Cabinet</a>
+            <a href="#competences" onclick="closeMenu()">Expertises</a>
+            <a href="#contact" class="btn btn-primary" onclick="closeMenu()">Contact</a>
         </nav>
     </div>
 </header>
@@ -309,7 +352,7 @@
             <div class="hero-divider"></div>
             <p>Une expertise juridique rigoureuse en Droit Pénal, Droit des Étrangers et Libertés Fondamentales. Parce que chaque situation mérite une défense combative et humaine.</p>
 
-            <div style="display: flex; gap: 20px;">
+            <div class="hero-buttons">
                 <a href="#contact" class="btn btn-primary">Prendre Rendez-vous</a>
                 <a href="lawer.html" class="btn btn-outline" style="border-color: white; color: white;">Découvrir le Cabinet</a>
             </div>
@@ -317,7 +360,7 @@
     </div>
 </section>
 
-<!-- COMPÉTENCES (Mis en avant immédiatement) -->
+<!-- COMPÉTENCES -->
 <section class="practices-home" id="competences">
     <div class="container">
         <div class="practices-grid">
@@ -349,7 +392,7 @@
     </div>
 </section>
 
-<!-- TEASER "LE CABINET" (Split Layout) -->
+<!-- TEASER "LE CABINET" -->
 <section class="about-teaser">
     <div class="about-image"></div>
     <div class="about-content">
@@ -385,8 +428,8 @@
     <div class="container">
         <h2>Besoin d'une assistance juridique ?</h2>
         <p>Le cabinet vous reçoit à Pau ou se déplace au Pays Basque pour une première consultation.</p>
-        <div style="margin-top: 30px;">
-            <a href="tel:0559000000" class="btn" style="background: white; color: var(--primary-color); margin-right: 20px;">
+        <div class="cta-buttons" style="margin-top: 30px;">
+            <a href="tel:0559000000" class="btn" style="background: white; color: var(--primary-color);">
                 <i class="fa-solid fa-phone"></i> 05 59 XX XX XX
             </a>
             <a href="mailto:contact@cabinet.fr" class="btn" style="border: 1px solid white;">
@@ -425,6 +468,37 @@
         </div>
     </div>
 </footer>
+
+<!-- JAVASCRIPT MENU MOBILE -->
+<script>
+  const mobileBtn = document.getElementById('mobile-menu-btn');
+  const navMenu = document.getElementById('nav-menu');
+  const icon = mobileBtn.querySelector('i');
+
+  // Ouvrir/Fermer
+  mobileBtn.addEventListener('click', () => {
+    navMenu.classList.toggle('active');
+
+    // Animation icône (Barres <-> Croix)
+    if (navMenu.classList.contains('active')) {
+      icon.classList.remove('fa-bars');
+      icon.classList.add('fa-xmark');
+      document.body.style.overflow = 'hidden'; // Bloque le scroll
+    } else {
+      icon.classList.remove('fa-xmark');
+      icon.classList.add('fa-bars');
+      document.body.style.overflow = 'auto';
+    }
+  });
+
+  // Fermer au clic sur un lien
+  function closeMenu() {
+    navMenu.classList.remove('active');
+    icon.classList.remove('fa-xmark');
+    icon.classList.add('fa-bars');
+    document.body.style.overflow = 'auto';
+  }
+</script>
 
 </body>
 </html>

@@ -14,6 +14,10 @@
 .title-section {
 	width: 100%;
 
+	h1, h2, h3 {
+		font-family: 'Playfair' , sans-serif !important;
+	}
+
 	&.center {
 		h2, h3 {
 			text-align: center;
@@ -45,7 +49,6 @@
 	&.sm {
 		> h3 {
 			margin: 1rem 0;
-			font-family: 'Montserrat', sans-serif;
 		}
 
 		> .subtitle {
@@ -65,10 +68,14 @@
 		> h1 {
 			font-size: 3.5rem;
 			color: var(--wp--preset--color--primary);
-			margin:0 0 25px;
+			margin: 0 0 25px;
 			font-weight: 700;
 			line-height: 1.1;
 			text-wrap: balance;
+
+			@media (max-width: 992px) {
+				font-size: 2.5rem;
+			}
 		}
 
 		> .subtitle {
@@ -85,9 +92,12 @@
 	}
 
 	h2 {
-		font-size: 2.2rem;
-		margin-bottom: 10px;
-		font-family: 'Montserrat', sans-serif;
+		font-size: 2.5rem;
+		margin-bottom: 20px;
+
+		@media (max-width: 992px) {
+			font-size: 2rem;
+		}
 	}
 
 	.subtitle {
