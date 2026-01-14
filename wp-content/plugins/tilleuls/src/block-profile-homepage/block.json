@@ -1,17 +1,18 @@
 {
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
-	"name": "tilleuls-ortego-blocks/tilleuls",
+	"name": "tilleuls-ortego-blocks/block-profile-homepage",
 	"version": "0.1.0",
-	"title": "Tilleuls",
+	"title": "Block Profile Homepage",
 	"category": "widgets",
 	"icon": "smiley",
 	"description": "Example block scaffolded with Create Block tool.",
 	"example": {},
 	"supports": {
-		"html": false
+		"html": false,
+		"align": ["wide", "full"]
 	},
-	"textdomain": "tilleuls",
+	"textdomain": "block-profile-homepage",
 	"editorScript": "file:./index.js",
 	"editorStyle": "file:./index.css",
 	"style": "file:./style-index.css",

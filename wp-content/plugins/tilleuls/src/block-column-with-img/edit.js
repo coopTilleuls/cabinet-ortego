@@ -91,7 +91,7 @@ export default function Edit({attributes, setAttributes}) {
 		setAttributes({icon: currentIconTitleClass(value)})
 		setAttributes({titleIcon: currentIconClass(value)})
 	}
-	console.log(titleIcon)
+
 	return (
 		<>
 			<InspectorControls>

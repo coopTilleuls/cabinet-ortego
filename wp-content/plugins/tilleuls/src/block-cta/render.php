@@ -18,6 +18,7 @@ $attributes = $attributes ?? [];
 $title = $attributes['title'] ?? '';
 $description = $attributes['description'] ?? '';
 $link = $attributes['link'] ?? '';
+$linkBis = $attributes['linkBis'] ?? '';
 
 ?>
 
@@ -25,9 +26,14 @@ $link = $attributes['link'] ?? '';
 <section <?php echo $blockWrapper ?>>
 	<div class="container">
 		<div class="cta-body">
-			<h3><?php echo wp_kses_post($title); ?></h3>
+			<h2><?php echo wp_kses_post($title); ?></h2>
 			<p><?php echo wp_kses_post($description); ?></p>
-			<a href="<?php echo esc_url($link); ?>" class="cta-link">Prendre rendez-vous</a>
+			<div class="cta-container">
+				<a href="<?php echo esc_url($link); ?>" class="cta-link">Prendre rendez-vous</a>
+				<?php if ( $linkBis )  : ?>
+				<a href="<?php echo esc_url($link); ?>" class="cta-link-bis">Nous écrire</a>
+				<?php endif; ?>
+			</div>
 		</div>
 	</div>
 </section>

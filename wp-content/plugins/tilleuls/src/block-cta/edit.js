@@ -35,7 +35,8 @@ export default function Edit({attributes, setAttributes}) {
 		color,
 		title,
 		description,
-		link
+		link,
+		linkBis
 	} = attributes;
 
 	return (
@@ -49,6 +50,13 @@ export default function Edit({attributes, setAttributes}) {
 						placeholder="https://..."
 						help={__('Collez l\'URL de la page interne ou du site externe.', 'tilleuls')}
 					/>
+					<TextControl
+						label={__('Lien (URL)', 'tilleuls')}
+						value={linkBis || ''}
+						onChange={(value) => setAttributes({ linkBis: value })}
+						placeholder="https://..."
+						help={__('Collez l\'URL de la page interne ou du site externe.', 'tilleuls')}
+					/>
 				</PanelBody>
 			</InspectorControls>
 			<section {...useBlockProps({
@@ -57,7 +65,7 @@ export default function Edit({attributes, setAttributes}) {
 				<div className="container">
 					<div className="cta-body">
 						<RichText
-							tagName="h3"
+							tagName="h2"
 							value={title}
 							onChange={(value) => setAttributes({title: value})}
 							placeholder={__('Titre...', 'tilleuls')}
@@ -70,7 +78,13 @@ export default function Edit({attributes, setAttributes}) {
 							placeholder={__('Description...', 'tilleuls')}
 							allowedFormats={[]}
 						/>
-						<a href={link} className="cta-link"> Prendre rendez-vous</a>
+						<div className="cta-container">
+							<a href={link} className="cta-link"> Prendre rendez-vous</a>
+							{
+								linkBis !== '' ??
+								<a href={linkBis} className="cta-link-bis">Nous écrire</a>
+							}
+						</div>
 					</div>
 				</div>
 			</section>

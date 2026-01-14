@@ -24,6 +24,7 @@
 .section-cta {
 	background-color: var(--wp--preset--color--accent);
 	padding: 60px 0;
+	margin: 0 !important;
 
 	> .container {
 		> .cta-body {
@@ -32,7 +33,7 @@
 			align-items: center;
 			justify-content: center;
 
-			h3 {
+			h2 {
 				color: var(--wp--preset--color--primary);
 				margin-bottom: 20px;
 				font-size: 1.8rem;
@@ -47,22 +48,41 @@
 				font-size: 1rem;
 				text-align: center;
 			}
+			.cta-container {
+				display: flex;
+				gap: 30px;
 
-			& > .cta-link {
-				display: inline-block;
-				padding: 15px 40px;
-				background-color: var(--wp--preset--color--primary);
-				color: var(--wp--preset--color--accent);
-				text-transform: uppercase;
-				font-weight: 600;
-				border-radius: 2px;
-				border: 2px solid var(--wp--preset--color--primary);
-				text-decoration: none;
-				transition: all .7s ease;
+				.cta-link,
+				.cta-link-bis {
+					display: inline-block;
+					padding: 15px 40px;
+					text-transform: uppercase;
+					font-weight: 600;
+					border-radius: 2px;
+					text-decoration: none;
+					transition: all .7s ease;
+				}
 
-				&:hover {
+				& > .cta-link {
+					background-color: var(--wp--preset--color--primary);
+					color: var(--wp--preset--color--accent);
+
+					&:hover {
+						background-color: transparent;
+						color: var(--wp--preset--color--primary);
+						border: 2px solid var(--wp--preset--color--primary);
+					}
+				}
+
+				& > .cta-link-bis {
 					background-color: transparent;
 					color: var(--wp--preset--color--primary);
+					border: 2px solid var(--wp--preset--color--primary);
+
+					&:hover {
+						background-color: var(--wp--preset--color--primary);
+						color: var(--wp--preset--color--accent);
+					}
 				}
 			}
 		}
