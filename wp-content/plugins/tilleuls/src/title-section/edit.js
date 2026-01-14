@@ -1,6 +1,6 @@
 import {__} from '@wordpress/i18n';
 import {InspectorControls, useBlockProps} from '@wordpress/block-editor';
-import {PanelBody, TextControl, SelectControl} from '@wordpress/components';
+import {PanelBody, SelectControl, TextControl} from '@wordpress/components';
 
 export default function Edit({attributes, setAttributes}) {
 	const {title, subtitle, blockPosition, size, color} = attributes;
@@ -49,6 +49,7 @@ export default function Edit({attributes, setAttributes}) {
 						options={[
 							{label: __('Petit', 'tilleuls'), value: 'sm'},
 							{label: __('Grand', 'tilleuls'), value: 'lg'},
+							{label: __('Big', 'tilleuls'), value: 'xl'},
 						]}
 						onChange={(value) =>
 							setAttributes({size: value})
@@ -72,10 +73,10 @@ export default function Edit({attributes, setAttributes}) {
 			<div {...blockProps}>
 				{
 					size === 'sm' ?
-
-						<h3>{title}</h3>
-						:
-						<h2>{title}</h2>
+						<h3>{title}</h3> :
+						size === 'xl' ?
+							<h1>{title}</h1> :
+							<h2>{title}</h2>
 				}
 				<span className="subtitle">{subtitle}</span>
 				<div className="separator"/>

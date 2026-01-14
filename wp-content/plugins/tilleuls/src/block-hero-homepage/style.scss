@@ -1,0 +1,94 @@
+/**
+ * The following styles get applied both on the front of your site
+ * and in the editor.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+
+.wp-block-create-block-block-hero-homepage {
+	background-color: #21759b;
+	color: #fff;
+	padding: 2px;
+}
+
+.container {
+	width: 100%;
+	max-width: 1100px;
+	margin: 0 auto;
+	padding: 0 25px;
+
+	@media (min-width: 768px) {
+		padding: 0 25px;
+	}
+}
+
+.section-hero-homepage {
+	height: 90vh;
+	background-size: cover;
+	background: linear-gradient(to right, rgba(0,0,0,0.7) 30%, rgba(0,0,0,0.3) 100%), url('https://images.unsplash.com/photo-1505664194779-8beaceb93744?q=80&w=2000&auto=format&fit=crop');
+	display: flex;
+	align-items: center;
+	color: var(--wp--preset--color--primary);
+	margin-top: 80px;
+
+	.container {
+		.hero-content {
+			max-width: 800px;
+
+			.surtitle {
+				display: block;
+				font-family: 'Montserrat', sans-serif;
+				font-weight: 500;
+				letter-spacing: 2px;
+				text-transform: uppercase;
+				color: var(--wp--preset--color--tertiary);
+				margin-bottom: 1rem;
+				font-size: 0.9rem;
+			}
+
+			p {
+				font-size: 1.2rem;
+				margin-bottom: 40px;
+				max-width: 600px;
+				opacity: 0.9;
+			}
+
+			.cta-container {
+				display: flex;
+				gap: 20px;
+
+				@media (max-width: 768px) {
+					flex-direction: column;
+				}
+				.cta-first, .cta-second {
+					display: inline-block;
+					padding: 15px 35px;
+					font-size: 0.9rem;
+					font-weight: 600;
+					text-transform: uppercase;
+					letter-spacing: 1px;
+					border: 2px solid transparent;
+					cursor: pointer;
+					transition: all 0.3s ease;
+					color: var(--wp--preset--color--primary);
+					text-decoration: none;
+					text-align: center;
+				}
+
+				.cta-first {
+					background-color: var(--wp--preset--color--accent);
+
+					&:hover {
+						background-color: var(--wp--preset--color--accent-dark);
+
+					}
+				}
+
+				.cta-second {
+					background-color: transparent;
+					border-color: var(--wp--preset--color--primary);
+				}
+			}
+		}
+	}
+}

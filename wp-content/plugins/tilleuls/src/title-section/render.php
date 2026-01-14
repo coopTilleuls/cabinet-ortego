@@ -20,8 +20,20 @@ $wrapper_attributes = get_block_wrapper_attributes([
 
 <section <?php
 echo $wrapper_attributes; ?>>
-	<h2><?php
-		echo esc_html($title); ?></h2>
+	<?php
+	if ($size === 'sm')  : ?>
+		<h2><?php
+			echo esc_html($title); ?></h2>
+	<?php
+	elseif ($size === 'xl')  : ?>
+		<h1><?php
+			echo esc_html($title); ?></h1>
+	<?php
+	else : ?>
+		<h2><?php
+			echo esc_html($title); ?></h2>
+	<?php
+	endif; ?>
 
 	<?php
 	if ($subtitle) : ?>
