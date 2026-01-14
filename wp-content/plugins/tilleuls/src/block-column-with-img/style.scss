@@ -11,26 +11,20 @@
 	padding: 2px;
 }
 
-.container {
-	padding: 0 1.5rem;
-	max-width: var(--wp--style--global--content-size);
-	margin: 0 auto;
-
-	@media (min-width: 768px) {
-		padding: 0 25px;
-	}
-}
-
 .section-expertise-page {
 	padding: 60px 0;
+	margin: 0 !important;
 
 	.container {
 		.expertises-grid {
 			display: grid;
 			grid-template-columns: 1fr 1fr;
 			gap: 50px;
-			margin-bottom: 80px;
 			align-items: start;
+
+			@media screen and (max-width: 992px) {
+				grid-template-columns: 1fr;
+			}
 
 			> .expertise-content {
 				> h2 {
@@ -46,12 +40,12 @@
 					}
 				}
 
-				 p {
+				p {
 					margin-bottom: 20px;
 					color: var(--wp--preset--color--text-light);
 					text-align: justify;
-				 	font-size: 1rem;
-					 line-height: 1.7;
+					font-size: 1rem;
+					line-height: 1.7;
 				}
 
 				> ul {
@@ -64,7 +58,7 @@
 						margin-bottom: 10px;
 						font-weight: 500;
 						font-size: .8rem;
-						color:  var(--wp--preset--color--text-main);
+						color: var(--wp--preset--color--text-main);
 
 						&::before {
 							content: "\f00c";
@@ -90,16 +84,18 @@
 				border-radius: 2px;
 				position: relative;
 
-				&:after {
-					content: '';
-					position: absolute;
-					top: 20px;
-					left: 20px;
-					right: -20px;
-					bottom: -20px;
-					border: 2px solid var(--wp--preset--color--accent);
-					z-index: 0;
-					pointer-events: none;
+				@media screen and (min-width: 993px) {
+					&:after {
+						content: '';
+						position: absolute;
+						top: 20px;
+						left: 20px;
+						right: -20px;
+						bottom: -20px;
+						border: 2px solid var(--wp--preset--color--accent);
+						z-index: 0;
+						pointer-events: none;
+					}
 				}
 
 				i {
@@ -111,13 +107,16 @@
 		}
 	}
 
-	&.has-img-left {
-		.expertise-visual {
-			order: 0;
-		}
+	@media screen and (min-width: 993px) {
+		&.has-img-left {
 
-		.expertise-content {
-			order: 2;
+			.expertise-visual {
+				order: 0;
+			}
+
+			.expertise-content {
+				order: 2;
+			}
 		}
 	}
 }

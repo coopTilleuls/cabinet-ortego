@@ -37,23 +37,27 @@
 			}
 
 			> blockquote {
-				font-family: 'Merriweather', serif;
+				font-family: 'Merriweather', serif !important;
 				font-size: 1.5rem;
 				font-style: italic;
 				color: var(--wp--preset--color--secondary);
 				border: none;
-				margin: 0 0 20px 0;
+				margin: 0 auto;
 				padding: 0;
 				text-align: center;
+
+				@media (max-width: 992px) {
+					font-size: 1.2rem;
+				}
 			}
 
 			.quote-author {
+				margin-top: 20px;
 				display: block;
 				font-weight: 700;
 				color: var(--wp--preset--color--accent);
-				text-transform: uppercase;
 				font-size: 0.9rem;
-				font-family: 'Montserrat', sans-serif;
+				text-transform: uppercase;
 				text-align: center;
 			}
 		}
