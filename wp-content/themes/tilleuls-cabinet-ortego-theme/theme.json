@@ -60,6 +60,21 @@
           "slug": "text-light",
           "name": "Texte clair",
           "color": "#555555"
+        },
+        {
+          "slug": "text-muted",
+          "name": "Texte clair",
+          "color": "#666666"
+        },
+        {
+          "slug": "border-light",
+          "name": "Texte clair",
+          "color": "#eee"
+        },
+        {
+          "slug": "bg-light",
+          "name": "Texte clair",
+          "color": "#f9f9f9"
         }
       ]
     },

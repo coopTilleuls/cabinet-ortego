@@ -1,0 +1,160 @@
+/**
+ * The following styles get applied both on the front of your site
+ * and in the editor.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+
+.wp-block-create-block-block-pricing {
+	background-color: #21759b;
+	color: #fff;
+	padding: 2px;
+}
+
+.container {
+	padding: 0 1.5rem;
+	max-width: 1200px;
+	margin: 0 auto;
+
+	@media (min-width: 768px) {
+		padding: 0 25px;
+	}
+}
+
+.section-pricing {
+	padding: 60px 0;
+	background-color: var(--wp--preset--color--primary);
+	margin: 0 !important;
+
+	> .container {
+		> .pricing-grid {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+			gap: 30px;
+			margin-top: 50px;
+
+			> .price-card {
+				background: var(--wp--preset--color--primary);
+				border: 1px solid var(--wp--preset--color--border-light);
+				padding: 40px;
+				transition: 0.3s;
+				position: relative;
+				box-shadow: 0 5px 20px rgba(0, 0, 0, 0.03);
+				display: flex;
+				flex-direction: column;
+
+				&:hover {
+					border-color: var(--wp--preset--color--accent);
+					transform: translateY(-5px);
+					box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+				}
+
+				&.featured {
+					border-top: 4px solid var(--wp--preset--color--accent);
+					background-color: var(--wp--preset--color--bg-light);
+
+					&:before {
+						content: "Recommandé";
+						position: absolute;
+						top: 15px;
+						right: 15px;
+						background: var(--wp--preset--color--accent);
+						color: var(--wp--preset--color--primary);
+						padding: 4px 12px;
+						font-size: 0.7rem;
+						text-transform: uppercase;
+						font-weight: bold;
+						border-radius: 2px;
+					}
+				}
+
+				.price-header {
+					margin-bottom: 25px;
+					border-bottom: 1px solid var(--wp--preset--color--border-light);
+					padding-bottom: 20px;
+					text-align: center;
+
+
+					.price-title {
+						font-size: 1.3rem;
+						margin-bottom: 10px;
+						color: var(--wp--preset--color--secondary);
+						text-transform: uppercase;
+						letter-spacing: 1px;
+						font-weight: bold;
+					}
+
+					.price-amount {
+						font-size: 2.5rem;
+						color: var(--wp--preset--color--accent);
+						font-family: Montserrat, sans-serif;
+						font-weight: 700;
+					}
+
+					.price-unit {
+						font-size: 0.9rem;
+						color: var(--wp--preset--color--text-muted);
+						font-weight: 400;
+					}
+				}
+
+				> .price-features {
+					flex-grow: 1;
+
+					ul {
+						list-style: none;
+						margin-bottom: 30px;
+						padding: 0;
+
+						li {
+							margin-bottom: 15px;
+							color: var(--wp--preset--color--text-muted);
+							font-size: 0.95rem;
+							display: flex;
+							align-items: flex-start;
+
+							i {
+								color: var(--wp--preset--color--accent);
+								margin-right: 12px;
+								margin-top: 5px;
+							}
+						}
+					}
+				}
+
+				.price-cta {
+					text-align: center;
+
+					> .cta {
+						display: inline-block;
+						padding: 15px 35px;
+						font-size: 0.9rem;
+						font-weight: 600;
+						text-transform: uppercase;
+						letter-spacing: 1px;
+						border: 2px solid var(--wp--preset--color--secondary);
+						cursor: pointer;
+						transition: all 0.3s ease;
+						text-align: center;
+
+						&:hover {
+							background-color: var(--wp--preset--color--secondary);
+							color: var(--wp--preset--color--primary);
+							transform: translateY(-2px);
+						}
+
+						&.primary {
+							background-color: var(--wp--preset--color--accent);
+							color: var(--wp--preset--color--primary);
+							border: none;
+
+							&:hover {
+								background-color: var(--wp--preset--color--accent-dark);
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prendre Rendez-vous - Maître Ilazki Ortego Sampedro</title>
+
+    <!-- Polices Google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,300&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Icônes FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* -------------------------------------------
+           REPRISE DU CSS DU TEMPLATE (contact.html)
+        ------------------------------------------- */
+        :root {
+            --primary-color: #8C1818;
+            --primary-dark: #661010;
+            --secondary-color: #1a1a1a;
+            --accent-bg: #f4f1ea;
+            --text-dark: #2c2c2c;
+            --text-light: #555555;
+            --white: #ffffff;
+            --border-color: #ddd;
+
+            --font-heading: 'Merriweather', serif;
+            --font-body: 'Montserrat', sans-serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: var(--font-body);
+            font-size: 16px;
+            line-height: 1.7;
+            color: var(--text-dark);
+            background-color: var(--white);
+        }
+
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 25px; }
+        h1, h2, h3, h4 { font-family: var(--font-heading); color: var(--secondary-color); line-height: 1.3; }
+        a { text-decoration: none; transition: 0.3s ease; }
+        ul { list-style: none; }
+
+        /* Header */
+        .site-header {
+            background-color: var(--white);
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+            border-bottom: 3px solid var(--primary-color);
+        }
+        .header-flex { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-family: var(--font-heading); font-size: 1.3rem; font-weight: 700; color: var(--secondary-color); text-transform: uppercase; letter-spacing: 0.5px; }
+        .logo span { color: var(--primary-color); }
+        .nav-links { display: flex; gap: 35px; }
+        .nav-links a { color: var(--text-dark); font-size: 0.9rem; font-weight: 500; text-transform: uppercase; }
+        .nav-links a:hover, .nav-links a.active { color: var(--primary-color); }
+        .mobile-toggle { display: none; font-size: 1.5rem; cursor: pointer; }
+
+        /* Hero */
+        .page-hero {
+            background-color: var(--secondary-color);
+            color: var(--white);
+            padding: 80px 0;
+            text-align: center;
+        }
+        .page-hero h1 { color: var(--white); font-size: 2.5rem; margin-bottom: 10px; font-weight: 300; }
+        .page-hero .separator { margin: 20px auto; background-color: var(--primary-color); width: 60px; height: 3px; }
+        .page-hero p { font-size: 1.1rem; opacity: 0.9; max-width: 700px; margin: 0 auto; font-style: italic; }
+
+        /* -------------------------------------------
+           LAYOUT & STYLE SPECIFIQUE (Basé sur Contact)
+        ------------------------------------------- */
+        .contact-layout {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr; /* Même grille que contact.html */
+            gap: 60px;
+            padding: 80px 0;
+        }
+
+        /* COLONNE GAUCHE (Infos) */
+        .contact-details h2 { margin-bottom: 25px; font-size: 1.8rem; }
+
+        .info-card {
+            background-color: var(--accent-bg);
+            padding: 30px;
+            border-radius: 2px;
+            margin-bottom: 30px;
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .info-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+        .info-item:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
+
+        .info-item i { color: var(--primary-color); font-size: 1.2rem; margin-top: 5px; }
+        .info-item h4 { font-size: 1rem; margin-bottom: 5px; font-family: var(--font-body); font-weight: 600; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 1px; }
+        .info-item p { font-size: 0.95rem; color: var(--text-light); margin: 0; }
+
+        /* Highlight pour le tarif */
+        .price-highlight { font-size: 1.1rem; font-weight: 700; color: var(--secondary-color); }
+
+        /* COLONNE DROITE (Calendrier Container) */
+        /* On réutilise le style du conteneur de formulaire pour garder la cohérence visuelle */
+        .calendar-container {
+            background-color: var(--white);
+            /* On peut ajouter une ombre ou une bordure si désiré, comme sur le formulaire */
+            /* box-shadow: 0 5px 20px rgba(0,0,0,0.05); */
+        }
+
+        .calendar-container h2 { margin-bottom: 10px; font-size: 1.8rem; }
+        .calendar-intro { margin-bottom: 30px; color: var(--text-light); }
+
+        /* Ajustement spécifique pour le widget Calendly */
+        .calendly-inline-widget {
+            min-width: 320px;
+            height: 700px; /* Hauteur nécessaire pour que le calendrier s'affiche bien */
+            border: 1px solid var(--border-color); /* Cadre léger pour délimiter */
+            border-radius: 2px;
+        }
+
+        /* Footer */
+        footer { background-color: #111; color: #777; text-align: center; padding: 20px 0; font-size: 0.8rem; }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .contact-layout { grid-template-columns: 1fr; gap: 40px; }
+            .nav-links { display: none; }
+            .mobile-toggle { display: block; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Header -->
+<header class="site-header">
+    <div class="container header-flex">
+        <div class="logo">
+            Cabinet <span>Ortego Sampedro</span>
+        </div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="page-avocate.html">Le Cabinet</a></li>
+                <li><a href="page-competences.html">Compétences</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="#" class="active">Rendez-vous</a></li>
+            </ul>
+        </nav>
+        <div class="mobile-toggle">
+            <i class="fa-solid fa-bars"></i>
+        </div>
+    </div>
+</header>
+
+<!-- Page Title Hero -->
+<section class="page-hero">
+    <div class="container">
+        <h1>Prendre Rendez-vous</h1>
+        <div class="separator"></div>
+        <p>Réservez votre consultation en ligne selon vos disponibilités.</p>
+    </div>
+</section>
+
+<!-- Main Section -->
+<div class="container">
+    <div class="contact-layout">
+
+        <!-- COLONNE GAUCHE : Informations Pratiques & Tarifs -->
+        <div class="contact-details">
+            <h2>Informations</h2>
+
+            <div class="info-card">
+
+                <!-- Tarif Consultation -->
+                <div class="info-item">
+                    <i class="fa-solid fa-tag"></i>
+                    <div>
+                        <h4>Honoraires de consultation</h4>
+                        <p class="price-highlight">80 € TTC</p>
+                        <p style="font-size: 0.85rem; margin-top: 5px;">Déductible si ouverture de dossier.</p>
+                    </div>
+                </div>
+
+                <!-- Moyens de paiement -->
+                <div class="info-item">
+                    <i class="fa-regular fa-credit-card"></i>
+                    <div>
+                        <h4>Moyens de paiement</h4>
+                        <p>Espèces, Chèque, Virement.</p>
+                    </div>
+                </div>
+
+                <!-- Lieu -->
+                <div class="info-item">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <div>
+                        <h4>Lieu du rendez-vous</h4>
+                        <p>12 Rue des Cordeliers<br>64000 PAU</p>
+                    </div>
+                </div>
+
+                <!-- Documents -->
+                <div class="info-item">
+                    <i class="fa-solid fa-folder-open"></i>
+                    <div>
+                        <h4>À préparer</h4>
+                        <p>Pour le premier rendez-vous, merci de vous munir de votre pièce d'identité et de toute convocation judiciaire éventuelle.</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Petit encart Aide Juridictionnelle -->
+            <div class="info-card" style="background-color: var(--secondary-color); color: var(--white); border-left: none;">
+                <div class="info-item" style="border-bottom: none;">
+                    <i class="fa-solid fa-info-circle" style="color: var(--white);"></i>
+                    <div>
+                        <h4 style="color: var(--white);">Aide Juridictionnelle</h4>
+                        <p style="color: rgba(255,255,255,0.8);">Le cabinet accepte l'aide juridictionnelle. Si vous êtes éligible, merci de le préciser lors de la prise de rendez-vous ou par téléphone.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- COLONNE DROITE : Calendrier (Calendly) -->
+        <div class="calendar-container">
+            <h2>Choisir un créneau</h2>
+            <p class="contact-intro">Sélectionnez le motif de consultation ci-dessous pour accéder aux disponibilités en temps réel.</p>
+
+            <!--
+                WIDGET CALENDLY
+                Remplacez l'URL 'https://calendly.com/votre-compte' par votre vrai lien Calendly.
+                Si vous n'avez pas de compte, créez-en un sur Calendly.com (gratuit).
+            -->
+            <div class="calendly-inline-widget" data-url="https://calendly.com/votre-compte" style="min-width:320px;height:700px;"></div>
+            <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+            <!-- Fin Widget -->
+
+        </div>
+
+    </div>
+</div>
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <p>&copy; 2024 Cabinet Ilazki Ortego Sampedro. Tous droits réservés.</p>
+    </div>
+</footer>
+
+</body>
+</html>

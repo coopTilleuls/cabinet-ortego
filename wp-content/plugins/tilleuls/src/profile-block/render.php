@@ -5,16 +5,14 @@
 
 $attributes = $attributes ?? [];
 
-// 1. Récupération des attributs
 $bio = $attributes['bio'] ?? '';
 $img_url = $attributes['imgUrl'] ?? '';
 $languages = $attributes['languages'] ?? [];
 $diplomas = $attributes['diplomas'] ?? [];
 
-// 2. Gestion du wrapper (ajoute la classe 'profile-section' et l'ID)
 $wrapper_attributes = get_block_wrapper_attributes([
 	'class' => 'profile-section',
-	'id' => 'profil' // Comme dans votre edit.js
+	'id' => 'profil'
 ]);
 
 ?>
