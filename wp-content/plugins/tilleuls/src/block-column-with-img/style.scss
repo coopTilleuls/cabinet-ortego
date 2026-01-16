@@ -1,0 +1,122 @@
+/**
+ * The following styles get applied both on the front of your site
+ * and in the editor.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+
+.wp-block-create-block-block-column-with-img {
+	background-color: #21759b;
+	color: #fff;
+	padding: 2px;
+}
+
+.section-expertise-page {
+	padding: 60px 0;
+	margin: 0 !important;
+
+	.container {
+		.expertises-grid {
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			gap: 50px;
+			align-items: start;
+
+			@media screen and (max-width: 992px) {
+				grid-template-columns: 1fr;
+			}
+
+			> .expertise-content {
+				> h2 {
+					font-size: 1.8rem;
+					margin-bottom: 20px;
+					display: flex;
+					align-items: center;
+					gap: 15px;
+
+					> i {
+						color: var(--wp--preset--color--accent);
+						font-size: 1.5rem;
+					}
+				}
+
+				p {
+					margin-bottom: 20px;
+					color: var(--wp--preset--color--text-light);
+					text-align: justify;
+					font-size: 1rem;
+					line-height: 1.7;
+				}
+
+				> ul {
+					list-style: none;
+					margin-top: 20px;
+
+					li {
+						position: relative;
+						padding-left: 25px;
+						margin-bottom: 10px;
+						font-weight: 500;
+						font-size: .8rem;
+						color: var(--wp--preset--color--text-main);
+
+						&::before {
+							content: "\f00c";
+							font-family: "Font Awesome 6 Free";
+							font-weight: 900;
+							position: absolute;
+							left: 0;
+							color: var(--wp--preset--color--accent);
+							font-size: 0.8rem;
+							top: 5px;
+						}
+					}
+				}
+			}
+
+			> .expertise-visual {
+				background-color: var(--wp--preset--color--tertiary);
+				height: 100%;
+				min-height: 300px;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				border-radius: 2px;
+				position: relative;
+
+				@media screen and (min-width: 993px) {
+					&:after {
+						content: '';
+						position: absolute;
+						top: 20px;
+						left: 20px;
+						right: -20px;
+						bottom: -20px;
+						border: 2px solid var(--wp--preset--color--accent);
+						z-index: 0;
+						pointer-events: none;
+					}
+				}
+
+				i {
+					font-size: 6rem;
+					color: var(--wp--preset--color--accent);
+					opacity: 0.15;
+				}
+			}
+		}
+	}
+
+	@media screen and (min-width: 993px) {
+		&.has-img-left {
+
+			.expertise-visual {
+				order: 0;
+			}
+
+			.expertise-content {
+				order: 2;
+			}
+		}
+	}
+}

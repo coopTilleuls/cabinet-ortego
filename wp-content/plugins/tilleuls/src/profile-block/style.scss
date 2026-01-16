@@ -1,0 +1,136 @@
+/**
+ * The following styles get applied both on the front of your site
+ * and in the editor.
+ */
+
+.wp-block-tilleuls-ortego-blocks-tilleuls {
+	background-color: #21759b;
+	color: #fff;
+	padding: 2px;
+}
+
+.container {
+	padding: 0 1.5rem;
+	max-width: var(--wp--style--global--content-size);
+	margin: 0 auto;
+
+	@media (min-width: 768px) {
+		padding: 0 25px;
+	}
+}
+
+.profile-section {
+	padding: 80px 0;
+	background-color: var(--wp--preset--color--primary);
+
+	.profile-grid {
+		display: grid;
+		grid-template-columns: 1fr 2fr;
+		gap: 60px;
+		align-items: start;
+
+		@media screen and (max-width: 768px){
+			grid-template-columns: 1fr;
+			gap: 40px;
+		}
+
+		.profile-img-container {
+			position: relative;
+			width: 100%;
+
+			img {
+				width: 100%;
+				height: auto;
+				border-radius: 2px;
+				box-shadow: 10px 10px 0 var(--wp--preset--color--accent);
+			}
+		}
+
+		.languages-bar {
+			margin-top: 20px;
+			display: flex;
+			gap: 10px;
+			flex-wrap: wrap;
+		}
+
+		.lang-tag {
+			background: var(--wp--preset--color--primary, #333);
+			color: var(--wp--preset--color--accent, #fff);
+			padding: 5px 12px;
+			font-size: 0.8rem;
+			font-weight: 600;
+			border-radius: 2px;
+			border: 1px solid #e0dcd0;
+		}
+
+		.bio-text {
+			p {
+				margin-bottom: 15px;
+				text-align: justify;
+				font-size: 1rem;
+				line-height: 1.6;
+
+				strong {
+					font-weight: bold;
+				}
+			}
+		}
+
+		.diploma-list {
+			background-color: var(--wp--preset--color--tertiary);
+			padding: 20px;
+			margin-top: 30px;
+			border-left: 3px solid var(--wp--preset--color--accent);
+
+			h4 {
+				margin-bottom: 1rem;
+				font-size: 1rem;
+				text-transform: uppercase;
+				font-weight: bold;
+			}
+
+			ul {
+				list-style: none;
+				padding: 0;
+				margin: 0;
+
+				li {
+					margin-bottom: 0.9rem;
+					display: flex;
+					align-items: baseline;
+					gap: .6rem;
+					position: relative;
+					font-size: .9rem;
+
+					i {
+						color: var(--wp--preset--color--accent);
+						margin-right: 10px;
+					}
+					strong {
+						font-weight: bold;
+					}
+				}
+			}
+		}
+
+		.languages-container {
+			margin-top: 20px;
+
+			h4 {
+				margin: 0;
+			}
+
+			.lang-tag {
+				display: inline-block;
+				padding: 5px 15px;
+				margin-right: 5px;
+				margin-bottom: 5px;
+				background-color: var(--wp--preset--color--secondary);
+				color: var(--wp--preset--color--primary);
+				font-size: 0.8rem;
+				border-radius: 2px;
+				font-weight: 500;
+			}
+		}
+	}
+}

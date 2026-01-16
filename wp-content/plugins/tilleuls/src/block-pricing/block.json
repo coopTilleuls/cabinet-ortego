@@ -1,0 +1,35 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "tilleuls-ortego-blocks/block-pricing",
+	"version": "0.1.0",
+	"title": "Block Pricing",
+	"category": "widgets",
+	"icon": "smiley",
+	"description": "Section pour afficher le tarif des prestations",
+	"example": {},
+	"supports": {
+		"html": false,
+		"align": ["full"],
+		"innerBlocks": true
+	},
+	"textdomain": "block-pricing",
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css",
+	"render": "file:./render.php",
+	"viewScript": "file:./view.js",
+	"attributes": {
+		"pricingCards": {
+			"type": "array",
+			"default": [],
+			"items": {
+				"type": "object",
+				"default": {
+					"icon": "fa-solid fa-gavel",
+					"text": ""
+				}
+			}
+		}
+	}
+}

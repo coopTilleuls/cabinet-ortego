@@ -1,0 +1,21 @@
+/**
+ * The following styles get applied inside the editor only.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+
+.wp-block-create-block-banner-expertise {
+	border: 1px dotted #f00;
+}
+
+
+.expertise-card-editor {
+	border: 1px dashed rgba(255, 255, 255, 0.3);
+	padding: 15px;
+	margin: 5px;
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 10px
+}

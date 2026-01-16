@@ -1,0 +1,22 @@
+/**
+ * The following styles get applied inside the editor only.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css');
+
+.wp-block-create-block-asso-banner {
+	border: 1px dotted #f00;
+}
+
+.wp-block-tilleuls-ortego-blocks-banner-colored {
+	color: var(--wp--preset--color--accent);
+}
+
+.asso-item-editor {
+	transition: all 0.2s;
+	&:hover {
+		background: rgba(255, 255, 255, 0.1);
+		border-color: rgba(255, 255, 255, 0.6) !important;
+	}
+}

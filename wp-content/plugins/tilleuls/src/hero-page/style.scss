@@ -1,0 +1,40 @@
+/**
+ * The following styles get applied both on the front of your site
+ * and in the editor.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+
+.wp-block-create-block-hero-page {
+	background-color: #21759b;
+	color: #fff;
+	padding: 2px;
+}
+
+.hero-page {
+	background-color: var(--wp--preset--color--secondary);
+	color: var(--wp--preset--color--primary);
+	padding: 80px 0;
+	text-align: center;
+
+	@media (max-width: 992px) {
+		font-size: .7rem;
+		padding: 80px 1rem;
+	}
+
+	h2 {
+		color: var(--wp--preset--color--primary) !important;
+		font-size: 2.5rem;
+		margin-bottom: 10px;
+		font-weight: 300;
+	}
+
+	> p {
+		color: var(--wp--preset--color--primary) !important;
+		font-size: 1.1rem;
+		opacity: 0.9;
+		max-width: 700px;
+		margin: 0 auto;
+		font-style: italic;
+	}
+}
