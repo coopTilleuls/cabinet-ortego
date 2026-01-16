@@ -17,43 +17,42 @@ $blockWrapper = get_block_wrapper_attributes([
 $attributes = $attributes ?? [];
 
 $img_url = $attributes['imgUrl'] ?? '';
+$languages = $attributes['languages'] ?? [];
+$buttonLink = $attributes['buttonLink'] ?? '';
+$buttonText = $attributes['buttonText'] ?? '';
+
 ?>
-<section <?php
-echo $blockWrapper; ?>>
-	<div class="profile-home-grid">
+
+<section <?php echo $blockWrapper; ?>>
+	<div class="container profile-home-grid">
 		<div class="profile-home-img">
 			<?php
 			if (!empty($img_url)) : ?>
-				<?php
-				if (!empty($img_id)) {
-					echo wp_get_attachment_image($img_id, 'full', false, ['alt' => 'Photo de profil']);
-				} else {
-					echo '<img src="' . esc_url($img_url) . '" alt="Photo de profil" />';
-				}
-				?>
+				<img src="<?php echo esc_url($img_url); ?>"
+					 alt="<?php esc_attr_e('Photo de profil', 'tilleuls'); ?>">
 			<?php
 			endif; ?>
 		</div>
 		<div class="profile-home-content">
 			<span class="profile-surtitle">À propos de l'avocate</span>
-			<?php
-			echo $content;
-			?>
-			<div class="value-list">
-				<div class="value-item">
-					<i class="fa-regular fa-comments"></i>
-					<span>Écoute</span>
-				</div>
-				<div class="value-item">
-					<i class="fa-solid fa-shield-halved"></i>
-					<span>Combativité</span>
-				</div>
-				<div class="value-item">
-					<i class="fa-solid fa-globe"></i>
-					<span>Multilingue</span>
-				</div>
+			<?php echo $content; ?>
+
+			<div class="languages-list">
+				<?php
+				foreach ($languages as $lang) : ?>
+					<?php
+					if (!empty($lang['name'])) : ?>
+						<span class="lang-badge">
+                            <?php
+							echo wp_kses_post($lang['name']); ?>
+                         </span>
+					<?php
+					endif; ?>
+				<?php
+				endforeach; ?>
 			</div>
-			<a href="" class="profile-cta"> En savoir plus sur mon parcours</a>
+
+			<a href="<?php echo esc_url($buttonLink); ?>" class="profile-cta"> <?php echo $buttonText; ?></a>
 		</div>
 	</div>
 </section>

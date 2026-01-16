@@ -44,6 +44,19 @@
 		"textBtnBis": {
 			"type": "string",
 			"default": ""
+		},
+		"cta": {
+			"type": "array",
+			"default": [],
+			"items": {
+				"type": "object",
+				"properties": {
+					"text": { "type": "string", "default": "" },
+					"linkType": { "type": "string", "default": "url" },
+					"url": { "type": "string", "default": "" },
+					"style": { "type": "string", "default": "primary" }
+				}
+			}
 		}
 	}
 }

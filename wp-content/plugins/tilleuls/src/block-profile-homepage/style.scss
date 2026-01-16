@@ -13,40 +13,38 @@
 
 .profile-home {
 	margin: 0 !important;
+	background-color: var(--wp--preset--color--primary);
+	padding: 60px 0;
 
 	.profile-home-grid {
 		display: grid;
-		grid-template-columns: repeat(2, 1fr);
+		grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
 
 		@media (max-width: 768px) {
 			grid-template-columns: 1fr;
 		}
 
 		.profile-home-img {
-			width: 100%;
-			min-height: 500px;
-			background-position: center;
-			background-size: cover;
-			background-repeat: no-repeat;
-			background-color: #f0f0f0;
+			position: relative;
 
 			img {
-				width: 100%;
-				height: 100%;
-				object-fit: cover;
+				border-radius: 2px;
+				box-shadow: 20px 20px 0 var(--wp--preset--color--tertiary);
+				max-width: 100%;
+				height: auto;
 				display: block;
 			}
 		}
 
 		.profile-home-content {
-			padding: 80px;
-			background-color: var(--wp--preset--color--tertiary);
+			padding: 80px 0 80px 60px;
 			display: flex;
 			flex-direction: column;
 			justify-content: center;
 
 			@media (max-width: 992px) {
 				padding: 30px 1rem;
+				margin-top: 2rem;
 			}
 
 			.profile-surtitle {
@@ -60,13 +58,8 @@
 				font-size: 0.9rem;
 			}
 
-			h2 {
-				margin: 0 !important;
-			}
-
 			p {
 				margin: 0 0 25px;
-				color: var(--wp--preset--color--text-light);
 				font-size: 1rem;
 				line-height: 1.6;
 
@@ -75,26 +68,29 @@
 				}
 			}
 
-			.value-list {
+			.citation {
+				font-style: italic;
+				color: var(--wp--preset--color--accent);
+				font-size: 1.2rem;
+				margin: 20px 0;
+				border-left: 3px solid var(--wp--preset--color--accent);
+				padding-left: 20px;
+			}
+
+			.languages-list {
 				display: flex;
-				gap: 30px;
-				margin: 30px 0;
+				gap: 10px;
+				flex-wrap: wrap;
+				margin-top: 25px;
 
-				.value-item {
-					text-align: center;
-
-					i {
-						color: var(--wp--preset--color--accent);
-						font-size: 1.5rem;
-						margin-bottom: 10px;
-					}
-
-					span {
-						display: block;
-						font-weight: 600;
-						font-size: 0.9rem;
-						font-family: 'Montserrat', sans-serif;
-					}
+				.lang-badge {
+					font-size: 0.8rem;
+					text-transform: uppercase;
+					background: var(--wp--preset--color--tertiary);
+					color: var(--wp--preset--color--secondary);
+					padding: 8px 15px;
+					border-radius: 50px;
+					font-weight: 600;
 				}
 			}
 
@@ -109,15 +105,13 @@
 				cursor: pointer;
 				transition: all 0.3s ease;
 				align-self: flex-start;
-				margin: 20px 0 0;
+				margin: auto;
 				background-color: transparent;
 				color: var(--wp--preset--color--secondary);
 				text-decoration: none;
 
 				@media (max-width: 992px) {
-					font-size: .6rem;
-					margin: 20px auto 0;
-					padding: 15px 30px;
+					margin: 2.5rem auto;
 				}
 
 				&:hover {

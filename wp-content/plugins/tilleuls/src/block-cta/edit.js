@@ -20,7 +20,7 @@ import {InspectorControls, RichText, useBlockProps} from '@wordpress/block-edito
  * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
  */
 import './editor.scss';
-import {PanelBody, TextControl} from "@wordpress/components";
+import {Button, PanelBody, SelectControl, TextControl} from "@wordpress/components";
 import {useSelect} from "@wordpress/data";
 
 /**
@@ -40,6 +40,7 @@ export default function Edit({attributes, setAttributes}) {
 		linkBis,
 		textBtn,
 		textBtnBis,
+		cta
 	} = attributes;
 
 	const contactPhone = useSelect(
@@ -51,81 +52,153 @@ export default function Edit({attributes, setAttributes}) {
 		[]
 	);
 
-	console.log(textBtn, textBtnBis)
+	const updateCTA = (index, field, value, cta, setAttributes) => {
+		const newCTA = [...cta];
+		newCTA[index] = {
+			...newCTA[index],
+			[field]: value
+		};
+		setAttributes({cta: newCTA});
+	};
+
+	const addCTA = (cta, setAttributes) => {
+		setAttributes({
+			cta: [
+				...cta,
+				{
+					text: '',
+					linkType: 'url',
+					url: '',
+					style: 'primary'
+				}
+			]
+		});
+	};
+
+	const removeCTA = (index, cta, setAttributes) => {
+		const newCTA = cta.filter((_, i) => i !== index);
+		setAttributes({cta: newCTA});
+	};
+
+	console.log(cta)
 
 	return (
 		<>
 			<InspectorControls>
-				<PanelBody title={__('Apparence', 'tilleuls')}>
-					<TextControl
-						label={__('Lien (URL)', 'tilleuls')}
-						value={link || ''}
-						onChange={(value) => setAttributes({link: value})}
-						placeholder="https://..."
-						help={__('Collez l\'URL de la page interne ou du site externe.', 'tilleuls')}
-					/>
-					<TextControl
-						label={__('Label du bouton', 'tilleuls')}
-						value={textBtn || ''}
-						onChange={(value) => setAttributes({textBtn: value})}
-						help={__('Si vide, numero de téléphone mis par défaut.', 'tilleuls')}
-						placeholder="Prendre rendez-vous"
-					/>
+				<PanelBody title="Boutons (CTA)" initialOpen={true}>
+					{cta.map((button, index) => (
+						<div key={index} style={{marginBottom: '20px', paddingBottom: '20px', borderBottom: '1px solid #ddd'}}>
+							<SelectControl
+								label="Type de lien"
+								value={button.linkType}
+								options={[
+									{label: 'Lien classique', value: 'url'},
+									{label: 'Email (mailto)', value: 'mailto'},
+									{label: 'Téléphone (tel)', value: 'tel'}
+								]}
+								onChange={value =>
+									updateCTA(index, 'linkType', value, cta, setAttributes)
+								}
+							/>
 
-					<TextControl
-						label={__('Lien (URL)', 'tilleuls')}
-						value={linkBis || ''}
-						onChange={(value) => setAttributes({linkBis: value})}
-						placeholder="https://..."
-						help={__('Collez l\'URL de la page interne ou du site externe.', 'tilleuls')}
-					/>
+							<TextControl
+								label="Lien"
+								help={
+									button.linkType === 'mailto'
+										? 'ex: contact@site.com'
+										: button.linkType === 'tel'
+											? 'ex: +33612345678'
+											: 'ex: https://monsite.com'
+								}
+								value={button.url}
+								onChange={value =>
+									updateCTA(index, 'url', value, cta, setAttributes)
+								}
+							/>
+							<TextControl
+								label="Texte du bouton"
+								value={button.text}
+								onChange={value =>
+									updateCTA(index, 'text', value, cta, setAttributes)
+								}
+							/>
 
-					<TextControl
-						label={__('Label du bouton secondaire', 'tilleuls')}
-						value={textBtnBis || ''}
-						onChange={(value) => setAttributes({textBtnBis: value})}
-						placeholder="Prendre rendez-vous"
-					/>
+							<SelectControl
+								label="Style du bouton"
+								value={button.style}
+								options={[
+									{label: 'Primaire', value: 'primary'},
+									{label: 'Secondaire', value: 'secondary'},
+									{label: 'Outline', value: 'outline'}
+								]}
+								onChange={value =>
+									updateCTA(index, 'style', value, cta, setAttributes)
+								}
+							/>
+
+							<Button
+								isDestructive
+								onClick={() => removeCTA(index, cta, setAttributes)}
+							>
+								Supprimer ce bouton
+							</Button>
+
+						</div>
+					))}
+
+					<Button
+						variant="primary"
+						onClick={() => addCTA(cta, setAttributes)}
+					>
+						+ Ajouter un bouton
+					</Button>
+
 				</PanelBody>
 			</InspectorControls>
 			<section {...useBlockProps({
 				className: `section-cta ${color}`
 			})}>
-				<div className="container">
-					<div className="cta-body">
-						<RichText
-							tagName="h2"
-							value={title}
-							onChange={(value) => setAttributes({title: value})}
-							placeholder={__('Titre...', 'tilleuls')}
-							allowedFormats={[]}
-						/>
-						<RichText
-							tagName="p"
-							value={description}
-							onChange={(value) => setAttributes({description: value})}
-							placeholder={__('Description...', 'tilleuls')}
-							allowedFormats={[]}
-						/>
-						<div className="cta-container">
-							<a href={link} className="cta-link">
-								{
-									!textBtn || textBtn.trim() === '' ?
-										(
-											<>
-												<i className="fa-solid fa-phone"></i>
-												{contactPhone}
-											</>
-										) :
-										textBtn
-								}
-							</a>
-							<a href={linkBis} className="cta-link-bis">{textBtnBis}</a>
-						</div>
+				<div className="container cta-body">
+					<RichText
+						tagName="h2"
+						value={title}
+						onChange={(value) => setAttributes({title: value})}
+						placeholder={__('Titre...', 'tilleuls')}
+						allowedFormats={[]}
+					/>
+					<RichText
+						tagName="p"
+						value={description}
+						onChange={(value) => setAttributes({description: value})}
+						placeholder={__('Description...', 'tilleuls')}
+						allowedFormats={[]}
+					/>
+					<div className="cta-container">
+						{
+							cta.map((button, index) => {
+								const href = button.linkType === 'tel' ? `tel:${contactPhone}` : button.linkType === 'mailto' ? `mailto:${button.url}` : button.url;
+								return (
+									<a href={href}  key={index} className={`cta-link ${button.style}`}>
+										{
+											button.linkType === 'tel' &&
+											<i className="fa-solid fa-phone"></i>
+										}
+										{
+											button.linkType === 'mailto' &&
+											<i className="fa-solid fa-envelope"></i>
+										}
+										{
+											button.linkType === 'url' &&
+											<i className="fa-solid fa-address-book"></i>
+										}
+										<strong>{button.text}</strong>
+									</a>
+								)
+							})
+						}
 					</div>
 				</div>
 			</section>
 		</>
-
 	);
 }

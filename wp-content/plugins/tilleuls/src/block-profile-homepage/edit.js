@@ -11,7 +11,14 @@ import {__} from '@wordpress/i18n';
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
  */
-import {InnerBlocks, InspectorControls, MediaUpload, MediaUploadCheck, useBlockProps} from '@wordpress/block-editor';
+import {
+	InnerBlocks,
+	InspectorControls,
+	MediaUpload,
+	MediaUploadCheck,
+	RichText,
+	useBlockProps
+} from '@wordpress/block-editor';
 
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
@@ -20,7 +27,7 @@ import {InnerBlocks, InspectorControls, MediaUpload, MediaUploadCheck, useBlockP
  * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
  */
 import './editor.scss';
-import {Button, PanelBody} from "@wordpress/components"; // ResponsiveWrapper optionnel pour image
+import {Button, PanelBody, TextControl, Tooltip} from "@wordpress/components"; // ResponsiveWrapper optionnel pour image
 
 /**
  * The edit function describes the structure of your block in the context of the
@@ -30,16 +37,16 @@ import {Button, PanelBody} from "@wordpress/components"; // ResponsiveWrapper op
  *
  * @return {Element} Element to render.
  */
-export default function Edit({ attributes, setAttributes }) {
-	const { imgId, imgUrl } = attributes;
+export default function Edit({attributes, setAttributes}) {
+	const {imgId, imgUrl, languages, buttonText, buttonLink} = attributes;
 
 	const blockProps = useBlockProps({
 		className: 'profile-home'
 	});
 
 	const CONTENT_TEMPLATE = [
-		['core/paragraph', { placeholder: 'Description de l\'expertise...' }],
-		['core/list', { placeholder: 'Liste des points clés' }]
+		['tilleuls-ortego-blocks/title-section', {}],
+		['core/paragraph', {placeholder: 'Description...'}]
 	];
 
 	const onSelectImage = (media) => {
@@ -56,32 +63,48 @@ export default function Edit({ attributes, setAttributes }) {
 		});
 	};
 
+	const addLanguage = () => {
+		const newLangs = [...languages, {name: ''}];
+		setAttributes({languages: newLangs});
+	};
+
+	const updateLanguage = (index, value) => {
+		const newLangs = [...languages];
+		newLangs[index] = {
+			...newLangs[index],
+			name: value
+		};
+
+		setAttributes({languages: newLangs});
+	};
+
+	const removeLanguage = (index) => {
+		const newLangs = languages.filter((_, i) => i !== index);
+		setAttributes({languages: newLangs});
+	};
+
 	return (
 		<>
 			<InspectorControls>
 				<PanelBody title={__('Image de profil', 'block-profile-homepage')}>
 					<MediaUploadCheck>
 						<MediaUpload
-							onSelect={(media) =>
-								setAttributes({
-								imgId: media.id,
-								imgUrl: media.url
-							})}
+							onSelect={onSelectImage}
 							allowedTypes={['image']}
 							value={imgId}
-							render={({ open }) => (
+							render={({open}) => (
 								<>
 									{imgId ? (
 										<>
-											<Button onClick={open} isSecondary style={{ marginBottom: '10px', width: '100%' }}>
+											<Button onClick={open} isSecondary style={{marginBottom: '10px', width: '100%'}}>
 												{__('Changer l’image', 'block-profile-homepage')}
 											</Button>
-											<Button onClick={removeImage} isDestructive style={{ width: '100%' }}>
+											<Button onClick={removeImage} isDestructive style={{width: '100%'}}>
 												{__('Supprimer l’image', 'block-profile-homepage')}
 											</Button>
 										</>
 									) : (
-										<Button onClick={open} isPrimary style={{ width: '100%' }}>
+										<Button onClick={open} isPrimary style={{width: '100%'}}>
 											{__('Choisir une image', 'block-profile-homepage')}
 										</Button>
 									)}
@@ -89,11 +112,25 @@ export default function Edit({ attributes, setAttributes }) {
 							)}
 						/>
 					</MediaUploadCheck>
+					<TextControl
+						label={__('Lien (URL)', 'tilleuls')}
+						value={buttonLink || ''}
+						onChange={(value) => setAttributes({buttonLink: value})}
+						placeholder="https://..."
+						help={__('Collez l\'URL de la page interne ou du site externe.', 'tilleuls')}
+					/>
+					<TextControl
+						label={__('Label du bouton', 'tilleuls')}
+						value={buttonText || ''}
+						onChange={(value) => setAttributes({buttonText: value})}
+						help={__('Si vide, numero de téléphone mis par défaut.', 'tilleuls')}
+						placeholder="Prendre rendez-vous"
+					/>
 				</PanelBody>
 			</InspectorControls>
 
-			<section { ...blockProps }>
-				<div className="profile-home-grid">
+			<section {...blockProps}>
+				<div className="container profile-home-grid">
 					<div className="profile-home-img">
 						{imgUrl ? (
 							<img
@@ -106,7 +143,7 @@ export default function Edit({ attributes, setAttributes }) {
 									onSelect={onSelectImage}
 									allowedTypes={['image']}
 									value={imgId}
-									render={({ open }) => (
+									render={({open}) => (
 										<div
 											className="placeholder-image"
 											onClick={open}
@@ -135,21 +172,53 @@ export default function Edit({ attributes, setAttributes }) {
 						<InnerBlocks
 							template={CONTENT_TEMPLATE}
 						/>
-						<div className="value-list">
-							<div className="value-item">
-								<i className="fa-regular fa-comments"></i>
-								<span>Écoute</span>
-							</div>
-							<div className="value-item">
-								<i className="fa-solid fa-shield-halved"></i>
-								<span>Combativité</span>
-							</div>
-							<div className="value-item">
-								<i className="fa-solid fa-globe"></i>
-								<span>Multilingue</span>
+
+						<div className="languages-list">
+							<div style={{display: 'flex', flexWrap: 'wrap', gap: '5px'}}>
+								{languages.map((lang, index) => (
+									<div key={index} className="lang-tag-editor" style={{
+										display: 'flex',
+										alignItems: 'center',
+										background: '#f4f1ea',
+										padding: '2px 8px',
+										borderRadius: '2px',
+										border: '1px solid #e0dcd0'
+									}}>
+										<RichText
+											tagName="span"
+											className="lang-tag"
+											value={lang.name}
+											onChange={(val) => updateLanguage(index, val)}
+											placeholder={__('Langue...', 'tilleuls')}
+											allowedFormats={[]}
+										/>
+										<Tooltip text={__('Retirer', 'tilleuls')}>
+                        <span
+													onClick={() => removeLanguage(index)}
+													style={{
+														cursor: 'pointer',
+														marginLeft: '8px',
+														color: '#cc0000',
+														fontSize: '14px',
+														fontWeight: 'bold'
+													}}
+												>
+                            ×
+                        </span>
+										</Tooltip>
+									</div>
+								))}
+								<Button
+									isSmall
+									isSecondary
+									onClick={addLanguage}
+									icon="plus"
+									label={__('Ajouter une langue', 'tilleuls')}
+									style={{minWidth: '30px', padding: '0 5px'}}
+								/>
 							</div>
 						</div>
-						<a href="#" className="profile-cta"> En savoir plus sur mon parcours</a>
+						<a href={buttonLink} className="profile-cta">{buttonText}</a>
 					</div>
 				</div>
 			</section>

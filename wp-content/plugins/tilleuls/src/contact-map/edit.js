@@ -3,7 +3,7 @@
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-i18n/
  */
-import { __ } from '@wordpress/i18n';
+import {__} from '@wordpress/i18n';
 
 /**
  * React hook that is used to mark the block wrapper element.
@@ -132,7 +132,7 @@ export default function Edit() {
 						/>
 						<div className="item">
 							<i className="fa-solid fa-location-dot"></i>
-							<p>
+							<p className="info">
 								<span>{contactName}</span> <br/>
 								{contactAddress} -  {contactAddressComplement}<br/>
 								{contactZipcode} - {contactCity} <br/>
@@ -147,7 +147,7 @@ export default function Edit() {
 						</div>
 						<div className="item">
 							<i className="fa-solid fa-envelope"></i>
-							<p>
+							<p className="info">
 								<span>{contactEmail}</span>
 							</p>
 						</div>

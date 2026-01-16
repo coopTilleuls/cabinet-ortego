@@ -1,5 +1,5 @@
 import {InnerBlocks, RichText, useBlockProps} from '@wordpress/block-editor';
-import {Button, ToggleControl, Tooltip} from '@wordpress/components';
+import {Button, Tooltip} from '@wordpress/components';
 import './editor.scss';
 
 export default function Edit({ attributes, setAttributes }) {
@@ -143,30 +143,6 @@ export default function Edit({ attributes, setAttributes }) {
 								<Button isSecondary isSmall onClick={() => addFeature(index)} style={{ width: '100%', marginBottom: '20px' }}>
 									+ Ajouter une ligne
 								</Button>
-							</div>
-							<div style={{ textAlign: 'center' }}>
-								<RichText
-									tagName="span"
-									value={card.buttonText}
-									onChange={(val) => updateCard(index, 'buttonText', val)}
-									placeholder="Texte du bouton"
-									className={`btn ${card.buttonStyle === 'primary' ? 'btn-primary' : 'btn-outline'}`}
-									style={{
-										display: 'inline-block',
-										padding: '12px 30px',
-										backgroundColor: card.buttonStyle === 'primary' ? '#8C1818' : 'transparent',
-										color: card.buttonStyle === 'primary' ? '#fff' : '#1a1a1a',
-										border: card.buttonStyle === 'primary' ? 'none' : '1px solid #1a1a1a',
-										cursor: 'text'
-									}}
-								/>
-								<div style={{ marginTop: '5px' }}>
-									<ToggleControl
-										label="Style Principal"
-										checked={card.buttonStyle === 'primary'}
-										onChange={() => updateCard(index, 'buttonStyle', card.buttonStyle === 'primary' ? 'outline' : 'primary')}
-									/>
-								</div>
 							</div>
 						</div>
 					))}

@@ -17,49 +17,47 @@ $blockWrapper = get_block_wrapper_attributes([
 $attributes = $attributes ?? [];
 $title = $attributes['title'] ?? '';
 $description = $attributes['description'] ?? '';
-$link = $attributes['link'] ?? '';
-$linkBis = $attributes['linkBis'] ?? '';
-$textBtn = $attributes['textBtn'] ?? '';
-$textBtnBis = $attributes['textBtnBis'] ?? '';
+$ctas = $attributes['cta'] ?? [];
 
 $phone = get_option('tilleuls_contact_phone');
 
 ?>
 
 
-<section <?php
-echo $blockWrapper ?>>
-	<div class="container">
-		<div class="cta-body">
-			<h2><?php
-				echo wp_kses_post($title); ?></h2>
-			<p><?php
-				echo wp_kses_post($description); ?></p>
-			<div class="cta-container">
-				<a href="<?php
-				echo esc_url($link); ?>" class="cta-link">
+<section <?php echo $blockWrapper ?>>
+	<div class="container cta-body">
+		<h2><?php echo wp_kses_post($title); ?></h2>
+		<p><?php echo wp_kses_post($description); ?></p>
+		<div class="cta-container">
+			<?php if ( ! empty( $ctas ) ) : ?>
+				<?php foreach ( $ctas as $index => $link ) : ?>
 					<?php
-					if (!isset($textBtn) || trim($textBtn) === '')  : ?>
-						<i class="fa-solid fa-phone"></i>
-						<?php
-						echo wp_kses_post($phone); ?>
-					<?php
-					else: ?>
-						<?php
-						echo wp_kses_post($textBtn); ?>
-					<?php
-					endif; ?>
-				</a>
-				<?php
-				if ($linkBis)  : ?>
-					<a href="<?php
-					echo esc_url($link); ?>" class="cta-link-bis">
-						<?php
-						echo wp_kses_post($textBtnBis); ?>
+					if ( $link['linkType'] === 'tel' ) {
+						$href = 'tel:' . $phone;
+					} elseif ( $link['linkType'] === 'mailto' ) {
+						$href = 'mailto:' . $link['url'];
+					} else {
+						$href = $link['url'];
+					}
+					if ( $link['linkType'] === 'tel' ) {
+						$icon = 'fa-phone';
+					} elseif ( $link['linkType'] === 'mailto' ) {
+						$icon = 'fa-envelope';
+					} else {
+						$icon = 'fa-address-book';
+					}
+					?>
+
+					<a
+						href="<?php echo esc_url( $href ); ?>"
+						class="cta-link <?php echo esc_attr( $link['style'] ); ?>"
+					>
+						<i class="fa-solid <?php echo esc_attr( $icon ); ?>"></i>
+						<strong><?php echo esc_html( $link['text'] ); ?></strong>
 					</a>
-				<?php
-				endif; ?>
-			</div>
+
+				<?php endforeach; ?>
+			<?php endif; ?>
 		</div>
 	</div>
 </section>

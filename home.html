@@ -3,403 +3,481 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Maître Ilazki ORTEGO SAMPEDRO - Avocate</title>
+    <title>Maître Ilazki ORTEGO SAMPEDRO - Avocate Pau & Pays Basque</title>
+    <meta name="description" content="Avocate au Barreau de Pau et Pays Basque. Droit Pénal, Droit des Étrangers, Libertés Fondamentales.">
 
-    <!-- ================================================================= -->
-    <!-- RESSOURCES EXTERNES                                               -->
-    <!-- ================================================================= -->
+    <!-- FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <style>
-        /* IMPORT DES POLICES */
-        @import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Montserrat:wght@300;400;500;600&display=swap');
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-        /* -------------------------------------------
-            1. VARIABLES & RESET
-        ------------------------------------------- */
+    <style>
+        /* =========================================
+           1. VARIABLES & RESET
+           ========================================= */
         :root {
-            --primary-color: #8C1818;
-            --primary-dark: #661010;
-            --secondary-color: #1a1a1a;
-            --accent-bg: #f4f1ea;
-            --text-dark: #2c2c2c;
-            --text-light: #555555;
-            --white: #ffffff;
-            --font-heading: 'Merriweather', serif;
+            /* Couleurs */
+            --primary: #8C1818;       /* Rouge Bordeau */
+            --primary-dark: #5e0d0d;
+            --secondary: #1a1a1a;     /* Noir Profond */
+            --text-body: #333333;
+            --text-light: #666666;
+            --bg-beige: #f4f1ea;      /* Fond doux */
+            --bg-white: #ffffff;
+            --border-light: #e0e0e0;
+
+            /* Typographie */
+            --font-heading: 'Playfair Display', serif;
             --font-body: 'Montserrat', sans-serif;
 
-            --section-spacing: 80px; /* Variable pour gérer l'espacement global */
+            /* Espacements */
+            --container-width: 1200px;
+            --section-padding: 100px;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
+
         body {
             font-family: var(--font-body);
+            color: var(--text-body);
+            background-color: var(--bg-white);
+            line-height: 1.6;
             font-size: 16px;
-            line-height: 1.7;
-            color: var(--text-dark);
-            background-color: var(--white);
-            margin: 0;
-            overflow-x: hidden; /* Empêche le scroll horizontal accidentel */
+            overflow-x: hidden;
         }
 
         /* Utilitaires */
-        .container { width: 100%; max-width: 1100px; margin: 0 auto; padding: 0 25px; }
-        h1, h2, h3, h4 { font-family: var(--font-heading); color: var(--secondary-color); line-height: 1.3; }
-        a { text-decoration: none; transition: 0.3s ease; }
+        .container { width: 90%; max-width: var(--container-width); margin: 0 auto; }
+        .text-center { text-align: center; }
+        img { max-width: 100%; height: auto; display: block; }
+        a { text-decoration: none; transition: all 0.3s ease; }
         ul { list-style: none; }
-        img { max-width: 100%; height: auto; display: block; } /* Images fluides par défaut */
 
-        .separator { width: 50px; height: 4px; background-color: var(--primary-color); margin: 25px 0; }
-        .separator.center { margin: 25px auto; }
-
-        /* 2. BOUTONS */
-        .btn { display: inline-block; padding: 12px 30px; font-weight: 500; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 1px; border-radius: 2px; cursor: pointer; transition: all 0.3s ease; text-align: center; }
-        .btn-primary { background-color: var(--primary-color); color: var(--white); border: 1px solid var(--primary-color); }
-        .btn-primary:hover { background-color: var(--primary-dark); border-color: var(--primary-dark); transform: translateY(-2px); }
-
-        /* 3. HEADER & NAVIGATION */
-        .site-header {
-            background-color: var(--white);
-            padding: 20px 0;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
-            border-bottom: 3px solid var(--primary-color);
+        /* Titres */
+        h1, h2, h3, h4 { font-family: var(--font-heading); color: var(--secondary); line-height: 1.2; }
+        .section-title { font-size: 2.5rem; margin-bottom: 20px; }
+        .section-subtitle {
+            display: block; font-family: var(--font-body); text-transform: uppercase;
+            letter-spacing: 2px; font-size: 0.85rem; color: var(--primary); font-weight: 600; margin-bottom: 15px;
         }
-        .header-flex { display: flex; justify-content: space-between; align-items: center; position: relative; }
-        .logo { font-family: var(--font-heading); font-size: 1.3rem; font-weight: 700; color: var(--secondary-color); letter-spacing: 0.5px; text-transform: uppercase; z-index: 1001; }
-        .logo span { color: var(--primary-color); }
+        .divider { width: 60px; height: 3px; background: var(--primary); margin: 20px 0; }
+        .divider.center { margin: 20px auto; }
 
-        .nav-links { display: flex; gap: 35px; }
-        .nav-links a { color: var(--text-dark); font-size: 0.9rem; font-weight: 500; text-transform: uppercase; position: relative; }
-        .nav-links a:hover { color: var(--primary-color); opacity: 0.8; }
+        /* Boutons */
+        .btn {
+            display: inline-block; padding: 14px 35px; border-radius: 2px;
+            font-size: 0.9rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;
+            cursor: pointer; border: 1px solid transparent; transition: all 0.3s ease;
+        }
+        .btn-primary { background-color: var(--primary); color: white; }
+        .btn-primary:hover { background-color: var(--primary-dark); transform: translateY(-2px); }
+        .btn-outline { background-color: transparent; border-color: var(--secondary); color: var(--secondary); }
+        .btn-outline:hover { background-color: var(--secondary); color: white; }
+        .btn-white { background-color: white; color: var(--primary); }
+        .btn-white:hover { background-color: var(--bg-beige); }
 
-        .mobile-toggle { display: none; color: var(--text-dark); font-size: 1.5rem; cursor: pointer; z-index: 1001; }
 
-        /* 4. HERO SECTION */
+        /* =========================================
+           2. HEADER & NAVIGATION
+           ========================================= */
+        .site-header {
+            position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;
+            background: rgba(255, 255, 255, 0.98);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+            padding: 15px 0;
+        }
+        .header-inner { display: flex; justify-content: space-between; align-items: center; }
+
+        .logo {
+            font-family: var(--font-heading); font-size: 1.5rem; font-weight: 700;
+            color: var(--secondary); text-transform: uppercase; letter-spacing: 1px;
+        }
+        .logo span { color: var(--primary); }
+
+        .nav-links { display: flex; gap: 30px; align-items: center; }
+        .nav-links a {
+            color: var(--secondary); font-size: 0.85rem; font-weight: 500;
+            text-transform: uppercase; letter-spacing: 0.5px; position: relative;
+        }
+        .nav-links a::after {
+            content: ''; position: absolute; bottom: -5px; left: 0; width: 0; height: 2px;
+            background: var(--primary); transition: width 0.3s;
+        }
+        .nav-links a:hover::after { width: 100%; }
+
+        /* Mobile Menu Btn */
+        .mobile-toggle { display: none; font-size: 1.5rem; color: var(--secondary); cursor: pointer; }
+
+
+        /* =========================================
+           3. HERO SECTION
+           ========================================= */
         .hero {
             position: relative;
-            min-height: 80vh; /* Utilisation de min-height pour éviter que le contenu dépasse sur petit écran */
-            /* Fallback background color */
-            background-color: #333;
-            background-image: linear-gradient(rgba(26, 26, 26, 0.8), rgba(26, 26, 26, 0.7)), url('https://images.unsplash.com/photo-1505664194779-8beaceb93744?q=80&w=2000&auto=format&fit=crop');
-            background-size: cover;
-            background-position: center;
-            display: flex;
-            align-items: center;
-            color: var(--white);
-            padding: 80px 0; /* Padding vertical pour éviter que le texte touche les bords sur mobile */
+            min-height: 90vh;
+            display: flex; align-items: center;
+            background: linear-gradient(to right, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 100%),
+            url('https://images.unsplash.com/photo-1589829085413-56de8ae18c73?q=80&w=2000&auto=format&fit=crop');
+            background-size: cover; background-position: center; background-attachment: fixed;
+            color: white;
+            margin-top: 60px;
         }
-        .hero-content { max-width: 800px; width: 100%; }
-        .hero h1 { font-size: 3rem; color: var(--white); margin-bottom: 20px; font-weight: 300; }
-        .hero h1 strong { font-weight: 700; display: block; }
-        .hero p { font-size: 1.2rem; font-weight: 300; margin-bottom: 40px; border-left: 4px solid var(--primary-color); padding-left: 20px; }
+        .hero-content { max-width: 800px; padding: 40px 0; }
+        .hero h1 {
+            font-size: 3.5rem; color: white; margin-bottom: 25px; line-height: 1.1;
+        }
+        .hero p {
+            font-size: 1.2rem; margin-bottom: 40px; opacity: 0.9; max-width: 650px; font-weight: 300;
+        }
+        .hero-btns { display: flex; gap: 20px; flex-wrap: wrap; }
 
-        /* 5. PROFILE, ASSO, PRACTICES, CONTACT */
-        .profile-section { padding: var(--section-spacing) 0; background-color: var(--white); }
-        .profile-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 60px; align-items: start; }
 
-        .profile-img-container { position: relative; width: 100%; }
-        .profile-img-container img { width: 100%; border-radius: 2px; box-shadow: 10px 10px 0px var(--accent-bg); }
+        /* =========================================
+           4. PROFIL (À PROPOS)
+           ========================================= */
+        .about-section { padding: var(--section-padding) 0; background: var(--bg-white); }
+        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
 
-        .languages-bar { margin-top: 20px; display: flex; gap: 10px; flex-wrap: wrap; }
-        .lang-tag { background: var(--accent-bg); color: var(--primary-color); padding: 5px 12px; font-size: 0.8rem; font-weight: 600; border-radius: 2px; border: 1px solid #e0dcd0; }
+        .about-image { position: relative; }
+        .about-image img { border-radius: 2px; box-shadow: 20px 20px 0 var(--bg-beige); }
 
-        .bio-text h2 { font-size: 2.2rem; margin-bottom: 10px; }
-        .bio-text .subtitle { font-family: var(--font-body); color: var(--primary-color); font-weight: 600; text-transform: uppercase; font-size: 0.9rem; display: block; margin-bottom: 20px; }
-        .bio-text p { margin-bottom: 15px; text-align: justify; font-size: 0.95rem; }
+        .about-text h2 { font-size: 2.2rem; margin-bottom: 20px; }
+        .about-quote {
+            font-style: italic; color: var(--primary); font-family: var(--font-heading);
+            font-size: 1.2rem; margin: 20px 0; border-left: 3px solid var(--primary); padding-left: 20px;
+        }
 
-        .diploma-list { margin-top: 30px; border-top: 1px solid #eee; padding-top: 20px; }
-        .diploma-item { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 10px; font-size: 0.9rem; color: var(--text-dark); }
-        .diploma-item i { color: var(--primary-color); font-size: 0.8rem; margin-top: 5px; min-width: 15px; }
+        /* Badges de langue */
+        .languages-list { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 25px; }
+        .lang-badge {
+            font-size: 0.8rem; text-transform: uppercase; background: var(--bg-beige);
+            color: var(--secondary); padding: 8px 15px; border-radius: 50px; font-weight: 600;
+        }
 
-        .associations-banner { background-color: var(--secondary-color); padding: 60px 0; color: var(--white); }
-        .associations-flex { display: flex; justify-content: space-around; align-items: flex-start; flex-wrap: wrap; gap: 40px; text-align: center; }
-        .asso-item { flex: 1; min-width: 200px; }
-        .asso-item i { font-size: 2rem; color: var(--primary-color); margin-bottom: 15px; display: block; }
-        .asso-item span { font-size: 1rem; font-weight: 500; opacity: 0.9; display: block; max-width: 300px; margin: 0 auto; }
 
-        .practices { padding: var(--section-spacing) 0; background-color: var(--accent-bg); }
-        .section-header { text-align: center; max-width: 700px; margin: 0 auto 60px; }
-        .practices-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
-        .practice-card { background: var(--white); padding: 40px 30px; border-top: 3px solid transparent; transition: 0.3s; position: relative; height: 100%; }
-        .practice-card:hover { border-top-color: var(--primary-color); transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
-        .practice-card h3 { font-size: 1.2rem; margin-bottom: 15px; display: flex; align-items: center; gap: 10px; }
-        .practice-card h3 i { color: var(--primary-color); min-width: 20px; }
-        .practice-card p { font-size: 0.9rem; color: var(--text-light); margin-bottom: 0; }
+        /* =========================================
+           5. BANDEAU ASSOCIATIONS
+           ========================================= */
+        .associations-bar { background-color: var(--secondary); padding: 50px 0; color: white; }
+        .assoc-flex { display: flex; justify-content: space-around; flex-wrap: wrap; gap: 30px; text-align: center; }
+        .assoc-item { flex: 1; min-width: 200px; opacity: 0.8; transition: 0.3s; }
+        .assoc-item:hover { opacity: 1; transform: translateY(-5px); }
+        .assoc-item i { font-size: 2rem; color: var(--primary); margin-bottom: 15px; }
+        .assoc-item span { display: block; font-size: 0.95rem; max-width: 250px; margin: 0 auto; }
 
-        .contact-section { padding: var(--section-spacing) 0; background-color: var(--white); }
-        .contact-container { display: grid; grid-template-columns: 1fr 1fr; gap: 0; background-color: var(--secondary-color); color: var(--white); border-radius: 2px; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
-        .contact-info { padding: 50px; }
-        .contact-info h3 { color: var(--white); margin-bottom: 20px; }
-        .info-row { display: flex; align-items: flex-start; gap: 15px; margin-bottom: 25px; }
-        .info-row i { color: var(--primary-color); font-size: 1.2rem; margin-top: 4px; }
-        .contact-map { position: relative; min-height: 300px; }
 
-        footer { background-color: #111; color: #777; text-align: center; padding: 30px 20px; font-size: 0.8rem; }
+        /* =========================================
+           6. EXPERTISES
+           ========================================= */
+        .practices-section { padding: var(--section-padding) 0; background-color: var(--bg-beige); }
+        .practices-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-top: 50px;
+        }
+        .practice-card {
+            background: white; padding: 40px 30px; border-radius: 2px;
+            transition: all 0.3s ease; position: relative; overflow: hidden;
+            border-bottom: 3px solid transparent;
+        }
+        .practice-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+            border-bottom-color: var(--primary);
+        }
+        .icon-box {
+            width: 60px; height: 60px; background: var(--bg-beige); color: var(--primary);
+            display: flex; align-items: center; justify-content: center; font-size: 1.5rem;
+            border-radius: 50%; margin-bottom: 25px; transition: 0.3s;
+        }
+        .practice-card:hover .icon-box { background: var(--primary); color: white; }
+        .practice-card h3 { font-size: 1.3rem; margin-bottom: 15px; }
+        .practice-card p { font-size: 0.95rem; color: var(--text-light); }
 
-        /* -------------------------------------------
-            6. MEDIA QUERIES (RESPONSIVE)
-        ------------------------------------------- */
 
-        /* TABLETTES & PETITS LAPTOPS (Max 992px) */
-        @media (max-width: 992px) {
-            :root { --section-spacing: 60px; }
+        /* =========================================
+           7. CONTACT & CTA
+           ========================================= */
+        .contact-cta {
+            background-color: var(--primary); color: white;
+            padding: 80px 0; text-align: center;
+        }
+        .contact-cta h2 { color: white; font-size: 2.5rem; margin-bottom: 20px; }
+        .contact-cta p { font-size: 1.1rem; opacity: 0.9; margin-bottom: 30px; }
+        .contact-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px; max-width: 900px; margin: 40px auto 0;
+        }
+        .contact-item { background: rgba(255,255,255,0.1); padding: 20px; border-radius: 4px; }
+        .contact-item i { font-size: 1.5rem; margin-bottom: 10px; display: block; }
 
-            /* Header */
-            .mobile-toggle { display: block; }
+        /* =========================================
+           8. FOOTER
+           ========================================= */
+        footer { background: #111; color: #777; padding: 60px 0 30px; font-size: 0.9rem; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; margin-bottom: 40px; }
+        .footer-col h4 { color: white; margin-bottom: 20px; font-family: var(--font-body); text-transform: uppercase; font-size: 1rem; letter-spacing: 1px; }
+        .footer-col ul li { margin-bottom: 10px; }
+        .footer-col a { color: #777; } .footer-col a:hover { color: var(--primary); }
+        .footer-bottom { border-top: 1px solid #222; padding-top: 20px; text-align: center; }
+
+
+        /* =========================================
+           RESPONSIVE
+           ========================================= */
+        @media (max-width: 900px) {
+            .mobile-toggle { display: block; z-index: 1001; }
             .nav-links {
-                position: fixed;
-                top: 0;
-                right: -100%; /* Caché par défaut */
-                height: 100vh;
-                width: 70%;
-                max-width: 300px;
-                background-color: var(--white);
-                flex-direction: column;
-                padding: 100px 30px;
-                box-shadow: -5px 0 15px rgba(0,0,0,0.1);
-                transition: right 0.3s ease;
-                z-index: 999;
+                position: fixed; top: 0; right: -100%; width: 80%; max-width: 300px; height: 100vh;
+                background: white; flex-direction: column; justify-content: center; padding: 40px;
+                box-shadow: -5px 0 20px rgba(0,0,0,0.1); transition: 0.4s;
             }
-            .nav-links.active { right: 0; } /* Classe ajoutée par JS */
-
-            /* Layout Grid */
-            .profile-grid { grid-template-columns: 1fr; gap: 40px; }
-            .contact-container { grid-template-columns: 1fr; }
-
-            /* Profile adjustments */
-            .profile-img-container { max-width: 500px; margin: 0 auto; }
-            .bio-text { text-align: left; }
+            .nav-links.active { right: 0; }
+            .hero h1 { font-size: 2.8rem; }
+            .about-grid { grid-template-columns: 1fr; }
+            .about-image { order: -1; max-width: 500px; margin: 0 auto; }
         }
 
-        /* MOBILES (Max 768px) */
-        @media (max-width: 768px) {
-            :root { --section-spacing: 50px; }
-
-            /* Typography Scale */
-            h1 { font-size: 2rem; }
-            h2 { font-size: 1.8rem; }
-
-            /* Hero */
-            .hero { min-height: auto; padding: 100px 0 60px; text-align: center; }
+        @media (max-width: 600px) {
+            :root { --section-padding: 60px; }
             .hero h1 { font-size: 2.2rem; }
-            .hero p { border-left: none; padding-left: 0; border-top: 3px solid var(--primary-color); padding-top: 20px; margin-top: 20px; }
-
-            /* Associations */
-            .associations-flex { flex-direction: column; gap: 40px; }
-            .asso-item { width: 100%; }
-
-            /* Contact */
-            .contact-info { padding: 30px 25px; }
-        }
-
-        /* PETITS MOBILES (Max 480px) */
-        @media (max-width: 480px) {
-            .container { padding: 0 20px; }
-
-            .logo { font-size: 1.1rem; }
-
-            .hero h1 { font-size: 1.8rem; }
             .hero p { font-size: 1rem; }
-
-            .bio-text h2 { font-size: 1.6rem; }
-            .profile-img-container img { box-shadow: 5px 5px 0px var(--accent-bg); }
-
-            .btn { width: 100%; box-sizing: border-box; }
-
-            .section-header { margin-bottom: 40px; }
+            .section-title { font-size: 2rem; }
+            .practice-card { padding: 30px 20px; }
+            .contact-grid { grid-template-columns: 1fr; }
         }
-
     </style>
 </head>
 <body>
 
-<!-- HEADER -->
+<!-- Header -->
 <header class="site-header">
-    <div class="container header-flex">
+    <div class="container header-inner">
         <a href="#" class="logo">Maître <span>Ortego</span></a>
 
-        <!-- Toggle Menu Mobile -->
-        <div class="mobile-toggle" id="mobile-menu-btn">
+        <div class="mobile-toggle" id="mobile-toggle">
             <i class="fa-solid fa-bars"></i>
         </div>
 
-        <!-- Navigation -->
         <nav class="nav-links" id="nav-menu">
             <a href="#accueil" onclick="closeMenu()">Accueil</a>
-            <a href="#profil" onclick="closeMenu()">Profil</a>
-            <a href="#competences" onclick="closeMenu()">Compétences</a>
+            <a href="#profil" onclick="closeMenu()">Le Cabinet</a>
+            <a href="#expertises" onclick="closeMenu()">Expertises</a>
             <a href="#contact" onclick="closeMenu()">Contact</a>
+            <!-- Bouton intégré au menu mobile mais stylisé -->
+            <a href="#contact" class="btn btn-primary" style="color:white; margin-left: 10px;" onclick="closeMenu()">Prendre RDV</a>
         </nav>
     </div>
 </header>
 
-<main>
+<!-- Hero Section -->
+<section class="hero" id="accueil">
+    <div class="container">
+        <div class="hero-content">
+            <span style="text-transform: uppercase; letter-spacing: 2px; font-weight: 500; display: block; margin-bottom: 15px; color: #f4f1ea;">Barreau de Pau & Pays Basque</span>
+            <h1>Défendre vos droits,<br>Protéger vos libertés.</h1>
+            <div class="divider" style="background: white;"></div>
+            <p>Maître Ilazki ORTEGO SAMPEDRO met son expertise juridique et sa combativité au service de votre défense en Droit Pénal et Droit des Étrangers.</p>
 
-    <!-- Hero -->
-    <section class="hero" id="accueil">
-        <div class="container hero-content">
-            <h1>Maître Ilazki <strong>ORTEGO SAMPEDRO</strong></h1>
-            <p>Défense des droits fondamentaux, Droit Pénal et Droit des Étrangers.<br>Un engagement sans faille pour la protection des libertés.</p>
-            <a href="#contact" class="btn btn-primary">Prendre Rendez-vous</a>
-        </div>
-    </section>
-
-    <!-- Profil / Bio -->
-    <section class="profile-section" id="profil">
-        <div class="container profile-grid">
-            <div class="profile-img-container">
-                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=1000&auto=format&fit=crop" alt="Maître Ilazki ORTEGO SAMPEDRO">
-                <div class="languages-bar">
-                    <span class="lang-tag"><i class="fa-solid fa-language"></i> Français</span>
-                    <span class="lang-tag">Euskara</span>
-                    <span class="lang-tag">Español</span>
-                    <span class="lang-tag">English</span>
-                    <span class="lang-tag">Italiano</span>
-                </div>
-            </div>
-            <div class="bio-text">
-                <h2>Engagement & Expertise</h2>
-                <span class="subtitle">Avocate au Barreau • Prestation de serment 2022</span>
-                <div class="separator"></div>
-
-                <p>Maître Ilazki ORTEGO SAMPEDRO a construit son parcours autour d'une conviction forte : la défense des droits fondamentaux pour tous. Titulaire d’un <strong>Master 1 en Droit pénal et Sciences criminelles</strong> (Université Toulouse 1) et d’un <strong>Master 2 en Droit public mention « Droits de l’Homme »</strong> (Université Lumière Lyon 2), elle allie rigueur technique et militantisme juridique.</p>
-
-                <p>Avant d'intégrer l'école d'avocats de Paris, elle a œuvré en tant que juriste pour l'accès au droit des personnes détenues et au sein d'un CIDFF, renforçant son expertise de terrain. Engagée depuis ses débuts universitaires, elle milite activement au sein de collectifs pour la défense des personnes détenues et étrangères.</p>
-
-                <p>Aujourd'hui, après avoir exercé au sein du cabinet de Me PATHER, elle met sa ténacité au service de vos droits, en français, basque, espagnol, anglais ou italien.</p>
-
-                <div class="diploma-list">
-                    <div class="diploma-item">
-                        <i class="fa-solid fa-graduation-cap"></i>
-                        <span>DU Droit des Étrangers (Univ. Lyon 2)</span>
-                    </div>
-                    <div class="diploma-item">
-                        <i class="fa-solid fa-scale-balanced"></i>
-                        <span>Membre du Syndicat des Avocats de France (SAF)</span>
-                    </div>
-                </div>
+            <div class="hero-btns">
+                <a href="#contact" class="btn btn-primary">Demander une consultation</a>
+                <a href="#profil" class="btn btn-outline" style="border-color: white; color: white;">Découvrir le profil</a>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Associations Banner -->
-    <section class="associations-banner">
-        <div class="container associations-flex">
-            <div class="asso-item">
-                <i class="fa-solid fa-gavel"></i>
-                <span>Syndicat des Avocats de France (SAF)</span>
+<!-- Section Profil / À Propos -->
+<section class="about-section" id="profil">
+    <div class="container about-grid">
+        <div class="about-image">
+            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=1000&auto=format&fit=crop" alt="Maître Ilazki Ortego Sampedro">
+        </div>
+        <div class="about-text">
+            <span class="section-subtitle">À propos de l'avocate</span>
+            <h2>Engagement & Expertise</h2>
+            <div class="divider"></div>
+
+            <p class="about-quote">"La défense n'est pas un métier de confort, c'est une exigence de justice."</p>
+
+            <p>Titulaire d’un Master en Droit pénal et Sciences criminelles et spécialisée en Droits de l’Homme, Maître Ortego Sampedro allie rigueur technique et militantisme juridique. Son parcours, forgé au sein de cabinets engagés et d'associations de défense des droits, lui permet d'appréhender chaque situation avec humanité et ténacité.</p>
+
+            <p style="margin-top: 15px;">Elle intervient en français, basque, espagnol, anglais et italien, garantissant une compréhension parfaite des enjeux de votre dossier.</p>
+
+            <div class="languages-list">
+                <span class="lang-badge">Français</span>
+                <span class="lang-badge">Euskara</span>
+                <span class="lang-badge">Español</span>
+                <span class="lang-badge">English</span>
+                <span class="lang-badge">Italiano</span>
             </div>
-            <div class="asso-item">
-                <i class="fa-solid fa-handcuffs"></i>
-                <span>Association pour la défense des personnes détenues (A3D)</span>
+
+            <a href="#expertises" class="btn btn-outline" style="margin-top: 30px;">Voir les domaines d'intervention</a>
+        </div>
+    </div>
+</section>
+
+<!-- Bandeau Associations -->
+<section class="associations-bar">
+    <div class="container assoc-flex">
+        <div class="assoc-item">
+            <i class="fa-solid fa-scale-balanced"></i>
+            <span>Syndicat des Avocats de France (SAF)</span>
+        </div>
+        <div class="assoc-item">
+            <i class="fa-solid fa-handcuffs"></i>
+            <span>Défense des personnes détenues (A3D)</span>
+        </div>
+        <div class="assoc-item">
+            <i class="fa-solid fa-passport"></i>
+            <span>Défense des étrangers (ADEP)</span>
+        </div>
+    </div>
+</section>
+
+<!-- Section Expertises -->
+<section class="practices-section" id="expertises">
+    <div class="container">
+        <div class="text-center">
+            <span class="section-subtitle">Domaines d'intervention</span>
+            <h2 class="section-title">Une expertise ciblée</h2>
+            <div class="divider center"></div>
+            <p style="max-width: 600px; margin: 0 auto; color: var(--text-light);">
+                Intervention devant toutes les juridictions pour des situations complexes nécessitant réactivité et maîtrise technique.
+            </p>
+        </div>
+
+        <div class="practices-grid">
+            <!-- Carte 1 -->
+            <div class="practice-card">
+                <div class="icon-box"><i class="fa-solid fa-gavel"></i></div>
+                <h3>Droit Pénal</h3>
+                <p>Défense des auteurs et victimes à tous les stades : Garde à vue, Instruction, Tribunal correctionnel, CRPC et Cour d'Assises.</p>
             </div>
-            <div class="asso-item">
-                <i class="fa-solid fa-passport"></i>
-                <span>Avocats pour la défense des étrangers de Pau (ADEP)</span>
+            <!-- Carte 2 -->
+            <div class="practice-card">
+                <div class="icon-box"><i class="fa-solid fa-earth-europe"></i></div>
+                <h3>Droit des Étrangers</h3>
+                <p>Recours contre les OQTF, demandes de titres de séjour, régularisations, droit d'asile et contentieux de la nationalité.</p>
+            </div>
+            <!-- Carte 3 -->
+            <div class="practice-card">
+                <div class="icon-box"><i class="fa-solid fa-lock"></i></div>
+                <h3>Droit Pénitentiaire</h3>
+                <p>Aménagement de peine, commissions de discipline, recours sur les conditions de détention et droits des détenus.</p>
+            </div>
+            <!-- Carte 4 -->
+            <div class="practice-card">
+                <div class="icon-box"><i class="fa-solid fa-hand-holding-heart"></i></div>
+                <h3>Libertés Fondamentales</h3>
+                <p>Protection contre les abus de l'administration et des institutions. Contentieux du Droit public et des libertés individuelles.</p>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Domaines / Compétences -->
-    <section class="practices" id="competences">
-        <div class="container">
-            <div class="section-header">
-                <h2>Domaines d'Intervention</h2>
-                <div class="separator center"></div>
-                <p>Une expertise ciblée pour des situations complexes nécessitant réactivité et humanité.</p>
+<!-- Section Contact / CTA -->
+<section class="contact-cta" id="contact">
+    <div class="container">
+        <h2>Besoin d'une assistance juridique ?</h2>
+        <p>Le cabinet vous reçoit à Pau ou se déplace au Pays Basque pour une première consultation.</p>
+
+        <div class="contact-grid">
+            <div class="contact-item">
+                <i class="fa-solid fa-phone"></i>
+                <strong>Téléphone</strong><br>05 59 XX XX XX
             </div>
-            <div class="practices-grid">
-                <div class="practice-card">
-                    <h3><i class="fa-solid fa-scale-balanced"></i> Droit Pénal</h3>
-                    <p>Défense des auteurs et victimes à tous les stades de la procédure (Garde à vue, Instruction, Tribunal correctionnel, CRPC).</p>
-                </div>
-                <div class="practice-card">
-                    <h3><i class="fa-solid fa-earth-europe"></i> Droit des Étrangers</h3>
-                    <p>Demandes de titres de séjours, recours OQTF, régularisations, asile et nationalité. Accompagnement multilingue.</p>
-                </div>
-                <div class="practice-card">
-                    <h3><i class="fa-solid fa-lock"></i> Droit Pénitentiaire</h3>
-                    <p>Aménagement de peine, conditions de détention, procédures disciplinaires. Défense des droits des personnes incarcérées.</p>
-                </div>
-                <div class="practice-card">
-                    <h3><i class="fa-solid fa-hand-holding-heart"></i> Libertés Fondamentales</h3>
-                    <p>Protection des droits fondamentaux face aux abus de l'administration ou des institutions. Droit public et libertés.</p>
-                </div>
+            <div class="contact-item">
+                <i class="fa-solid fa-envelope"></i>
+                <strong>Email</strong><br>contact@cabinet.fr
+            </div>
+            <div class="contact-item">
+                <i class="fa-solid fa-location-dot"></i>
+                <strong>Adresse</strong><br>Pau / Pays Basque
             </div>
         </div>
-    </section>
 
-    <!-- Contact -->
-    <section class="contact-section" id="contact">
-        <div class="container contact-container">
-            <div class="contact-info">
-                <h3>Prendre Rendez-vous</h3>
-                <p>Pour toute consultation juridique, merci de prendre contact via les coordonnées ci-dessous.</p>
-                <div class="separator" style="background-color: var(--white);"></div>
-
-                <div class="info-row">
-                    <i class="fa-solid fa-location-dot"></i>
-                    <span>Cabinet Ortego Sampedro<br>Pau / Pays Basque</span>
-                </div>
-                <div class="info-row">
-                    <i class="fa-solid fa-phone"></i>
-                    <span>05 59 XX XX XX</span>
-                </div>
-                <div class="info-row">
-                    <i class="fa-solid fa-envelope"></i>
-                    <span>contact@cabinet-ortego.fr</span>
-                </div>
-            </div>
-            <div class="contact-map">
-                <!-- Placeholder Map (Image de fond ou iframe Google Maps ici) -->
-                <div style="background-color: #2a2a2a; height: 100%; min-height: 250px; display: flex; align-items: center; justify-content: center; color: #777;">
-                    <i class="fa-solid fa-map-location-dot" style="font-size: 3rem; color: #444;"></i>
-                </div>
-            </div>
+        <div style="margin-top: 40px;">
+            <a href="mailto:contact@cabinet.fr" class="btn btn-white">Nous écrire maintenant</a>
         </div>
-    </section>
+    </div>
+</section>
 
-</main>
-
+<!-- Footer -->
 <footer>
     <div class="container">
-        &copy; 2023 Cabinet Ortego Sampedro. Tous droits réservés. <br>
-        Conception web & Mentions Légales
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4>Cabinet Ortego Sampedro</h4>
+                <p style="margin-top: 15px;">Avocate engagée pour la défense de vos droits.<br>Barreau de Pau & Pays Basque.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Liens Rapides</h4>
+                <ul>
+                    <li><a href="#accueil">Accueil</a></li>
+                    <li><a href="#profil">Le Cabinet</a></li>
+                    <li><a href="#expertises">Domaines d'intervention</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Informations</h4>
+                <ul>
+                    <li><a href="#">Mentions Légales</a></li>
+                    <li><a href="#">Politique de confidentialité</a></li>
+                    <li><a href="#">Honoraires</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Maître Ilazki Ortego Sampedro. Tous droits réservés.</p>
+        </div>
     </div>
 </footer>
 
-<!-- SCRIPT POUR LE MENU MOBILE -->
+<!-- JavaScript Navigation -->
 <script>
-  const mobileBtn = document.getElementById('mobile-menu-btn');
+  const mobileToggle = document.getElementById('mobile-toggle');
   const navMenu = document.getElementById('nav-menu');
+  const icon = mobileToggle.querySelector('i');
 
-  // Ouvrir/Fermer le menu
-  mobileBtn.addEventListener('click', () => {
+  // Toggle Menu
+  mobileToggle.addEventListener('click', () => {
     navMenu.classList.toggle('active');
 
-    // Change l'icône
-    const icon = mobileBtn.querySelector('i');
     if (navMenu.classList.contains('active')) {
       icon.classList.remove('fa-bars');
       icon.classList.add('fa-xmark');
+      document.body.style.overflow = 'hidden';
     } else {
       icon.classList.remove('fa-xmark');
       icon.classList.add('fa-bars');
+      document.body.style.overflow = 'auto';
     }
   });
 
-  // Fermer le menu quand on clique sur un lien
+  // Fermeture automatique au clic
   function closeMenu() {
-    navMenu.classList.remove('active');
-    const icon = mobileBtn.querySelector('i');
-    icon.classList.remove('fa-xmark');
-    icon.classList.add('fa-bars');
+    if (navMenu.classList.contains('active')) {
+      navMenu.classList.remove('active');
+      icon.classList.remove('fa-xmark');
+      icon.classList.add('fa-bars');
+      document.body.style.overflow = 'auto';
+    }
   }
-</script>
 
+  // Effet header au scroll (Optionnel)
+  window.addEventListener('scroll', () => {
+    const header = document.querySelector('.site-header');
+    if (window.scrollY > 50) {
+      header.style.boxShadow = "0 4px 20px rgba(0,0,0,0.1)";
+    } else {
+      header.style.boxShadow = "0 4px 20px rgba(0,0,0,0.03)";
+    }
+  });
+</script>
 </body>
 </html>

@@ -47,11 +47,6 @@ $pricingCards = $attributes['pricingCards'] ?? [];
 							<?php endforeach; ?>
 						</ul>
 					</div>
-					<div class="price-cta">
-						<span class="cta <?php echo wp_kses_post($card['buttonStyle']); ?>">
-							<?php echo wp_kses_post($card['buttonText']); ?>
-						</span>
-					</div>
 				</div>
 			<?php endforeach; ?>
 		</div>
