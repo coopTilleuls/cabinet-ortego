@@ -1,0 +1,58 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "tilleuls-ortego-blocks/block-profile-homepage",
+	"version": "0.1.0",
+	"title": "Block Profile Homepage",
+	"category": "widgets",
+	"icon": "smiley",
+	"description": "Example block scaffolded with Create Block tool.",
+	"example": {},
+	"supports": {
+		"html": false,
+		"align": [
+			"wide",
+			"full"
+		],
+		"innerBlocks": true
+	},
+	"textdomain": "block-profile-homepage",
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css",
+	"render": "file:./render.php",
+	"viewScript": "file:./view.js",
+	"attributes": {
+		"imgId": {
+			"type": "number",
+			"default": 0
+		},
+		"imgUrl": {
+			"type": "string",
+			"default": ""
+		},
+		"quote": {
+			"type": "string",
+			"source": "html",
+			"selector": ".about-quote"
+		},
+		"buttonText": {
+			"type": "string",
+			"default": ""
+		},
+		"buttonLink": {
+			"type": "string",
+			"default": ""
+		},
+		"languages": {
+			"type": "array",
+			"default": [],
+			"items": {
+				"type": "object",
+				"default": {
+					"name": ""
+				}
+			}
+		}
+	}
+}

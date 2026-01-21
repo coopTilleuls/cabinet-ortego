@@ -1,0 +1,31 @@
+.wp-block-site-title a {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin: 0 1rem !important;
+    text-decoration: none;
+
+    @media (max-width: 992px) {
+        font-size: 1rem;
+    }
+}
+
+.wp-block-site-title a span {
+    color: #8C1818;
+}
+
+
+@media screen and (max-width: 992px) {
+    header {
+        margin: auto 1rem;
+    }
+    .wp-block-navigation__responsive-container:not(.hidden-by-default):not(.is-menu-open) {
+        display: none !important;
+    }
+
+    .wp-block-navigation__responsive-container-open {
+        display: block !important;
+    }
+}

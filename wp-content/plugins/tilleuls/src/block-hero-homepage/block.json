@@ -1,0 +1,36 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "tilleuls-ortego-blocks/block-hero-homepage",
+	"version": "0.1.0",
+	"title": "Block Hero Homepage",
+	"category": "widgets",
+	"icon": "smiley",
+	"description": "Block Hero Homepage.",
+	"example": {},
+	"supports": {
+		"html": false,
+		"align": ["wide", "full"]
+	},
+	"textdomain": "block-hero-homepage",
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css",
+	"render": "file:./render.php",
+	"viewScript": "file:./view.js",
+	"attributes": {
+		"surtitle": {
+			"type": "string",
+			"default": ""
+		},
+		"cta": {
+			"type": "string",
+			"default": "string"
+		},
+		"ctaBis": {
+			"type": "string",
+			"default": "string"
+		}
+	}
+
+}

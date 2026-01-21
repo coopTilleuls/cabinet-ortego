@@ -1,0 +1,21 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "tilleuls-ortego-blocks/contact-map",
+	"version": "0.1.0",
+	"title": "Contact Map",
+	"category": "widgets",
+	"icon": "smiley",
+	"description": "Affiche une section contenant l'adresse et une carte GoogleMap",
+	"supports": {
+		"html": false,
+		"align": ["wide", "full"],
+		"innerBlocks": true
+	},
+	"textdomain": "contact-map",
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css",
+	"render": "file:./render.php",
+	"viewScript": "file:./view.js"
+}

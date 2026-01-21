@@ -1,0 +1,54 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "tilleuls-ortego-blocks/profile-block",
+	"version": "0.1.0",
+	"title": "Profil Avocat",
+	"category": "widgets",
+	"icon": "businessperson",
+	"description": "Section de présentation avec photo, bio et compétences.",
+	"supports": {
+		"html": false,
+		"align": ["wide", "full"],
+		"innerBlocks": true
+	},
+	"textdomain": "profile-block",
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css",
+	"render": "file:./render.php",
+	"attributes": {
+		"bio": {
+			"type": "string",
+			"default": ""
+		},
+		"imgId": {
+			"type": "number",
+			"default": 0
+		},
+		"imgUrl": {
+			"type": "string",
+			"default": ""
+		},
+		"languages": {
+			"type": "array",
+			"default": [],
+			"items": {
+				"type": "object",
+				"default": {
+					"name": ""
+				}
+			}
+		},
+		"diplomas": {
+			"type": "array",
+			"default": [],
+			"items": {
+				"type": "object",
+				"default": {
+					"text": ""
+				}
+			}
+		}
+	}
+}

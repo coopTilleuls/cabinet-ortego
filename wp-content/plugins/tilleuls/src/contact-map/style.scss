@@ -1,0 +1,68 @@
+/**
+ * The following styles get applied both on the front of your site
+ * and in the editor.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+
+.wp-block-create-block-contact-map {
+	background-color: #21759b;
+	color: #fff;
+	padding: 2px;
+}
+
+.section-contact-map {
+	padding: 60px 0;
+	background-color: var(--wp--preset--color--secondary);
+	margin: 0 !important;
+
+	.container {
+		padding: 0;
+
+		@media (max-width: 768px) {
+			padding: 0 1rem;
+		}
+
+		.contact-map-grid {
+			display: grid;
+			grid-template-columns: repeat(2, 1fr);
+
+			@media (max-width: 768px) {
+				grid-template-columns: repeat(1, 1fr);
+			}
+
+			.left {
+				display: flex;
+				flex-direction: column;
+				gap: 1.2rem;
+
+				> .item {
+					display: flex;
+					gap: 1rem;
+					margin-top: .5rem;
+
+					> i {
+						color: var(--wp--preset--color--accent);
+					}
+
+					.info {
+						margin: 0;
+						color: var(--wp--preset--color--primary);
+						font-size: 1rem;
+						text-align: justify;
+					}
+
+					a.info {
+						text-decoration: none;
+					}
+				}
+			}
+			.right{
+				@media screen and (max-width: 768px) {
+					margin-top: 2rem;
+				}
+			}
+
+		}
+	}
+}

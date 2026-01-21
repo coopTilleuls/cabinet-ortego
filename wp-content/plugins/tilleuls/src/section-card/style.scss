@@ -1,0 +1,101 @@
+/**
+ * The following styles get applied both on the front of your site
+ * and in the editor.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+
+.wp-block-create-block-banner-expertise {
+	background-color: #21759b;
+	color: #fff;
+	padding: 2px;
+}
+
+.section-expertise {
+	padding: 60px 0;
+	background-color: var(--wp--preset--color--tertiary);
+	margin: 0 !important;
+
+	> .container {
+		padding: 0 1.5rem;
+		max-width: var(--wp--style--global--content-size);
+		margin: 0 auto;
+
+		> p {
+			font-size: 1.2rem;
+		}
+
+		.expertises-grid {
+			display: grid;
+			grid-template-columns: repeat(3, 1fr);
+			gap: 25px;
+			margin-top: 50px;
+		}
+
+		.expertise-card {
+			background: var(--wp--preset--color--primary);
+			padding: 40px 30px;
+			border-top: 3px solid transparent;
+			transition: 0.3s;
+			position: relative;
+			display: flex;
+			flex-direction: column;
+
+			&:hover {
+				border-top-color: var(--wp--preset--color--accent);
+				transform: translateY(-5px);
+				box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+			}
+
+			h3 {
+				font-size: 1.3rem;
+				margin-bottom: 15px;
+				display: flex;
+				align-items: center;
+				gap: 15px;
+				font-weight: bold;
+
+				i {
+					color: var(--wp--preset--color--accent);
+					min-width: 20px;
+				}
+			}
+
+			p {
+				font-size: 1rem;
+				color: var(--wp--preset--color--text-main);
+				margin-bottom: 0;
+				line-height: 1.5;
+				text-align: justify;
+			}
+		}
+
+		@media (max-width: 767px) {
+			.expertises-grid {
+				grid-template-columns: 1fr;
+			}
+
+			.expertise-card {
+				padding: 30px 20px;
+			}
+		}
+
+		@media (min-width: 768px) and (max-width: 1024px) {
+			.expertises-grid {
+				grid-template-columns: repeat(2, 1fr);
+			}
+
+			.expertise-card {
+				padding: 30px 20px;
+			}
+		}
+	}
+
+	&.white {
+		background-color: var(--wp--preset--color--primary);
+
+		.expertise-card {
+			background: var(--wp--preset--color--tertiary) !important;
+		}
+	}
+}

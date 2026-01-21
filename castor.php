@@ -75,7 +75,7 @@ function install(string $path = '.', string $token = ''): void
     run('wp core install --locale=fr_FR --url=$WP_URL --title="$WP_TITLE" --admin_user=$WP_ADMIN_USER --admin_password=$WP_ADMIN_PASSWORD --admin_email=$WP_ADMIN_EMAIL', context: $context);
 
     io()->info("Core installed.".PHP_EOL."Installing required plugins...");
-    run("wp plugin install advanced-custom-fields wordpress-seo --activate", context: $context);
+    run("wp plugin install contact-form-7 wordpress-seo --activate", context: $context);
 
     run("wp plugin auto-updates enable --all", context: $context);
 }

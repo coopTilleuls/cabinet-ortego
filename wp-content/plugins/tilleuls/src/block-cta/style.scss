@@ -1,0 +1,124 @@
+/**
+ * The following styles get applied both on the front of your site
+ * and in the editor.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+
+.wp-block-create-block-block-cta {
+	background-color: #21759b;
+	color: #fff;
+	padding: 2px;
+}
+
+.container {
+	padding: 0 1.5rem;
+	max-width: var(--wp--style--global--content-size);
+	margin: 0 auto;
+
+	@media (min-width: 768px) {
+		padding: 0 25px;
+	}
+}
+
+.section-cta {
+	background-color: var(--wp--preset--color--accent);
+	padding: 60px 0;
+	margin: 0 !important;
+
+	> .container.cta-body {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+
+		h2 {
+			color: var(--wp--preset--color--primary);
+			margin-bottom: 20px;
+			font-size: 2.5rem;
+		}
+
+		& > p {
+			margin: 0 auto 30px;
+			opacity: 0.9;
+			color: var(--wp--preset--color--primary);
+			font-family: 'Montserrat', sans-serif;
+			font-size: 1.1rem;
+			text-align: center;
+		}
+
+		.cta-container {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+			gap: 20px;
+			max-width: 900px;
+			margin: 40px auto 0;
+
+			@media (max-width: 768px) {
+				grid-template-columns: 1fr;
+				width: 100%;
+			}
+
+			.cta-link {
+				text-align: center;
+				text-decoration: none;
+				text-transform: uppercase;
+				font-size: 1rem;
+
+				&.primary {
+					background-color: rgba(255, 255, 255, 0.1);
+					padding: 20px;
+					border-radius: 4px;
+					display: flex;
+					flex-direction: column;
+					gap: 15px;
+					color: white;
+				}
+
+				&.secondary {
+					display: inline-block;
+					padding: 15px 40px;
+					background-color: var(--wp--preset--color--primary);
+					color: var(--wp--preset--color--accent);
+					font-weight: 600;
+					border-radius: 2px;
+					border: 2px solid var(--wp--preset--color--primary);
+					text-decoration: none;
+					transition: all .7s ease;
+
+					&:hover {
+						background-color: transparent;
+						color: var(--wp--preset--color--primary);
+					}
+
+					> i {
+						margin-right: .8rem;
+					}
+				}
+
+				&.outline {
+					display: inline-block;
+					padding: 15px 35px;
+					font-size: 0.9rem;
+					font-weight: 600;
+					text-transform: uppercase;
+					letter-spacing: 1px;
+					border: 2px solid var(--wp--preset--color--primary);
+					color: var(--wp--preset--color--primary);
+					transition: all .7s ease;
+
+					> i {
+						margin-right: .8rem;
+					}
+
+					&:hover {
+						background-color: var(--wp--preset--color--primary);
+						color: var(--wp--preset--color--accent);
+						border: 2px solid var(--wp--preset--color--primary);
+
+					}
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,62 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "tilleuls-ortego-blocks/block-cta",
+	"version": "0.1.0",
+	"title": "Block Cta",
+	"category": "widgets",
+	"icon": "smiley",
+	"description": "Example block scaffolded with Create Block tool.",
+	"example": {},
+	"supports": {
+		"html": false,
+		"align": [
+			"full"
+		]
+	},
+	"textdomain": "block-cta",
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css",
+	"render": "file:./render.php",
+	"viewScript": "file:./view.js",
+	"attributes": {
+		"title": {
+			"type": "string",
+			"default": ""
+		},
+		"description": {
+			"type": "string",
+			"default": ""
+		},
+		"link": {
+			"type": "string",
+			"default": ""
+		},
+		"textBtn": {
+			"type": "string",
+			"default": ""
+		},
+		"linkBis": {
+			"type": "string",
+			"default": ""
+		},
+		"textBtnBis": {
+			"type": "string",
+			"default": ""
+		},
+		"cta": {
+			"type": "array",
+			"default": [],
+			"items": {
+				"type": "object",
+				"properties": {
+					"text": { "type": "string", "default": "" },
+					"linkType": { "type": "string", "default": "url" },
+					"url": { "type": "string", "default": "" },
+					"style": { "type": "string", "default": "primary" }
+				}
+			}
+		}
+	}
+}

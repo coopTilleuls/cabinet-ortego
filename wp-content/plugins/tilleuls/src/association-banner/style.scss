@@ -1,0 +1,80 @@
+/**
+ * The following styles get applied both on the front of your site
+ * and in the editor.
+ */
+
+.wp-block-create-block-asso-banner {
+	background-color: #21759b;
+	color: #fff;
+	padding: 2px;
+}
+
+.associations-banner {
+	padding: 60px 0;
+	color: var(--wp--preset--color--primary);
+	margin: 0;
+
+	&.black {
+		background-color: var(--wp--preset--color--secondary);
+	}
+
+	&.red {
+		background-color: var(--wp--preset--color--accent);
+
+		.asso-item i {
+			color: white;
+		}
+	}
+
+	.associations-flex {
+		display: flex;
+		justify-content: space-around;
+		align-items: flex-start;
+		text-align: center;
+		gap: 40px;
+		flex-wrap: wrap;
+		margin-top: 2rem;
+
+		.asso-item {
+			flex: 1;
+			min-width: 250px;
+
+			i {
+				font-size: 2rem;
+				color: var(--wp--preset--color--accent);
+				margin-bottom: 15px;
+				display: block;
+			}
+
+			span {
+				font-size: 1rem;
+				font-weight: 500;
+				opacity: 0.9;
+				display: block;
+				max-width: 300px;
+				margin: 0 auto;
+				line-height: 1.5;
+			}
+		}
+	}
+
+	@media (max-width: 768px) {
+		padding: 40px 20px;
+
+		.associations-flex {
+			flex-direction: column;
+			align-items: center;
+			gap: 30px;
+
+			.asso-item {
+				width: 100%;
+				flex: 0 0 auto;
+				max-width: 250px;
+
+				span {
+					max-width: 100%;
+				}
+			}
+		}
+	}
+}

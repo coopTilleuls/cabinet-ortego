@@ -1,0 +1,112 @@
+/**
+ * The following styles get applied both on the front of your site
+ * and in the editor.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+
+.wp-block-tilleuls-ortego-blocks-tilleuls {
+	background-color: #21759b;
+	color: #fff;
+	padding: 2px;
+}
+
+.title-section {
+	width: 100%;
+
+	h1, h2, h3 {
+		font-family: 'Playfair' , sans-serif !important;
+	}
+
+	.subtitle {
+		font-family: 'Montserrat', sans-serif;
+		color: var(--wp--preset--color--accent);
+		font-weight: 600;
+		text-transform: uppercase;
+		font-size: 0.9rem;
+		margin-bottom: 20px;
+	}
+
+	.separator {
+		width: 50px;
+		height: 4px;
+		background-color: var(--wp--preset--color--accent);
+		margin: 1.5rem 0;
+	}
+
+	&.center {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+	}
+
+	&.white {
+		color: var(--wp--preset--color--primary);
+
+		> .subtitle {
+			color: var(--wp--preset--color--primary);
+		}
+
+		> .separator {
+			background-color: var(--wp--preset--color--primary);
+		}
+
+	}
+
+	&.sm {
+		> h3 {
+			margin: 1rem 0;
+		}
+
+		> .subtitle {
+			font-size: 0.7rem;
+			font-weight: 500;
+			margin: 0;
+		}
+
+		> .separator {
+			height: 2.5px;
+			margin-top: 1rem;
+			margin-bottom: 1rem;
+		}
+	}
+
+	&.xl {
+		> h1 {
+			font-size: 3.5rem;
+			color: var(--wp--preset--color--primary);
+			margin: 0 0 25px;
+			font-weight: 700;
+			line-height: 1.1;
+			text-wrap: balance;
+
+			@media (max-width: 992px) {
+				font-size: 2.5rem;
+			}
+		}
+
+		> .subtitle {
+			font-size: 0.7rem;
+			font-weight: 500;
+			margin: 0;
+		}
+
+		> .separator {
+			height: 2.5px;
+			margin-top: 1rem;
+			margin-bottom: 1rem;
+		}
+	}
+
+	h2 {
+		font-size: 2.5rem;
+		margin-bottom: 20px;
+
+		@media (max-width: 992px) {
+			font-size: 2rem;
+		}
+	}
+}
+
+

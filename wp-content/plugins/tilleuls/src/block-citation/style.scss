@@ -1,0 +1,65 @@
+/**
+ * The following styles get applied both on the front of your site
+ * and in the editor.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+
+.wp-block-create-block-block-citation {
+	background-color: #21759b;
+	color: #fff;
+	padding: 2px;
+}
+
+.container {
+	padding: 0 1.5rem;
+	max-width: var(--wp--style--global--content-size);
+	margin: 0 auto;
+
+	@media (min-width: 768px) {
+		padding: 0 25px;
+	}
+}
+
+.section-citation {
+	padding: 60px 0;
+	background-color: var(--wp--preset--color--tertiary);
+	margin: 0 !important;
+
+	.container {
+		.quote {
+			.quote-icon {
+				font-size: 4rem;
+				color: var(--wp--preset--color--accent);
+				opacity: 0.3;
+				line-height: 1;
+				margin-bottom: -20px
+			}
+
+			> blockquote {
+				font-family: 'Merriweather', serif !important;
+				font-size: 1.5rem;
+				font-style: italic;
+				color: var(--wp--preset--color--secondary);
+				border: none;
+				margin: 0 auto;
+				padding: 0;
+				text-align: center;
+
+				@media (max-width: 992px) {
+					font-size: 1.2rem;
+				}
+			}
+
+			.quote-author {
+				margin-top: 20px;
+				display: block;
+				font-weight: 700;
+				color: var(--wp--preset--color--accent);
+				font-size: 0.9rem;
+				text-transform: uppercase;
+				text-align: center;
+			}
+		}
+	}
+}
