@@ -44,6 +44,13 @@ add_action('wp_enqueue_scripts', function () {
         '1.0'
     );
 
+    wp_enqueue_style(
+            'header',
+            get_template_directory_uri() . '/assets/style/header.css',
+            [],
+            '1.0'
+        );
+
     if ( is_page('contact') ) {
         wp_enqueue_style(
             'contact-page',
