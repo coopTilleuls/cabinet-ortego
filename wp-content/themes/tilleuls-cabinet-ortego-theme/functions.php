@@ -33,10 +33,14 @@ function fontawesome_global(): void
     );
 }
 
-add_action('wp_enqueue_scripts', 'fontawesome_global');
-add_action('enqueue_block_editor_assets', 'fontawesome_global');
-
 add_action('wp_enqueue_scripts', function () {
+    wp_enqueue_style(
+        'font-awesome',
+        'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css',
+        array('global'),
+        '6.5.1'
+    );
+
     wp_enqueue_style(
         'global',
         get_template_directory_uri() . '/style.css',
@@ -45,13 +49,20 @@ add_action('wp_enqueue_scripts', function () {
     );
 
     wp_enqueue_style(
-            'header',
-            get_template_directory_uri() . '/assets/style/header.css',
-            [],
-            '1.0'
-        );
+        'header',
+        get_template_directory_uri() . '/assets/style/header.css',
+        [],
+        '1.0'
+    );
 
-    if ( is_page('contact') ) {
+    wp_enqueue_style(
+        'footer',
+        get_template_directory_uri() . '/assets/style/footer.css',
+        [],
+        '1.0'
+    );
+
+    if (is_page('contact')) {
         wp_enqueue_style(
             'contact-page',
             get_template_directory_uri() . '/assets/style/contact.css',
@@ -59,5 +70,9 @@ add_action('wp_enqueue_scripts', function () {
         );
     }
 });
+
+
+add_action('wp_enqueue_scripts', 'fontawesome_global');
+add_action('enqueue_block_editor_assets', 'fontawesome_global');
 
 
