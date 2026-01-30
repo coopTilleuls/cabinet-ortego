@@ -28,8 +28,9 @@
 		grid-template-columns: 1fr 2fr;
 		gap: 60px;
 		align-items: start;
+		margin-top: 0 !important;
 
-		@media screen and (max-width: 768px){
+		@media screen and (max-width: 992px){
 			grid-template-columns: 1fr;
 			gap: 40px;
 		}
