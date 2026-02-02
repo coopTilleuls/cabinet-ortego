@@ -63,9 +63,8 @@ $ICONS = [
 ?>
 <section <?php
 echo $blockWrapper; ?>>
-	<div class="info-card">
-		<?php
-		foreach ($infoItems as $item): ?>
+	<?php foreach ($infoItems as $item): ?>
+		<div class="info-card">
 			<div class="info-item">
 				<div class="info-title">
 					<i class="<?php
@@ -87,7 +86,6 @@ echo $blockWrapper; ?>>
 				<?php
 				endif; ?>
 			</div>
-		<?php
-		endforeach; ?>
-	</div>
+		</div>
+	<?php endforeach; ?>
 </section>

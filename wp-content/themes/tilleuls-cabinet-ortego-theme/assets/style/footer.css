@@ -30,6 +30,7 @@ footer {
 
 .footer-col ul {
     list-style: none;
+    padding: 0;
 }
 
 .footer-col ul li {

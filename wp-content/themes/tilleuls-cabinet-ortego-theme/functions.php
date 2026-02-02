@@ -22,7 +22,6 @@
  */
 require_once realpath(__DIR__ . '/includes/settings/function.php');
 
-
 function fontawesome_global(): void
 {
     wp_enqueue_style(
@@ -32,6 +31,8 @@ function fontawesome_global(): void
         '6.5.1'
     );
 }
+
+add_action('enqueue_block_editor_assets', 'fontawesome_global');
 
 add_action('wp_enqueue_scripts', function () {
     wp_enqueue_style(
@@ -71,8 +72,5 @@ add_action('wp_enqueue_scripts', function () {
     }
 });
 
-
-add_action('wp_enqueue_scripts', 'fontawesome_global');
-add_action('enqueue_block_editor_assets', 'fontawesome_global');
 
 
