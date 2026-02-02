@@ -14,5 +14,15 @@
 .section-meeting-calendly {
 	background-color: var(--wp--preset--color--secondary);
 	padding: 60px 0;
-	margin-top: 60px !important;
+	margin-top: 0 !important;
+
+	.meeting-grid {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 60px;
+
+		@media screen and (max-width: 992px) {
+			grid-template-columns: 1fr;
+		}
+	}
 }
