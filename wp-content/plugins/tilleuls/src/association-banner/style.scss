@@ -12,7 +12,7 @@
 .associations-banner {
 	padding: 60px 0;
 	color: var(--wp--preset--color--primary);
-	margin: 0;
+	margin: 0 !important;
 
 	&.black {
 		background-color: var(--wp--preset--color--secondary);

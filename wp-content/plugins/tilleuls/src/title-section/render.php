@@ -18,7 +18,7 @@ $wrapper_attributes = get_block_wrapper_attributes([
 ]);
 ?>
 
-<section <?php
+<div <?php
 echo $wrapper_attributes; ?>>
 	<?php
 	if ($size === 'sm')  : ?>
@@ -45,4 +45,4 @@ echo $wrapper_attributes; ?>>
 	endif; ?>
 
 	<div class="separator"></div>
-</section>
+</div>

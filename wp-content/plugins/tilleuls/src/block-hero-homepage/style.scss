@@ -24,8 +24,12 @@
 
 .section-hero-homepage {
 	height: 90vh;
-	background-size: cover;
-	background: linear-gradient(to right, rgba(0,0,0,0.7) 30%, rgba(0,0,0,0.3) 100%), url('https://images.unsplash.com/photo-1505664194779-8beaceb93744?q=80&w=2000&auto=format&fit=crop');
+	background:
+		linear-gradient(to right, rgba(0, 0, 0, 0.7) 30%, rgba(0, 0, 0, 0.3) 100%),
+		url("https://images.unsplash.com/photo-1505664194779-8beaceb93744?q=80&w=2000&auto=format&fit=crop");
+	background-size: cover, cover;
+	background-repeat: no-repeat, no-repeat;
+	background-position: center, center;
 	display: flex;
 	align-items: center;
 	color: var(--wp--preset--color--primary);
