@@ -3,14 +3,16 @@
 	"apiVersion": 3,
 	"name": "tilleuls-ortego-blocks/contact-map",
 	"version": "0.1.0",
-	"title": "Contact Map",
-	"category": "widgets",
-	"icon": "smiley",
-	"description": "Affiche une section contenant l'adresse et une carte GoogleMap",
+	"title": "Section Contact & Plan",
+	"category": "design",
+	"icon": "location",
+	"description": "Section de pied de page ou de contact avec coordonnées textuelles et carte interactive.",
+	"keywords": ["contact", "map", "plan", "adresse", "ortego"],
 	"supports": {
 		"html": false,
 		"align": ["wide", "full"],
-		"innerBlocks": true
+		"innerBlocks": true,
+		"anchor": true
 	},
 	"textdomain": "contact-map",
 	"editorScript": "file:./index.js",

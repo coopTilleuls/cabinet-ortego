@@ -23,7 +23,7 @@ footer {
 }
 
 .footer-col h4 {
-    color:var(--wp--preset--color--primary);
+    color: var(--wp--preset--color--primary);
     margin-bottom: 20px;
     font-size: 1.1rem;
 }
@@ -36,8 +36,8 @@ footer {
 .footer-col ul li {
     margin-bottom: 10px;
 }
-.footer-col ul li i{
-    margin-right: .5rem;
+.footer-col ul li i {
+    margin-right: 0.5rem;
 }
 
 

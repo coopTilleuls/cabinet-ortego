@@ -3,11 +3,11 @@
 	"apiVersion": 3,
 	"name": "tilleuls-ortego-blocks/block-contact-column",
 	"version": "0.1.0",
-	"title": "Block Contact Column",
-	"category": "widgets",
-	"icon": "smiley",
-	"description": "Example block scaffolded with Create Block tool.",
-	"example": {},
+	"title": "Informations de Contact (vertical)",
+	"category": "design",
+	"icon": "location-alt",
+	"description": "Affiche les coordonnées détaillées (adresse, tel, email) accompagnées d'une carte Google Maps pour localiser le cabinet.",
+	"keywords": ["contact", "adresse", "map", "carte", "telephone", "email"],
 	"supports": {
 		"html": false
 	},

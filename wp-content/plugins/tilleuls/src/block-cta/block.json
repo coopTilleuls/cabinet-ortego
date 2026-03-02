@@ -3,11 +3,11 @@
 	"apiVersion": 3,
 	"name": "tilleuls-ortego-blocks/block-cta",
 	"version": "0.1.0",
-	"title": "Block Cta",
-	"category": "widgets",
-	"icon": "smiley",
-	"description": "Example block scaffolded with Create Block tool.",
-	"example": {},
+	"title": "Appel à l'action (CTA)",
+	"category": "design",
+	"icon": "external",
+	"description": "Une bannière pleine largeur avec un titre accrocheur et des boutons d'action (Téléphone, Email, RDV).",
+	"keywords": ["contact", "bouton", "appel", "cta", "urgence"],
 	"supports": {
 		"html": false,
 		"align": [
