@@ -89,13 +89,17 @@
 
 					&:hover {
 						background-color: var(--wp--preset--color--accent-dark);
-
 					}
 				}
 
 				.cta-second {
 					background-color: transparent;
 					border-color: var(--wp--preset--color--primary);
+
+					&:hover {
+						background-color: var(--wp--preset--color--primary);
+						color: var(--wp--preset--color--accent-dark);
+					}
 				}
 			}
 		}
