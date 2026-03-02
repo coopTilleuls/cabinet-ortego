@@ -3,10 +3,11 @@
 	"apiVersion": 3,
 	"name": "tilleuls-ortego-blocks/hero-page",
 	"version": "0.1.0",
-	"title": "Hero Page",
-	"category": "widgets",
-	"icon": "smiley",
-	"description": "Block hero por page secondaire",
+	"title": "En-tête secondaire de Page",
+	"category": "design",
+	"icon": "align-center",
+	"description": "En-tête sobre pour les pages de services et d'informations.",
+	"keywords": ["hero", "titre", "bannière", "page", "ortego"],
 	"supports": {
 		"html": false,
 		"align": ["full"],
@@ -17,7 +18,6 @@
 	"editorStyle": "file:./index.css",
 	"style": "file:./style-index.css",
 	"render": "file:./render.php",
-	"viewScript": "file:./view.js",
 	"attributes": {
 		"title": {
 			"type": "string",

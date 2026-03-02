@@ -3,10 +3,11 @@
 	"apiVersion": 3,
 	"name": "tilleuls-ortego-blocks/block-profile-homepage",
 	"version": "0.1.0",
-	"title": "Block Profile Homepage",
-	"category": "widgets",
-	"icon": "smiley",
-	"description": "Example block scaffolded with Create Block tool.",
+	"title": "Présentation de l'Avocat (page d'accueil)",
+	"category": "design",
+	"icon": "admin-users",
+	"description": "Section portrait permettant d'afficher la biographie, une citation et les compétences linguistiques de l'avocat. A utiliser sur la page d'accueil.",
+	"keywords": ["avocat", "profil", "biographie", "portrait", "langues", "ortego"],
 	"example": {},
 	"supports": {
 		"html": false,
@@ -21,7 +22,6 @@
 	"editorStyle": "file:./index.css",
 	"style": "file:./style-index.css",
 	"render": "file:./render.php",
-	"viewScript": "file:./view.js",
 	"attributes": {
 		"imgId": {
 			"type": "number",

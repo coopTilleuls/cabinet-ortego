@@ -3,11 +3,11 @@
 	"apiVersion": 3,
 	"name": "tilleuls-ortego-blocks/block-column-with-img",
 	"version": "0.1.0",
-	"title": "Block Column With Img",
-	"category": "widgets",
-	"icon": "smiley",
-	"description": "Example block scaffolded with Create Block tool.",
-	"example": {},
+	"title": "Section Texte & Visuel",
+	"category": "design",
+	"icon": "columns",
+	"description": "Une section en deux colonnes idéale pour présenter un domaine d'intervention avec un descriptif textuel et une illustration iconographique.",
+	"keywords": ["service", "droit", "focus", "colonne", "expertise"],
 	"supports": {
 		"html": false,
 		"align": [
@@ -19,7 +19,6 @@
 	"editorStyle": "file:./index.css",
 	"style": "file:./style-index.css",
 	"render": "file:./render.php",
-	"viewScript": "file:./view.js",
 	"attributes": {
 		"imgPosition": {
 			"type": "string",

@@ -3,10 +3,11 @@
 	"apiVersion": 3,
 	"name": "tilleuls-ortego-blocks/section-card",
 	"version": "0.1.0",
-	"title": "Section Card",
-	"category": "widgets",
-	"icon": "smiley",
-	"description": "Une section colorée avec card",
+	"title": "Philosophie & Atouts",
+	"category": "design",
+	"icon": "layout",
+	"description": "Section composée de cartes descriptives pour mettre en avant vos engagements, votre philosophie ou vos compétences clés.",
+	"keywords": ["philosophie", "carte", "valeurs", "atouts", "compétences", "ortego"],
 	"supports": {
 		"html": false,
 		"align": ["wide", "full"],
@@ -17,7 +18,7 @@
 	"editorStyle": "file:./index.css",
 	"style": "file:./style-index.css",
 	"render": "file:./render.php",
-	"viewScript": "file:./view.js",
+
 	"attributes": {
 		"items": {
 			"type": "array",

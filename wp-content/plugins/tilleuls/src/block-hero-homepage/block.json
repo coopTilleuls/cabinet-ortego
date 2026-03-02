@@ -3,11 +3,11 @@
 	"apiVersion": 3,
 	"name": "tilleuls-ortego-blocks/block-hero-homepage",
 	"version": "0.1.0",
-	"title": "Block Hero Homepage",
-	"category": "widgets",
-	"icon": "smiley",
-	"description": "Block Hero Homepage.",
-	"example": {},
+	"title": "En-tête page d'Accueil (Hero)",
+	"category": "design",
+	"icon": "cover-image",
+	"description": "Bannière d'accueil principale avec image de fond, titre stylisé et boutons d'appel à l'action pour le premier contact.",
+	"keywords": ["hero", "accueil", "bannière", "introduction", "home"],
 	"supports": {
 		"html": false,
 		"align": ["wide", "full"]
@@ -17,7 +17,6 @@
 	"editorStyle": "file:./index.css",
 	"style": "file:./style-index.css",
 	"render": "file:./render.php",
-	"viewScript": "file:./view.js",
 	"attributes": {
 		"surtitle": {
 			"type": "string",

@@ -3,11 +3,11 @@
 	"apiVersion": 3,
 	"name": "tilleuls-ortego-blocks/block-citation",
 	"version": "0.1.0",
-	"title": "Block Citation",
-	"category": "widgets",
-	"icon": "smiley",
-	"description": "Example block scaffolded with Create Block tool.",
-	"example": {},
+	"title": "Parole d'Expert",
+	"category": "design",
+	"icon": "editor-quote",
+	"description": "Une mise en avant textuelle pour souligner une citation ou une valeur fondamentale du cabinet.",
+	"keywords": ["quote", "citation", "témoignage", "avocat"],
 	"supports": {
 		"html": false,
 		"align": ["wide", "full"]
@@ -17,7 +17,6 @@
 	"editorStyle": "file:./index.css",
 	"style": "file:./style-index.css",
 	"render": "file:./render.php",
-	"viewScript": "file:./view.js",
 	"attributes": {
 		"citation": {
 			"type": "string",

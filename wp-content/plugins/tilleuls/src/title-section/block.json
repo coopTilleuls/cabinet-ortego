@@ -3,11 +3,11 @@
 	"apiVersion": 3,
 	"name": "tilleuls-ortego-blocks/title-section",
 	"version": "0.1.0",
-	"title": "Title Section",
-	"category": "widgets",
-	"icon": "smiley",
-	"description": "Titre avec section",
-	"example": {},
+	"title": "Introduction de Section (titre)",
+	"category": "design",
+	"icon": "editor-aligncenter",
+	"description": "Composant de titrage hiérarchisé pour introduire vos différentes sections avec élégance.",
+	"keywords": ["titre", "header", "philosophie", "expertise", "ortego"],
 	"supports": {
 		"html": false
 	},
@@ -16,7 +16,6 @@
 	"editorStyle": "file:./index.css",
 	"style": "file:./style-index.css",
 	"render": "file:./render.php",
-	"viewScript": "file:./view.js",
 	"attributes": {
 		"title": {
 			"type": "string",

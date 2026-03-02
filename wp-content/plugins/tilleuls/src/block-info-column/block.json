@@ -3,11 +3,10 @@
 	"apiVersion": 3,
 	"name": "tilleuls-ortego-blocks/block-info-column",
 	"version": "0.1.0",
-	"title": "Block Info Column",
-	"category": "widgets",
-	"icon": "smiley",
-	"description": "Example block scaffolded with Create Block tool.",
-	"example": {},
+	"title": "Encart d'Information",
+	"category": "design",
+	"description": "Un encart modulable pour souligner une information importante : aide juridictionnelle, tarifs, ou points de vigilance.",
+	"keywords": ["info", "aide juridictionnelle", "tarif", "important", "ortego"],
 	"supports": {
 		"html": false
 	},
@@ -16,7 +15,6 @@
 	"editorStyle": "file:./index.css",
 	"style": "file:./style-index.css",
 	"render": "file:./render.php",
-	"viewScript": "file:./view.js",
 	"attributes": {
 		"infoItems": {
 			"type": "array",

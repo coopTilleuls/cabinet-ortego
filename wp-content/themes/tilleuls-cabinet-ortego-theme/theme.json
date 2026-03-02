@@ -66,6 +66,11 @@
           "slug": "bg-light",
           "name": "Texte clair",
           "color": "#f9f9f9"
+        },
+        {
+          "slug": "silver-gray",
+          "name": "Gris argent",
+          "color": "#BBBBBB"
         }
       ]
     },
@@ -135,7 +140,7 @@
               "fontWeight": "300 800",
               "fontStyle": "normal",
               "src": [
-                "file:./assets/fonts/montserrat/Montserrat-VariableFont_wght.woff2"
+                "file:./assets/fonts/montserrat/Montserrat-VF.woff2"
               ]
             }
           ]
