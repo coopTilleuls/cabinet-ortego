@@ -24,12 +24,19 @@
 		},
 		"cta": {
 			"type": "string",
-			"default": "string"
+			"default": ""
+		},
+		"ctaLabel": {
+			"type": "string",
+			"default": "Prendre rendez-vous"
 		},
 		"ctaBis": {
 			"type": "string",
-			"default": "string"
+			"default": ""
+		},
+		"ctaBisLabel": {
+			"type": "string",
+			"default": "Découvrir le cabinet"
 		}
 	}
-
 }

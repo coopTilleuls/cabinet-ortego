@@ -38,7 +38,7 @@ import {Button, PanelBody, TextControl, Tooltip} from "@wordpress/components"; /
  * @return {Element} Element to render.
  */
 export default function Edit({attributes, setAttributes}) {
-	const {imgId, imgUrl, languages, buttonText, buttonLink} = attributes;
+	const {imgId, imgUrl,surtitle, languages, buttonText, buttonLink} = attributes;
 
 	const blockProps = useBlockProps({
 		className: 'profile-home'
@@ -113,6 +113,13 @@ export default function Edit({attributes, setAttributes}) {
 						/>
 					</MediaUploadCheck>
 					<TextControl
+						label={__('Surtitre', 'tilleuls')}
+						value={surtitle || ''}
+						onChange={(value) => setAttributes({surtitle: value})}
+						placeholder="À propos de l'avocate"
+						help={__('Ajouter un surtitre à la section', 'tilleuls')}
+					/>
+					<TextControl
 						label={__('Lien (URL)', 'tilleuls')}
 						value={buttonLink || ''}
 						onChange={(value) => setAttributes({buttonLink: value})}
@@ -168,7 +175,7 @@ export default function Edit({attributes, setAttributes}) {
 					</div>
 
 					<div className="profile-home-content">
-						<span className="profile-surtitle">À propos de l'avocate</span>
+						<span className="profile-surtitle">{surtitle}</span>
 						<InnerBlocks
 							template={CONTENT_TEMPLATE}
 						/>

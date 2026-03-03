@@ -30,7 +30,7 @@ import {PanelBody, TextControl} from "@wordpress/components";
  * @return {Element} Element to render.
  */
 export default function Edit({attributes, setAttributes}) {
-	const {surtitle, cta, ctaBis} = attributes;
+	const {surtitle, cta, ctaLabel, ctaBis, ctaBisLabel} = attributes;
 
 	const blockName = useBlockProps({
 		className: 'section-hero-homepage'
@@ -59,17 +59,30 @@ export default function Edit({attributes, setAttributes}) {
 					<TextControl
 						label={__('Lien premier bouton', 'tilleuls')}
 						value={cta || ''}
-						onChange={(value) => setAttributes({ cta: value })}
+						onChange={(value) => setAttributes({cta: value})}
 						placeholder="https://..."
 						help={__('Collez l\'URL de la page interne ou du site externe.', 'tilleuls')}
 					/>
-
+					<TextControl
+						label={__('Label du premier bouton', 'tilleuls')}
+						value={ctaLabel || ''}
+						onChange={(value) => setAttributes({ctaLabel: value})}
+						placeholder="Mon Bouton"
+						help={__('Ajouter le texte qui sera afficher sur le bouton', 'tilleuls')}
+					/>
 					<TextControl
 						label={__('Lien second bouton', 'tilleuls')}
 						value={ctaBis || ''}
-						onChange={(value) => setAttributes({ ctaBis: value })}
+						onChange={(value) => setAttributes({ctaBis: value})}
 						placeholder="https://..."
 						help={__('Collez l\'URL de la page interne ou du site externe.', 'tilleuls')}
+					/>
+					<TextControl
+						label={__('Label du premier bouton', 'tilleuls')}
+						value={ctaBisLabel || ''}
+						onChange={(value) => setAttributes({ctaBisLabel: value})}
+						placeholder="Mon deuxième Bouton"
+						help={__('Ajouter le texte qui sera afficher sur le bouton', 'tilleuls')}
 					/>
 				</PanelBody>
 			</InspectorControls>
@@ -81,8 +94,8 @@ export default function Edit({attributes, setAttributes}) {
 							template={INNER_BLOCKS}
 						/>
 						<div className="cta-container">
-							<a href={cta} className="cta-first">Prendre Rendez-vous</a>
-							<a href={ctaBis} className="cta-second">Découvrir le cabinet</a>
+							<a href={cta} className="cta-first">{ctaLabel}</a>
+							<a href={ctaBis} className="cta-second">{ctaBisLabel}</a>
 						</div>
 					</div>
 				</div>

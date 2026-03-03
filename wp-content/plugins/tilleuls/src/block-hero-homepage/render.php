@@ -14,6 +14,8 @@ $attributes = $attributes ?? [];
 $surtitle = $attributes['surtitle'] ?? '';
 $cta = $attributes['cta'] ?? '';
 $ctaBis = $attributes['ctaBis'] ?? '';
+$ctaLabel = $attributes['ctaLabel'] ?? '';
+$ctaBisLabel = $attributes['ctaBisLabel'] ?? '';
 
 ?>
 <section <?php
@@ -28,8 +30,8 @@ echo get_block_wrapper_attributes([
 			echo $content;
 			?>
 			<div class="cta-container">
-				<a href="<?php echo esc_url($cta); ?>" class="cta-first">Prendre rendez-vous</a>
-				<a href="<?php echo esc_url($ctaBis); ?>" class="cta-second">Decouvrir le cabinet</a>
+				<a href="<?php echo esc_url($cta); ?>" class="cta-first"><?php echo wp_kses_post($ctaLabel); ?></a>
+				<a href="<?php echo esc_url($ctaBis); ?>" class="cta-second"><?php echo wp_kses_post($ctaBisLabel); ?></a>
 			</div>
 		</div>
 	</div>

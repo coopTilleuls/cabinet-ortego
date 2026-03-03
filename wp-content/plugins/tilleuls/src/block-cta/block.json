@@ -28,22 +28,6 @@
 			"type": "string",
 			"default": ""
 		},
-		"link": {
-			"type": "string",
-			"default": ""
-		},
-		"textBtn": {
-			"type": "string",
-			"default": ""
-		},
-		"linkBis": {
-			"type": "string",
-			"default": ""
-		},
-		"textBtnBis": {
-			"type": "string",
-			"default": ""
-		},
 		"cta": {
 			"type": "array",
 			"default": [],
