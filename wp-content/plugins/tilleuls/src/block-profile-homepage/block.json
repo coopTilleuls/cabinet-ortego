@@ -36,6 +36,10 @@
 			"source": "html",
 			"selector": ".about-quote"
 		},
+		"surtitle": {
+			"type": "string",
+			"default": ""
+		},
 		"buttonText": {
 			"type": "string",
 			"default": ""

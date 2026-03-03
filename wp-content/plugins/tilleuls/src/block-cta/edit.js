@@ -36,10 +36,6 @@ export default function Edit({attributes, setAttributes}) {
 		color,
 		title,
 		description,
-		link,
-		linkBis,
-		textBtn,
-		textBtnBis,
 		cta
 	} = attributes;
 
