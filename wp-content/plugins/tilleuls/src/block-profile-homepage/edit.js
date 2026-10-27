@@ -27,7 +27,7 @@ import {
  * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
  */
 import './editor.scss';
-import {Button, PanelBody, TextControl, Tooltip} from "@wordpress/components"; // ResponsiveWrapper optionnel pour image
+import {Button, PanelBody, TextControl} from "@wordpress/components"; // ResponsiveWrapper optionnel pour image
 
 /**
  * The edit function describes the structure of your block in the context of the
@@ -144,7 +144,8 @@ export default function Edit({attributes, setAttributes}) {
 									allowedTypes={['image']}
 									value={imgId}
 									render={({open}) => (
-										<div
+										<button
+											type="button"
 											className="placeholder-image"
 											onClick={open}
 											style={{
@@ -156,11 +157,12 @@ export default function Edit({attributes, setAttributes}) {
 												alignItems: 'center',
 												justifyContent: 'center',
 												color: '#ccc',
-												cursor: 'pointer'
+												cursor: 'pointer',
+												border: 'none'
 											}}
 										>
 											{__('Cliquer pour ajouter une image', 'tilleuls')}
-										</div>
+										</button>
 									)}
 								/>
 							</MediaUploadCheck>
@@ -168,7 +170,7 @@ export default function Edit({attributes, setAttributes}) {
 					</div>
 
 					<div className="profile-home-content">
-						<span className="profile-surtitle">À propos de l'avocate</span>
+						<span className="profile-surtitle">À propos de l&apos;avocate</span>
 						<InnerBlocks
 							template={CONTENT_TEMPLATE}
 						/>
@@ -192,20 +194,13 @@ export default function Edit({attributes, setAttributes}) {
 											placeholder={__('Langue...', 'tilleuls')}
 											allowedFormats={[]}
 										/>
-										<Tooltip text={__('Retirer', 'tilleuls')}>
-                        <span
-													onClick={() => removeLanguage(index)}
-													style={{
-														cursor: 'pointer',
-														marginLeft: '8px',
-														color: '#cc0000',
-														fontSize: '14px',
-														fontWeight: 'bold'
-													}}
-												>
-                            ×
-                        </span>
-										</Tooltip>
+										<Button
+											icon="no-alt"
+											isSmall
+											isDestructive
+											label={__('Retirer la langue', 'tilleuls')}
+											onClick={() => removeLanguage(index)}
+										/>
 									</div>
 								))}
 								<Button

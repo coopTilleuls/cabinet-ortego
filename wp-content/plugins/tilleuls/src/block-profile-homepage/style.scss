@@ -124,7 +124,9 @@
 					margin: 2.5rem auto;
 				}
 
-				&:hover {
+				&:hover,
+				&:focus-visible,
+				&:focus-within {
 					background-color: var(--wp--preset--color--secondary);
 					color: var(--wp--preset--color--primary);
 				}

@@ -67,10 +67,10 @@ echo $blockWrapper; ?>>
 		<div class="info-card">
 			<div class="info-item">
 				<div class="info-title">
-					<i class="<?php
+					<i aria-hidden="true" class="<?php
 					echo esc_attr($ICONS[$item['icon'] ?? '']['class'] ?? ''); ?>"></i>
-					<h4><?php
-						echo wp_kses_post($item['title']); ?></h4>
+					<h3><?php
+						echo wp_kses_post($item['title']); ?></h3>
 				</div>
 				<?php
 				if ($item['highlight']) : ?>

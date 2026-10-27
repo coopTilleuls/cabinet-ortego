@@ -51,7 +51,7 @@ echo $wrapper_attributes; ?>>
 
 					<div class="expertise-card">
 						<h3>
-							<i class="<?php
+							<i aria-hidden="true" class="<?php
 							echo esc_attr($icon_class); ?>"></i>
 							<?php
 							echo wp_kses_post($title); ?>

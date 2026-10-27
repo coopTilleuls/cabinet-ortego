@@ -41,7 +41,7 @@ $pricingCards = $attributes['pricingCards'] ?? [];
 						<ul>
 							<?php foreach( $card['features'] as $feature ): ?>
 								<li>
-									<i class="fa-solid fa-check"></i>
+									<i aria-hidden="true" class="fa-solid fa-check"></i>
 									<span><?php echo wp_kses_post($feature); ?></span>
 								</li>
 							<?php endforeach; ?>

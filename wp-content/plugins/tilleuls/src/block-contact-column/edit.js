@@ -131,7 +131,7 @@ export default function Edit({attributes, setAttributes}) {
 					<div className="info-item">
 						<i className="fa-solid fa-location-dot"></i>
 						<div>
-							<h4>Adresse</h4>
+							<h3>Adresse</h3>
 							<p>
 								{contactAddress} <br/>
 								{contactAddressComplement ?
@@ -147,25 +147,25 @@ export default function Edit({attributes, setAttributes}) {
 					<div className="info-item">
 						<i className="fa-solid fa-phone"></i>
 						<div>
-							<h4>Téléphone</h4>
+							<h3>Téléphone</h3>
 							<p>
-								<a href={`tel:${contactPhone}`}></a>
+								<a href={`tel:${contactPhone}`}>{contactPhone}</a>
 							</p>
 						</div>
 					</div>
 					<div className="info-item">
 						<i className="fa-solid fa-envelope"></i>
 						<div>
-							<h4>Email</h4>
+							<h3>Email</h3>
 							<p>
-								<a href={`mailto:${contactEmail}`}></a>
+								<a href={`mailto:${contactEmail}`}>{contactEmail}</a>
 							</p>
 						</div>
 					</div>
 					<div className="info-item">
 						<i className="fa-solid fa-clock"></i>
 						<div>
-							<h4>Horaires d'ouverture</h4>
+							<h3>Horaires d&apos;ouverture</h3>
 							<p>
 								{contactName} <br/>
 								Sur rendez-vous uniquement.

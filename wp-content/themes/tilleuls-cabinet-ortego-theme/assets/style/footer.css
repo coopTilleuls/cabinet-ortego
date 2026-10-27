@@ -47,7 +47,8 @@ footer {
     text-decoration: none;
 }
 
-.footer-col a:hover {
+.footer-col a:hover,
+.footer-col a:focus-visible {
     color: var(--wp--preset--color--tertiary);
 }
 

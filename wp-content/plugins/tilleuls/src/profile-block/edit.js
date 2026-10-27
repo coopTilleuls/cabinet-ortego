@@ -114,9 +114,9 @@ export default function Edit({attributes, setAttributes}) {
 						)}
 
 						<div className="languages-container">
-							<h4>
+							<h3>
 								{__('Langues parlées :', 'tilleuls')}
-							</h4>
+							</h3>
 
 							<div style={{display: 'flex', flexWrap: 'wrap', gap: '5px'}}>
 								{languages.map((lang, index) => (
@@ -136,20 +136,13 @@ export default function Edit({attributes, setAttributes}) {
 											placeholder={__('Langue...', 'tilleuls')}
 											allowedFormats={[]}
 										/>
-										<Tooltip text={__('Retirer', 'tilleuls')}>
-                        <span
-													onClick={() => removeLanguage(index)}
-													style={{
-														cursor: 'pointer',
-														marginLeft: '8px',
-														color: '#cc0000',
-														fontSize: '14px',
-														fontWeight: 'bold'
-													}}
-												>
-                            ×
-                        </span>
-										</Tooltip>
+										<Button
+											icon="no-alt"
+											isSmall
+											isDestructive
+											label={__('Retirer la langue', 'tilleuls')}
+											onClick={() => removeLanguage(index)}
+										/>
 									</div>
 								))}
 								<Button
@@ -176,9 +169,9 @@ export default function Edit({attributes, setAttributes}) {
 							placeholder={__('Rédigez la biographie ici...', 'tilleuls')}
 						/>
 						<div className="diploma-list">
-							<h4>
+							<h3>
 								{__('Formation Universitaire', 'tilleuls')}
-							</h4>
+							</h3>
 
 							<ul>
 								{diplomas.map((item, index) => (

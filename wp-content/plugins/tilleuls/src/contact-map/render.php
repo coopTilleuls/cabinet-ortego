@@ -32,7 +32,7 @@ echo $wrapper_attributes; ?>>
 					echo $content;
 					?>
 					<div class="item">
-						<i class="fa-solid fa-location-dot"></i>
+						<i aria-hidden="true" class="fa-solid fa-location-dot"></i>
 						<p class="info">
 							<strong><?php
 								echo esc_html($name); ?></strong><br>
@@ -48,13 +48,13 @@ echo $wrapper_attributes; ?>>
 						</p>
 					</div>
 					<div class="item">
-						<i class="fa-solid fa-phone"></i>
+						<i aria-hidden="true" class="fa-solid fa-phone"></i>
 						<a class="info" href="tel:<?php echo esc_attr(str_replace(' ', '', $phone)); ?>">
 							<?php echo esc_html($phone); ?>
 						</a>
 					</div>
 					<div class="item">
-						<i class="fa-solid fa-envelope"></i>
+						<i aria-hidden="true" class="fa-solid fa-envelope"></i>
 						<a class="info" href="mailto:<?php echo esc_attr(str_replace(' ', '', $email)); ?>">
 							<?php echo esc_html($email); ?>
 						</a>

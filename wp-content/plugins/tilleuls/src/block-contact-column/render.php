@@ -36,9 +36,9 @@ echo $blockWrapper; ?>>
 		<h2>Nos Coordonées</h2>
 		<div class="info-card">
 			<div class="info-item">
-				<i class="fa-solid fa-location-dot"></i>
+				<i aria-hidden="true" class="fa-solid fa-location-dot"></i>
 				<div>
-					<h4>Adresse</h4>
+					<h3>Adresse</h3>
 					<p>
 						<?php
 						if ($street) {
@@ -55,9 +55,9 @@ echo $blockWrapper; ?>>
 				</div>
 			</div>
 			<div class="info-item">
-				<i class="fa-solid fa-phone"></i>
+				<i aria-hidden="true" class="fa-solid fa-phone"></i>
 				<div>
-					<h4>Téléphone</h4>
+					<h3>Téléphone</h3>
 					<p>
 						<a href="tel:<?php
 						echo esc_attr(str_replace(' ', '', $phone)); ?>">
@@ -68,9 +68,9 @@ echo $blockWrapper; ?>>
 				</div>
 			</div>
 			<div class="info-item">
-				<i class="fa-solid fa-envelope"></i>
+				<i aria-hidden="true" class="fa-solid fa-envelope"></i>
 				<div>
-					<h4>Email</h4>
+					<h3>Email</h3>
 					<p>
 						<a href="mailto:<?php
 						echo esc_attr(str_replace(' ', '', $email)); ?>">
@@ -81,9 +81,9 @@ echo $blockWrapper; ?>>
 				</div>
 			</div>
 			<div class="info-item">
-				<i class="fa-solid fa-clock"></i>
+				<i aria-hidden="true" class="fa-solid fa-clock"></i>
 				<div>
-					<h4>Horaires d'ouverture</h4>
+					<h3>Horaires d'ouverture</h3>
 					<p></p>
 				</div>
 			</div>

@@ -33,11 +33,11 @@ $icons_map = [
 						if ( ! empty( $icon_key ) && isset( $icons_map[ $icon_key ] ) ) :
 							$icon_class = $icons_map[ $icon_key ];
 							?>
-							<i class="<?php echo esc_attr( $icon_class ); ?>"></i>
+							<i aria-hidden="true" class="<?php echo esc_attr( $icon_class ); ?>"></i>
 						<?php
 						elseif ( ! empty( $icon_key ) ) :
 							?>
-							<i class="<?php echo esc_attr( $icon_key ); ?>"></i>
+							<i aria-hidden="true" class="<?php echo esc_attr( $icon_key ); ?>"></i>
 						<?php endif; ?>
 						<?php if ( ! empty( $item['text'] ) ) : ?>
 							<span><?php echo wp_kses_post( $item['text'] ); ?></span>

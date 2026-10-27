@@ -41,7 +41,9 @@
 			display: flex;
 			flex-direction: column;
 
-			&:hover {
+			&:hover,
+			&:focus-visible,
+			&:focus-within {
 				border-top-color: var(--wp--preset--color--accent);
 				transform: translateY(-5px);
 				box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);

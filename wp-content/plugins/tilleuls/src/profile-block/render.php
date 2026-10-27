@@ -7,6 +7,11 @@ $attributes = $attributes ?? [];
 
 $bio = $attributes['bio'] ?? '';
 $img_url = $attributes['imgUrl'] ?? '';
+$img_id = (int) ($attributes['imgId'] ?? 0);
+$img_alt = $img_id ? (string) get_post_meta($img_id, '_wp_attachment_image_alt', true) : '';
+if ($img_alt === '') {
+	$img_alt = __('Photo de profil', 'tilleuls');
+}
 $languages = $attributes['languages'] ?? [];
 $diplomas = $attributes['diplomas'] ?? [];
 
@@ -25,14 +30,13 @@ echo $wrapper_attributes; ?>>
 				<?php
 				if (!empty($img_url)) : ?>
 					<img src="<?php
-					echo esc_url($img_url); ?>" alt="<?php
-					esc_attr_e('Photo de profil', 'tilleuls'); ?>">
+					echo esc_url($img_url); ?>" alt="<?php echo esc_attr($img_alt); ?>">
 				<?php
 				endif; ?>
 
 				<div class="languages-container">
-					<h4><?php
-						esc_html_e('Langues parlées :', 'tilleuls'); ?></h4>
+					<h3><?php
+						esc_html_e('Langues parlées :', 'tilleuls'); ?></h3>
 					<div>
 						<?php
 						foreach ($languages as $lang) : ?>
@@ -67,12 +71,12 @@ echo $wrapper_attributes; ?>>
 				<?php
 				if (!empty($diplomas)) : ?>
 					<div class="diploma-list">
-						<h4>Formation Universitaire</h4>
+						<h3>Formation Universitaire</h3>
 						<ul>
 							<?php
 							foreach ($diplomas as $item) : ?>
 								<li>
-									<i class="fa-solid fa-graduation-cap"></i>
+									<i aria-hidden="true" class="fa-solid fa-graduation-cap"></i>
 									<?php
 									if (!empty($item['text'])) : ?>
 										<span>

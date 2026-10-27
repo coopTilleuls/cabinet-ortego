@@ -52,7 +52,7 @@ $phone = get_option('tilleuls_contact_phone');
 						href="<?php echo esc_url( $href ); ?>"
 						class="cta-link <?php echo esc_attr( $link['style'] ); ?>"
 					>
-						<i class="fa-solid <?php echo esc_attr( $icon ); ?>"></i>
+						<i aria-hidden="true" class="fa-solid <?php echo esc_attr( $icon ); ?>"></i>
 						<strong><?php echo esc_html( $link['text'] ); ?></strong>
 					</a>
 

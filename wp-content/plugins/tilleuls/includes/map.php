@@ -16,7 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 function tilleuls_ortego_blocks_render_map( string $address ): void {
 	if ( strlen( $address ) <= 5 ) : ?>
-		<div style="background-color: #eee; height: 100%; min-height: 300px; display: flex; align-items: center; justify-content: center; color: #999; flex-direction: column;">
+		<div style="background-color: #eee; height: 100%; min-height: 300px; display: flex; align-items: center; justify-content: center; color: #555; flex-direction: column;">
 			<i class="fa-solid fa-map-slash" style="font-size: 2rem; margin-bottom: 10px;" aria-hidden="true"></i>
 			<span>Adresse non configurée</span>
 		</div>

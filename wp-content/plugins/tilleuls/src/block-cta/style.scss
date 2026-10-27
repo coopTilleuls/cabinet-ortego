@@ -99,7 +99,9 @@
 					text-decoration: none;
 					transition: all .7s ease;
 
-					&:hover {
+					&:hover,
+					&:focus-visible,
+					&:focus-within {
 						background-color: transparent;
 						color: var(--wp--preset--color--primary);
 					}
@@ -124,7 +126,9 @@
 						margin-right: .8rem;
 					}
 
-					&:hover {
+					&:hover,
+					&:focus-visible,
+					&:focus-within {
 						background-color: var(--wp--preset--color--primary);
 						color: var(--wp--preset--color--accent);
 						border: 2px solid var(--wp--preset--color--primary);
