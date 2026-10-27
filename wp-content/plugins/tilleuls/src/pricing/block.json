@@ -1,0 +1,59 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "tilleuls-ortego-blocks/pricing",
+	"version": "0.1.0",
+	"title": "Grille des tarifs",
+	"category": "cabinet-ortego",
+	"icon": "admin-appearance",
+	"description": "Présente les honoraires sous forme de cartes (consultation, forfait, taux horaire…). Ajoutez une carte avec le bouton prévu, et cliquez sur l'étoile pour mettre une carte en avant.",
+	"keywords": [
+		"prix",
+		"honoraires",
+		"grille",
+		"devis",
+		"comparatif",
+		"ortego"
+	],
+	"supports": {
+		"html": false,
+		"align": [
+			"full"
+		],
+		"innerBlocks": true
+	},
+	"textdomain": "tilleuls",
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css",
+	"render": "file:./render.php",
+	"attributes": {
+		"pricingCards": {
+			"type": "array",
+			"default": [],
+			"items": {
+				"type": "object",
+				"properties": {
+					"title": {
+						"type": "string"
+					},
+					"price": {
+						"type": "string"
+					},
+					"unit": {
+						"type": "string"
+					},
+					"features": {
+						"type": "array",
+						"items": {
+							"type": "string"
+						}
+					},
+					"isFeatured": {
+						"type": "boolean"
+					}
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,47 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "tilleuls-ortego-blocks/section-title",
+	"version": "0.1.0",
+	"title": "Titre de section",
+	"category": "cabinet-ortego",
+	"icon": "editor-aligncenter",
+	"description": "Un titre, avec un sous-titre facultatif, pour introduire une partie de la page. Choisissez sa taille, son alignement et sa couleur dans les réglages à droite de l'écran.",
+	"keywords": [
+		"titre",
+		"header",
+		"philosophie",
+		"expertise",
+		"ortego"
+	],
+	"supports": {
+		"html": false
+	},
+	"textdomain": "tilleuls",
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css",
+	"render": "file:./render.php",
+	"attributes": {
+		"title": {
+			"type": "string",
+			"default": "Engagement & Expertise"
+		},
+		"subtitle": {
+			"type": "string",
+			"default": ""
+		},
+		"blockPosition": {
+			"type": "string",
+			"default": "left"
+		},
+		"size": {
+			"type": "string",
+			"default": "lg"
+		},
+		"color": {
+			"type": "string",
+			"default": ""
+		}
+	}
+}

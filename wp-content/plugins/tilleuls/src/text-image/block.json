@@ -1,0 +1,46 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "tilleuls-ortego-blocks/text-image",
+	"version": "0.1.0",
+	"title": "Texte et visuel",
+	"category": "cabinet-ortego",
+	"icon": "columns",
+	"description": "Présente un domaine d'intervention sur deux colonnes : le texte d'un côté, une grande icône de l'autre. Le côté de l'icône se choisit dans les réglages à droite de l'écran.",
+	"keywords": [
+		"service",
+		"droit",
+		"focus",
+		"colonne",
+		"expertise"
+	],
+	"supports": {
+		"html": false,
+		"align": [
+			"full"
+		]
+	},
+	"textdomain": "tilleuls",
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css",
+	"render": "file:./render.php",
+	"attributes": {
+		"imgPosition": {
+			"type": "string",
+			"default": "left"
+		},
+		"icon": {
+			"type": "string",
+			"default": ""
+		},
+		"title": {
+			"type": "string",
+			"default": ""
+		},
+		"titleIcon": {
+			"type": "string",
+			"default": ""
+		}
+	}
+}

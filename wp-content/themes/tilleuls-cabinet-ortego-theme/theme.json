@@ -1,15 +1,6 @@
 {
   "$schema": "https://schemas.wp.org/wp/6.8/theme.json",
   "version": 3,
-  "customTemplates": [
-    {
-      "name": "page-no-title",
-      "title": "Page sans titre",
-      "postTypes": [
-        "page"
-      ]
-    }
-  ],
   "settings": {
     "appearanceTools": true,
     "color": {

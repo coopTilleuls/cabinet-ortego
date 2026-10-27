@@ -35,7 +35,7 @@ export default function Edit() {
 		className: 'section-contact-map',
 	} );
 
-	const INNER_BLOCKS = [ [ 'tilleuls-ortego-blocks/title-section', {} ] ];
+	const INNER_BLOCKS = [ [ 'tilleuls-ortego-blocks/section-title', {} ] ];
 
 	const contactName = useSelect(
 		( select ) =>

@@ -21,6 +21,25 @@ require_once __DIR__ . '/includes/map.php';
 require_once __DIR__ . '/includes/media.php';
 
 /**
+ * Group all the firm's blocks under one "Cabinet Ortego" category, listed first in the block inserter.
+ *
+ * @param array $categories Registered block categories.
+ */
+function tilleuls_ortego_blocks_register_category( array $categories ): array {
+	return array_merge(
+		array(
+			array(
+				'slug'  => 'cabinet-ortego',
+				'title' => __( 'Cabinet Ortego', 'tilleuls' ),
+				'icon'  => null,
+			),
+		),
+		$categories
+	);
+}
+add_filter( 'block_categories_all', 'tilleuls_ortego_blocks_register_category' );
+
+/**
  * Registers the block using a `blocks-manifest.php` file, which improves the performance of block type registration.
  * Behind the scenes, it also registers all assets so they can be enqueued
  * through the block editor in the corresponding context.

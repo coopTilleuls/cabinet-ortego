@@ -14,6 +14,22 @@ const WP_LOCALE = 'fr_FR';
 const WP_PLUGINS = ['contact-form-7', 'wordpress-seo', 'polylang'];
 // Single source of truth for the site pages, also read by the theme header to build the navigation.
 const THEME_PAGES = 'wp-content/themes/tilleuls-cabinet-ortego-theme/pages.json';
+// Old custom block names => new names (blocks renamed for consistency). Used by `castor migrate-blocks` and `castor update`.
+const BLOCK_RENAMES = [
+    'tilleuls-ortego-blocks/banner-colored' => 'tilleuls-ortego-blocks/association-banner',
+    'tilleuls-ortego-blocks/block-citation' => 'tilleuls-ortego-blocks/quote',
+    'tilleuls-ortego-blocks/block-column-with-img' => 'tilleuls-ortego-blocks/text-image',
+    'tilleuls-ortego-blocks/block-contact-column' => 'tilleuls-ortego-blocks/contact-column',
+    'tilleuls-ortego-blocks/block-cta' => 'tilleuls-ortego-blocks/call-to-action',
+    'tilleuls-ortego-blocks/block-hero-homepage' => 'tilleuls-ortego-blocks/hero-home',
+    'tilleuls-ortego-blocks/block-info-column' => 'tilleuls-ortego-blocks/info-box',
+    'create-block/block-meeting-calendly' => 'tilleuls-ortego-blocks/appointment',
+    'tilleuls-ortego-blocks/block-pricing' => 'tilleuls-ortego-blocks/pricing',
+    'tilleuls-ortego-blocks/block-profile-homepage' => 'tilleuls-ortego-blocks/profile-home',
+    'tilleuls-ortego-blocks/profile-block' => 'tilleuls-ortego-blocks/profile',
+    'tilleuls-ortego-blocks/section-card' => 'tilleuls-ortego-blocks/cards',
+    'tilleuls-ortego-blocks/title-section' => 'tilleuls-ortego-blocks/section-title',
+];
 
 #[AsTask(description: 'Install wordpress with plugins')]
 function install(string $path = '.', string $version = 'latest'): void
@@ -73,6 +89,34 @@ function pages(string $path = '.'): void
     create_pages($context, $path);
 }
 
+#[AsTask(name: 'migrate-blocks', description: 'Rename old custom block names in the content (pages, templates, patterns)')]
+function migrate_blocks(string $path = '.', bool $dryRun = false): void
+{
+    io()->title("Block names migration");
+
+    $context = installed_site_context($path);
+    if ($context === null) {
+        return;
+    }
+
+    rename_blocks($context, $dryRun);
+}
+
+/**
+ * Rewrite block comment delimiters (`<!-- wp:old ...`, `<!-- /wp:old -->`) in post_content.
+ * Idempotent: once migrated, the old names are no longer found.
+ */
+function rename_blocks(Context $context, bool $dryRun = false): void
+{
+    foreach (BLOCK_RENAMES as $old => $new) {
+        $command = ['wp', 'search-replace', 'wp:'.$old.' ', 'wp:'.$new.' ', '--include-columns=post_content', '--report-changed-only'];
+        if ($dryRun) {
+            $command[] = '--dry-run';
+        }
+        run($command, context: $context);
+    }
+}
+
 function create_pages(Context $context, string $path): void
 {
     // Prefer the theme of the target install, fall back to the one in this repository.
@@ -127,6 +171,7 @@ function update(string $path = '.', string $version = 'latest'): void
     }
 
     run('wp core update-db', context: $context);
+    rename_blocks($context);
     run('wp plugin update --all', context: $context);
     run('wp language core update', context: $context);
     run('wp language plugin update --all', context: $context);

@@ -1,0 +1,43 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "tilleuls-ortego-blocks/hero-home",
+	"version": "0.1.0",
+	"title": "Grand en-tête de la page d'accueil",
+	"category": "cabinet-ortego",
+	"icon": "cover-image",
+	"description": "La grande image tout en haut de la page d'accueil, avec un titre, un sur-titre et un ou deux boutons. À utiliser une seule fois, au début de la page d'accueil.",
+	"keywords": [
+		"hero",
+		"accueil",
+		"bannière",
+		"introduction",
+		"home"
+	],
+	"supports": {
+		"html": false,
+		"align": [
+			"wide",
+			"full"
+		]
+	},
+	"textdomain": "tilleuls",
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css",
+	"render": "file:./render.php",
+	"attributes": {
+		"surtitle": {
+			"type": "string",
+			"default": ""
+		},
+		"cta": {
+			"type": "string",
+			"default": "string"
+		},
+		"ctaBis": {
+			"type": "string",
+			"default": "string"
+		}
+	}
+}

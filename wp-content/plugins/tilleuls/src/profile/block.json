@@ -1,0 +1,65 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "tilleuls-ortego-blocks/profile",
+	"version": "0.1.0",
+	"title": "Profil complet de l'avocate",
+	"category": "cabinet-ortego",
+	"icon": "welcome-learn-more",
+	"description": "La présentation détaillée de l'avocate : photo, biographie, langues parlées et diplômes. Idéal pour la page « Le Cabinet ».",
+	"keywords": [
+		"biographie",
+		"formation",
+		"diplome",
+		"avocat",
+		"cursus",
+		"ortego"
+	],
+	"supports": {
+		"html": false,
+		"align": [
+			"wide",
+			"full"
+		],
+		"innerBlocks": true
+	},
+	"textdomain": "tilleuls",
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css",
+	"render": "file:./render.php",
+	"attributes": {
+		"bio": {
+			"type": "string",
+			"default": ""
+		},
+		"imgId": {
+			"type": "number",
+			"default": 0
+		},
+		"imgUrl": {
+			"type": "string",
+			"default": ""
+		},
+		"languages": {
+			"type": "array",
+			"default": [],
+			"items": {
+				"type": "object",
+				"default": {
+					"name": ""
+				}
+			}
+		},
+		"diplomas": {
+			"type": "array",
+			"default": [],
+			"items": {
+				"type": "object",
+				"default": {
+					"text": ""
+				}
+			}
+		}
+	}
+}

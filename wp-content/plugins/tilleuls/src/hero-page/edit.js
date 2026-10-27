@@ -46,7 +46,7 @@ export default function Edit( { attributes, setAttributes } ) {
 
 	const INNER_BLOCKS = [
 		[
-			'tilleuls-ortego-blocks/title-section',
+			'tilleuls-ortego-blocks/section-title',
 			{ title: postTitle, blockPosition: 'center', subtitle: '' },
 		],
 	];

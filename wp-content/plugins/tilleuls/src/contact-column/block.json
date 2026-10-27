@@ -1,0 +1,26 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "tilleuls-ortego-blocks/contact-column",
+	"version": "0.1.0",
+	"title": "Coordonnées et plan (en colonne)",
+	"category": "cabinet-ortego",
+	"icon": "location-alt",
+	"description": "Affiche l'adresse, le téléphone, l'e-mail et le plan du cabinet, les uns sous les autres. Rien à remplir : les informations viennent de Réglages > Général.",
+	"keywords": [
+		"contact",
+		"adresse",
+		"map",
+		"carte",
+		"telephone",
+		"email"
+	],
+	"supports": {
+		"html": false
+	},
+	"textdomain": "tilleuls",
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css",
+	"render": "file:./render.php"
+}
