@@ -7,14 +7,18 @@
 	"category": "design",
 	"icon": "admin-users",
 	"description": "Section portrait permettant d'afficher la biographie, une citation et les compétences linguistiques de l'avocat. A utiliser sur la page d'accueil.",
-	"keywords": ["avocat", "profil", "biographie", "portrait", "langues", "ortego"],
+	"keywords": [
+		"avocat",
+		"profil",
+		"biographie",
+		"portrait",
+		"langues",
+		"ortego"
+	],
 	"example": {},
 	"supports": {
 		"html": false,
-		"align": [
-			"wide",
-			"full"
-		],
+		"align": [ "wide", "full" ],
 		"innerBlocks": true
 	},
 	"textdomain": "tilleuls",

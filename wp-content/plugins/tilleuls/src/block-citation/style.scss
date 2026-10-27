@@ -27,17 +27,19 @@
 	margin: 0 !important;
 
 	.container {
+
 		.quote {
+
 			.quote-icon {
 				font-size: 4rem;
 				color: var(--wp--preset--color--accent);
 				opacity: 0.3;
 				line-height: 1;
-				margin-bottom: -20px
+				margin-bottom: -20px;
 			}
 
 			> blockquote {
-				font-family: 'Merriweather', serif !important;
+				font-family: Merriweather, serif !important;
 				font-size: 1.5rem;
 				font-style: italic;
 				color: var(--wp--preset--color--secondary);

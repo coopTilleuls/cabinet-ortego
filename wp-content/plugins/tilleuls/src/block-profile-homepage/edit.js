@@ -3,7 +3,7 @@
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-i18n/
  */
-import {__} from '@wordpress/i18n';
+import { __ } from '@wordpress/i18n';
 
 /**
  * React hook that is used to mark the block wrapper element.
@@ -17,7 +17,7 @@ import {
 	MediaUpload,
 	MediaUploadCheck,
 	RichText,
-	useBlockProps
+	useBlockProps,
 } from '@wordpress/block-editor';
 
 /**
@@ -27,128 +27,165 @@ import {
  * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
  */
 import './editor.scss';
-import {Button, PanelBody, TextControl} from "@wordpress/components"; // ResponsiveWrapper optionnel pour image
+import { Button, PanelBody, TextControl } from '@wordpress/components'; // ResponsiveWrapper optionnel pour image
 
 /**
  * The edit function describes the structure of your block in the context of the
  * editor. This represents what the editor will render when the block is used.
  *
+ * @param {Object}   root0
+ * @param {Object}   root0.attributes    Block attributes.
+ * @param {Function} root0.setAttributes Block attributes setter.
  * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-edit-save/#edit
  *
  * @return {Element} Element to render.
  */
-export default function Edit({attributes, setAttributes}) {
-	const {imgId, imgUrl, languages, buttonText, buttonLink} = attributes;
+export default function Edit( { attributes, setAttributes } ) {
+	const { imgId, imgUrl, languages, buttonText, buttonLink } = attributes;
 
-	const blockProps = useBlockProps({
-		className: 'profile-home'
-	});
+	const blockProps = useBlockProps( {
+		className: 'profile-home',
+	} );
 
 	const CONTENT_TEMPLATE = [
-		['tilleuls-ortego-blocks/title-section', {}],
-		['core/paragraph', {placeholder: 'Description...'}]
+		[ 'tilleuls-ortego-blocks/title-section', {} ],
+		[ 'core/paragraph', { placeholder: 'Description...' } ],
 	];
 
-	const onSelectImage = (media) => {
-		setAttributes({
+	const onSelectImage = ( media ) => {
+		setAttributes( {
 			imgId: media.id,
-			imgUrl: media.url
-		});
+			imgUrl: media.url,
+		} );
 	};
 
 	const removeImage = () => {
-		setAttributes({
+		setAttributes( {
 			imgId: 0,
-			imgUrl: ''
-		});
+			imgUrl: '',
+		} );
 	};
 
 	const addLanguage = () => {
-		const newLangs = [...languages, {name: ''}];
-		setAttributes({languages: newLangs});
+		const newLangs = [ ...languages, { name: '' } ];
+		setAttributes( { languages: newLangs } );
 	};
 
-	const updateLanguage = (index, value) => {
-		const newLangs = [...languages];
-		newLangs[index] = {
-			...newLangs[index],
-			name: value
+	const updateLanguage = ( index, value ) => {
+		const newLangs = [ ...languages ];
+		newLangs[ index ] = {
+			...newLangs[ index ],
+			name: value,
 		};
 
-		setAttributes({languages: newLangs});
+		setAttributes( { languages: newLangs } );
 	};
 
-	const removeLanguage = (index) => {
-		const newLangs = languages.filter((_, i) => i !== index);
-		setAttributes({languages: newLangs});
+	const removeLanguage = ( index ) => {
+		const newLangs = languages.filter( ( _, i ) => i !== index );
+		setAttributes( { languages: newLangs } );
 	};
 
 	return (
 		<>
 			<InspectorControls>
-				<PanelBody title={__('Image de profil', 'tilleuls')}>
+				<PanelBody title={ __( 'Image de profil', 'tilleuls' ) }>
 					<MediaUploadCheck>
 						<MediaUpload
-							onSelect={onSelectImage}
-							allowedTypes={['image']}
-							value={imgId}
-							render={({open}) => (
+							onSelect={ onSelectImage }
+							allowedTypes={ [ 'image' ] }
+							value={ imgId }
+							render={ ( { open } ) => (
 								<>
-									{imgId ? (
+									{ imgId ? (
 										<>
-											<Button onClick={open} isSecondary style={{marginBottom: '10px', width: '100%'}}>
-												{__('Changer l’image', 'tilleuls')}
+											<Button
+												onClick={ open }
+												isSecondary
+												style={ {
+													marginBottom: '10px',
+													width: '100%',
+												} }
+											>
+												{ __(
+													'Changer l’image',
+													'tilleuls'
+												) }
 											</Button>
-											<Button onClick={removeImage} isDestructive style={{width: '100%'}}>
-												{__('Supprimer l’image', 'tilleuls')}
+											<Button
+												onClick={ removeImage }
+												isDestructive
+												style={ { width: '100%' } }
+											>
+												{ __(
+													'Supprimer l’image',
+													'tilleuls'
+												) }
 											</Button>
 										</>
 									) : (
-										<Button onClick={open} isPrimary style={{width: '100%'}}>
-											{__('Choisir une image', 'tilleuls')}
+										<Button
+											onClick={ open }
+											isPrimary
+											style={ { width: '100%' } }
+										>
+											{ __(
+												'Choisir une image',
+												'tilleuls'
+											) }
 										</Button>
-									)}
+									) }
 								</>
-							)}
+							) }
 						/>
 					</MediaUploadCheck>
 					<TextControl
-						label={__('Lien (URL)', 'tilleuls')}
-						value={buttonLink || ''}
-						onChange={(value) => setAttributes({buttonLink: value})}
+						label={ __( 'Lien (URL)', 'tilleuls' ) }
+						value={ buttonLink || '' }
+						onChange={ ( value ) =>
+							setAttributes( { buttonLink: value } )
+						}
 						placeholder="https://..."
-						help={__('Collez l\'URL de la page interne ou du site externe.', 'tilleuls')}
+						help={ __(
+							"Collez l'URL de la page interne ou du site externe.",
+							'tilleuls'
+						) }
 					/>
 					<TextControl
-						label={__('Label du bouton', 'tilleuls')}
-						value={buttonText || ''}
-						onChange={(value) => setAttributes({buttonText: value})}
-						help={__('Si vide, numero de téléphone mis par défaut.', 'tilleuls')}
+						label={ __( 'Label du bouton', 'tilleuls' ) }
+						value={ buttonText || '' }
+						onChange={ ( value ) =>
+							setAttributes( { buttonText: value } )
+						}
+						help={ __(
+							'Si vide, numero de téléphone mis par défaut.',
+							'tilleuls'
+						) }
 						placeholder="Prendre rendez-vous"
 					/>
 				</PanelBody>
 			</InspectorControls>
 
-			<section {...blockProps}>
+			<section { ...blockProps }>
 				<div className="container profile-home-grid">
 					<div className="profile-home-img">
-						{imgUrl ? (
+						{ imgUrl ? (
 							<img
-								src={imgUrl}
-								alt={__('Photo de profil', 'tilleuls')}
+								src={ imgUrl }
+								alt={ __( 'Photo de profil', 'tilleuls' ) }
 							/>
 						) : (
 							<MediaUploadCheck>
 								<MediaUpload
-									onSelect={onSelectImage}
-									allowedTypes={['image']}
-									value={imgId}
-									render={({open}) => (
+									onSelect={ onSelectImage }
+									allowedTypes={ [ 'image' ] }
+									value={ imgId }
+									render={ ( { open } ) => (
 										<button
 											type="button"
 											className="placeholder-image"
-											onClick={open}
-											style={{
+											onClick={ open }
+											style={ {
 												background: '#f0f0f0',
 												width: '100%',
 												height: '100%',
@@ -158,62 +195,93 @@ export default function Edit({attributes, setAttributes}) {
 												justifyContent: 'center',
 												color: '#ccc',
 												cursor: 'pointer',
-												border: 'none'
-											}}
+												border: 'none',
+											} }
 										>
-											{__('Cliquer pour ajouter une image', 'tilleuls')}
+											{ __(
+												'Cliquer pour ajouter une image',
+												'tilleuls'
+											) }
 										</button>
-									)}
+									) }
 								/>
 							</MediaUploadCheck>
-						)}
+						) }
 					</div>
 
 					<div className="profile-home-content">
-						<span className="profile-surtitle">À propos de l&apos;avocate</span>
-						<InnerBlocks
-							template={CONTENT_TEMPLATE}
-						/>
+						<span className="profile-surtitle">
+							À propos de l&apos;avocate
+						</span>
+						<InnerBlocks template={ CONTENT_TEMPLATE } />
 
 						<div className="languages-list">
-							<div style={{display: 'flex', flexWrap: 'wrap', gap: '5px'}}>
-								{languages.map((lang, index) => (
-									<div key={index} className="lang-tag-editor" style={{
-										display: 'flex',
-										alignItems: 'center',
-										background: '#f4f1ea',
-										padding: '2px 8px',
-										borderRadius: '2px',
-										border: '1px solid #e0dcd0'
-									}}>
+							<div
+								style={ {
+									display: 'flex',
+									flexWrap: 'wrap',
+									gap: '5px',
+								} }
+							>
+								{ languages.map( ( lang, index ) => (
+									<div
+										key={ index }
+										className="lang-tag-editor"
+										style={ {
+											display: 'flex',
+											alignItems: 'center',
+											background: '#f4f1ea',
+											padding: '2px 8px',
+											borderRadius: '2px',
+											border: '1px solid #e0dcd0',
+										} }
+									>
 										<RichText
 											tagName="span"
 											className="lang-tag"
-											value={lang.name}
-											onChange={(val) => updateLanguage(index, val)}
-											placeholder={__('Langue...', 'tilleuls')}
-											allowedFormats={[]}
+											value={ lang.name }
+											onChange={ ( val ) =>
+												updateLanguage( index, val )
+											}
+											placeholder={ __(
+												'Langue…',
+												'tilleuls'
+											) }
+											allowedFormats={ [] }
 										/>
 										<Button
 											icon="no-alt"
 											isSmall
 											isDestructive
-											label={__('Retirer la langue', 'tilleuls')}
-											onClick={() => removeLanguage(index)}
+											label={ __(
+												'Retirer la langue',
+												'tilleuls'
+											) }
+											onClick={ () =>
+												removeLanguage( index )
+											}
 										/>
 									</div>
-								))}
+								) ) }
 								<Button
 									isSmall
 									isSecondary
-									onClick={addLanguage}
+									onClick={ addLanguage }
 									icon="plus"
-									label={__('Ajouter une langue', 'tilleuls')}
-									style={{minWidth: '30px', padding: '0 5px'}}
+									label={ __(
+										'Ajouter une langue',
+										'tilleuls'
+									) }
+									style={ {
+										minWidth: '30px',
+										padding: '0 5px',
+									} }
 								/>
 							</div>
 						</div>
-						<a href={buttonLink} className="profile-cta">{buttonText}</a>
+						<a href={ buttonLink } className="profile-cta">
+							{ buttonText }
+						</a>
 					</div>
 				</div>
 			</section>

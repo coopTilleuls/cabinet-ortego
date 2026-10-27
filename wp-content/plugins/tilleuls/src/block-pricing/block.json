@@ -17,9 +17,7 @@
 	],
 	"supports": {
 		"html": false,
-		"align": [
-			"full"
-		],
+		"align": [ "full" ],
 		"innerBlocks": true
 	},
 	"textdomain": "tilleuls",

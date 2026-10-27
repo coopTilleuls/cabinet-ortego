@@ -6,7 +6,13 @@
 	"title": "Encart d'Information",
 	"category": "design",
 	"description": "Un encart modulable pour souligner une information importante : aide juridictionnelle, tarifs, ou points de vigilance.",
-	"keywords": ["info", "aide juridictionnelle", "tarif", "important", "ortego"],
+	"keywords": [
+		"info",
+		"aide juridictionnelle",
+		"tarif",
+		"important",
+		"ortego"
+	],
 	"supports": {
 		"html": false
 	},

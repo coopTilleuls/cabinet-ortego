@@ -1,13 +1,13 @@
-import {InnerBlocks, RichText, useBlockProps} from '@wordpress/block-editor';
-import {Button, Tooltip} from '@wordpress/components';
+import { InnerBlocks, RichText, useBlockProps } from '@wordpress/block-editor';
+import { Button, Tooltip } from '@wordpress/components';
 import './editor.scss';
 
-export default function Edit({ attributes, setAttributes }) {
+export default function Edit( { attributes, setAttributes } ) {
 	const { pricingCards = [] } = attributes;
 
-	const blockProps = useBlockProps({
-		className: 'section-pricing'
-	});
+	const blockProps = useBlockProps( {
+		className: 'section-pricing',
+	} );
 
 	const addCard = () => {
 		const newCards = [
@@ -16,68 +16,106 @@ export default function Edit({ attributes, setAttributes }) {
 				title: 'Titre du forfait',
 				price: '0€',
 				unit: '/ heure',
-				features: ['Caractéristique 1', 'Caractéristique 2'],
+				features: [ 'Caractéristique 1', 'Caractéristique 2' ],
 				buttonText: 'Réserver',
 				isFeatured: false,
-				buttonStyle: 'primary'
-			}
+				buttonStyle: 'primary',
+			},
 		];
-		setAttributes({ pricingCards: newCards });
+		setAttributes( { pricingCards: newCards } );
 	};
 
-	const removeCard = (index) => {
-		const newCards = pricingCards.filter((_, i) => i !== index);
-		setAttributes({ pricingCards: newCards });
+	const removeCard = ( index ) => {
+		const newCards = pricingCards.filter( ( _, i ) => i !== index );
+		setAttributes( { pricingCards: newCards } );
 	};
 
-	const updateCard = (index, key, value) => {
-		setAttributes({
-			pricingCards: pricingCards.map((card, i) => (i === index ? { ...card, [key]: value } : card)),
-		});
+	const updateCard = ( index, key, value ) => {
+		setAttributes( {
+			pricingCards: pricingCards.map( ( card, i ) =>
+				i === index ? { ...card, [ key ]: value } : card
+			),
+		} );
 	};
 
-	const updateFeatures = (cardIndex, updater) => {
-		updateCard(cardIndex, 'features', updater(pricingCards[cardIndex].features ?? []));
+	const updateFeatures = ( cardIndex, updater ) => {
+		updateCard(
+			cardIndex,
+			'features',
+			updater( pricingCards[ cardIndex ].features ?? [] )
+		);
 	};
 
-	const updateFeature = (cardIndex, featureIndex, value) => {
-		updateFeatures(cardIndex, (features) => features.map((feature, i) => (i === featureIndex ? value : feature)));
+	const updateFeature = ( cardIndex, featureIndex, value ) => {
+		updateFeatures( cardIndex, ( features ) =>
+			features.map( ( feature, i ) =>
+				i === featureIndex ? value : feature
+			)
+		);
 	};
 
-	const addFeature = (cardIndex) => {
-		updateFeatures(cardIndex, (features) => [...features, 'Nouvelle option']);
+	const addFeature = ( cardIndex ) => {
+		updateFeatures( cardIndex, ( features ) => [
+			...features,
+			'Nouvelle option',
+		] );
 	};
 
-	const removeFeature = (cardIndex, featureIndex) => {
-		updateFeatures(cardIndex, (features) => features.filter((_, i) => i !== featureIndex));
+	const removeFeature = ( cardIndex, featureIndex ) => {
+		updateFeatures( cardIndex, ( features ) =>
+			features.filter( ( _, i ) => i !== featureIndex )
+		);
 	};
 
-	const INNER_BLOCKS = [
-		['tilleuls-ortego-blocks/title-section', {}],
-	]
+	const INNER_BLOCKS = [ [ 'tilleuls-ortego-blocks/title-section', {} ] ];
 
 	return (
-		<section {...blockProps}>
+		<section { ...blockProps }>
 			<div className="container">
-				<InnerBlocks
-					template={INNER_BLOCKS}
-				/>
+				<InnerBlocks template={ INNER_BLOCKS } />
 				<div className="pricing-grid">
-					{pricingCards.map((card, index) => (
+					{ pricingCards.map( ( card, index ) => (
 						<div
-							key={index}
-							className={`price-card ${card.isFeatured ? 'featured' : ''}`}
-							style={{
+							key={ index }
+							className={ `price-card ${
+								card.isFeatured ? 'featured' : ''
+							}` }
+							style={ {
 								position: 'relative',
-							}}
+							} }
 						>
-							<div className="card-controls" style={{ position: 'absolute', top: '-10px', right: '-10px', zIndex: 10, display: 'flex', gap: '5px' }}>
+							<div
+								className="card-controls"
+								style={ {
+									position: 'absolute',
+									top: '-10px',
+									right: '-10px',
+									zIndex: 10,
+									display: 'flex',
+									gap: '5px',
+								} }
+							>
 								<Tooltip text="Mettre en avant">
 									<Button
-										icon={card.isFeatured ? "star-filled" : "star-empty"}
+										icon={
+											card.isFeatured
+												? 'star-filled'
+												: 'star-empty'
+										}
 										isSmall
-										onClick={() => updateCard(index, 'isFeatured', !card.isFeatured)}
-										style={{ background: card.isFeatured ? '#f0f0f0' : '#fff', border: '1px solid #ccc' }}
+										onClick={ () =>
+											updateCard(
+												index,
+												'isFeatured',
+												! card.isFeatured
+											)
+										}
+										style={ {
+											background: card.isFeatured
+												? '#f0f0f0'
+												: '#fff',
+											border: '1px solid #ccc',
+										} }
 									/>
 								</Tooltip>
 								<Tooltip text="Supprimer la carte">
@@ -85,7 +123,7 @@ export default function Edit({ attributes, setAttributes }) {
 										icon="trash"
 										isDestructive
 										isSmall
-										onClick={() => removeCard(index)}
+										onClick={ () => removeCard( index ) }
 									/>
 								</Tooltip>
 							</div>
@@ -93,58 +131,102 @@ export default function Edit({ attributes, setAttributes }) {
 								<RichText
 									tagName="h3"
 									className="price-title"
-									value={card.title}
-									onChange={(val) => updateCard(index, 'title', val)}
+									value={ card.title }
+									onChange={ ( val ) =>
+										updateCard( index, 'title', val )
+									}
 									placeholder="Nom du forfait"
 								/>
 								<div className="price-amount">
 									<RichText
 										tagName="span"
-										value={card.price}
-										onChange={(val) => updateCard(index, 'price', val)}
+										value={ card.price }
+										onChange={ ( val ) =>
+											updateCard( index, 'price', val )
+										}
 										placeholder="80€"
-										allowedFormats={[]}
+										allowedFormats={ [] }
 									/>
 									<RichText
 										tagName="span"
 										className="price-unit"
-										value={card.unit}
-										onChange={(val) => updateCard(index, 'unit', val)}
+										value={ card.unit }
+										onChange={ ( val ) =>
+											updateCard( index, 'unit', val )
+										}
 										placeholder="/ heure"
-										style={{ fontSize: '0.9rem', color: '#555', fontWeight: 'normal' }}
+										style={ {
+											fontSize: '0.9rem',
+											color: '#555',
+											fontWeight: 'normal',
+										} }
 									/>
 								</div>
 							</div>
 							<div className="price-features">
 								<ul>
-									{(card.features ?? []).map((feature, fIndex) => (
-										<li key={fIndex}>
-											<i className="fa-solid fa-check"></i>
-											<RichText
-												tagName="span"
-												value={feature}
-												onChange={(val) => updateFeature(index, fIndex, val)}
-												placeholder="Caractéristique..."
-												style={{ flexGrow: 1, fontSize: '0.9rem', color: '#555' }}
-											/>
-											<Button
-												icon="no"
-												isSmall
-												onClick={() => removeFeature(index, fIndex)}
-												style={{ opacity: 0.5 }}
-											/>
-										</li>
-									))}
+									{ ( card.features ?? [] ).map(
+										( feature, fIndex ) => (
+											<li key={ fIndex }>
+												<i className="fa-solid fa-check"></i>
+												<RichText
+													tagName="span"
+													value={ feature }
+													onChange={ ( val ) =>
+														updateFeature(
+															index,
+															fIndex,
+															val
+														)
+													}
+													placeholder="Caractéristique..."
+													style={ {
+														flexGrow: 1,
+														fontSize: '0.9rem',
+														color: '#555',
+													} }
+												/>
+												<Button
+													icon="no"
+													isSmall
+													onClick={ () =>
+														removeFeature(
+															index,
+															fIndex
+														)
+													}
+													style={ { opacity: 0.5 } }
+												/>
+											</li>
+										)
+									) }
 								</ul>
-								<Button isSecondary isSmall onClick={() => addFeature(index)} style={{ width: '100%', marginBottom: '20px' }}>
+								<Button
+									isSecondary
+									isSmall
+									onClick={ () => addFeature( index ) }
+									style={ {
+										width: '100%',
+										marginBottom: '20px',
+									} }
+								>
 									+ Ajouter une ligne
 								</Button>
 							</div>
 						</div>
-					))}
+					) ) }
 
-					<div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '300px', border: '2px dashed #ccc', borderRadius: '4px' }}>
-						<Button isSecondary onClick={addCard} icon="plus">
+					<div
+						style={ {
+							display: 'flex',
+							alignItems: 'center',
+							justifyContent: 'center',
+							minHeight: '300px',
+							border: '2px dashed #ccc',
+							borderRadius: '4px',
+						} }
+					>
+						<Button isSecondary onClick={ addCard } icon="plus">
 							Ajouter une carte Tarif
 						</Button>
 					</div>

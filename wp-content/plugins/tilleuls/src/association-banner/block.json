@@ -7,10 +7,10 @@
 	"category": "design",
 	"icon": "awards",
 	"description": "Section dédiée à l'affichage de vos logos partenaires, syndicats et associations professionnelles.",
-	"keywords": ["avocat", "syndicat", "expert", "partenaire", "réseau"],
+	"keywords": [ "avocat", "syndicat", "expert", "partenaire", "réseau" ],
 	"supports": {
 		"html": false,
-		"align": ["wide", "full"],
+		"align": [ "wide", "full" ],
 		"innerBlocks": true
 	},
 	"textdomain": "tilleuls",

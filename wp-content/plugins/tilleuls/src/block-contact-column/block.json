@@ -7,7 +7,7 @@
 	"category": "design",
 	"icon": "location-alt",
 	"description": "Affiche les coordonnées détaillées (adresse, tel, email) accompagnées d'une carte Google Maps pour localiser le cabinet.",
-	"keywords": ["contact", "adresse", "map", "carte", "telephone", "email"],
+	"keywords": [ "contact", "adresse", "map", "carte", "telephone", "email" ],
 	"supports": {
 		"html": false
 	},

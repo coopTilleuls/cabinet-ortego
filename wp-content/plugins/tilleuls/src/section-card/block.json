@@ -7,10 +7,17 @@
 	"category": "design",
 	"icon": "layout",
 	"description": "Section composée de cartes descriptives pour mettre en avant vos engagements, votre philosophie ou vos compétences clés.",
-	"keywords": ["philosophie", "carte", "valeurs", "atouts", "compétences", "ortego"],
+	"keywords": [
+		"philosophie",
+		"carte",
+		"valeurs",
+		"atouts",
+		"compétences",
+		"ortego"
+	],
 	"supports": {
 		"html": false,
-		"align": ["wide", "full"],
+		"align": [ "wide", "full" ],
 		"innerBlocks": true
 	},
 	"textdomain": "tilleuls",

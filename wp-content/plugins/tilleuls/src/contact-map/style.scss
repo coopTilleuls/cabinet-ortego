@@ -39,7 +39,7 @@
 				> .item {
 					display: flex;
 					gap: 1rem;
-					margin-top: .5rem;
+					margin-top: 0.5rem;
 
 					> i {
 						color: var(--wp--preset--color--accent);
@@ -50,7 +50,7 @@
 						color: var(--wp--preset--color--primary);
 						font-size: 1rem;
 						text-align: justify;
-						font-weight: bold;
+						font-weight: 700;
 					}
 
 					a.info {
@@ -58,7 +58,9 @@
 					}
 				}
 			}
-			.right{
+
+			.right {
+
 				@media screen and (max-width: 768px) {
 					margin-top: 2rem;
 				}

@@ -9,7 +9,7 @@
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
  */
-import {useBlockProps} from '@wordpress/block-editor';
+import { useBlockProps } from '@wordpress/block-editor';
 
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
@@ -18,98 +18,78 @@ import {useBlockProps} from '@wordpress/block-editor';
  * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
  */
 import './editor.scss';
-import {useSelect} from "@wordpress/data";
+import { useSelect } from '@wordpress/data';
 
 /**
  * The edit function describes the structure of your block in the context of the
  * editor. This represents what the editor will render when the block is used.
  *
+ * @param {Object} root0
+ * @param {Object} root0.attributes Block attributes.
  * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-edit-save/#edit
  *
  * @return {Element} Element to render.
  */
-export default function Edit({attributes, setAttributes}) {
+export default function Edit( { attributes } ) {
 	const {} = attributes;
 
-	const blockName = useBlockProps({
-		className: 'section-contact-map-column'
-	})
-
-
-	const INNER_BLOCKS = [
-		['tilleuls-ortego-blocks/title-section', {}]
-	];
+	const blockName = useBlockProps( {
+		className: 'section-contact-map-column',
+	} );
 
 	const contactName = useSelect(
-		(select) =>
-			select('core').getEntityRecord(
-				'root',
-				'site'
-			)?.tilleuls_contact_name,
+		( select ) =>
+			select( 'core' ).getEntityRecord( 'root', 'site' )
+				?.tilleuls_contact_name,
 		[]
 	);
 
 	const contactAddress = useSelect(
-		(select) =>
-			select('core').getEntityRecord(
-				'root',
-				'site'
-			)?.tilleuls_address_street,
+		( select ) =>
+			select( 'core' ).getEntityRecord( 'root', 'site' )
+				?.tilleuls_address_street,
 		[]
 	);
 
 	const contactAddressComplement = useSelect(
-		(select) =>
-			select('core').getEntityRecord(
-				'root',
-				'site'
-			)?.tilleuls_address_complement,
+		( select ) =>
+			select( 'core' ).getEntityRecord( 'root', 'site' )
+				?.tilleuls_address_complement,
 		[]
 	);
 
 	const contactZipcode = useSelect(
-		(select) =>
-			select('core').getEntityRecord(
-				'root',
-				'site'
-			)?.tilleuls_address_zip,
+		( select ) =>
+			select( 'core' ).getEntityRecord( 'root', 'site' )
+				?.tilleuls_address_zip,
 		[]
 	);
 
-
 	const contactCity = useSelect(
-		(select) =>
-			select('core').getEntityRecord(
-				'root',
-				'site'
-			)?.tilleuls_address_city,
+		( select ) =>
+			select( 'core' ).getEntityRecord( 'root', 'site' )
+				?.tilleuls_address_city,
 		[]
 	);
 
 	const contactCountry = useSelect(
-		(select) =>
-			select('core').getEntityRecord(
-				'root',
-				'site'
-			)?.tilleuls_address_country,
+		( select ) =>
+			select( 'core' ).getEntityRecord( 'root', 'site' )
+				?.tilleuls_address_country,
 		[]
 	);
 
 	const contactPhone = useSelect(
-		(select) =>
-			select('core').getEntityRecord(
-				'root',
-				'site'
-			)?.tilleuls_contact_phone,
+		( select ) =>
+			select( 'core' ).getEntityRecord( 'root', 'site' )
+				?.tilleuls_contact_phone,
 		[]
 	);
 
 	const contactEmail = useSelect(
-		(select) =>
-			select('core').getEntityRecord(
-				'root',
-				'site'
-			)?.tilleuls_contact_email,
+		( select ) =>
+			select( 'core' ).getEntityRecord( 'root', 'site' )
+				?.tilleuls_contact_email,
 		[]
 	);
 
@@ -117,14 +97,14 @@ export default function Edit({attributes, setAttributes}) {
 		contactAddress,
 		contactZipcode,
 		contactCity,
-		contactCountry
-	].filter(Boolean);
+		contactCountry,
+	].filter( Boolean );
 
-	const addressComplete = addressParts.join(' ');
-	const addressEncoded = encodeURIComponent(addressComplete);
+	const addressComplete = addressParts.join( ' ' );
+	const addressEncoded = encodeURIComponent( addressComplete );
 
 	return (
-		<div {...blockName}>
+		<div { ...blockName }>
 			<div className="contact-details">
 				<h2>Nos Coordonnées</h2>
 				<div className="info-card">
@@ -133,14 +113,14 @@ export default function Edit({attributes, setAttributes}) {
 						<div>
 							<h3>Adresse</h3>
 							<p>
-								{contactAddress} <br/>
-								{contactAddressComplement ?
-									(<>
-										{contactAddressComplement} <br/>
-									</>) : null
-								}
-								{contactZipcode} - {contactCity} <br/>
-								{contactCountry}
+								{ contactAddress } <br />
+								{ contactAddressComplement ? (
+									<>
+										{ contactAddressComplement } <br />
+									</>
+								) : null }
+								{ contactZipcode } - { contactCity } <br />
+								{ contactCountry }
 							</p>
 						</div>
 					</div>
@@ -149,7 +129,9 @@ export default function Edit({attributes, setAttributes}) {
 						<div>
 							<h3>Téléphone</h3>
 							<p>
-								<a href={`tel:${contactPhone}`}>{contactPhone}</a>
+								<a href={ `tel:${ contactPhone }` }>
+									{ contactPhone }
+								</a>
 							</p>
 						</div>
 					</div>
@@ -158,7 +140,9 @@ export default function Edit({attributes, setAttributes}) {
 						<div>
 							<h3>Email</h3>
 							<p>
-								<a href={`mailto:${contactEmail}`}>{contactEmail}</a>
+								<a href={ `mailto:${ contactEmail }` }>
+									{ contactEmail }
+								</a>
 							</p>
 						</div>
 					</div>
@@ -167,7 +151,7 @@ export default function Edit({attributes, setAttributes}) {
 						<div>
 							<h3>Horaires d&apos;ouverture</h3>
 							<p>
-								{contactName} <br/>
+								{ contactName } <br />
 								Sur rendez-vous uniquement.
 							</p>
 						</div>
@@ -179,17 +163,16 @@ export default function Edit({attributes, setAttributes}) {
 					title="Aperçu Google Map"
 					width="100%"
 					height="100%"
-					style={{
+					style={ {
 						border: 0,
 						width: '100%',
 						height: '100%',
 						minHeight: '300px',
 						filter: 'grayscale(100%)',
-						pointerEvents: 'none'
-					}}
-					src={`https://maps.google.com/maps?q=${addressEncoded}&t=m&z=15&output=embed&iwloc=near&hl=fr`}
-				>
-				</iframe>
+						pointerEvents: 'none',
+					} }
+					src={ `https://maps.google.com/maps?q=${ addressEncoded }&t=m&z=15&output=embed&iwloc=near&hl=fr` }
+				></iframe>
 			</div>
 		</div>
 	);

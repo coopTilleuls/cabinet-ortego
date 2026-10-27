@@ -7,10 +7,17 @@
 	"category": "design",
 	"icon": "calendar-alt",
 	"description": "Section interactive permettant de présenter vos modalités de consultation et de prendre rendez-vous via Calendly.",
-	"keywords": ["calendly", "rendez-vous", "contact", "agenda", "consultation", "ortego"],
+	"keywords": [
+		"calendly",
+		"rendez-vous",
+		"contact",
+		"agenda",
+		"consultation",
+		"ortego"
+	],
 	"supports": {
 		"html": false,
-		"align": ["wide", "full"],
+		"align": [ "wide", "full" ],
 		"innerBlocks": true
 	},
 	"textdomain": "tilleuls",

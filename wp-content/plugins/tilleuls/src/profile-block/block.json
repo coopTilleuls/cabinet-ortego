@@ -7,10 +7,17 @@
 	"category": "design",
 	"icon": "welcome-learn-more",
 	"description": "Présentation complète de l'avocat avec gestion des diplômes et cursus universitaire.",
-	"keywords": ["biographie", "formation", "diplome", "avocat", "cursus", "ortego"],
+	"keywords": [
+		"biographie",
+		"formation",
+		"diplome",
+		"avocat",
+		"cursus",
+		"ortego"
+	],
 	"supports": {
 		"html": false,
-		"align": ["wide", "full"],
+		"align": [ "wide", "full" ],
 		"innerBlocks": true
 	},
 	"textdomain": "tilleuls",

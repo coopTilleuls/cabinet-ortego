@@ -16,6 +16,7 @@
 	margin: 0 !important;
 
 	.container {
+
 		.expertises-grid {
 			display: grid;
 			grid-template-columns: 1fr 1fr;
@@ -27,6 +28,7 @@
 			}
 
 			> .expertise-content {
+
 				> h2 {
 					font-size: 1.8rem;
 					margin-bottom: 20px;
@@ -62,7 +64,7 @@
 
 						&::before {
 							content: "\f00c";
-							font-family: "Font Awesome 6 Free";
+							font-family: "Font Awesome 6 Free", sans-serif;
 							font-weight: 900;
 							position: absolute;
 							left: 0;
@@ -85,8 +87,9 @@
 				position: relative;
 
 				@media screen and (min-width: 993px) {
-					&:after {
-						content: '';
+
+					&::after {
+						content: "";
 						position: absolute;
 						top: 20px;
 						left: 20px;
@@ -98,6 +101,7 @@
 					}
 				}
 
+				/* stylelint-disable-next-line no-descending-specificity */
 				i {
 					font-size: 6rem;
 					color: var(--wp--preset--color--accent);
@@ -108,6 +112,7 @@
 	}
 
 	@media screen and (min-width: 993px) {
+
 		&.has-img-left {
 
 			.expertise-visual {

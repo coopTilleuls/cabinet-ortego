@@ -7,10 +7,10 @@
 	"category": "design",
 	"icon": "align-center",
 	"description": "En-tête sobre pour les pages de services et d'informations.",
-	"keywords": ["hero", "titre", "bannière", "page", "ortego"],
+	"keywords": [ "hero", "titre", "bannière", "page", "ortego" ],
 	"supports": {
 		"html": false,
-		"align": ["full"],
+		"align": [ "full" ],
 		"innerBlocks": true
 	},
 	"textdomain": "tilleuls",

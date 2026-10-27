@@ -7,10 +7,10 @@
 	"category": "design",
 	"icon": "editor-quote",
 	"description": "Une mise en avant textuelle pour souligner une citation ou une valeur fondamentale du cabinet.",
-	"keywords": ["quote", "citation", "témoignage", "avocat"],
+	"keywords": [ "quote", "citation", "témoignage", "avocat" ],
 	"supports": {
 		"html": false,
-		"align": ["wide", "full"]
+		"align": [ "wide", "full" ]
 	},
 	"textdomain": "tilleuls",
 	"editorScript": "file:./index.js",

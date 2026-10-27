@@ -7,12 +7,10 @@
 	"category": "design",
 	"icon": "columns",
 	"description": "Une section en deux colonnes idéale pour présenter un domaine d'intervention avec un descriptif textuel et une illustration iconographique.",
-	"keywords": ["service", "droit", "focus", "colonne", "expertise"],
+	"keywords": [ "service", "droit", "focus", "colonne", "expertise" ],
 	"supports": {
 		"html": false,
-		"align": [
-			"full"
-		]
+		"align": [ "full" ]
 	},
 	"textdomain": "tilleuls",
 	"editorScript": "file:./index.js",

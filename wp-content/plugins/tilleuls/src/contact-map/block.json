@@ -7,10 +7,10 @@
 	"category": "design",
 	"icon": "location",
 	"description": "Section de pied de page ou de contact avec coordonnées textuelles et carte interactive.",
-	"keywords": ["contact", "map", "plan", "adresse", "ortego"],
+	"keywords": [ "contact", "map", "plan", "adresse", "ortego" ],
 	"supports": {
 		"html": false,
-		"align": ["wide", "full"],
+		"align": [ "wide", "full" ],
 		"innerBlocks": true,
 		"anchor": true
 	},

@@ -7,7 +7,7 @@
 	"category": "design",
 	"icon": "editor-aligncenter",
 	"description": "Composant de titrage hiérarchisé pour introduire vos différentes sections avec élégance.",
-	"keywords": ["titre", "header", "philosophie", "expertise", "ortego"],
+	"keywords": [ "titre", "header", "philosophie", "expertise", "ortego" ],
 	"supports": {
 		"html": false
 	},
@@ -29,7 +29,7 @@
 			"type": "string",
 			"default": "left"
 		},
-		"size" : {
+		"size": {
 			"type": "string",
 			"default": "lg"
 		},
