@@ -19,7 +19,7 @@ $title = $attributes['title'] ?? '';
 $titleIcon = $attributes['titleIcon'] ?? '';
 
 $classWrapper = get_block_wrapper_attributes([
-	'class' => 'section-expertise-page has-img-' . $imgPosition,
+	'class' => 'section-expertise-page has-img-' . sanitize_html_class($imgPosition),
 ]);
 
 

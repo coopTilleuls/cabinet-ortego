@@ -68,7 +68,7 @@ echo $blockWrapper; ?>>
 			<div class="info-item">
 				<div class="info-title">
 					<i class="<?php
-					echo $ICONS[$item['icon']]['class'] ?>"></i>
+					echo esc_attr($ICONS[$item['icon'] ?? '']['class'] ?? ''); ?>"></i>
 					<h4><?php
 						echo wp_kses_post($item['title']); ?></h4>
 				</div>

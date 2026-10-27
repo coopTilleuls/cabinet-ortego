@@ -59,7 +59,7 @@ echo $wrapper_attributes; ?>>
 				if (!empty($bio)) : ?>
 					<div class="bio-content">
 						<?php
-						echo $bio; ?>
+						echo wp_kses_post($bio); ?>
 					</div>
 				<?php
 				endif; ?>

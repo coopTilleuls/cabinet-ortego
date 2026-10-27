@@ -86,7 +86,7 @@ export default function Edit({attributes, setAttributes}) {
 	return (
 		<>
 			<InspectorControls>
-				<PanelBody title={__('Image de profil', 'block-profile-homepage')}>
+				<PanelBody title={__('Image de profil', 'tilleuls')}>
 					<MediaUploadCheck>
 						<MediaUpload
 							onSelect={onSelectImage}
@@ -97,15 +97,15 @@ export default function Edit({attributes, setAttributes}) {
 									{imgId ? (
 										<>
 											<Button onClick={open} isSecondary style={{marginBottom: '10px', width: '100%'}}>
-												{__('Changer l’image', 'block-profile-homepage')}
+												{__('Changer l’image', 'tilleuls')}
 											</Button>
 											<Button onClick={removeImage} isDestructive style={{width: '100%'}}>
-												{__('Supprimer l’image', 'block-profile-homepage')}
+												{__('Supprimer l’image', 'tilleuls')}
 											</Button>
 										</>
 									) : (
 										<Button onClick={open} isPrimary style={{width: '100%'}}>
-											{__('Choisir une image', 'block-profile-homepage')}
+											{__('Choisir une image', 'tilleuls')}
 										</Button>
 									)}
 								</>
@@ -135,7 +135,7 @@ export default function Edit({attributes, setAttributes}) {
 						{imgUrl ? (
 							<img
 								src={imgUrl}
-								alt={__('Photo de profil', 'block-profile-homepage')}
+								alt={__('Photo de profil', 'tilleuls')}
 							/>
 						) : (
 							<MediaUploadCheck>
@@ -159,7 +159,7 @@ export default function Edit({attributes, setAttributes}) {
 												cursor: 'pointer'
 											}}
 										>
-											{__('Cliquer pour ajouter une image', 'block-profile-homepage')}
+											{__('Cliquer pour ajouter une image', 'tilleuls')}
 										</div>
 									)}
 								/>

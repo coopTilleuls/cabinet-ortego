@@ -31,29 +31,25 @@ export default function Edit({ attributes, setAttributes }) {
 	};
 
 	const updateCard = (index, key, value) => {
-		const newCards = [...pricingCards];
-		newCards[index] = { ...newCards[index], [key]: value };
-		setAttributes({ pricingCards: newCards });
+		setAttributes({
+			pricingCards: pricingCards.map((card, i) => (i === index ? { ...card, [key]: value } : card)),
+		});
+	};
+
+	const updateFeatures = (cardIndex, updater) => {
+		updateCard(cardIndex, 'features', updater(pricingCards[cardIndex].features ?? []));
 	};
 
 	const updateFeature = (cardIndex, featureIndex, value) => {
-		const newCards = [...pricingCards];
-		const newFeatures = [...newCards[cardIndex].features];
-		newFeatures[featureIndex] = value;
-		newCards[cardIndex].features = newFeatures;
-		setAttributes({ pricingCards: newCards });
+		updateFeatures(cardIndex, (features) => features.map((feature, i) => (i === featureIndex ? value : feature)));
 	};
 
 	const addFeature = (cardIndex) => {
-		const newCards = [...pricingCards];
-		newCards[cardIndex].features = [...newCards[cardIndex].features, 'Nouvelle option'];
-		setAttributes({ pricingCards: newCards });
+		updateFeatures(cardIndex, (features) => [...features, 'Nouvelle option']);
 	};
 
 	const removeFeature = (cardIndex, featureIndex) => {
-		const newCards = [...pricingCards];
-		newCards[cardIndex].features = newCards[cardIndex].features.filter((_, i) => i !== featureIndex);
-		setAttributes({ pricingCards: newCards });
+		updateFeatures(cardIndex, (features) => features.filter((_, i) => i !== featureIndex));
 	};
 
 	const INNER_BLOCKS = [
@@ -121,7 +117,7 @@ export default function Edit({ attributes, setAttributes }) {
 							</div>
 							<div className="price-features">
 								<ul>
-									{card.features.map((feature, fIndex) => (
+									{(card.features ?? []).map((feature, fIndex) => (
 										<li key={fIndex}>
 											<i className="fa-solid fa-check"></i>
 											<RichText

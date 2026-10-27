@@ -1,12 +1,12 @@
 === Tilleuls ===
-Contributors:      The WordPress Contributors
+Contributors:      Les-Tilleuls.coop
 Tags:              block
-Tested up to:      6.7
+Tested up to:      7.1
 Stable tag:        0.1.0
 License:           GPL-2.0-or-later
 License URI:       https://www.gnu.org/licenses/gpl-2.0.html
 
-Example block scaffolded with Create Block tool.
+Blocs Gutenberg sur mesure du site du Cabinet Ortego Sampedro.
 
 == Description ==
 

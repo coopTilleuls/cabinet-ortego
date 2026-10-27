@@ -1,11 +1,11 @@
 <?php
 /**
  * Plugin Name:       Tilleuls
- * Description:       Example block scaffolded with Create Block tool.
+ * Description:       Blocs Gutenberg sur mesure du site du Cabinet Ortego Sampedro.
  * Version:           0.1.0
  * Requires at least: 6.7
- * Requires PHP:      7.4
- * Author:            The WordPress Contributors
+ * Requires PHP:      8.0
+ * Author:            Les-Tilleuls.coop
  * License:           GPL-2.0-or-later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain:       tilleuls
@@ -16,6 +16,9 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
+
+require_once __DIR__ . '/includes/map.php';
+
 /**
  * Registers the block using a `blocks-manifest.php` file, which improves the performance of block type registration.
  * Behind the scenes, it also registers all assets so they can be enqueued

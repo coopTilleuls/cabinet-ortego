@@ -13,7 +13,7 @@
 		"align": ["wide", "full"],
 		"innerBlocks": true
 	},
-	"textdomain": "block-meeting-calendly",
+	"textdomain": "tilleuls",
 	"editorScript": "file:./index.js",
 	"editorStyle": "file:./index.css",
 	"style": "file:./style-index.css",

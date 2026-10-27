@@ -12,7 +12,7 @@
 		"html": false,
 		"align": ["wide", "full"]
 	},
-	"textdomain": "block-citation",
+	"textdomain": "tilleuls",
 	"editorScript": "file:./index.js",
 	"editorStyle": "file:./index.css",
 	"style": "file:./style-index.css",

@@ -15,7 +15,6 @@ $pays = get_option('tilleuls_address_country');
 
 $adresse_complete = trim($street . ' ' . $cp . ' ' . $ville . ' ' . $pays);
 
-$adresse_encoded = urlencode($adresse_complete);
 
 $wrapper_attributes = get_block_wrapper_attributes([
 	'class' => 'section-contact-map',
@@ -62,26 +61,7 @@ echo $wrapper_attributes; ?>>
 					</div>
 				</div>
 				<div class="right">
-					<?php
-					if (!empty($adresse_complete) && strlen($adresse_complete) > 5) : ?>
-						<iframe
-							width="100%"
-							height="100%"
-							style="border:0; width: 100%; height: 100%; min-height: 300px;"
-							loading="lazy"
-							allowfullscreen
-							src="https://maps.google.com/maps?q=<?php
-							echo $adresse_encoded; ?>&t=m&z=15&output=embed&iwloc=near">
-						</iframe>
-					<?php
-					else : ?>
-						<div
-							style="background-color: #eee; height: 100%; min-height: 300px; display: flex; align-items: center; justify-content: center; color: #999; flex-direction: column;">
-							<i class="fa-solid fa-map-slash" style="font-size: 2rem; margin-bottom: 10px;"></i>
-							<span>Adresse non configurée</span>
-						</div>
-					<?php
-					endif; ?>
+					<?php tilleuls_ortego_blocks_render_map($adresse_complete); ?>
 				</div>
 			</div>
 		</div>

@@ -7,13 +7,22 @@
 	"category": "design",
 	"icon": "admin-appearance",
 	"description": "Section organisée pour présenter vos honoraires (Consultation, Forfait, Taux horaire) avec mise en avant optionnelle.",
-	"keywords": ["prix", "honoraires", "grille", "devis", "comparatif", "ortego"],
+	"keywords": [
+		"prix",
+		"honoraires",
+		"grille",
+		"devis",
+		"comparatif",
+		"ortego"
+	],
 	"supports": {
 		"html": false,
-		"align": ["full"],
+		"align": [
+			"full"
+		],
 		"innerBlocks": true
 	},
-	"textdomain": "block-pricing",
+	"textdomain": "tilleuls",
 	"editorScript": "file:./index.js",
 	"editorStyle": "file:./index.css",
 	"style": "file:./style-index.css",
@@ -24,9 +33,31 @@
 			"default": [],
 			"items": {
 				"type": "object",
-				"default": {
-					"icon": "fa-solid fa-gavel",
-					"text": ""
+				"properties": {
+					"title": {
+						"type": "string"
+					},
+					"price": {
+						"type": "string"
+					},
+					"unit": {
+						"type": "string"
+					},
+					"features": {
+						"type": "array",
+						"items": {
+							"type": "string"
+						}
+					},
+					"buttonText": {
+						"type": "string"
+					},
+					"isFeatured": {
+						"type": "boolean"
+					},
+					"buttonStyle": {
+						"type": "string"
+					}
 				}
 			}
 		}
