@@ -32,7 +32,9 @@ $title = tilleuls_split_title(get_bloginfo('name'));
 
             <!-- wp:group {"style":{"spacing":{"blockGap":"var:preset|spacing|10"}},"layout":{"type":"flex","flexWrap":"nowrap","justifyContent":"right"}} -->
             <div class="wp-block-group">
-                <!-- wp:navigation {"layout":{"type":"flex","justifyContent":"right"}} /-->
+                <!-- wp:navigation {"overlayMenu":"mobile","layout":{"type":"flex","justifyContent":"right"}} -->
+                <?php echo tilleuls_navigation_links(); // Block markup built from pages.json. ?>
+                <!-- /wp:navigation -->
             </div>
             <!-- /wp:group -->
         </div>

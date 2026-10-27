@@ -12,6 +12,8 @@ use function Castor\run;
 
 const WP_LOCALE = 'fr_FR';
 const WP_PLUGINS = ['contact-form-7', 'wordpress-seo', 'polylang'];
+// Single source of truth for the site pages, also read by the theme header to build the navigation.
+const THEME_PAGES = 'wp-content/themes/tilleuls-cabinet-ortego-theme/pages.json';
 
 #[AsTask(description: 'Install wordpress with plugins')]
 function install(string $path = '.', string $version = 'latest'): void
@@ -50,8 +52,59 @@ function install(string $path = '.', string $version = 'latest'): void
     io()->info("Core installed.".PHP_EOL."Installing required plugins...");
     run(['wp', 'plugin', 'install', ...WP_PLUGINS, '--activate'], context: $context);
     run('wp plugin activate tilleuls', context: $context);
+    run('wp theme activate tilleuls-cabinet-ortego-theme', context: $context);
 
     run("wp plugin auto-updates enable --all", context: $context);
+
+    run(['wp', 'rewrite', 'structure', '/%postname%/'], context: $context);
+    create_pages($context);
+}
+
+#[AsTask(description: 'Create the site pages declared in the theme (pages.json), skipping existing ones')]
+function pages(string $path = '.'): void
+{
+    io()->title("Pages of Cabinet Ortego");
+
+    $context = wp_context($path);
+    if ($context === null || !ensure_wp_cli($context)) {
+        return;
+    }
+
+    if (!run('wp core is-installed', context: $context->withQuiet())->isSuccessful()) {
+        io()->error('No WordPress installation found (or database unreachable). Run `castor install` first.');
+        return;
+    }
+
+    create_pages($context);
+}
+
+function create_pages(Context $context): void
+{
+    $pages = json_decode((string) file_get_contents(__DIR__.'/'.THEME_PAGES), true, flags: JSON_THROW_ON_ERROR);
+
+    foreach ($pages as $page) {
+        $id = trim(run(
+            ['wp', 'post', 'list', '--post_type=page', '--post_status=any', '--name='.$page['slug'], '--field=ID'],
+            context: $context->withQuiet()
+        )->getOutput());
+
+        if ($id === '') {
+            $id = trim(run(
+                ['wp', 'post', 'create', '--post_type=page', '--post_status=publish', '--post_title='.$page['title'], '--post_name='.$page['slug'], '--porcelain'],
+                context: $context->withQuiet()
+            )->getOutput());
+            io()->writeln(sprintf('Created page "%s" (#%s)', $page['title'], $id));
+        } else {
+            io()->writeln(sprintf('Page "%s" already exists (#%s)', $page['title'], $id));
+        }
+
+        if (!empty($page['front']) && $id !== '') {
+            run(['wp', 'option', 'update', 'show_on_front', 'page'], context: $context->withQuiet());
+            run(['wp', 'option', 'update', 'page_on_front', $id], context: $context->withQuiet());
+        }
+    }
+
+    io()->success('Pages ready.');
 }
 
 #[AsTask(description: 'Update WordPress core, database, plugins and translations')]
