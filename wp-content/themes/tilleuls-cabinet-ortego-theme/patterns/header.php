@@ -33,7 +33,7 @@ $title = tilleuls_split_title(get_bloginfo('name'));
             <!-- wp:group {"style":{"spacing":{"blockGap":"var:preset|spacing|10"}},"layout":{"type":"flex","flexWrap":"nowrap","justifyContent":"right"}} -->
             <div class="wp-block-group">
                 <!-- wp:navigation {"overlayMenu":"mobile","layout":{"type":"flex","justifyContent":"right"}} -->
-                <?php echo tilleuls_navigation_links(); // Block markup built from pages.json. ?>
+                <?php echo tilleuls_navigation_links(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- serialized block markup: attributes are JSON-encoded by serialize_block_attributes() and escaped by core/navigation-link at render. ?>
                 <!-- /wp:navigation -->
             </div>
             <!-- /wp:group -->

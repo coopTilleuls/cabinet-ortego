@@ -17,7 +17,9 @@
 	],
 	"supports": {
 		"html": false,
-		"align": [ "full" ],
+		"align": [
+			"full"
+		],
 		"innerBlocks": true
 	},
 	"textdomain": "tilleuls",
@@ -47,14 +49,8 @@
 							"type": "string"
 						}
 					},
-					"buttonText": {
-						"type": "string"
-					},
 					"isFeatured": {
 						"type": "boolean"
-					},
-					"buttonStyle": {
-						"type": "string"
 					}
 				}
 			}

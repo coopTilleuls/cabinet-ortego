@@ -18,6 +18,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 require_once __DIR__ . '/includes/map.php';
+require_once __DIR__ . '/includes/media.php';
 
 /**
  * Registers the block using a `blocks-manifest.php` file, which improves the performance of block type registration.

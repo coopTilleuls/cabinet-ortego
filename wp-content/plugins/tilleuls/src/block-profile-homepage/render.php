@@ -17,11 +17,7 @@ $blockWrapper = get_block_wrapper_attributes([
 $attributes = $attributes ?? [];
 
 $img_url = $attributes['imgUrl'] ?? '';
-$img_id = (int) ($attributes['imgId'] ?? 0);
-$img_alt = $img_id ? (string) get_post_meta($img_id, '_wp_attachment_image_alt', true) : '';
-if ($img_alt === '') {
-	$img_alt = __('Photo de profil', 'tilleuls');
-}
+$img_alt = tilleuls_ortego_blocks_image_alt((int) ($attributes['imgId'] ?? 0), __('Photo de profil', 'tilleuls'));
 $languages = $attributes['languages'] ?? [];
 $buttonLink = $attributes['buttonLink'] ?? '';
 $buttonText = $attributes['buttonText'] ?? '';
@@ -57,7 +53,7 @@ $buttonText = $attributes['buttonText'] ?? '';
 				endforeach; ?>
 			</div>
 
-			<a href="<?php echo esc_url($buttonLink); ?>" class="profile-cta"> <?php echo $buttonText; ?></a>
+			<a href="<?php echo esc_url($buttonLink); ?>" class="profile-cta"> <?php echo esc_html($buttonText); ?></a>
 		</div>
 	</div>
 </section>

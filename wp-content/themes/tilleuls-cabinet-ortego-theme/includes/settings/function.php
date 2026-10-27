@@ -7,19 +7,19 @@
 declare(strict_types=1);
 
 /**
- * @return array<string, array{label: string, type: string, class: string}>
+ * @return array<string, array{label: string, type: string, class_name: string}>
  */
 function tilleuls_contact_fields(): array
 {
     return [
-        'tilleuls_contact_name' => ['label' => 'Nom complet / Raison sociale', 'type' => 'text', 'class' => 'regular-text'],
-        'tilleuls_address_street' => ['label' => 'Numéro et voie', 'type' => 'text', 'class' => 'large-text'],
-        'tilleuls_address_complement' => ['label' => 'Complément d\'adresse (étage, etc.)', 'type' => 'text', 'class' => 'regular-text'],
-        'tilleuls_address_zip' => ['label' => 'Code Postal', 'type' => 'text', 'class' => 'regular-text'],
-        'tilleuls_address_city' => ['label' => 'Ville', 'type' => 'text', 'class' => 'regular-text'],
-        'tilleuls_address_country' => ['label' => 'Pays', 'type' => 'text', 'class' => 'regular-text'],
-        'tilleuls_contact_phone' => ['label' => 'Numéro de téléphone', 'type' => 'tel', 'class' => 'regular-text'],
-        'tilleuls_contact_email' => ['label' => 'Adresse e-mail', 'type' => 'email', 'class' => 'regular-text'],
+        'tilleuls_contact_name' => ['label' => __('Nom complet / Raison sociale', 'tilleuls-cabinet-ortego-theme'), 'type' => 'text', 'class_name' => 'regular-text'],
+        'tilleuls_address_street' => ['label' => __('Numéro et voie', 'tilleuls-cabinet-ortego-theme'), 'type' => 'text', 'class_name' => 'large-text'],
+        'tilleuls_address_complement' => ['label' => __('Complément d\'adresse (étage, etc.)', 'tilleuls-cabinet-ortego-theme'), 'type' => 'text', 'class_name' => 'regular-text'],
+        'tilleuls_address_zip' => ['label' => __('Code Postal', 'tilleuls-cabinet-ortego-theme'), 'type' => 'text', 'class_name' => 'regular-text'],
+        'tilleuls_address_city' => ['label' => __('Ville', 'tilleuls-cabinet-ortego-theme'), 'type' => 'text', 'class_name' => 'regular-text'],
+        'tilleuls_address_country' => ['label' => __('Pays', 'tilleuls-cabinet-ortego-theme'), 'type' => 'text', 'class_name' => 'regular-text'],
+        'tilleuls_contact_phone' => ['label' => __('Numéro de téléphone', 'tilleuls-cabinet-ortego-theme'), 'type' => 'tel', 'class_name' => 'regular-text'],
+        'tilleuls_contact_email' => ['label' => __('Adresse e-mail', 'tilleuls-cabinet-ortego-theme'), 'type' => 'email', 'class_name' => 'regular-text'],
     ];
 }
 
@@ -34,7 +34,7 @@ function tilleuls_register_contact_settings(): void
             $option_name,
             [
                 'type' => 'string',
-                'sanitize_callback' => $field['type'] === 'email' ? 'sanitize_email' : 'sanitize_text_field',
+                'sanitize_callback' => 'email' === $field['type'] ? 'sanitize_email' : 'sanitize_text_field',
                 'default' => '',
                 'show_in_rest' => true,
             ]
@@ -53,7 +53,7 @@ function tilleuls_add_contact_settings_fields(): void
             'tilleuls_render_generic_field',
             'general',
             'default',
-            ['label_for' => $option_name, 'type' => $field['type'], 'class_name' => $field['class']]
+            ['label_for' => $option_name, 'type' => $field['type'], 'class_name' => $field['class_name']]
         );
     }
 }

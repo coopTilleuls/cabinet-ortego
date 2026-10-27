@@ -17,9 +17,7 @@ export default function Edit( { attributes, setAttributes } ) {
 				price: '0€',
 				unit: '/ heure',
 				features: [ 'Caractéristique 1', 'Caractéristique 2' ],
-				buttonText: 'Réserver',
 				isFeatured: false,
-				buttonStyle: 'primary',
 			},
 		];
 		setAttributes( { pricingCards: newCards } );

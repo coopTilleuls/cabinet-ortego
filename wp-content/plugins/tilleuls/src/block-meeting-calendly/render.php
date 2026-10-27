@@ -31,7 +31,7 @@ $calendly = $attributes['calendly'] ?? null;
 				<script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
 				<!-- Fin de widget en ligne Calendly -->
 			<?php else: ?>
-				<p>La prise de rendez-vous en ligne est momentanément indisponible. Contactez le cabinet par téléphone ou par e-mail.</p>
+				<p><?php esc_html_e( 'La prise de rendez-vous en ligne est momentanément indisponible. Contactez le cabinet par téléphone ou par e-mail.', 'tilleuls' ); ?></p>
 			<?php endif; ?>
 		</div>
 	</div>

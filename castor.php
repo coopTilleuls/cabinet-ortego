@@ -20,14 +20,14 @@ function install(string $path = '.', string $version = 'latest'): void
 {
     io()->title("Installation of WordPress for Cabinet Ortego");
 
-    $context = wp_context($path);
+    $context = site_context($path);
     if ($context === null || !ensure_wp_cli($context)) {
         return;
     }
 
     // Test if a WordPress installation exists
     $wp_installation = run('wp core is-installed', context: $context->withQuiet());
-    if($wp_installation->isSuccessful()) {
+    if ($wp_installation->isSuccessful()) {
         io()->info('A wordpress installation already exists. Run `castor update` to upgrade it.');
         return;
     }
@@ -43,7 +43,7 @@ function install(string $path = '.', string $version = 'latest'): void
     }
 
     $db_exists = run("wp db check", context: $context->withQuiet())->isSuccessful();
-    if( !$db_exists ) {
+    if ( !$db_exists ) {
         run('wp db create', context: $context);
     }
 
@@ -57,7 +57,7 @@ function install(string $path = '.', string $version = 'latest'): void
     run("wp plugin auto-updates enable --all", context: $context);
 
     run(['wp', 'rewrite', 'structure', '/%postname%/'], context: $context);
-    create_pages($context);
+    create_pages($context, $path);
 }
 
 #[AsTask(description: 'Create the site pages declared in the theme (pages.json), skipping existing ones')]
@@ -65,22 +65,19 @@ function pages(string $path = '.'): void
 {
     io()->title("Pages of Cabinet Ortego");
 
-    $context = wp_context($path);
-    if ($context === null || !ensure_wp_cli($context)) {
+    $context = installed_site_context($path);
+    if ($context === null) {
         return;
     }
 
-    if (!run('wp core is-installed', context: $context->withQuiet())->isSuccessful()) {
-        io()->error('No WordPress installation found (or database unreachable). Run `castor install` first.');
-        return;
-    }
-
-    create_pages($context);
+    create_pages($context, $path);
 }
 
-function create_pages(Context $context): void
+function create_pages(Context $context, string $path): void
 {
-    $pages = json_decode((string) file_get_contents(__DIR__.'/'.THEME_PAGES), true, flags: JSON_THROW_ON_ERROR);
+    // Prefer the theme of the target install, fall back to the one in this repository.
+    $file = fs()->exists($path.'/'.THEME_PAGES) ? $path.'/'.THEME_PAGES : __DIR__.'/'.THEME_PAGES;
+    $pages = json_decode((string) file_get_contents($file), true, flags: JSON_THROW_ON_ERROR);
 
     foreach ($pages as $page) {
         $id = trim(run(
@@ -112,13 +109,8 @@ function update(string $path = '.', string $version = 'latest'): void
 {
     io()->title("Update of WordPress for Cabinet Ortego");
 
-    $context = wp_context($path);
-    if ($context === null || !ensure_wp_cli($context)) {
-        return;
-    }
-
-    if (!run('wp core is-installed', context: $context->withQuiet())->isSuccessful()) {
-        io()->error('No WordPress installation found (or database unreachable). Run `castor install` first.');
+    $context = installed_site_context($path);
+    if ($context === null) {
         return;
     }
 
@@ -145,18 +137,36 @@ function update(string $path = '.', string $version = 'latest'): void
     io()->note('Rebuild the blocks if needed: cd wp-content/plugins/tilleuls && npm run build');
 }
 
-function wp_context(string $path): ?Context
+function site_context(string $path): ?Context
 {
-    if(!fs()->exists('.env')) {
+    if (!fs()->exists('.env')) {
         io()->error('.env file not found');
         return null;
     }
 
-    if(!fs()->exists($path)) {
+    if (!fs()->exists($path)) {
         fs()->mkdir($path);
     }
 
     return context()->withEnvironment(load_dot_env())->withWorkingDirectory($path)->withAllowFailure();
+}
+
+/**
+ * Context for an existing WordPress install: wp-cli available and WordPress installed (database reachable).
+ */
+function installed_site_context(string $path): ?Context
+{
+    $context = site_context($path);
+    if ($context === null || !ensure_wp_cli($context)) {
+        return null;
+    }
+
+    if (!run('wp core is-installed', context: $context->withQuiet())->isSuccessful()) {
+        io()->error('No WordPress installation found (or database unreachable). Run `castor install` first.');
+        return null;
+    }
+
+    return $context;
 }
 
 function ensure_wp_cli(Context $context): bool
@@ -169,7 +179,7 @@ function ensure_wp_cli(Context $context): bool
 
     http_download('https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar', './wp-cli.phar');
     $result = run(['php', 'wp-cli.phar', '--info']);
-    if(!$result->isSuccessful()) {
+    if (!$result->isSuccessful()) {
         io()->error('Error during the installation of wp cli');
         fs()->remove('wp-cli.phar');
         return false;

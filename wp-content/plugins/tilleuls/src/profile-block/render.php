@@ -7,11 +7,7 @@ $attributes = $attributes ?? [];
 
 $bio = $attributes['bio'] ?? '';
 $img_url = $attributes['imgUrl'] ?? '';
-$img_id = (int) ($attributes['imgId'] ?? 0);
-$img_alt = $img_id ? (string) get_post_meta($img_id, '_wp_attachment_image_alt', true) : '';
-if ($img_alt === '') {
-	$img_alt = __('Photo de profil', 'tilleuls');
-}
+$img_alt = tilleuls_ortego_blocks_image_alt((int) ($attributes['imgId'] ?? 0), __('Photo de profil', 'tilleuls'));
 $languages = $attributes['languages'] ?? [];
 $diplomas = $attributes['diplomas'] ?? [];
 

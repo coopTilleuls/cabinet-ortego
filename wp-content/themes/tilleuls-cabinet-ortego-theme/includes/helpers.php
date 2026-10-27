@@ -43,7 +43,7 @@ function tilleuls_navigation_links(): string
         }
 
         $post = get_page_by_path($page['slug']);
-        if (!$post instanceof WP_Post || $post->post_status !== 'publish') {
+        if (!$post instanceof WP_Post || 'publish' !== $post->post_status) {
             continue;
         }
 

@@ -18,7 +18,7 @@ function tilleuls_ortego_blocks_render_map( string $address ): void {
 	if ( strlen( $address ) <= 5 ) : ?>
 		<div style="background-color: #eee; height: 100%; min-height: 300px; display: flex; align-items: center; justify-content: center; color: #555; flex-direction: column;">
 			<i class="fa-solid fa-map-slash" style="font-size: 2rem; margin-bottom: 10px;" aria-hidden="true"></i>
-			<span>Adresse non configurée</span>
+			<span><?php esc_html_e( 'Adresse non configurée', 'tilleuls' ); ?></span>
 		</div>
 		<?php
 		return;
@@ -36,7 +36,11 @@ function tilleuls_ortego_blocks_render_map( string $address ): void {
 	);
 	?>
 	<iframe
-		title="<?php echo esc_attr( sprintf( 'Plan d\'accès : %s', $address ) ); ?>"
+		title="<?php echo esc_attr( sprintf(
+			/* translators: %s: postal address of the firm. */
+			__( 'Plan d\'accès : %s', 'tilleuls' ),
+			$address
+		) ); ?>"
 		width="100%"
 		height="100%"
 		style="border:0; width: 100%; height: 100%; min-height: 300px;"

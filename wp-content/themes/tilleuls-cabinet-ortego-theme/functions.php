@@ -60,7 +60,7 @@ add_action('wp_enqueue_scripts', function () {
         wp_enqueue_style(
             $handle,
             get_template_directory_uri() . $path,
-            $handle === 'global' ? [] : ['global'],
+            'global' === $handle ? [] : ['global'],
             tilleuls_asset_version($path)
         );
     }
