@@ -134,7 +134,7 @@ function update(string $path = '.', string $version = 'latest'): void
 
     $after = trim(run('wp core version', context: $context->withQuiet())->getOutput());
     io()->success(sprintf('WordPress %s → %s', $before, $after));
-    io()->note('Rebuild the blocks if needed: cd wp-content/plugins/tilleuls && npm run build');
+    io()->note('Rebuild the blocks if needed: cd wp-content/plugins/tilleuls && yarn build');
 }
 
 function site_context(string $path): ?Context
