@@ -54,17 +54,17 @@
         },
         {
           "slug": "text-muted",
-          "name": "Texte clair",
+          "name": "Texte atténué",
           "color": "#666666"
         },
         {
           "slug": "border-light",
-          "name": "Texte clair",
+          "name": "Bordure claire",
           "color": "#eee"
         },
         {
           "slug": "bg-light",
-          "name": "Texte clair",
+          "name": "Fond clair",
           "color": "#f9f9f9"
         },
         {

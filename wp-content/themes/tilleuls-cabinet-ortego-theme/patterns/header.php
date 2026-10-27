@@ -7,22 +7,11 @@
  * Block Types: core/template-part/header
  * Description: Site header with site title and navigation.
  *
- * @package WordPress
- * @subpackage Twenty_Twenty_Five
+ * @package tilleuls-cabinet-ortego-theme
  * @since tilleuls-cabinet-ortego-theme 1.0
  */
 
-$title = get_bloginfo('title');
-
-function explode_title(string $title): array
-{
-    $exploded_title = explode(' ', $title);
-
-    return [
-            'first' => array_shift($exploded_title),
-            'last' => implode(' ', $exploded_title)
-    ];
-}
+$title = tilleuls_split_title(get_bloginfo('name'));
 
 ?>
 <!-- wp:group {"align":"full","layout":{"type":"default"}} -->
@@ -34,9 +23,9 @@ function explode_title(string $title): array
              style="padding-top:var(--wp--preset--spacing--30);padding-bottom:var(--wp--preset--spacing--30)">
             <!-- wp:html -->
                 <p class="wp-block-site-title">
-                    <a href="">
-                        <?php echo wp_kses_post( explode_title($title)['first'] ); ?>
-                        <span> <?php echo wp_kses_post( explode_title($title)['last'] ); ?></span>
+                    <a href="<?php echo esc_url(home_url('/')); ?>" rel="home">
+                        <?php echo esc_html($title['first']); ?>
+                        <span> <?php echo esc_html($title['last']); ?></span>
                     </a>
                 </p>
             <!-- /wp:html -->

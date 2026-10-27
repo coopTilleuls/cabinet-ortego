@@ -6,42 +6,59 @@
 
 declare(strict_types=1);
 
-function tilleuls_register_contact_settings()
+/**
+ * @return array<string, array{label: string, type: string, class: string}>
+ */
+function tilleuls_contact_fields(): array
 {
-    $fields = [
-        'tilleuls_contact_name' => 'Nom complet / Raison sociale',
-        'tilleuls_address_street' => 'Numéro et voie',
-        'tilleuls_address_complement' => 'Complément d\'adresse (étage, etc.)',
-        'tilleuls_address_zip' => 'Code Postal',
-        'tilleuls_address_city' => 'Ville',
-        'tilleuls_address_country' => 'Pays',
-        'tilleuls_contact_phone' => 'Numéro de téléphone',
-        'tilleuls_contact_email' => 'Adresse e-mail'
+    return [
+        'tilleuls_contact_name' => ['label' => 'Nom complet / Raison sociale', 'type' => 'text', 'class' => 'regular-text'],
+        'tilleuls_address_street' => ['label' => 'Numéro et voie', 'type' => 'text', 'class' => 'large-text'],
+        'tilleuls_address_complement' => ['label' => 'Complément d\'adresse (étage, etc.)', 'type' => 'text', 'class' => 'regular-text'],
+        'tilleuls_address_zip' => ['label' => 'Code Postal', 'type' => 'text', 'class' => 'regular-text'],
+        'tilleuls_address_city' => ['label' => 'Ville', 'type' => 'text', 'class' => 'regular-text'],
+        'tilleuls_address_country' => ['label' => 'Pays', 'type' => 'text', 'class' => 'regular-text'],
+        'tilleuls_contact_phone' => ['label' => 'Numéro de téléphone', 'type' => 'tel', 'class' => 'regular-text'],
+        'tilleuls_contact_email' => ['label' => 'Adresse e-mail', 'type' => 'email', 'class' => 'regular-text'],
     ];
+}
 
-    foreach ($fields as $option_name => $label) {
+/**
+ * Settings are registered on `init` so they are exposed to the REST API (block editor) and not only in wp-admin.
+ */
+function tilleuls_register_contact_settings(): void
+{
+    foreach (tilleuls_contact_fields() as $option_name => $field) {
         register_setting(
             'general',
             $option_name,
             [
                 'type' => 'string',
-                'sanitize_callback' => ($option_name === 'tilleuls_contact_email' ? 'sanitize_email' : 'sanitize_text_field'),
+                'sanitize_callback' => $field['type'] === 'email' ? 'sanitize_email' : 'sanitize_text_field',
                 'default' => '',
                 'show_in_rest' => true,
             ]
         );
+    }
+}
+
+add_action('init', 'tilleuls_register_contact_settings');
+
+function tilleuls_add_contact_settings_fields(): void
+{
+    foreach (tilleuls_contact_fields() as $option_name => $field) {
         add_settings_field(
             $option_name,
-            $label,
+            $field['label'],
             'tilleuls_render_generic_field',
             'general',
             'default',
-            array('label_for' => $option_name)
+            ['label_for' => $option_name, 'type' => $field['type'], 'class_name' => $field['class']]
         );
     }
 }
 
-add_action('admin_init', 'tilleuls_register_contact_settings');
+add_action('admin_init', 'tilleuls_add_contact_settings_fields');
 
 /**
  * @param array $args Les arguments passés par add_settings_field
@@ -49,19 +66,12 @@ add_action('admin_init', 'tilleuls_register_contact_settings');
 function tilleuls_render_generic_field($args)
 {
     $option_name = $args['label_for'];
-
     $value = get_option($option_name);
-    $type = (strpos($option_name, 'email') !== false) ? 'email' : 'text';
-
-    $class = 'regular-text';
-    if (strpos($option_name, 'street') !== false) {
-        $class = 'large-text';
-    }
 
     ?>
     <input
             type="<?php
-            echo esc_attr($type); ?>"
+            echo esc_attr($args['type']); ?>"
             name="<?php
             echo esc_attr($option_name); ?>"
             id="<?php
@@ -69,7 +79,7 @@ function tilleuls_render_generic_field($args)
             value="<?php
             echo esc_attr($value); ?>"
             class="<?php
-            echo esc_attr($class); ?>"
+            echo esc_attr($args['class_name']); ?>"
     >
     <?php
 }
