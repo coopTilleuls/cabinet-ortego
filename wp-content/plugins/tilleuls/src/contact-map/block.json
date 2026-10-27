@@ -6,7 +6,7 @@
 	"title": "Coordonnées et plan (pleine largeur)",
 	"category": "cabinet-ortego",
 	"icon": "location",
-	"description": "Les coordonnées du cabinet d'un côté et le plan de l'autre, sur toute la largeur de la page. Les informations viennent automatiquement de Réglages > Général.",
+	"description": "Les coordonnées du cabinet d'un côté et le plan de l'autre, sur toute la largeur de la page. Les informations (adresse, téléphone, e-mail, horaires) viennent automatiquement de Réglages > Général ; une ligne vide n'est pas affichée.",
 	"keywords": [
 		"contact",
 		"map",

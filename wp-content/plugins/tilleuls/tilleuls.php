@@ -17,6 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
+require_once __DIR__ . '/includes/contact.php';
 require_once __DIR__ . '/includes/map.php';
 require_once __DIR__ . '/includes/media.php';
 

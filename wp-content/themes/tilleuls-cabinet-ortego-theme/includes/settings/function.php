@@ -20,7 +20,17 @@ function tilleuls_contact_fields(): array
         'tilleuls_address_country' => ['label' => __('Pays', 'tilleuls-cabinet-ortego-theme'), 'type' => 'text', 'class_name' => 'regular-text'],
         'tilleuls_contact_phone' => ['label' => __('Numéro de téléphone', 'tilleuls-cabinet-ortego-theme'), 'type' => 'tel', 'class_name' => 'regular-text'],
         'tilleuls_contact_email' => ['label' => __('Adresse e-mail', 'tilleuls-cabinet-ortego-theme'), 'type' => 'email', 'class_name' => 'regular-text'],
+        'tilleuls_opening_hours' => ['label' => __('Horaires d\'ouverture (une ligne par créneau)', 'tilleuls-cabinet-ortego-theme'), 'type' => 'textarea', 'class_name' => 'large-text'],
     ];
+}
+
+function tilleuls_contact_sanitize_callback(string $type): string
+{
+    return match ($type) {
+        'email' => 'sanitize_email',
+        'textarea' => 'sanitize_textarea_field',
+        default => 'sanitize_text_field',
+    };
 }
 
 /**
@@ -34,7 +44,7 @@ function tilleuls_register_contact_settings(): void
             $option_name,
             [
                 'type' => 'string',
-                'sanitize_callback' => 'email' === $field['type'] ? 'sanitize_email' : 'sanitize_text_field',
+                'sanitize_callback' => tilleuls_contact_sanitize_callback($field['type']),
                 'default' => '',
                 'show_in_rest' => true,
             ]
@@ -67,6 +77,22 @@ function tilleuls_render_generic_field($args)
 {
     $option_name = $args['label_for'];
     $value = get_option($option_name);
+
+    if ('textarea' === $args['type']) {
+        ?>
+        <textarea
+                name="<?php
+                echo esc_attr($option_name); ?>"
+                id="<?php
+                echo esc_attr($option_name); ?>"
+                class="<?php
+                echo esc_attr($args['class_name']); ?>"
+                rows="4"
+        ><?php
+            echo esc_textarea($value); ?></textarea>
+        <?php
+        return;
+    }
 
     ?>
     <input

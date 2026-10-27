@@ -13,7 +13,7 @@ import { __ } from '@wordpress/i18n';
  */
 import { InnerBlocks, useBlockProps } from '@wordpress/block-editor';
 
-import { useSelect } from '@wordpress/data';
+import { addressLines, Lines, useContact } from '../lib/contact';
 
 /**
  * The edit function describes the structure of your block in the context of the
@@ -30,70 +30,8 @@ export default function Edit() {
 
 	const INNER_BLOCKS = [ [ 'tilleuls-ortego-blocks/section-title', {} ] ];
 
-	const contactName = useSelect(
-		( select ) =>
-			select( 'core' ).getEntityRecord( 'root', 'site' )
-				?.tilleuls_contact_name,
-		[]
-	);
-
-	const contactAddress = useSelect(
-		( select ) =>
-			select( 'core' ).getEntityRecord( 'root', 'site' )
-				?.tilleuls_address_street,
-		[]
-	);
-
-	const contactAddressComplement = useSelect(
-		( select ) =>
-			select( 'core' ).getEntityRecord( 'root', 'site' )
-				?.tilleuls_address_complement,
-		[]
-	);
-
-	const contactZipcode = useSelect(
-		( select ) =>
-			select( 'core' ).getEntityRecord( 'root', 'site' )
-				?.tilleuls_address_zip,
-		[]
-	);
-
-	const contactCity = useSelect(
-		( select ) =>
-			select( 'core' ).getEntityRecord( 'root', 'site' )
-				?.tilleuls_address_city,
-		[]
-	);
-
-	const contactCountry = useSelect(
-		( select ) =>
-			select( 'core' ).getEntityRecord( 'root', 'site' )
-				?.tilleuls_address_country,
-		[]
-	);
-
-	const contactPhone = useSelect(
-		( select ) =>
-			select( 'core' ).getEntityRecord( 'root', 'site' )
-				?.tilleuls_contact_phone,
-		[]
-	);
-
-	const contactEmail = useSelect(
-		( select ) =>
-			select( 'core' ).getEntityRecord( 'root', 'site' )
-				?.tilleuls_contact_email,
-		[]
-	);
-
-	const addressParts = [
-		contactAddress,
-		contactZipcode,
-		contactCity,
-		contactCountry,
-	].filter( Boolean );
-
-	const addressComplete = addressParts.join( ' ' );
+	const contact = useContact();
+	const addressComplete = contact.address;
 	const addressEncoded = encodeURIComponent( addressComplete );
 
 	return (
@@ -102,29 +40,54 @@ export default function Edit() {
 				<div className="contact-map-grid">
 					<div className="left">
 						<InnerBlocks template={ INNER_BLOCKS } />
-						<div className="item">
-							<i className="fa-solid fa-location-dot"></i>
-							<p className="info">
-								<span>{ contactName }</span> <br />
-								{ contactAddress } -{ ' ' }
-								{ contactAddressComplement }
-								<br />
-								{ contactZipcode } - { contactCity } <br />
-								{ contactCountry }
-							</p>
-						</div>
-						<div className="item">
-							<i className="fa-solid fa-phone"></i>
-							<p className="info">
-								<strong>{ contactPhone }</strong>
-							</p>
-						</div>
-						<div className="item">
-							<i className="fa-solid fa-envelope"></i>
-							<p className="info">
-								<span>{ contactEmail }</span>
-							</p>
-						</div>
+						{ ( contact.name || contact.address ) && (
+							<div className="item">
+								<i
+									aria-hidden="true"
+									className="fa-solid fa-location-dot"
+								></i>
+								<p className="info">
+									{ contact.name && (
+										<>
+											<strong>{ contact.name }</strong>
+											<br />
+										</>
+									) }
+									<Lines lines={ addressLines( contact ) } />
+								</p>
+							</div>
+						) }
+						{ contact.phone && (
+							<div className="item">
+								<i
+									aria-hidden="true"
+									className="fa-solid fa-phone"
+								></i>
+								<p className="info">{ contact.phone }</p>
+							</div>
+						) }
+						{ contact.email && (
+							<div className="item">
+								<i
+									aria-hidden="true"
+									className="fa-solid fa-envelope"
+								></i>
+								<p className="info">{ contact.email }</p>
+							</div>
+						) }
+						{ contact.hours && (
+							<div className="item">
+								<i
+									aria-hidden="true"
+									className="fa-solid fa-clock"
+								></i>
+								<p className="info">
+									<Lines
+										lines={ contact.hours.split( '\n' ) }
+									/>
+								</p>
+							</div>
+						) }
 					</div>
 					<div
 						className="right"

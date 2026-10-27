@@ -11,149 +11,98 @@
  */
 import { useBlockProps } from '@wordpress/block-editor';
 
-import { useSelect } from '@wordpress/data';
+import { __ } from '@wordpress/i18n';
+
+import { addressLines, Lines, useContact } from '../lib/contact';
 
 /**
  * The edit function describes the structure of your block in the context of the
  * editor. This represents what the editor will render when the block is used.
  *
- * @param {Object} root0
- * @param {Object} root0.attributes Block attributes.
  * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-edit-save/#edit
  *
  * @return {Element} Element to render.
  */
-export default function Edit( { attributes } ) {
-	const {} = attributes;
-
+export default function Edit() {
 	const blockName = useBlockProps( {
 		className: 'section-contact-map-column',
 	} );
 
-	const contactName = useSelect(
-		( select ) =>
-			select( 'core' ).getEntityRecord( 'root', 'site' )
-				?.tilleuls_contact_name,
-		[]
-	);
-
-	const contactAddress = useSelect(
-		( select ) =>
-			select( 'core' ).getEntityRecord( 'root', 'site' )
-				?.tilleuls_address_street,
-		[]
-	);
-
-	const contactAddressComplement = useSelect(
-		( select ) =>
-			select( 'core' ).getEntityRecord( 'root', 'site' )
-				?.tilleuls_address_complement,
-		[]
-	);
-
-	const contactZipcode = useSelect(
-		( select ) =>
-			select( 'core' ).getEntityRecord( 'root', 'site' )
-				?.tilleuls_address_zip,
-		[]
-	);
-
-	const contactCity = useSelect(
-		( select ) =>
-			select( 'core' ).getEntityRecord( 'root', 'site' )
-				?.tilleuls_address_city,
-		[]
-	);
-
-	const contactCountry = useSelect(
-		( select ) =>
-			select( 'core' ).getEntityRecord( 'root', 'site' )
-				?.tilleuls_address_country,
-		[]
-	);
-
-	const contactPhone = useSelect(
-		( select ) =>
-			select( 'core' ).getEntityRecord( 'root', 'site' )
-				?.tilleuls_contact_phone,
-		[]
-	);
-
-	const contactEmail = useSelect(
-		( select ) =>
-			select( 'core' ).getEntityRecord( 'root', 'site' )
-				?.tilleuls_contact_email,
-		[]
-	);
-
-	const addressParts = [
-		contactAddress,
-		contactZipcode,
-		contactCity,
-		contactCountry,
-	].filter( Boolean );
-
-	const addressComplete = addressParts.join( ' ' );
-	const addressEncoded = encodeURIComponent( addressComplete );
+	const contact = useContact();
+	const addressEncoded = encodeURIComponent( contact.address );
 
 	return (
 		<div { ...blockName }>
 			<div className="contact-details">
-				<h2>Nos Coordonnées</h2>
+				<h2>{ __( 'Nos coordonnées', 'tilleuls' ) }</h2>
 				<div className="info-card">
-					<div className="info-item">
-						<i className="fa-solid fa-location-dot"></i>
-						<div>
-							<h3>Adresse</h3>
-							<p>
-								{ contactAddress } <br />
-								{ contactAddressComplement ? (
-									<>
-										{ contactAddressComplement } <br />
-									</>
-								) : null }
-								{ contactZipcode } - { contactCity } <br />
-								{ contactCountry }
-							</p>
+					{ ( contact.name || contact.address ) && (
+						<div className="info-item">
+							<i
+								aria-hidden="true"
+								className="fa-solid fa-location-dot"
+							></i>
+							<div>
+								<h3>{ __( 'Adresse', 'tilleuls' ) }</h3>
+								<p>
+									{ contact.name && (
+										<>
+											<strong>{ contact.name }</strong>
+											<br />
+										</>
+									) }
+									<Lines lines={ addressLines( contact ) } />
+								</p>
+							</div>
 						</div>
-					</div>
-					<div className="info-item">
-						<i className="fa-solid fa-phone"></i>
-						<div>
-							<h3>Téléphone</h3>
-							<p>
-								<a href={ `tel:${ contactPhone }` }>
-									{ contactPhone }
-								</a>
-							</p>
+					) }
+					{ contact.phone && (
+						<div className="info-item">
+							<i
+								aria-hidden="true"
+								className="fa-solid fa-phone"
+							></i>
+							<div>
+								<h3>{ __( 'Téléphone', 'tilleuls' ) }</h3>
+								<p>{ contact.phone }</p>
+							</div>
 						</div>
-					</div>
-					<div className="info-item">
-						<i className="fa-solid fa-envelope"></i>
-						<div>
-							<h3>Email</h3>
-							<p>
-								<a href={ `mailto:${ contactEmail }` }>
-									{ contactEmail }
-								</a>
-							</p>
+					) }
+					{ contact.email && (
+						<div className="info-item">
+							<i
+								aria-hidden="true"
+								className="fa-solid fa-envelope"
+							></i>
+							<div>
+								<h3>{ __( 'Email', 'tilleuls' ) }</h3>
+								<p>{ contact.email }</p>
+							</div>
 						</div>
-					</div>
-					<div className="info-item">
-						<i className="fa-solid fa-clock"></i>
-						<div>
-							<h3>Horaires d&apos;ouverture</h3>
-							<p>
-								{ contactName } <br />
-								Sur rendez-vous uniquement.
-							</p>
+					) }
+					{ contact.hours && (
+						<div className="info-item">
+							<i
+								aria-hidden="true"
+								className="fa-solid fa-clock"
+							></i>
+							<div>
+								<h3>
+									{ __( "Horaires d'ouverture", 'tilleuls' ) }
+								</h3>
+								<p>
+									<Lines
+										lines={ contact.hours.split( '\n' ) }
+									/>
+								</p>
+							</div>
 						</div>
-					</div>
+					) }
 				</div>
 			</div>
 			<div className="map-container">
 				<iframe
-					title="Aperçu Google Map"
+					title={ __( 'Aperçu Google Map', 'tilleuls' ) }
 					width="100%"
 					height="100%"
 					style={ {

@@ -3,18 +3,7 @@
  * Render callback for the Contact Block with Dynamic Map.
  */
 
-$name = get_option('tilleuls_contact_name', 'Cabinet Ortego Sampedro');
-$phone = get_option('tilleuls_contact_phone');
-$email = get_option('tilleuls_contact_email');
-
-$street = get_option('tilleuls_address_street');
-$complement = get_option('tilleuls_address_complement');
-$cp = get_option('tilleuls_address_zip');
-$ville = get_option('tilleuls_address_city');
-$pays = get_option('tilleuls_address_country');
-
-$adresse_complete = trim($street . ' ' . $cp . ' ' . $ville . ' ' . $pays);
-
+$contact = tilleuls_ortego_blocks_contact();
 
 $wrapper_attributes = get_block_wrapper_attributes([
 	'class' => 'section-contact-map',
@@ -31,37 +20,42 @@ echo $wrapper_attributes; ?>>
 					<?php
 					echo $content;
 					?>
-					<div class="item">
-						<i aria-hidden="true" class="fa-solid fa-location-dot"></i>
-						<p class="info">
-							<strong><?php
-								echo esc_html($name); ?></strong><br>
-							<?php
-							if ($street) {
-								echo esc_html($street);
-							} ?>
-							<?php
-							if ($complement) echo ' - ' . esc_html($complement); ?>
-							<br>
-							<?php
-							echo esc_html($cp . ' ' . $ville); ?>
-						</p>
-					</div>
-					<div class="item">
-						<i aria-hidden="true" class="fa-solid fa-phone"></i>
-						<a class="info" href="tel:<?php echo esc_attr(str_replace(' ', '', $phone)); ?>">
-							<?php echo esc_html($phone); ?>
-						</a>
-					</div>
-					<div class="item">
-						<i aria-hidden="true" class="fa-solid fa-envelope"></i>
-						<a class="info" href="mailto:<?php echo esc_attr(str_replace(' ', '', $email)); ?>">
-							<?php echo esc_html($email); ?>
-						</a>
-					</div>
+					<?php if ($contact['name'] || $contact['address']) : ?>
+						<div class="item">
+							<i aria-hidden="true" class="fa-solid fa-location-dot"></i>
+							<p class="info">
+								<?php if ($contact['name']) : ?>
+									<strong><?php echo esc_html($contact['name']); ?></strong><br>
+								<?php endif; ?>
+								<?php tilleuls_ortego_blocks_render_address($contact); ?>
+							</p>
+						</div>
+					<?php endif; ?>
+					<?php if ($contact['phone']) : ?>
+						<div class="item">
+							<i aria-hidden="true" class="fa-solid fa-phone"></i>
+							<a class="info" href="tel:<?php echo esc_attr(str_replace(' ', '', $contact['phone'])); ?>">
+								<?php echo esc_html($contact['phone']); ?>
+							</a>
+						</div>
+					<?php endif; ?>
+					<?php if ($contact['email']) : ?>
+						<div class="item">
+							<i aria-hidden="true" class="fa-solid fa-envelope"></i>
+							<a class="info" href="mailto:<?php echo esc_attr($contact['email']); ?>">
+								<?php echo esc_html($contact['email']); ?>
+							</a>
+						</div>
+					<?php endif; ?>
+					<?php if ($contact['hours']) : ?>
+						<div class="item">
+							<i aria-hidden="true" class="fa-solid fa-clock"></i>
+							<p class="info"><?php tilleuls_ortego_blocks_render_hours($contact['hours']); ?></p>
+						</div>
+					<?php endif; ?>
 				</div>
 				<div class="right">
-					<?php tilleuls_ortego_blocks_render_map($adresse_complete); ?>
+					<?php tilleuls_ortego_blocks_render_map($contact['address']); ?>
 				</div>
 			</div>
 		</div>

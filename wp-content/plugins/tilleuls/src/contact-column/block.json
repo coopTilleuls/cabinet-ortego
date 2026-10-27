@@ -6,7 +6,7 @@
 	"title": "Coordonnées et plan (en colonne)",
 	"category": "cabinet-ortego",
 	"icon": "location-alt",
-	"description": "Affiche l'adresse, le téléphone, l'e-mail et le plan du cabinet, les uns sous les autres. Rien à remplir : les informations viennent de Réglages > Général.",
+	"description": "Affiche l'adresse, le téléphone, l'e-mail, les horaires et le plan du cabinet, les uns sous les autres. Rien à remplir : les informations viennent de Réglages > Général ; une ligne vide n'est pas affichée.",
 	"keywords": [
 		"contact",
 		"adresse",
