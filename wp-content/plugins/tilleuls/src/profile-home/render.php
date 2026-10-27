@@ -21,7 +21,7 @@ $img_alt = tilleuls_ortego_blocks_image_alt((int) ($attributes['imgId'] ?? 0), _
 $languages = $attributes['languages'] ?? [];
 $buttonLink = $attributes['buttonLink'] ?? '';
 $buttonText = $attributes['buttonText'] ?? '';
-
+$surtitle = $attributes['surtitle'] ?? '';
 ?>
 
 <section <?php echo $blockWrapper; ?>>
@@ -35,7 +35,9 @@ $buttonText = $attributes['buttonText'] ?? '';
 			endif; ?>
 		</div>
 		<div class="profile-home-content">
-			<span class="profile-surtitle">À propos de l'avocate</span>
+			<?php if ($surtitle) : ?>
+				<span class="profile-surtitle"><?php echo wp_kses_post($surtitle); ?></span>
+			<?php endif; ?>
 			<?php echo $content; ?>
 
 			<div class="languages-list">

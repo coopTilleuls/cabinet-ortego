@@ -30,7 +30,9 @@ import { PanelBody, TextControl } from '@wordpress/components';
  * @return {Element} Element to render.
  */
 export default function Edit( { attributes, setAttributes } ) {
-	const { surtitle, cta, ctaBis } = attributes;
+	const { surtitle, cta, ctaLabel, ctaBis, ctaBisLabel } = attributes;
+	const firstLabel = ctaLabel || __( 'Prendre rendez-vous', 'tilleuls' );
+	const secondLabel = ctaBisLabel || __( 'Découvrir le cabinet', 'tilleuls' );
 
 	const blockName = useBlockProps( {
 		className: 'section-hero-homepage',
@@ -67,7 +69,17 @@ export default function Edit( { attributes, setAttributes } ) {
 							'tilleuls'
 						) }
 					/>
-
+					<TextControl
+						label={ __( 'Texte du premier bouton', 'tilleuls' ) }
+						value={ ctaLabel || '' }
+						onChange={ ( value ) =>
+							setAttributes( { ctaLabel: value } )
+						}
+						help={ __(
+							'Laisser vide pour garder le texte par défaut.',
+							'tilleuls'
+						) }
+					/>
 					<TextControl
 						label={ __( 'Lien second bouton', 'tilleuls' ) }
 						value={ ctaBis || '' }
@@ -80,6 +92,17 @@ export default function Edit( { attributes, setAttributes } ) {
 							'tilleuls'
 						) }
 					/>
+					<TextControl
+						label={ __( 'Texte du second bouton', 'tilleuls' ) }
+						value={ ctaBisLabel || '' }
+						onChange={ ( value ) =>
+							setAttributes( { ctaBisLabel: value } )
+						}
+						help={ __(
+							'Laisser vide pour garder le texte par défaut.',
+							'tilleuls'
+						) }
+					/>
 				</PanelBody>
 			</InspectorControls>
 			<div { ...blockName }>
@@ -89,10 +112,10 @@ export default function Edit( { attributes, setAttributes } ) {
 						<InnerBlocks template={ INNER_BLOCKS } />
 						<div className="cta-container">
 							<a href={ cta } className="cta-first">
-								Prendre Rendez-vous
+								{ firstLabel }
 							</a>
 							<a href={ ctaBis } className="cta-second">
-								Découvrir le cabinet
+								{ secondLabel }
 							</a>
 						</div>
 					</div>

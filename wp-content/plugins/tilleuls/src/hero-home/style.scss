@@ -10,10 +10,9 @@ $hero-image: "https://images.unsplash.com/photo-1505664194779-8beaceb93744?q=80&
  */
 
 .container {
-	width: 100%;
-	max-width: 1100px;
+	padding: 0 1.5rem;
+	max-width: var(--wp--style--global--content-size);
 	margin: 0 auto;
-	padding: 0 25px;
 
 	@media (min-width: 768px) {
 		padding: 0 25px;
@@ -47,6 +46,21 @@ $hero-image: "https://images.unsplash.com/photo-1505664194779-8beaceb93744?q=80&
 				color: var(--wp--preset--color--tertiary);
 				margin-bottom: 1rem;
 				font-size: 0.9rem;
+
+				@media (max-width: 768px) {
+					font-size: 0.8rem;
+				}
+			}
+
+			.title-section {
+				max-width: 600px;
+
+				@media (max-width: 992px) {
+
+					h1 {
+						font-size: 2.9rem;
+					}
+				}
 			}
 
 			p {
@@ -54,6 +68,11 @@ $hero-image: "https://images.unsplash.com/photo-1505664194779-8beaceb93744?q=80&
 				margin-bottom: 40px;
 				max-width: 600px;
 				opacity: 0.9;
+				font-weight: 400;
+
+				@media (max-width: 768px) {
+					font-size: 1rem;
+				}
 			}
 
 			.cta-container {

@@ -6,7 +6,7 @@
 	"title": "Grand en-tête de la page d'accueil",
 	"category": "cabinet-ortego",
 	"icon": "cover-image",
-	"description": "La grande image tout en haut de la page d'accueil, avec un sur-titre, un titre et jusqu'à deux boutons (« Prendre rendez-vous » et « Découvrir le cabinet »). Un bouton n'apparaît que si son lien est rempli à droite de l'écran. À utiliser une seule fois, au début de la page d'accueil.",
+	"description": "La grande image tout en haut de la page d'accueil, avec un sur-titre, un titre et jusqu'à deux boutons (par défaut « Prendre rendez-vous » et « Découvrir le cabinet », texte modifiable). Un bouton n'apparaît que si son lien est rempli à droite de l'écran. À utiliser une seule fois, au début de la page d'accueil.",
 	"keywords": [
 		"hero",
 		"accueil",
@@ -32,11 +32,19 @@
 		},
 		"cta": {
 			"type": "string",
-			"default": "string"
+			"default": ""
+		},
+		"ctaLabel": {
+			"type": "string",
+			"default": ""
 		},
 		"ctaBis": {
 			"type": "string",
-			"default": "string"
+			"default": ""
+		},
+		"ctaBisLabel": {
+			"type": "string",
+			"default": ""
 		}
 	}
 }

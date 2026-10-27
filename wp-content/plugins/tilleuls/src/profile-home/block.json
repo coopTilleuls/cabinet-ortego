@@ -37,6 +37,10 @@
 			"type": "string",
 			"default": ""
 		},
+		"surtitle": {
+			"type": "string",
+			"default": ""
+		},
 		"buttonText": {
 			"type": "string",
 			"default": ""
