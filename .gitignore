@@ -1,6 +1,5 @@
-.log
 *.log
-.map
+*.map
 .vscode
 .DS_Store
 .phpdoc
@@ -52,6 +51,7 @@ web.config
 /wp-trackback.php
 /xmlrpc.php
 license.txt
+/readme.html
 # Jetpack-Waf
 /wp-content/jetpack-waf/
 
