@@ -32,7 +32,7 @@ $classWrapper = get_block_wrapper_attributes([
 				<h2>
 					<?php if (!empty($titleIcon)) : ?>
 						<i aria-hidden="true" class="<?php
-							echo wp_kses_post($titleIcon); ?>"></i>
+							echo esc_attr($titleIcon); ?>"></i>
 					<?php
 					endif; ?>
 					<?php echo wp_kses_post($title); ?>
@@ -43,7 +43,7 @@ $classWrapper = get_block_wrapper_attributes([
 			</div>
 			<div class="expertise-visual">
 				<i aria-hidden="true" class="<?php
-				echo wp_kses_post($icon); ?>"></i>
+				echo esc_attr($icon); ?>"></i>
 			</div>
 		</div>
 	</div>
