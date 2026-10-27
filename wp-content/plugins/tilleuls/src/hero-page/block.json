@@ -6,7 +6,7 @@
 	"title": "En-tête de page",
 	"category": "cabinet-ortego",
 	"icon": "align-center",
-	"description": "Le bandeau de titre en haut des pages intérieures (Le Cabinet, Compétences, Contact…). Il reprend le titre de la page : ajoutez simplement une courte phrase d'introduction.",
+	"description": "Le bandeau de titre en haut des pages intérieures (Le Cabinet, Compétences, Contact…). Il reprend automatiquement le titre de la page : ajoutez simplement une courte phrase d'introduction en dessous.",
 	"keywords": [
 		"hero",
 		"titre",
@@ -23,14 +23,9 @@
 	},
 	"textdomain": "tilleuls",
 	"editorScript": "file:./index.js",
-	"editorStyle": "file:./index.css",
 	"style": "file:./style-index.css",
 	"render": "file:./render.php",
 	"attributes": {
-		"title": {
-			"type": "string",
-			"default": "Mon Titre"
-		},
 		"description": {
 			"type": "string",
 			"default": ""

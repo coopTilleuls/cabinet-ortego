@@ -20,13 +20,6 @@ import {
 	useBlockProps,
 } from '@wordpress/block-editor';
 
-/**
- * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
- * Those files can contain any CSS code that gets applied to the editor.
- *
- * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
- */
-import './editor.scss';
 import { Button, PanelBody, TextControl } from '@wordpress/components'; // ResponsiveWrapper optionnel pour image
 
 /**

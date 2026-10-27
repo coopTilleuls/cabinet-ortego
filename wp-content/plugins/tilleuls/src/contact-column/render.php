@@ -33,12 +33,12 @@ $adresse_complete = trim($street . ' ' . $cp . ' ' . $ville . ' ' . $pays);
 <div <?php
 echo $blockWrapper; ?>>
 	<div class="contact-details">
-		<h2>Nos Coordonées</h2>
+		<h2><?php esc_html_e('Nos coordonnées', 'tilleuls'); ?></h2>
 		<div class="info-card">
 			<div class="info-item">
 				<i aria-hidden="true" class="fa-solid fa-location-dot"></i>
 				<div>
-					<h3>Adresse</h3>
+					<h3><?php esc_html_e('Adresse', 'tilleuls'); ?></h3>
 					<p>
 						<?php
 						if ($street) {
@@ -57,7 +57,7 @@ echo $blockWrapper; ?>>
 			<div class="info-item">
 				<i aria-hidden="true" class="fa-solid fa-phone"></i>
 				<div>
-					<h3>Téléphone</h3>
+					<h3><?php esc_html_e('Téléphone', 'tilleuls'); ?></h3>
 					<p>
 						<a href="tel:<?php
 						echo esc_attr(str_replace(' ', '', $phone)); ?>">
@@ -70,7 +70,7 @@ echo $blockWrapper; ?>>
 			<div class="info-item">
 				<i aria-hidden="true" class="fa-solid fa-envelope"></i>
 				<div>
-					<h3>Email</h3>
+					<h3><?php esc_html_e('Email', 'tilleuls'); ?></h3>
 					<p>
 						<a href="mailto:<?php
 						echo esc_attr(str_replace(' ', '', $email)); ?>">
@@ -83,7 +83,7 @@ echo $blockWrapper; ?>>
 			<div class="info-item">
 				<i aria-hidden="true" class="fa-solid fa-clock"></i>
 				<div>
-					<h3>Horaires d'ouverture</h3>
+					<h3><?php esc_html_e('Horaires d\'ouverture', 'tilleuls'); ?></h3>
 					<p></p>
 				</div>
 			</div>

@@ -67,7 +67,7 @@ echo $wrapper_attributes; ?>>
 				<?php
 				if (!empty($diplomas)) : ?>
 					<div class="diploma-list">
-						<h3>Formation Universitaire</h3>
+						<h3><?php esc_html_e('Formation universitaire', 'tilleuls'); ?></h3>
 						<ul>
 							<?php
 							foreach ($diplomas as $item) : ?>

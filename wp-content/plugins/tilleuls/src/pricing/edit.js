@@ -1,6 +1,5 @@
 import { InnerBlocks, RichText, useBlockProps } from '@wordpress/block-editor';
 import { Button, Tooltip } from '@wordpress/components';
-import './editor.scss';
 
 export default function Edit( { attributes, setAttributes } ) {
 	const { pricingCards = [] } = attributes;

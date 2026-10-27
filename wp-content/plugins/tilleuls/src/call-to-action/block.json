@@ -22,7 +22,6 @@
 	},
 	"textdomain": "tilleuls",
 	"editorScript": "file:./index.js",
-	"editorStyle": "file:./index.css",
 	"style": "file:./style-index.css",
 	"render": "file:./render.php",
 	"attributes": {
@@ -31,22 +30,6 @@
 			"default": ""
 		},
 		"description": {
-			"type": "string",
-			"default": ""
-		},
-		"link": {
-			"type": "string",
-			"default": ""
-		},
-		"textBtn": {
-			"type": "string",
-			"default": ""
-		},
-		"linkBis": {
-			"type": "string",
-			"default": ""
-		},
-		"textBtnBis": {
 			"type": "string",
 			"default": ""
 		},

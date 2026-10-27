@@ -27,10 +27,16 @@ echo get_block_wrapper_attributes([
 			<?php
 			echo $content;
 			?>
-			<div class="cta-container">
-				<a href="<?php echo esc_url($cta); ?>" class="cta-first">Prendre rendez-vous</a>
-				<a href="<?php echo esc_url($ctaBis); ?>" class="cta-second">Decouvrir le cabinet</a>
-			</div>
+			<?php if ($cta || $ctaBis) : ?>
+				<div class="cta-container">
+					<?php if ($cta) : ?>
+						<a href="<?php echo esc_url($cta); ?>" class="cta-first"><?php esc_html_e('Prendre rendez-vous', 'tilleuls'); ?></a>
+					<?php endif; ?>
+					<?php if ($ctaBis) : ?>
+						<a href="<?php echo esc_url($ctaBis); ?>" class="cta-second"><?php esc_html_e('Découvrir le cabinet', 'tilleuls'); ?></a>
+					<?php endif; ?>
+				</div>
+			<?php endif; ?>
 		</div>
 	</div>
 </section>

@@ -1,7 +1,6 @@
 import { RichText, useBlockProps } from '@wordpress/block-editor';
 import { Button, SelectControl, Tooltip } from '@wordpress/components';
 import { ICONS } from '../lib/icon';
-import './editor.scss';
 
 export default function Edit( { attributes, setAttributes } ) {
 	const { infoItems = [] } = attributes;

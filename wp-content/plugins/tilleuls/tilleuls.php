@@ -24,6 +24,7 @@ require_once __DIR__ . '/includes/media.php';
  * Group all the firm's blocks under one "Cabinet Ortego" category, listed first in the block inserter.
  *
  * @param array $categories Registered block categories.
+ * @return array Categories with the firm's category first.
  */
 function tilleuls_ortego_blocks_register_category( array $categories ): array {
 	return array_merge(

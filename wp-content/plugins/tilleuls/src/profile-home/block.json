@@ -6,7 +6,7 @@
 	"title": "Présentation de l'avocate (page d'accueil)",
 	"category": "cabinet-ortego",
 	"icon": "admin-users",
-	"description": "Un aperçu de l'avocate pour la page d'accueil : photo, citation, langues parlées et bouton vers la page du cabinet.",
+	"description": "Un aperçu de l'avocate pour la page d'accueil : photo, titre, court texte, langues parlées et un bouton. Le lien et le texte du bouton se règlent à droite de l'écran.",
 	"keywords": [
 		"avocat",
 		"profil",
@@ -26,7 +26,6 @@
 	},
 	"textdomain": "tilleuls",
 	"editorScript": "file:./index.js",
-	"editorStyle": "file:./index.css",
 	"style": "file:./style-index.css",
 	"render": "file:./render.php",
 	"attributes": {
@@ -37,11 +36,6 @@
 		"imgUrl": {
 			"type": "string",
 			"default": ""
-		},
-		"quote": {
-			"type": "string",
-			"source": "html",
-			"selector": ".about-quote"
 		},
 		"buttonText": {
 			"type": "string",

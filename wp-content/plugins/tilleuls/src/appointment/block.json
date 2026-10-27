@@ -6,7 +6,7 @@
 	"title": "Prise de rendez-vous en ligne",
 	"category": "cabinet-ortego",
 	"icon": "calendar-alt",
-	"description": "Affiche l'agenda Calendly pour que les visiteurs réservent un rendez-vous. Collez l'adresse de votre page Calendly dans les réglages à droite de l'écran.",
+	"description": "Affiche l'agenda Calendly pour que les visiteurs réservent un rendez-vous. Collez l'adresse de votre page Calendly dans le panneau « Agenda Calendly », à droite de l'écran.",
 	"keywords": [
 		"calendly",
 		"rendez-vous",
@@ -25,7 +25,6 @@
 	},
 	"textdomain": "tilleuls",
 	"editorScript": "file:./index.js",
-	"editorStyle": "file:./index.css",
 	"style": "file:./style-index.css",
 	"render": "file:./render.php",
 	"attributes": {

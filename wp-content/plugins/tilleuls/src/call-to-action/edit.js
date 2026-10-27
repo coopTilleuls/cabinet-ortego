@@ -17,13 +17,6 @@ import {
 	useBlockProps,
 } from '@wordpress/block-editor';
 
-/**
- * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
- * Those files can contain any CSS code that gets applied to the editor.
- *
- * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
- */
-import './editor.scss';
 import {
 	Button,
 	PanelBody,
@@ -59,7 +52,7 @@ const getHref = ( button, phone ) => {
  * @return {Element} Element to render.
  */
 export default function Edit( { attributes, setAttributes } ) {
-	const { color, title, description, cta } = attributes;
+	const { title, description, cta } = attributes;
 
 	const contactPhone = useSelect(
 		( select ) =>
@@ -173,7 +166,7 @@ export default function Edit( { attributes, setAttributes } ) {
 			</InspectorControls>
 			<section
 				{ ...useBlockProps( {
-					className: `section-cta ${ color }`,
+					className: 'section-cta',
 				} ) }
 			>
 				<div className="container cta-body">
