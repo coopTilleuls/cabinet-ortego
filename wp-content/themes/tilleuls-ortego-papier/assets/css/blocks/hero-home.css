@@ -1,0 +1,77 @@
+/* tilleuls-ortego-blocks/hero-home — no photo behind text: paper, ink, the type is the image. */
+.section-hero-homepage {
+	padding-block: var(--wp--preset--spacing--80);
+	border-bottom: 1px solid var(--filet);
+	background: var(--papier);
+}
+
+.section-hero-homepage .hero-content {
+	display: grid;
+	gap: var(--wp--preset--spacing--50);
+	max-width: 46rem;
+}
+
+.section-hero-homepage .hero-content > * {
+	margin: 0;
+}
+
+.section-hero-homepage .title-section h1,
+.section-hero-homepage .title-section h2 {
+	max-width: 22ch;
+	font-size: var(--wp--preset--font-size--affiche);
+	line-height: 1.04;
+	letter-spacing: -0.02em;
+}
+
+.section-hero-homepage .title-section h1 em,
+.section-hero-homepage .title-section h2 em {
+	display: block;
+	font-weight: 400;
+	color: var(--rouge);
+}
+
+.section-hero-homepage .hero-content > p {
+	max-width: 44ch;
+	color: var(--encre-douce);
+	font-size: var(--wp--preset--font-size--l);
+}
+
+.section-hero-homepage .cta-container {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--wp--preset--spacing--40);
+	margin-top: var(--wp--preset--spacing--30);
+}
+
+.section-hero-homepage .cta-first,
+.section-hero-homepage .cta-second {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-height: var(--controle);
+	padding: 0.625rem 1.25rem;
+	border: 2px solid var(--rouge);
+	border-radius: var(--radius-s);
+	background: var(--rouge);
+	color: var(--blanc);
+	font-size: var(--wp--preset--font-size--s);
+	font-weight: 700;
+	text-decoration: none;
+}
+
+.section-hero-homepage .cta-first:hover {
+	background: var(--rouge-profond);
+	border-color: var(--rouge-profond);
+	color: var(--blanc);
+}
+
+.section-hero-homepage .cta-second {
+	background: transparent;
+	border-color: var(--encre);
+	color: var(--encre);
+}
+
+.section-hero-homepage .cta-second:hover {
+	background: var(--encre);
+	color: var(--papier);
+}

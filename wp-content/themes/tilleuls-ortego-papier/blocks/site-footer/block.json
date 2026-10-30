@@ -1,0 +1,16 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "tilleuls-papier/site-footer",
+	"title": "Pied de page du site",
+	"category": "theme",
+	"description": "Logotype, plan du site, coordonnées du cabinet (Réglages > Général), liens légaux et bandeau de consentement.",
+	"textdomain": "tilleuls-ortego-papier",
+	"supports": {
+		"html": false,
+		"multiple": false,
+		"reusable": false
+	},
+	"editorScript": "tilleuls-papier-editor",
+	"render": "file:./render.php"
+}

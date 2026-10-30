@@ -1,0 +1,956 @@
+/*
+ * Papier & encre — base: dark scheme, elements, focus, links, buttons, forms, notices.
+ * Every value comes from theme.json (--wp--preset--* / --wp--custom--*).
+ */
+
+/* Short aliases, so the component sheets read like the design system. */
+:root {
+	--encre: var(--wp--preset--color--encre);
+	--encre-douce: var(--wp--preset--color--encre-douce);
+	--papier: var(--wp--preset--color--papier);
+	--blanc: var(--wp--preset--color--blanc);
+	--sable: var(--wp--preset--color--sable);
+	--rouge: var(--wp--preset--color--rouge-basque);
+	--rouge-profond: var(--wp--preset--color--rouge-profond);
+	--rouge-clair: var(--wp--preset--color--rouge-clair);
+	--nuit: var(--wp--preset--color--nuit);
+	--nuit-2: var(--wp--preset--color--nuit-2);
+	--sur-nuit: var(--wp--preset--color--sur-nuit);
+	--sur-nuit-doux: var(--wp--preset--color--sur-nuit-doux);
+	--trait: var(--wp--preset--color--trait);
+	--filet: var(--wp--preset--color--filet);
+	--erreur: var(--wp--preset--color--erreur);
+	--succes: var(--wp--preset--color--succes);
+	--serif: var(--wp--preset--font-family--serif);
+	--sans: var(--wp--preset--font-family--sans);
+	--radius-s: var(--wp--custom--radius--s);
+	--radius-m: var(--wp--custom--radius--m);
+	--relief: var(--wp--preset--shadow--relief);
+	--duree: var(--wp--custom--motion--duree);
+	--courbe: var(--wp--custom--motion--courbe);
+	--controle: var(--wp--custom--controle--hauteur);
+	--mesure: var(--wp--custom--mesure);
+	--gouttiere: var(--wp--preset--spacing--50);
+	--large: var(--wp--style--global--wide-size, 75rem);
+
+	/* Focus ring: 3 px encre + 3 px offset on light backgrounds, sur-nuit on dark ones. */
+	--focus: var(--encre);
+
+	color-scheme: light;
+}
+
+/*
+ * Dark scheme (planche 2): same roles, inverted values. Ratios measured on #161311.
+ * The accent switches to the light red; rouge basque on a dark background is forbidden (1.88:1).
+ */
+@media (prefers-color-scheme: dark) {
+
+	:root:root {
+		--wp--preset--color--papier: #161311;
+		--wp--preset--color--blanc: #221e1b;
+		--wp--preset--color--sable: #2c2724;
+		--wp--preset--color--encre: #f1ece4;
+		--wp--preset--color--encre-douce: #bdb3a7;
+		--wp--preset--color--rouge-basque: #f09489;
+		--wp--preset--color--rouge-profond: #f6b8b0;
+		--wp--preset--color--nuit: #0e0c0b;
+		--wp--preset--color--nuit-2: #221e1b;
+		--wp--preset--color--trait: #8f8478;
+		--wp--preset--color--filet: #3d3632;
+		--wp--preset--color--erreur: #ff9a8f;
+		--wp--preset--color--succes: #8fd3a6;
+		--wp--preset--shadow--relief: 0 1px 2px rgb(0 0 0 / 0.4), 0 8px 24px -6px rgb(0 0 0 / 0.6);
+
+		color-scheme: dark;
+	}
+}
+
+/* Elements ------------------------------------------------------------- */
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+/* "hidden" always wins over component display rules. */
+[hidden] {
+	display: none !important;
+}
+
+html {
+	scroll-padding-top: var(--wp--preset--spacing--60);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+
+	html {
+		scroll-behavior: smooth;
+	}
+}
+
+body {
+	-webkit-font-smoothing: antialiased;
+	text-rendering: optimizelegibility;
+	font-optical-sizing: auto;
+}
+
+/* Lines stay readable at 200 % zoom and with 40 % longer translations (Euskara, Español…). */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	overflow-wrap: break-word;
+	hyphens: manual;
+	text-wrap: balance;
+	margin-block: 0;
+}
+
+p,
+li,
+dd,
+blockquote,
+figcaption {
+	text-wrap: pretty;
+	overflow-wrap: break-word;
+}
+
+/* Never justified (planche 1, principe 01). */
+:where(.wp-site-blocks) :where(p, li, blockquote, td) {
+	text-align: start;
+}
+
+:where(.wp-site-blocks) .has-text-align-justify {
+	text-align: start !important;
+}
+
+/* Italics are kept for headings and quotes (planche 1). */
+em,
+i:not([class*="fa-"]) {
+	font-style: italic;
+}
+
+strong,
+b {
+	font-weight: 700;
+}
+
+img,
+svg,
+video,
+iframe {
+	max-width: 100%;
+}
+
+img {
+	height: auto;
+}
+
+abbr[title] {
+	text-decoration: underline dotted;
+	cursor: help;
+}
+
+hr,
+.wp-block-separator {
+	border: 0;
+	border-top: var(--wp--custom--filet--structure) solid var(--encre);
+	margin-block: var(--wp--preset--spacing--60);
+	opacity: 1;
+}
+
+.wp-block-separator.is-style-wide {
+	border-top-width: var(--wp--custom--filet--fort);
+}
+
+::selection {
+	background: var(--sable);
+	color: var(--encre);
+}
+
+.icon {
+	flex: none;
+	width: 1.25em;
+	height: 1.25em;
+	vertical-align: -0.25em;
+}
+
+/* Hidden text: accessible names for tel:, mailto:, external links and repeated "En savoir plus". */
+.screen-reader-text,
+.visually-hidden {
+	border: 0;
+	clip-path: inset(50%);
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute !important;
+	width: 1px;
+	white-space: nowrap;
+	word-wrap: normal !important;
+}
+
+/* Focus ----------------------------------------------------------------- */
+
+:where(a, button, input, select, textarea, summary, [tabindex]):focus {
+	outline: none;
+}
+
+:where(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
+	outline: var(--wp--custom--focus--largeur) solid var(--focus);
+	outline-offset: var(--wp--custom--focus--decalage);
+	box-shadow: 0 0 0 calc(var(--wp--custom--focus--decalage)) var(--papier);
+}
+
+/* Programmatic focus targets (skip link destinations, error summaries) show where focus landed. */
+:where(main, footer, section, [data-embed-error], .wpcf7-response-output)[tabindex="-1"]:focus-visible {
+	outline-offset: calc(-1 * var(--wp--custom--focus--largeur));
+	box-shadow: none;
+}
+
+.on-nuit,
+.is-style-nuit,
+.site-footer,
+.has-nuit-background-color,
+.has-rouge-basque-background-color {
+	--focus: var(--sur-nuit);
+}
+
+/* Links: always underlined in text; the underline thickens on hover (planche 3). */
+a {
+	color: var(--rouge);
+	text-decoration-line: underline;
+	text-decoration-thickness: 1px;
+	text-underline-offset: 0.2em;
+	transition: text-decoration-thickness var(--duree) var(--courbe), color var(--duree) var(--courbe);
+}
+
+a:hover {
+	color: var(--rouge-profond);
+	text-decoration-thickness: 3px;
+}
+
+/* Arrow after a "read more" link (decorative, the name is in the text). */
+.lien-suite a,
+a.lien-suite {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.4em;
+	font-weight: 700;
+	font-size: var(--wp--preset--font-size--s);
+}
+
+.lien-suite a::after,
+a.lien-suite::after {
+	content: "";
+	width: 1em;
+	height: 1em;
+	background: currentcolor;
+	mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14'/%3E%3Cpath d='m12 5 7 7-7 7'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+
+a[target="_blank"]:not(.button, .wp-block-button__link) .icon--external {
+	width: 0.9em;
+	height: 0.9em;
+	margin-inline-start: 0.2em;
+	vertical-align: -0.05em;
+}
+
+/* Skip links: visible on the first Tab. */
+.skip-links ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.skip-link {
+	position: absolute;
+	top: 0.5rem;
+	left: 0.5rem;
+	z-index: 1000;
+	padding: 0.75rem 1rem;
+	background: var(--blanc);
+	color: var(--encre);
+	font-weight: 700;
+	border: 2px solid var(--encre);
+	border-radius: var(--radius-s);
+	transform: translateY(-200%);
+}
+
+.skip-link:focus {
+	transform: none;
+}
+
+/* Typography helpers ----------------------------------------------------- */
+
+/* Eyebrow (sur-titre): 15 px floor, bold, red on light, light red on dark. */
+.eyebrow,
+.surtitle,
+.profile-surtitle {
+	display: block;
+	margin: 0 0 var(--wp--preset--spacing--30);
+	font-family: var(--sans);
+	font-size: var(--wp--preset--font-size--xs);
+	font-weight: 700;
+	line-height: 1.45;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	color: var(--rouge);
+}
+
+:where(.on-nuit, .is-style-nuit, .site-footer, .has-nuit-background-color) .eyebrow {
+	color: var(--rouge-clair);
+}
+
+/* Title rule: 48 × 4 px, red (rouge clair on dark). */
+.filet-titre::after,
+.is-style-filet-titre::after {
+	content: "";
+	display: block;
+	width: var(--wp--custom--filet--titre-largeur);
+	height: var(--wp--custom--filet--titre-epaisseur);
+	margin-top: var(--wp--preset--spacing--40);
+	background: var(--rouge);
+}
+
+:where(.on-nuit, .is-style-nuit, .has-nuit-background-color) .filet-titre::after {
+	background: var(--rouge-clair);
+}
+
+.chapeau,
+.description {
+	font-size: var(--wp--preset--font-size--l);
+	line-height: 1.55;
+	color: var(--encre-douce);
+	max-width: var(--mesure);
+}
+
+/* Layout ----------------------------------------------------------------- */
+
+.container,
+.site-header__inner,
+.site-footer__inner,
+.site-footer__bottom,
+.consent__inner {
+	width: min(100% - 2 * var(--gouttiere), var(--large));
+	margin-inline: auto;
+}
+
+/*
+ * Page content is full width so sections can carry their own background; loose blocks
+ * (paragraphs, headings, lists written directly in a page) get the reading measure.
+ */
+.page-content > :where(:not(.alignfull, .alignwide, section, [class*="wp-block-tilleuls-ortego-blocks-"], .section)) {
+	width: min(100% - 2 * var(--gouttiere), var(--wp--style--global--content-size, 42rem));
+	margin-inline: auto;
+}
+
+/*
+ * Editor: post-content uses layout "default", so the editor drops the align classes and caps
+ * every root block at the content size. Mirror the front: sections full width, loose text at
+ * the reading measure.
+ */
+.block-editor-block-list__layout.is-root-container.wp-block-post-content {
+	padding-inline: 0;
+}
+
+.block-editor-block-list__layout.is-root-container.wp-block-post-content > * {
+	max-width: none;
+}
+
+.block-editor-block-list__layout.is-root-container.wp-block-post-content > :is([data-type="core/paragraph"], [data-type="core/heading"], [data-type="core/list"], [data-type="core/quote"], [data-type="core/image"], [data-type="core/table"]) {
+	width: min(100% - 2 * var(--gouttiere), var(--wp--style--global--content-size, 42rem));
+	margin-inline: auto;
+}
+
+.page-content > .alignwide {
+	width: min(100% - 2 * var(--gouttiere), var(--large));
+	margin-inline: auto;
+}
+
+.page-content > * + * {
+	margin-block-start: 0;
+}
+
+.page-content.is-prose {
+	padding-block: var(--wp--preset--spacing--70);
+}
+
+.page-content.is-prose > * + * {
+	margin-block-start: var(--wp--preset--spacing--50);
+}
+
+/* Footer at the bottom of the viewport on short pages: main takes the free space. */
+.wp-site-blocks {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+	min-height: calc(100dvh - var(--wp-admin--admin-bar--height, 0px));
+}
+
+.wp-site-blocks > .site-main {
+	flex: 1 0 auto;
+}
+
+.wp-site-blocks > *,
+.site-main > * {
+	margin-block: 0;
+}
+
+.site-main:focus {
+	outline: none;
+}
+
+/* Buttons (core/button and .button) --------------------------------------- */
+
+.button,
+.wp-block-button__link,
+.wp-element-button,
+.wpcf7-submit {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 0.5rem;
+	min-height: var(--controle);
+	padding: 0.625rem 1.25rem;
+	border: 2px solid var(--rouge);
+	border-radius: var(--radius-s);
+	background: var(--rouge);
+	color: var(--blanc);
+	font-family: var(--sans);
+	font-size: var(--wp--preset--font-size--s);
+	font-weight: 700;
+	line-height: 1.25;
+	text-align: center;
+	text-decoration: none;
+	cursor: pointer;
+	transition: background-color var(--duree) var(--courbe), color var(--duree) var(--courbe), border-color var(--duree) var(--courbe);
+}
+
+.button:hover,
+.wp-block-button__link:hover,
+.wp-element-button:hover,
+.wpcf7-submit:hover {
+	background: var(--rouge-profond);
+	border-color: var(--rouge-profond);
+	color: var(--blanc);
+	text-decoration: none;
+}
+
+.button:active,
+.wp-block-button__link:active,
+.wpcf7-submit:active {
+	background: var(--encre);
+	border-color: var(--encre);
+	color: var(--papier);
+}
+
+/* Secondary: outlined ink, fills with ink on hover. */
+.button--secondary,
+.is-style-secondaire .wp-block-button__link,
+.is-style-outline .wp-block-button__link {
+	background: transparent;
+	border-color: var(--encre);
+	color: var(--encre);
+}
+
+.button--secondary:hover,
+.is-style-secondaire .wp-block-button__link:hover,
+.is-style-outline .wp-block-button__link:hover {
+	background: var(--encre);
+	border-color: var(--encre);
+	color: var(--papier);
+}
+
+.button--secondary:active,
+.is-style-secondaire .wp-block-button__link:active {
+	background: var(--encre-douce);
+	border-color: var(--encre-douce);
+	color: var(--papier);
+}
+
+/* Tertiary: a link the height of a button. */
+.button--tertiary,
+.is-style-tertiaire .wp-block-button__link {
+	background: transparent;
+	border-color: transparent;
+	color: var(--rouge);
+	padding-inline: 0.5rem;
+	text-decoration: underline;
+	text-decoration-thickness: 1px;
+	text-underline-offset: 0.25em;
+}
+
+.button--tertiary:hover,
+.is-style-tertiaire .wp-block-button__link:hover {
+	background: transparent;
+	border-color: transparent;
+	color: var(--rouge-profond);
+	text-decoration-thickness: 3px;
+}
+
+.button--tertiary:active,
+.is-style-tertiaire .wp-block-button__link:active {
+	background: transparent;
+	border-color: transparent;
+	color: var(--encre);
+}
+
+/* On dark or red backgrounds: light fill, or light outline. */
+.button--clair,
+.is-style-clair .wp-block-button__link {
+	background: var(--sur-nuit);
+	border-color: var(--sur-nuit);
+	color: var(--nuit);
+}
+
+.button--clair:hover,
+.is-style-clair .wp-block-button__link:hover {
+	background: var(--sable);
+	border-color: var(--sable);
+	color: var(--nuit);
+}
+
+.button--contour-clair,
+.is-style-contour-clair .wp-block-button__link {
+	background: transparent;
+	border-color: var(--sur-nuit);
+	color: var(--sur-nuit);
+}
+
+.button--contour-clair:hover,
+.is-style-contour-clair .wp-block-button__link:hover {
+	background: var(--sur-nuit);
+	border-color: var(--sur-nuit);
+	color: var(--nuit);
+}
+
+/* Disabled: sable, dashed border, encre-douce (7.7:1). Never color alone. */
+.button:disabled,
+.button[aria-disabled="true"],
+.wp-block-button__link[aria-disabled="true"],
+.wpcf7-submit:disabled {
+	background: var(--sable);
+	border: 2px dashed var(--trait);
+	color: var(--encre-douce);
+	cursor: not-allowed;
+}
+
+.wp-block-buttons {
+	gap: var(--wp--preset--spacing--40);
+}
+
+/* Lists -------------------------------------------------------------------- */
+
+.is-style-coches,
+.price-features ul {
+	list-style: none;
+	padding-inline-start: 0;
+}
+
+.is-style-coches li,
+.price-features li {
+	position: relative;
+	padding-inline-start: 2rem;
+	margin-block: var(--wp--preset--spacing--30);
+	font-weight: 700;
+}
+
+.is-style-coches li::before {
+	content: "";
+	position: absolute;
+	inset-inline-start: 0;
+	top: 0.2em;
+	width: 1.25rem;
+	height: 1.25rem;
+	background: var(--rouge);
+	mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+
+/* Quote -------------------------------------------------------------------- */
+
+.wp-block-quote {
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+
+.wp-block-quote p {
+	font-family: var(--serif);
+	font-style: italic;
+	font-weight: 400;
+	font-size: var(--wp--preset--font-size--xxl);
+	line-height: 1.3;
+}
+
+.wp-block-quote cite {
+	display: flex;
+	align-items: center;
+	gap: var(--wp--preset--spacing--40);
+	margin-top: var(--wp--preset--spacing--50);
+	font-family: var(--sans);
+	font-style: normal;
+	font-size: var(--wp--preset--font-size--xs);
+	font-weight: 700;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+}
+
+.wp-block-quote cite::before {
+	content: "";
+	width: 2rem;
+	border-top: 2px solid currentcolor;
+}
+
+/* Forms (Contact Form 7) ---------------------------------------------------- */
+
+.wpcf7 form {
+	display: grid;
+	gap: var(--wp--preset--spacing--50);
+}
+
+.wpcf7 form > p {
+	margin: 0;
+}
+
+.wpcf7 label,
+.champ__label {
+	display: block;
+	font-weight: 700;
+	font-size: var(--wp--preset--font-size--s);
+}
+
+.wpcf7 label .facultatif,
+.wpcf7 label .obligatoire,
+.champ__mention {
+	font-weight: 400;
+}
+
+.champ__aide {
+	display: block;
+	margin-top: 0.25rem;
+	color: var(--encre-douce);
+	font-size: var(--wp--preset--font-size--xs);
+	font-weight: 400;
+}
+
+.wpcf7-form-control-wrap {
+	display: block;
+	margin-top: var(--wp--preset--spacing--20);
+}
+
+input:is([type="text"], [type="email"], [type="tel"], [type="url"], [type="search"], [type="number"], [type="date"]),
+select,
+textarea,
+.wpcf7-form-control:not(.wpcf7-submit, .wpcf7-checkbox, .wpcf7-radio, .wpcf7-acceptance) {
+	box-sizing: border-box;
+	width: 100%;
+	min-height: var(--controle);
+	padding: 0.625rem 0.875rem;
+	border: 2px solid var(--trait);
+	border-radius: var(--radius-s);
+	background: var(--blanc);
+	color: var(--encre);
+	font: inherit;
+	font-size: var(--wp--preset--font-size--m);
+	line-height: 1.5;
+}
+
+textarea {
+	min-height: 10rem;
+	resize: vertical;
+}
+
+select {
+	appearance: none;
+	padding-inline-end: 2.75rem;
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231C1917' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+	background-repeat: no-repeat;
+	background-position: right 0.875rem center;
+	background-size: 1.25rem;
+}
+
+@media (prefers-color-scheme: dark) {
+
+	select {
+		background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23F1ECE4' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+	}
+}
+
+:is(input, select, textarea):focus-visible {
+	border-color: var(--encre);
+}
+
+:is(input, select, textarea):disabled {
+	background: var(--sable);
+	border-style: dashed;
+	color: var(--encre-douce);
+	cursor: not-allowed;
+}
+
+::placeholder {
+	color: var(--encre-douce);
+	opacity: 1;
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+	width: 1.5rem;
+	height: 1.5rem;
+	margin: 0;
+	flex: none;
+	accent-color: var(--rouge);
+}
+
+.checkbox,
+.wpcf7-list-item label {
+	display: flex;
+	align-items: flex-start;
+	gap: 0.75rem;
+	font-weight: 400;
+}
+
+.wpcf7-list-item {
+	margin: 0;
+}
+
+/* Invalid field: 3 px red border + icon + text linked by aria-describedby (CF7 does the linking). */
+.wpcf7-not-valid,
+[aria-invalid="true"] {
+	border-color: var(--erreur) !important;
+	border-width: 3px !important;
+}
+
+.wpcf7-not-valid-tip {
+	display: flex;
+	align-items: center;
+	gap: 0.4rem;
+	margin-top: var(--wp--preset--spacing--20);
+	color: var(--erreur);
+	font-size: var(--wp--preset--font-size--s);
+	font-weight: 700;
+}
+
+.wpcf7-not-valid-tip::before,
+.notice--erreur .notice__title::before,
+.is-style-notice-erreur > :first-child::before {
+	content: "";
+	flex: none;
+	width: 1.25rem;
+	height: 1.25rem;
+	background: currentcolor;
+	mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Cpath d='M12 8v4'/%3E%3Cpath d='M12 16h.01'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+
+.wpcf7-spinner {
+	margin-inline: 1rem 0;
+}
+
+/* Notices (block-notice style variations, CF7 response) ---------------------- */
+
+.notice,
+.wpcf7 form .wpcf7-response-output,
+[class*="is-style-notice-"] {
+	margin: 0;
+	padding: var(--wp--preset--spacing--50);
+	border: 2px solid var(--encre);
+	border-radius: var(--radius-m);
+	background: var(--blanc);
+	color: var(--encre);
+}
+
+.notice__title,
+[class*="is-style-notice-"] > :first-child {
+	display: flex;
+	align-items: center;
+	gap: 0.6rem;
+	margin: 0 0 var(--wp--preset--spacing--20);
+	font-family: var(--sans);
+	font-size: var(--wp--preset--font-size--m);
+	font-weight: 700;
+}
+
+.is-style-notice-info > :first-child::before,
+.is-style-notice-succes > :first-child::before,
+.wpcf7 form.sent .wpcf7-response-output::before,
+.wpcf7 form:is(.invalid, .unaccepted, .failed, .spam, .aborted) .wpcf7-response-output::before {
+	content: "";
+	flex: none;
+	width: 1.25rem;
+	height: 1.25rem;
+	background: currentcolor;
+	mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Cpath d='M12 16v-4'/%3E%3Cpath d='M12 8h.01'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+
+.notice--succes,
+.is-style-notice-succes,
+.wpcf7 form.sent .wpcf7-response-output {
+	border-color: var(--succes);
+}
+
+.is-style-notice-succes > :first-child,
+.wpcf7 form.sent .wpcf7-response-output {
+	color: var(--succes);
+}
+
+.is-style-notice-succes > :first-child::before,
+.wpcf7 form.sent .wpcf7-response-output::before {
+	mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M22 11.08V12a10 10 0 1 1-5.93-9.14'/%3E%3Cpath d='m9 11 3 3L22 4'/%3E%3C/svg%3E");
+}
+
+.notice--erreur,
+.is-style-notice-erreur,
+.wpcf7 form:is(.invalid, .unaccepted, .failed, .spam, .aborted) .wpcf7-response-output {
+	border-color: var(--erreur);
+}
+
+.notice--erreur .notice__title,
+.is-style-notice-erreur > :first-child,
+.wpcf7 form:is(.invalid, .unaccepted, .failed, .spam, .aborted) .wpcf7-response-output {
+	color: var(--erreur);
+}
+
+.wpcf7 form .wpcf7-response-output {
+	display: flex;
+	gap: 0.6rem;
+	font-weight: 700;
+}
+
+.wpcf7 form .wpcf7-response-output:empty,
+.wpcf7 form.init .wpcf7-response-output {
+	display: none;
+}
+
+/* Accordion · FAQ (core/details), works without JavaScript -------------------- */
+
+.wp-block-details {
+	border-top: 1px solid var(--encre);
+	padding: 0;
+}
+
+.wp-block-details:last-of-type {
+	border-bottom: 1px solid var(--encre);
+}
+
+.wp-block-details summary {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 1rem;
+	min-height: var(--controle);
+	padding-block: var(--wp--preset--spacing--40);
+	font-family: var(--serif);
+	font-size: var(--wp--preset--font-size--xl);
+	font-weight: 600;
+	line-height: 1.25;
+	list-style: none;
+	cursor: pointer;
+}
+
+.wp-block-details summary::-webkit-details-marker {
+	display: none;
+}
+
+.wp-block-details summary::after {
+	content: "";
+	flex: none;
+	width: 1.5rem;
+	height: 1.5rem;
+	background: var(--rouge);
+	mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E") center / contain no-repeat;
+	transition: transform var(--duree) var(--courbe);
+}
+
+.wp-block-details[open] summary::after {
+	transform: rotate(180deg);
+}
+
+.wp-block-details > :not(summary) {
+	margin-block: 0 var(--wp--preset--spacing--50);
+	max-width: var(--mesure);
+}
+
+/* Pagination ------------------------------------------------------------- */
+
+.wp-block-query-pagination {
+	gap: var(--wp--preset--spacing--20);
+	margin-top: var(--wp--preset--spacing--60);
+	font-weight: 700;
+	font-size: var(--wp--preset--font-size--s);
+}
+
+.wp-block-query-pagination a,
+.wp-block-query-pagination .current {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-width: var(--controle);
+	min-height: var(--controle);
+	padding-inline: 0.75rem;
+	border-radius: var(--radius-s);
+}
+
+.wp-block-query-pagination .current {
+	background: var(--encre);
+	color: var(--papier);
+}
+
+/* Spinner (respects reduced motion: becomes a static ring) ------------------ */
+
+.spinner {
+	display: inline-block;
+	width: 1.75rem;
+	height: 1.75rem;
+	border: 3px solid var(--filet);
+	border-top-color: var(--rouge);
+	border-radius: 50%;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+
+	.spinner {
+		animation: tourne 0.9s linear infinite;
+	}
+}
+
+@keyframes tourne {
+
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+/* Reduced motion and forced colors ------------------------------------------ */
+
+@media (prefers-reduced-motion: reduce) {
+
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		scroll-behavior: auto !important;
+		transition-duration: 0.01ms !important;
+	}
+}
+
+@media (forced-colors: active) {
+
+	.button,
+	.wp-block-button__link,
+	.wpcf7-submit {
+		border: 2px solid ButtonText;
+	}
+
+	:where(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
+		outline-color: Highlight;
+	}
+
+	.is-style-coches li::before,
+	.wpcf7-not-valid-tip::before,
+	.lien-suite a::after {
+		background: CanvasText;
+	}
+}

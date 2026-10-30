@@ -1,0 +1,16 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "tilleuls-papier/archive-title",
+	"title": "Titre de la liste",
+	"category": "theme",
+	"description": "Titre principal (H1) des listes de contenus : page des articles, recherche, archives.",
+	"textdomain": "tilleuls-ortego-papier",
+	"supports": {
+		"html": false,
+		"multiple": false,
+		"reusable": false
+	},
+	"editorScript": "tilleuls-papier-editor",
+	"render": "file:./render.php"
+}

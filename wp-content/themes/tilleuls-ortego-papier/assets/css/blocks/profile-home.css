@@ -1,0 +1,71 @@
+/* tilleuls-ortego-blocks/profile-home — sable section: 4:5 portrait, text, language tags. */
+.profile-home {
+	padding-block: var(--wp--preset--spacing--80);
+	background: var(--sable);
+}
+
+.profile-home-grid {
+	display: grid;
+	grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+	align-items: center;
+	gap: var(--wp--preset--spacing--70);
+}
+
+@media (max-width: 48rem) {
+
+	.profile-home-grid {
+		grid-template-columns: 1fr;
+	}
+}
+
+.profile-home-img {
+	aspect-ratio: 4 / 5;
+	border: 1px solid var(--filet);
+	border-radius: var(--radius-m);
+	background: var(--papier);
+	overflow: hidden;
+}
+
+.profile-home-img img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.profile-home-content {
+	display: grid;
+	gap: var(--wp--preset--spacing--50);
+}
+
+.profile-home-content > * {
+	margin: 0;
+}
+
+.profile-home-content p {
+	max-width: var(--mesure);
+}
+
+.profile-home .languages-list {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--wp--preset--spacing--20);
+}
+
+.profile-home .profile-cta {
+	justify-self: start;
+	display: inline-flex;
+	align-items: center;
+	min-height: var(--controle);
+	padding: 0.625rem 1.25rem;
+	border: 2px solid var(--encre);
+	border-radius: var(--radius-s);
+	color: var(--encre);
+	font-size: var(--wp--preset--font-size--s);
+	font-weight: 700;
+	text-decoration: none;
+}
+
+.profile-home .profile-cta:hover {
+	background: var(--encre);
+	color: var(--papier);
+}

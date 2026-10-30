@@ -1,0 +1,91 @@
+/* tilleuls-ortego-blocks/pricing — the plugin card has no button; the "Tarifs" pattern adds one. */
+.section-pricing {
+	padding-block: var(--wp--preset--spacing--80);
+}
+
+.section-pricing .container > * + * {
+	margin-top: var(--wp--preset--spacing--60);
+}
+
+.section-pricing .pricing-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr));
+	gap: var(--wp--preset--spacing--50);
+}
+
+.section-pricing .price-card {
+	display: grid;
+	align-content: start;
+	gap: var(--wp--preset--spacing--40);
+	padding: var(--wp--preset--spacing--60) var(--wp--preset--spacing--50);
+	border: 1px solid var(--filet);
+	border-radius: var(--radius-m);
+	background: var(--blanc);
+}
+
+.section-pricing .price-title {
+	margin: 0;
+	font-family: var(--sans);
+	font-size: var(--wp--preset--font-size--m);
+	font-weight: 700;
+}
+
+.section-pricing .price-amount {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: baseline;
+	gap: 0.25rem 0.6rem;
+	margin-top: var(--wp--preset--spacing--40);
+	padding-bottom: var(--wp--preset--spacing--40);
+	border-bottom: 1px solid var(--filet);
+}
+
+.section-pricing .price-amount > span:first-child {
+	font-family: var(--serif);
+	font-size: var(--wp--preset--font-size--titre-page);
+	font-weight: 600;
+	line-height: 1.1;
+}
+
+.section-pricing .price-unit {
+	color: var(--encre-douce);
+	font-size: var(--wp--preset--font-size--s);
+}
+
+.section-pricing .price-features ul {
+	margin: 0;
+}
+
+.section-pricing .price-features li {
+	display: flex;
+	gap: 0.75rem;
+	padding: 0;
+	font-weight: 400;
+}
+
+.section-pricing .price-features i {
+	margin-top: 0.3em;
+	color: var(--rouge);
+}
+
+.section-pricing .price-card.featured {
+	border-color: var(--nuit);
+	background: var(--nuit);
+	color: var(--sur-nuit-doux);
+}
+
+.section-pricing .price-card.featured :is(.price-title, .price-amount > span:first-child) {
+	color: var(--sur-nuit);
+}
+
+.section-pricing .price-card.featured .price-amount {
+	border-color: var(--nuit-2);
+}
+
+.section-pricing .price-card.featured :is(.price-unit) {
+	color: var(--sur-nuit-doux);
+}
+
+.section-pricing .price-card.featured .price-features i {
+	color: var(--rouge-clair);
+}

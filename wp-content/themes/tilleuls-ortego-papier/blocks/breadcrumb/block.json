@@ -1,0 +1,16 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "tilleuls-papier/breadcrumb",
+	"title": "Fil d'Ariane",
+	"category": "theme",
+	"description": "Chemin de la page courante depuis l'accueil.",
+	"textdomain": "tilleuls-ortego-papier",
+	"supports": {
+		"html": false,
+		"multiple": false,
+		"reusable": false
+	},
+	"editorScript": "tilleuls-papier-editor",
+	"render": "file:./render.php"
+}

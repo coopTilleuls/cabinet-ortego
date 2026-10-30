@@ -1,0 +1,28 @@
+/* tilleuls-ortego-blocks/appointment — booking: info column + blocked Calendly (see consent.js). */
+.section-meeting-calendly {
+	padding-block: var(--wp--preset--spacing--80);
+	border-top: 1px solid var(--filet);
+}
+
+.meeting-grid {
+	display: grid;
+	grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+	align-items: start;
+	gap: var(--wp--preset--spacing--70);
+}
+
+@media (max-width: 56rem) {
+
+	.meeting-grid {
+		grid-template-columns: 1fr;
+	}
+}
+
+.meeting-info {
+	display: grid;
+	gap: var(--wp--preset--spacing--50);
+}
+
+.meeting-info > * {
+	margin: 0;
+}

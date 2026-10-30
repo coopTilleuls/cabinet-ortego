@@ -1,0 +1,63 @@
+/* tilleuls-ortego-blocks/call-to-action — the one red band: white text 9.3:1, light buttons. */
+.section-cta {
+	padding-block: var(--wp--preset--spacing--70);
+	background: var(--rouge);
+	color: var(--blanc);
+	--focus: var(--blanc);
+}
+
+.section-cta .cta-body {
+	display: grid;
+	gap: var(--wp--preset--spacing--40);
+}
+
+.section-cta .cta-body > * {
+	margin: 0;
+}
+
+.section-cta h2 {
+	max-width: 24ch;
+	color: var(--blanc);
+	font-size: var(--wp--preset--font-size--xxl);
+}
+
+.section-cta p {
+	max-width: var(--mesure);
+	color: var(--blanc);
+}
+
+.section-cta .cta-container {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--wp--preset--spacing--40);
+	margin-top: var(--wp--preset--spacing--40);
+}
+
+.section-cta .cta-link {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.6rem;
+	min-height: var(--controle);
+	padding: 0.625rem 1.25rem;
+	border: 2px solid var(--blanc);
+	border-radius: var(--radius-s);
+	background: transparent;
+	color: var(--blanc);
+	font-size: var(--wp--preset--font-size--s);
+	text-decoration: none;
+}
+
+.section-cta .cta-link.primary {
+	background: var(--blanc);
+	color: var(--rouge);
+}
+
+.section-cta .cta-link:hover {
+	background: var(--papier);
+	border-color: var(--papier);
+	color: var(--rouge-profond);
+}
+
+.section-cta .cta-link i {
+	font-size: 1rem;
+}
