@@ -10,6 +10,9 @@ use function Castor\io;
 use function Castor\load_dot_env;
 use function Castor\run;
 
+// Keep the process in the project root: .env and wp-cli.phar are resolved relative to it, not to --path.
+defined('CASTOR_USE_CHDIR') || define('CASTOR_USE_CHDIR', false);
+
 const WP_LOCALE = 'fr_FR';
 const WP_PLUGINS = ['contact-form-7', 'wordpress-seo', 'polylang'];
 // Single source of truth for the site pages, also read by the theme header to build the navigation.
@@ -32,7 +35,7 @@ const BLOCK_RENAMES = [
 ];
 
 #[AsTask(description: 'Install wordpress with plugins')]
-function install(string $path = '.', string $version = 'latest'): void
+function install(string $path = '.', string $wpVersion = 'latest'): void
 {
     io()->title("Installation of WordPress for Cabinet Ortego");
 
@@ -50,7 +53,7 @@ function install(string $path = '.', string $version = 'latest'): void
 
     // Make the installation
     io()->info("Starting installation of WordPress environment");
-    run(['wp', 'core', 'download', '--locale='.WP_LOCALE, '--skip-content', '--version='.$version], context: $context);
+    run(['wp', 'core', 'download', '--locale='.WP_LOCALE, '--skip-content', '--version='.$wpVersion], context: $context);
 
     // create config if there is no one
     $wp_config = run('wp config path', context: $context->withQuiet());
@@ -149,7 +152,7 @@ function create_pages(Context $context, string $path): void
 }
 
 #[AsTask(description: 'Update WordPress core, database, plugins and translations')]
-function update(string $path = '.', string $version = 'latest'): void
+function update(string $path = '.', string $wpVersion = 'latest'): void
 {
     io()->title("Update of WordPress for Cabinet Ortego");
 
@@ -161,9 +164,9 @@ function update(string $path = '.', string $version = 'latest'): void
     $before = trim(run('wp core version', context: $context->withQuiet())->getOutput());
 
     $core_update = ['wp', 'core', 'update', '--locale='.WP_LOCALE];
-    if ($version !== 'latest') {
+    if ($wpVersion !== 'latest') {
         // --force allows downgrading or reinstalling a given version
-        array_push($core_update, '--version='.$version, '--force');
+        array_push($core_update, '--version='.$wpVersion, '--force');
     }
     if (!run($core_update, context: $context)->isSuccessful()) {
         io()->error('Core update failed.');

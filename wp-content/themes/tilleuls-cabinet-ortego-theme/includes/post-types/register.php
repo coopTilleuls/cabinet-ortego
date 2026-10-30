@@ -10,8 +10,9 @@ declare(strict_types=1);
  * @param string                $post_type Post type key.
  * @param array<string, string> $labels    Translated labels (see get_post_type_labels()).
  * @param string                $slug      Rewrite slug.
+ * @param string                $icon      Admin menu icon (dashicons class).
  */
-function tilleuls_register_cpt(string $post_type, array $labels, string $slug): void
+function tilleuls_register_cpt(string $post_type, array $labels, string $slug, string $icon = 'dashicons-admin-post'): void
 {
     register_post_type(
         $post_type,
@@ -21,8 +22,8 @@ function tilleuls_register_cpt(string $post_type, array $labels, string $slug): 
             'has_archive' => true,
             'rewrite' => ['slug' => $slug],
             'supports' => ['title', 'editor', 'thumbnail', 'custom-fields'],
-            'menu_icon' => 'dashicons-gavel',
-            'show_in_rest' => true,
+            'menu_icon' => $icon,
+            'show_in_rest' => false, // no REST = classic editor, no Gutenberg
             'menu_position' => 20,
         ]
     );

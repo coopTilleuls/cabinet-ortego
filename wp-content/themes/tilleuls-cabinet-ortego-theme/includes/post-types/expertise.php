@@ -20,6 +20,7 @@ add_action('init', function () {
             'not_found' => __('Aucun domaine d\'expertise trouvé', 'tilleuls-cabinet-ortego-theme'),
             'not_found_in_trash' => __('Aucun domaine d\'expertise dans la corbeille', 'tilleuls-cabinet-ortego-theme'),
         ],
-        'domaine-expertise'
+        'domaine-expertise',
+        'dashicons-awards'
     );
 });

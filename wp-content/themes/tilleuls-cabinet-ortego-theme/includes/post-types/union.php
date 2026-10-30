@@ -20,6 +20,7 @@ add_action('init', function () {
             'not_found' => __('Aucun syndicat d\'affiliation trouvé', 'tilleuls-cabinet-ortego-theme'),
             'not_found_in_trash' => __('Aucun syndicat d\'affiliation dans la corbeille', 'tilleuls-cabinet-ortego-theme'),
         ],
-        'syndicat'
+        'syndicat',
+        'dashicons-groups'
     );
 });
