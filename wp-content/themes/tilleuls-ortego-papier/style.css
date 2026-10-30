@@ -1,0 +1,17 @@
+/*
+Theme Name: Cabinet Ortego Sampedro — Papier & encre
+Theme URI:
+Author: Les-Tilleuls.coop
+Author URI: https://les-tilleuls.coop
+Description: Thème alternatif « Papier & encre » : papier chaud, encre, rouge basque réservé aux actions, filets fins. Accessibilité visée : WCAG 2.x AAA pour le texte courant, AA partout.
+Requires at least: 6.8
+Tested up to: 7.1
+Requires PHP: 8.0
+Version: 1.0.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: tilleuls-ortego-papier
+Tags: one-column, custom-menu, editor-style, full-site-editing, block-patterns, translation-ready, accessibility-ready
+
+Les styles sont dans assets/css/ ; les valeurs (couleurs, tailles, espacements) viennent de theme.json.
+*/

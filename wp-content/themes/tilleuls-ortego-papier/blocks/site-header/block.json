@@ -1,0 +1,16 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "tilleuls-papier/site-header",
+	"title": "En-tête du site",
+	"category": "theme",
+	"description": "Logotype, navigation principale, sélecteur de langue et bouton de rendez-vous. Inclut les liens d'évitement.",
+	"textdomain": "tilleuls-ortego-papier",
+	"supports": {
+		"html": false,
+		"multiple": false,
+		"reusable": false
+	},
+	"editorScript": "tilleuls-papier-editor",
+	"render": "file:./render.php"
+}

@@ -1,0 +1,32 @@
+Modèle de formulaire Contact Form 7 conforme aux maquettes « Papier & encre ».
+À coller dans Contact > Formulaire (onglet « Formulaire »). Libellés visibles au-dessus des champs,
+mention « (obligatoire) » en toutes lettres, autocomplete renseigné, aucun placeholder servant de libellé.
+
+----- début -----
+<p class="mention">Les champs obligatoires sont indiqués « (obligatoire) ».</p>
+
+<div class="champs-2">
+<label> Nom et prénom <span class="obligatoire">(obligatoire)</span>
+    [text* your-name autocomplete:name] </label>
+
+<label> Téléphone <span class="facultatif">(facultatif)</span>
+    [tel your-phone autocomplete:tel] </label>
+</div>
+
+<label> Adresse e-mail <span class="obligatoire">(obligatoire)</span>
+    <span class="champ__aide">Pour vous répondre. Exemple : nom@exemple.fr</span>
+    [email* your-email autocomplete:email] </label>
+
+<label> Sujet de votre demande <span class="facultatif">(facultatif)</span>
+    [select your-subject first_as_label "Choisir un sujet" "Droit pénal" "Droit des étrangers" "Droit pénitentiaire" "Libertés fondamentales" "Honoraires et rendez-vous" "Autre demande"] </label>
+
+<label> Votre message <span class="obligatoire">(obligatoire)</span>
+    <span class="champ__aide">Décrivez brièvement votre situation.</span>
+    [textarea* your-message] </label>
+
+[acceptance your-consent] J'accepte que mes données soient utilisées pour répondre à ma demande. [/acceptance]
+
+[submit "Envoyer ma demande"]
+
+<p class="mention">Vos données sont confidentielles et soumises au secret professionnel.</p>
+----- fin -----

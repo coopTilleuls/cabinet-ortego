@@ -1,0 +1,15 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "tilleuls-papier/contact-actions",
+	"title": "Boutons Appeler / Écrire",
+	"category": "theme",
+	"description": "Boutons « Appeler » et « Nous écrire » du cabinet. Le numéro et l'e-mail viennent de Réglages > Général : un champ vide masque son bouton.",
+	"textdomain": "tilleuls-ortego-papier",
+	"supports": {
+		"html": false,
+		"reusable": false
+	},
+	"editorScript": "tilleuls-papier-editor",
+	"render": "file:./render.php"
+}

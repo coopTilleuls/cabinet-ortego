@@ -1,0 +1,86 @@
+/* tilleuls-ortego-blocks/text-image — practice area: text + decorative visual. */
+.section-expertise-page {
+	padding-block: var(--wp--preset--spacing--70);
+	border-top: 1px solid var(--encre);
+}
+
+.section-expertise-page .expertises-grid {
+	display: grid;
+	grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+	align-items: center;
+	gap: var(--wp--preset--spacing--70);
+}
+
+.section-expertise-page.has-img-left .expertise-visual {
+	order: -1;
+}
+
+.section-expertise-page.has-img-left .expertises-grid {
+	grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+}
+
+@media (max-width: 48rem) {
+
+	.section-expertise-page .expertises-grid,
+	.section-expertise-page.has-img-left .expertises-grid {
+		grid-template-columns: 1fr;
+	}
+
+	.section-expertise-page .expertise-visual {
+		display: none;
+	}
+}
+
+.expertise-content > * {
+	margin: 0;
+}
+
+.expertise-content > * + * {
+	margin-top: var(--wp--preset--spacing--50);
+}
+
+.expertise-content h2 {
+	display: flex;
+	align-items: center;
+	gap: 0.75rem;
+	font-size: var(--wp--preset--font-size--xxl);
+}
+
+.expertise-content h2 i {
+	color: var(--rouge);
+	font-size: 0.7em;
+}
+
+.expertise-content ul {
+	padding: 0;
+	list-style: none;
+}
+
+.expertise-content li {
+	position: relative;
+	padding-inline-start: 2rem;
+	margin-block: var(--wp--preset--spacing--30);
+	font-weight: 700;
+}
+
+.expertise-content li::before {
+	content: "";
+	position: absolute;
+	inset-inline-start: 0;
+	top: 0.2em;
+	width: 1.25rem;
+	height: 1.25rem;
+	background: var(--rouge);
+	mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+
+.expertise-visual {
+	display: grid;
+	place-items: center;
+	aspect-ratio: 3 / 2;
+	border: 1px solid var(--filet);
+	border-radius: var(--radius-m);
+	background: var(--sable);
+	color: var(--encre-douce);
+	font-size: 3rem;
+}

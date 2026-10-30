@@ -1,0 +1,50 @@
+/* tilleuls-ortego-blocks/quote — large italic quote, ruled author line. */
+.section-citation {
+	padding-block: var(--wp--preset--spacing--80);
+	background: var(--papier);
+}
+
+.section-citation .quote {
+	display: grid;
+	justify-items: center;
+	gap: var(--wp--preset--spacing--50);
+	max-width: 48rem;
+	margin-inline: auto;
+	text-align: center;
+}
+
+.section-citation .quote-icon {
+	color: var(--rouge);
+	font-family: var(--serif);
+	font-size: 3rem;
+	line-height: 0.6;
+}
+
+.section-citation .blockquote {
+	margin: 0;
+	font-family: var(--serif);
+	font-size: var(--wp--preset--font-size--xxl);
+	font-style: italic;
+	line-height: 1.3;
+	text-align: center;
+}
+
+.section-citation .blockquote p {
+	text-align: center;
+}
+
+.section-citation .quote-author {
+	display: inline-flex;
+	align-items: center;
+	gap: var(--wp--preset--spacing--40);
+	font-size: var(--wp--preset--font-size--xs);
+	font-weight: 700;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+}
+
+.section-citation .quote-author::before {
+	content: "";
+	width: 2rem;
+	border-top: 2px solid currentcolor;
+}

@@ -1,0 +1,44 @@
+/* tilleuls-ortego-blocks/association-banner — affiliations under a thin ink rule. */
+.wp-block-tilleuls-ortego-blocks-association-banner {
+	padding-block: var(--wp--preset--spacing--80);
+	border-top: 1px solid var(--filet);
+}
+
+.wp-block-tilleuls-ortego-blocks-association-banner.red,
+.wp-block-tilleuls-ortego-blocks-association-banner.black {
+	background: var(--nuit);
+	color: var(--sur-nuit-doux);
+	--focus: var(--sur-nuit);
+}
+
+.wp-block-tilleuls-ortego-blocks-association-banner.blue {
+	background: var(--sable);
+}
+
+.wp-block-tilleuls-ortego-blocks-association-banner .container > * + * {
+	margin-top: var(--wp--preset--spacing--60);
+}
+
+.associations-flex {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr));
+	gap: var(--wp--preset--spacing--50);
+}
+
+.asso-item {
+	display: flex;
+	align-items: flex-start;
+	gap: 0.75rem;
+	padding-top: var(--wp--preset--spacing--40);
+	border-top: 2px solid currentcolor;
+	font-weight: 700;
+}
+
+.asso-item i {
+	margin-top: 0.25rem;
+	color: var(--rouge);
+}
+
+:is(.red, .black) .asso-item i {
+	color: var(--rouge-clair);
+}

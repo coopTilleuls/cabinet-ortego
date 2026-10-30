@@ -1,0 +1,88 @@
+/* tilleuls-ortego-blocks/profile — biography: portrait + languages, text + education. */
+.profile-section {
+	padding-block: var(--wp--preset--spacing--80);
+	border-top: 1px solid var(--filet);
+}
+
+.profile-grid {
+	display: grid;
+	grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+	align-items: start;
+	gap: var(--wp--preset--spacing--70);
+}
+
+@media (max-width: 48rem) {
+
+	.profile-grid {
+		grid-template-columns: 1fr;
+	}
+}
+
+.profile-img-container {
+	display: grid;
+	gap: var(--wp--preset--spacing--50);
+}
+
+.profile-img-container img {
+	width: 100%;
+	aspect-ratio: 4 / 5;
+	object-fit: cover;
+	border-radius: var(--radius-m);
+}
+
+.languages-container h3,
+.diploma-list h3 {
+	margin: 0 0 var(--wp--preset--spacing--40);
+	font-family: var(--sans);
+	font-size: var(--wp--preset--font-size--xs);
+	font-weight: 700;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	color: var(--rouge);
+}
+
+.languages-container > div {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--wp--preset--spacing--20);
+}
+
+.bio-text {
+	display: grid;
+	gap: var(--wp--preset--spacing--50);
+}
+
+.bio-text > * {
+	margin: 0;
+}
+
+.bio-content {
+	max-width: var(--mesure);
+}
+
+.bio-content > * + * {
+	margin-top: var(--wp--preset--spacing--40);
+}
+
+.diploma-list {
+	padding-top: var(--wp--preset--spacing--50);
+	border-top: 1px solid var(--encre);
+}
+
+.diploma-list ul {
+	display: grid;
+	gap: var(--wp--preset--spacing--40);
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.diploma-list li {
+	display: flex;
+	gap: 0.75rem;
+}
+
+.diploma-list li i {
+	margin-top: 0.3em;
+	color: var(--rouge);
+}

@@ -1,0 +1,44 @@
+/* tilleuls-ortego-blocks/contact-column — "Nos coordonnées" + blocked map. */
+.section-contact-map-column {
+	display: grid;
+	gap: var(--wp--preset--spacing--60);
+}
+
+.section-contact-map-column h2 {
+	margin: 0 0 var(--wp--preset--spacing--50);
+	font-size: var(--wp--preset--font-size--xxl);
+}
+
+.section-contact-map-column .info-card {
+	display: grid;
+	gap: var(--wp--preset--spacing--50);
+}
+
+.section-contact-map-column .info-item {
+	display: grid;
+	grid-template-columns: 1.5rem 1fr;
+	gap: 0.875rem;
+}
+
+.section-contact-map-column .info-item > i {
+	margin-top: 0.15rem;
+	color: var(--rouge);
+	font-size: 1.125rem;
+}
+
+.section-contact-map-column .info-item h3 {
+	margin: 0;
+	font-family: var(--sans);
+	font-size: var(--wp--preset--font-size--xs);
+	font-weight: 700;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+}
+
+.section-contact-map-column .info-item p {
+	margin: 0.25rem 0 0;
+}
+
+.section-contact-map-column .info-item a {
+	font-weight: 700;
+}

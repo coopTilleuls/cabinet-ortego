@@ -1,0 +1,875 @@
+/*
+ * Papier & encre — page components used by the theme patterns (core blocks + classes).
+ * Rule of the system: thin rules structure, red means "act", one shadow for what overlaps.
+ */
+
+/* Sections ---------------------------------------------------------------- */
+
+.section {
+	padding-block: var(--wp--preset--spacing--80);
+	padding-inline: max(var(--gouttiere), (100% - var(--large)) / 2);
+}
+
+.section--sable {
+	background: var(--sable);
+}
+
+.section--blanc {
+	background: var(--blanc);
+}
+
+.section--filet {
+	border-top: 1px solid var(--filet);
+}
+
+.is-style-nuit,
+.section--nuit {
+	background: var(--nuit);
+	color: var(--sur-nuit-doux);
+}
+
+:where(.is-style-nuit, .section--nuit) :is(h1, h2, h3, h4) {
+	color: var(--sur-nuit);
+}
+
+:where(.is-style-nuit, .section--nuit) a:not(.wp-block-button__link, .button) {
+	color: var(--rouge-clair);
+}
+
+:root .section > * + * {
+	margin-block-start: var(--wp--preset--spacing--50);
+}
+
+:root .section > .section-head + * {
+	margin-block-start: var(--wp--preset--spacing--60);
+}
+
+:root .section-head > * {
+	margin-block: 0;
+}
+
+:root .section-head > * + * {
+	margin-block-start: var(--wp--preset--spacing--40);
+}
+
+.section-head h2 {
+	max-width: 28ch;
+}
+
+.section-head .chapeau {
+	max-width: var(--mesure);
+}
+
+/* Home hero: the type is the image. ----------------------------------------- */
+
+.hero-accueil {
+	border-bottom: 1px solid var(--filet);
+	background: var(--papier);
+}
+
+:root .hero-accueil > .wp-block-cover__inner-container > * {
+	margin-block: 0;
+}
+
+.hero-accueil h1 {
+	max-width: 22ch;
+	font-size: var(--wp--preset--font-size--affiche);
+	line-height: 1.04;
+	letter-spacing: -0.02em;
+}
+
+.hero-accueil h1 em {
+	display: block;
+	font-weight: 400;
+	color: var(--rouge);
+}
+
+.hero-accueil .chapeau {
+	max-width: 44ch;
+	color: var(--encre-douce);
+}
+
+:root .hero-accueil > .wp-block-cover__inner-container > h1 {
+	margin-block-start: var(--wp--preset--spacing--40);
+}
+
+:root .hero-accueil > .wp-block-cover__inner-container > .chapeau {
+	margin-block-start: var(--wp--preset--spacing--50);
+}
+
+:root .hero-accueil > .wp-block-cover__inner-container > .wp-block-buttons {
+	margin-block-start: var(--wp--preset--spacing--60);
+}
+
+/* Grids own their gaps: cancel the flow-layout margins WordPress adds between siblings. */
+:root :is(.cartes, .tarifs, .affiliations, .tarif, .carte) > * {
+	margin-block: 0;
+}
+
+/*
+ * Hero = core/cover. Background image is optional (library, upload or URL, focal point in the
+ * sidebar). Without one, the hero stays on paper. With one, a nuit veil of at least 85 % keeps
+ * every text AAA on any photo (sur-nuit 10:1, rouge clair 5.5:1 on the large title, measured on
+ * a white image): the veil cannot be lightened below that from the editor.
+ */
+.wp-block-cover.hero-accueil {
+	display: block;
+	min-height: 0;
+	padding-block: var(--wp--preset--spacing--80);
+	padding-inline: max(var(--gouttiere), (100% - var(--large)) / 2);
+	color: var(--encre);
+}
+
+.hero-accueil > .wp-block-cover__inner-container {
+	position: relative;
+	z-index: 1;
+	width: 100%;
+	color: inherit;
+}
+
+.hero-accueil:not(:has(> .wp-block-cover__image-background, > .wp-block-cover__video-background)) > .wp-block-cover__background {
+	display: none;
+}
+
+.wp-block-cover.hero-accueil:has(> .wp-block-cover__image-background, > .wp-block-cover__video-background) {
+	display: flex;
+	align-items: center;
+	min-height: min(80vh, 44rem);
+	border-bottom-color: var(--nuit);
+	color: var(--sur-nuit);
+	--focus: var(--sur-nuit);
+}
+
+.hero-accueil.hero-accueil > .wp-block-cover__background:not(.has-background-dim-90, .has-background-dim-100) {
+	opacity: 0.85;
+}
+
+.hero-accueil.hero-accueil > .wp-block-cover__background {
+	background: var(--nuit);
+}
+
+.hero-accueil:has(> .wp-block-cover__image-background) :is(h1, p, .eyebrow, .chapeau) {
+	color: var(--sur-nuit);
+}
+
+.hero-accueil:has(> .wp-block-cover__image-background) h1 em {
+	color: var(--rouge-clair);
+}
+
+.hero-accueil:has(> .wp-block-cover__image-background) .filet-titre::after {
+	background: var(--rouge-clair);
+}
+
+.hero-accueil:has(> .wp-block-cover__image-background) .is-style-secondaire .wp-block-button__link {
+	border-color: var(--sur-nuit);
+	color: var(--sur-nuit);
+}
+
+.hero-accueil:has(> .wp-block-cover__image-background) .is-style-secondaire .wp-block-button__link:hover {
+	background: var(--sur-nuit);
+	border-color: var(--sur-nuit);
+	color: var(--nuit);
+}
+
+/* Domain cards (section-card) ------------------------------------------------ */
+
+.cartes {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
+	gap: var(--wp--preset--spacing--50);
+}
+
+.cartes.cartes--3 {
+	grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
+}
+
+.carte {
+	display: flex;
+	flex-direction: column;
+	gap: var(--wp--preset--spacing--40);
+	padding: var(--wp--preset--spacing--60) var(--wp--preset--spacing--50);
+	border: 1px solid var(--filet);
+	border-radius: var(--radius-m);
+	background: var(--blanc);
+	transition: border-color var(--duree) var(--courbe), box-shadow var(--duree) var(--courbe);
+}
+
+:root .carte > * {
+	margin: 0;
+}
+
+.carte h3 {
+	font-size: var(--wp--preset--font-size--xl);
+}
+
+.carte p {
+	color: var(--encre-douce);
+	font-size: var(--wp--preset--font-size--m);
+}
+
+/* Link pinned to the bottom, so the cards of a row align. */
+.carte .lien-suite {
+	margin-top: auto;
+	padding-top: var(--wp--preset--spacing--40);
+}
+
+/* Hover: border to ink + "relief" shadow. The card never moves. */
+.carte:has(a:hover),
+.carte:focus-within {
+	border-color: var(--encre);
+	box-shadow: var(--relief);
+}
+
+/* Icon + short red rule under it (closed list of icons). */
+.carte[class*="icone-"]::before,
+.atouts li::before {
+	content: "";
+	display: block;
+	width: 1.75rem;
+	height: 1.75rem;
+	background: var(--rouge);
+	mask: var(--icone) center / contain no-repeat;
+}
+
+.carte[class*="icone-"]::before {
+	width: 2.5rem;
+	height: 2.5rem;
+	padding-bottom: 0.6rem;
+	border-bottom: 2px solid var(--rouge);
+	mask: none;
+	background: linear-gradient(var(--rouge), var(--rouge)) bottom / 100% 2px no-repeat;
+	-webkit-mask: none;
+}
+
+.carte[class*="icone-"] {
+	position: relative;
+}
+
+.carte[class*="icone-"]::after {
+	content: "";
+	position: absolute;
+	top: var(--wp--preset--spacing--60);
+	inset-inline-start: calc(var(--wp--preset--spacing--50) + 0.375rem);
+	width: 1.75rem;
+	height: 1.75rem;
+	background: var(--rouge);
+	mask: var(--icone) center / contain no-repeat;
+}
+
+.is-style-nuit .carte,
+.section--nuit .carte {
+	border-color: var(--nuit-2);
+	background: var(--nuit-2);
+}
+
+.is-style-nuit .carte p,
+.section--nuit .carte p {
+	color: var(--sur-nuit-doux);
+}
+
+.is-style-nuit .carte::after,
+.section--nuit .carte::after,
+.is-style-nuit .carte::before,
+.section--nuit .carte::before {
+	--rouge: var(--rouge-clair);
+}
+
+.icone-penal,
+.atouts .icone-penal {
+	--icone: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.75' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z'/%3E%3Cpath d='M14 2v4a2 2 0 0 0 2 2h4'/%3E%3Cpath d='M10 9H8'/%3E%3Cpath d='M16 13H8'/%3E%3Cpath d='M16 17H8'/%3E%3C/svg%3E");
+}
+
+.icone-etrangers,
+.icone-multilingue {
+	--icone: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.75' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Cpath d='M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20'/%3E%3Cpath d='M2 12h20'/%3E%3C/svg%3E");
+}
+
+.icone-penitentiaire {
+	--icone: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.75' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M13 4h3a2 2 0 0 1 2 2v14'/%3E%3Cpath d='M2 20h3'/%3E%3Cpath d='M13 20h9'/%3E%3Cpath d='M10 12v.01'/%3E%3Cpath d='M13 4.562v16.157a1 1 0 0 1-1.242.97L5 20V5.562a2 2 0 0 1 1.515-1.94l4-1A2 2 0 0 1 13 4.561Z'/%3E%3C/svg%3E");
+}
+
+.icone-libertes {
+	--icone: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.75' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12.67 19a2 2 0 0 0 1.416-.588l6.154-6.172a6 6 0 0 0-8.49-8.49L5.586 9.914A2 2 0 0 0 5 11.328V18a1 1 0 0 0 1 1z'/%3E%3Cpath d='M16 8 2 22'/%3E%3Cpath d='M17.5 15H9'/%3E%3C/svg%3E");
+}
+
+.icone-ecoute {
+	--icone: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.75' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M7.9 20A9 9 0 1 0 4 16.1L2 22Z'/%3E%3C/svg%3E");
+}
+
+.icone-combativite {
+	--icone: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.75' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z'/%3E%3C/svg%3E");
+}
+
+.icone-transparence {
+	--icone: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.75' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0'/%3E%3Ccircle cx='12' cy='12' r='3'/%3E%3C/svg%3E");
+}
+
+/* Strengths row (Écoute · Combativité · Multilingue) ----------------------- */
+
+.atouts {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--wp--preset--spacing--40) var(--wp--preset--spacing--60);
+	padding: 0;
+	list-style: none;
+}
+
+.atouts li {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.5rem;
+	margin: 0;
+	font-weight: 700;
+}
+
+.atouts li::before {
+	width: 1.25rem;
+	height: 1.25rem;
+}
+
+/* Image slots (no stock photos: every visual is a slot with ratio and brief) ------- */
+
+.emplacement {
+	position: relative;
+	display: flex;
+	align-items: flex-end;
+	aspect-ratio: 4 / 5;
+	padding: var(--wp--preset--spacing--40);
+	border: 1px solid var(--filet);
+	border-radius: var(--radius-m);
+	background:
+		repeating-linear-gradient(135deg, transparent 0 14px, color-mix(in srgb, var(--filet) 45%, transparent) 14px 15px),
+		var(--sable);
+}
+
+.emplacement--lieu {
+	aspect-ratio: 3 / 2;
+}
+
+.emplacement--detail {
+	aspect-ratio: 1;
+}
+
+:root .emplacement > * {
+	margin: 0;
+	padding: var(--wp--preset--spacing--30) var(--wp--preset--spacing--40);
+	border-radius: var(--radius-s);
+	background: var(--blanc);
+	color: var(--encre);
+	font-size: var(--wp--preset--font-size--xs);
+	line-height: 1.45;
+}
+
+.portrait img,
+.wp-block-image.portrait img {
+	aspect-ratio: 4 / 5;
+	object-fit: cover;
+	border-radius: var(--radius-m);
+}
+
+.wp-block-image.lieu img {
+	aspect-ratio: 3 / 2;
+	object-fit: cover;
+	border-radius: var(--radius-m);
+}
+
+/* About (home) ------------------------------------------------------------- */
+
+.apropos {
+	align-items: center;
+	gap: var(--wp--preset--spacing--70) !important;
+}
+
+:root .apropos .wp-block-column > * + * {
+	margin-block-start: var(--wp--preset--spacing--50);
+}
+
+:root .apropos .wp-block-column > .eyebrow + * {
+	margin-block-start: 0;
+}
+
+.citation-courte {
+	position: relative;
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+
+.citation-courte p {
+	font-size: var(--wp--preset--font-size--xl);
+	line-height: 1.35;
+}
+
+.citation-courte::before,
+.citation-courte::after {
+	display: block;
+	color: var(--rouge);
+	font-family: var(--serif);
+	font-size: 1.5rem;
+	line-height: 1;
+}
+
+.citation-courte::before {
+	content: "«";
+	margin-bottom: 0.5rem;
+}
+
+.citation-courte::after {
+	content: "»";
+	margin-top: 0.5rem;
+}
+
+/* Principles (3 columns under a thin rule) ------------------------------------ */
+
+.principes {
+	gap: var(--wp--preset--spacing--60) !important;
+}
+
+.principes > .wp-block-column {
+	padding-top: var(--wp--preset--spacing--50);
+	border-top: 2px solid var(--encre);
+}
+
+:root .principes > .wp-block-column > * {
+	margin: 0;
+}
+
+:root .principes > .wp-block-column > * + * {
+	margin-top: var(--wp--preset--spacing--40);
+}
+
+.principes h3 {
+	font-size: var(--wp--preset--font-size--xl);
+}
+
+.principes p {
+	color: var(--encre-douce);
+}
+
+/* Practice areas (Compétences): numbered because the page reads in order. ----------- */
+
+.domaine {
+	align-items: center;
+	gap: var(--wp--preset--spacing--70) !important;
+	padding-block: var(--wp--preset--spacing--70);
+	border-top: 1px solid var(--encre);
+}
+
+.domaine:first-of-type {
+	border-top: 0;
+}
+
+:root .domaine .wp-block-column > * {
+	margin-block: 0;
+}
+
+:root .domaine .wp-block-column > * + * {
+	margin-block-start: var(--wp--preset--spacing--50);
+}
+
+.domaine__numero {
+	font-family: var(--serif);
+	font-size: var(--wp--preset--font-size--l);
+	font-weight: 400;
+	color: var(--rouge);
+	font-variant-numeric: lining-nums tabular-nums;
+}
+
+.domaine h2 {
+	font-size: var(--wp--preset--font-size--xxl);
+}
+
+/* Prices -------------------------------------------------------------------- */
+
+.tarifs {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr));
+	gap: var(--wp--preset--spacing--50);
+	align-items: stretch;
+}
+
+.tarif {
+	display: flex;
+	flex-direction: column;
+	gap: var(--wp--preset--spacing--40);
+	padding: var(--wp--preset--spacing--60) var(--wp--preset--spacing--50);
+	border: 1px solid var(--filet);
+	border-radius: var(--radius-m);
+	background: var(--blanc);
+}
+
+:root .tarif > * {
+	margin: 0;
+}
+
+.tarif h3 {
+	font-family: var(--sans);
+	font-size: var(--wp--preset--font-size--m);
+	font-weight: 700;
+}
+
+.tarif__montant {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: baseline;
+	gap: 0.25rem 0.6rem;
+	padding-bottom: var(--wp--preset--spacing--40);
+	border-bottom: 1px solid var(--filet);
+	color: var(--encre-douce);
+	font-size: var(--wp--preset--font-size--s);
+}
+
+.tarif__montant strong {
+	font-family: var(--serif);
+	font-size: var(--wp--preset--font-size--titre-page);
+	font-weight: 600;
+	line-height: 1.1;
+	color: var(--encre);
+}
+
+.tarif ul {
+	margin: 0;
+}
+
+.tarif li {
+	font-weight: 400;
+}
+
+.tarif .wp-block-buttons {
+	margin-top: auto;
+	padding-top: var(--wp--preset--spacing--40);
+}
+
+.tarif .wp-block-button,
+.tarif .wp-block-button__link {
+	width: 100%;
+}
+
+.tarif.is-style-nuit,
+.tarif--vedette {
+	border-color: var(--nuit);
+	background: var(--nuit);
+	color: var(--sur-nuit-doux);
+	--focus: var(--sur-nuit);
+}
+
+.tarif--vedette h3,
+.tarif--vedette .tarif__montant strong {
+	color: var(--sur-nuit);
+}
+
+.tarif--vedette .tarif__montant {
+	border-color: var(--nuit-2);
+	color: var(--sur-nuit-doux);
+}
+
+.tarif--vedette .is-style-coches li::before {
+	background: var(--rouge-clair);
+}
+
+/* Help boxes (aide juridictionnelle, protection juridique) --------------------- */
+
+.encarts {
+	gap: var(--wp--preset--spacing--50) !important;
+}
+
+.encart {
+	padding: var(--wp--preset--spacing--50);
+	border-top: 2px solid var(--encre);
+	background: var(--sable);
+}
+
+:root .encart > * {
+	margin: 0;
+}
+
+:root .encart > * + * {
+	margin-top: var(--wp--preset--spacing--30);
+}
+
+.encart h3 {
+	font-size: var(--wp--preset--font-size--xl);
+}
+
+/* Affiliations ------------------------------------------------------------------ */
+
+.affiliations {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
+	gap: var(--wp--preset--spacing--50);
+}
+
+.affiliation {
+	padding-top: var(--wp--preset--spacing--40);
+	border-top: 2px solid var(--encre);
+}
+
+:root .affiliation > * {
+	margin: 0;
+}
+
+.affiliation h3 {
+	font-size: var(--wp--preset--font-size--xxl);
+}
+
+:root .affiliation p {
+	margin-top: var(--wp--preset--spacing--20);
+	color: var(--encre-douce);
+}
+
+/* Tags (languages) ------------------------------------------------------------- */
+
+.etiquettes {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--wp--preset--spacing--20);
+	padding: 0;
+	list-style: none;
+}
+
+.etiquettes li,
+.lang-badge,
+.lang-tag {
+	display: inline-flex;
+	align-items: center;
+	min-height: 2.25rem;
+	margin: 0;
+	padding: 0.25rem 0.875rem;
+	border: 1px solid var(--trait);
+	border-radius: var(--radius-s);
+	background: var(--blanc);
+	color: var(--encre);
+	font-size: var(--wp--preset--font-size--s);
+	font-weight: 700;
+}
+
+/* Blocked third-party content (Calendly, map) ------------------------------------ */
+
+.embed-consent {
+	display: grid;
+	gap: var(--wp--preset--spacing--50);
+}
+
+.embed-consent__intro {
+	display: grid;
+	gap: var(--wp--preset--spacing--40);
+	padding: var(--wp--preset--spacing--60) var(--wp--preset--spacing--50);
+	border: 2px dashed var(--trait);
+	border-radius: var(--radius-m);
+	background: var(--blanc);
+}
+
+.embed-consent__intro.is-loaded {
+	display: none;
+}
+
+:root .embed-consent__intro > * {
+	margin: 0;
+	max-width: var(--mesure);
+}
+
+.embed-consent__title {
+	font-size: var(--wp--preset--font-size--xl);
+}
+
+.embed-consent__actions {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: var(--wp--preset--spacing--40);
+}
+
+.embed-consent__alt {
+	color: var(--encre-douce);
+}
+
+.embed-consent__loading {
+	display: flex;
+	align-items: center;
+	gap: var(--wp--preset--spacing--40);
+	margin: 0;
+	padding: var(--wp--preset--spacing--60) var(--wp--preset--spacing--50);
+	border: 1px solid var(--filet);
+	border-radius: var(--radius-m);
+}
+
+.embed-consent__loading[hidden],
+.embed-consent [hidden] {
+	display: none;
+}
+
+.embed-consent__frame {
+	border: 1px solid var(--filet);
+	border-radius: var(--radius-m);
+	background: var(--blanc);
+	overflow: hidden;
+}
+
+/* Calendly sizes its iframe at 100 % of the parent: the frame needs a definite height. */
+.embed-consent--calendly .embed-consent__frame {
+	position: relative;
+	height: 44rem;
+}
+
+.embed-consent--calendly .embed-consent__frame iframe {
+	display: block;
+	width: 100%;
+	height: 100%;
+	border: 0;
+}
+
+/* Calendly's own spinner: hidden, the theme shows its loading message instead. */
+.embed-consent--calendly .embed-consent__frame .calendly-spinner {
+	display: none;
+}
+
+@media (max-width: 40rem) {
+
+	.embed-consent--calendly .embed-consent__frame {
+		height: 56rem;
+	}
+}
+
+.embed-consent--map .embed-consent__frame iframe {
+	display: block;
+	width: 100%;
+	height: 22rem;
+	border: 0;
+}
+
+/* Contact page layout ------------------------------------------------------------ */
+
+.contact-grille {
+	gap: var(--wp--preset--spacing--70) !important;
+}
+
+:root .contact-grille .wp-block-column > * + * {
+	margin-block-start: var(--wp--preset--spacing--50);
+}
+
+.mention {
+	color: var(--encre-douce);
+	font-size: var(--wp--preset--font-size--s);
+}
+
+/* Red call band: the only red surface. White text 9.3:1, light buttons. ------------- */
+
+.section--rouge {
+	padding-block: var(--wp--preset--spacing--70);
+	background: var(--rouge);
+	color: var(--blanc);
+	--focus: var(--blanc);
+}
+
+.section--rouge :is(h2, p) {
+	max-width: var(--mesure);
+	color: var(--blanc);
+}
+
+.section--rouge h2 {
+	max-width: 24ch;
+}
+
+:root .section--rouge > * + * {
+	margin-block-start: var(--wp--preset--spacing--40);
+}
+
+.section--rouge > .wp-block-buttons {
+	margin-block-start: var(--wp--preset--spacing--50);
+}
+
+.section--rouge .is-style-clair .wp-block-button__link {
+	background: var(--blanc);
+	border-color: var(--blanc);
+	color: var(--rouge);
+}
+
+.section--rouge .is-style-clair .wp-block-button__link:hover {
+	background: var(--papier);
+	border-color: var(--papier);
+	color: var(--rouge-profond);
+}
+
+.section--rouge .is-style-contour-clair .wp-block-button__link {
+	border-color: var(--blanc);
+	color: var(--blanc);
+}
+
+.section--rouge .is-style-contour-clair .wp-block-button__link:hover {
+	background: var(--blanc);
+	color: var(--rouge);
+}
+
+/* Contact buttons block: same row as core/buttons, without depending on its stylesheet. */
+.wp-block-tilleuls-papier-contact-actions {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--wp--preset--spacing--40);
+}
+
+/* Education list --------------------------------------------------------------- */
+
+.formation__titre {
+	padding-top: var(--wp--preset--spacing--50);
+	border-top: 1px solid var(--encre);
+	font-size: var(--wp--preset--font-size--xl);
+}
+
+.formation {
+	display: grid;
+	gap: var(--wp--preset--spacing--40);
+	padding: 0;
+	list-style: none;
+}
+
+.formation li {
+	padding-inline-start: var(--wp--preset--spacing--40);
+	border-inline-start: 2px solid var(--rouge);
+	color: var(--encre-douce);
+}
+
+.formation strong {
+	color: var(--encre);
+}
+
+/* Practice areas: on one column the text always comes before the visual. */
+@media (max-width: 781px) {
+
+	.domaine > .wp-block-column:has(.emplacement) {
+		order: 2;
+	}
+}
+
+/* Contact form: two fields side by side when there is room. ---------------------- */
+
+.champs-2 {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr));
+	gap: var(--wp--preset--spacing--50);
+}
+
+.resume-erreurs ul {
+	margin: 0;
+	padding-inline-start: 1.25rem;
+}
+
+.resume-erreurs a {
+	color: var(--erreur);
+}
+
+.wpcf7 form .wpcf7-response-output.resume-erreurs {
+	display: block;
+}
+
+/* Dark scheme: on the lighter dark surfaces the accent moves to rouge clair (7.5:1, AAA). */
+@media (prefers-color-scheme: dark) {
+
+	.section--sable,
+	.profile-home,
+	.hero-page,
+	.page-header,
+	.encart,
+	.emplacement {
+		--rouge: var(--rouge-clair);
+	}
+}

@@ -1,0 +1,38 @@
+/* tilleuls-ortego-blocks/info-box — small labelled facts (address, phone consultation…). */
+.section-contact-details {
+	display: grid;
+	gap: var(--wp--preset--spacing--40);
+}
+
+.section-contact-details .info-card {
+	padding: var(--wp--preset--spacing--50);
+	border-top: 2px solid var(--encre);
+	background: var(--sable);
+}
+
+.section-contact-details .info-title {
+	display: flex;
+	align-items: center;
+	gap: 0.6rem;
+}
+
+.section-contact-details .info-title i {
+	color: var(--rouge);
+}
+
+.section-contact-details h3 {
+	margin: 0;
+	font-family: var(--sans);
+	font-size: var(--wp--preset--font-size--xs);
+	font-weight: 700;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+}
+
+.section-contact-details p {
+	margin: var(--wp--preset--spacing--20) 0 0;
+}
+
+.section-contact-details .highlight {
+	font-weight: 700;
+}

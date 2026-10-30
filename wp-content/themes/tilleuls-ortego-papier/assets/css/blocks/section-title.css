@@ -1,0 +1,67 @@
+/* tilleuls-ortego-blocks/section-title — eyebrow-less title with the 48 × 4 px red rule. */
+.title-section {
+	display: grid;
+	gap: var(--wp--preset--spacing--40);
+	margin: 0;
+}
+
+.title-section > * {
+	margin: 0;
+}
+
+.title-section h1,
+.title-section h2 {
+	order: 0;
+	font-size: var(--wp--preset--font-size--xxl);
+	max-width: 28ch;
+}
+
+.title-section.sm h2 {
+	font-size: var(--wp--preset--font-size--xl);
+}
+
+.title-section.xl h1,
+.title-section.xl h2 {
+	font-size: var(--wp--preset--font-size--titre-page);
+}
+
+.title-section .subtitle {
+	order: 2;
+	max-width: var(--mesure);
+	color: var(--encre-douce);
+	font-size: var(--wp--preset--font-size--l);
+}
+
+/* The rule follows the title, before the subtitle (planche 3). */
+.title-section .separator {
+	order: 1;
+	width: var(--wp--custom--filet--titre-largeur);
+	height: var(--wp--custom--filet--titre-epaisseur);
+	background: var(--rouge);
+}
+
+.title-section.center {
+	justify-items: center;
+	text-align: center;
+}
+
+.title-section.center .subtitle,
+.title-section.center h1,
+.title-section.center h2 {
+	text-align: center;
+	margin-inline: auto;
+}
+
+.title-section.white h1,
+.title-section.white h2,
+:where(.is-style-nuit, .section--nuit, .section-cta) .title-section h2 {
+	color: var(--sur-nuit);
+}
+
+.title-section.white .subtitle {
+	color: var(--sur-nuit-doux);
+}
+
+.title-section.white .separator {
+	background: var(--rouge-clair);
+}

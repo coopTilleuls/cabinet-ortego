@@ -1,0 +1,33 @@
+/* tilleuls-ortego-blocks/hero-page — sable band: breadcrumb (added by the theme), h1, chapeau. */
+.hero-page {
+	padding-block: var(--wp--preset--spacing--60) var(--wp--preset--spacing--70);
+	padding-inline: max(var(--gouttiere), (100% - var(--large)) / 2);
+	border-bottom: 1px solid var(--filet);
+	background: var(--sable);
+}
+
+/* The page title is left aligned even if the inner title block asks for "center". */
+.hero-page .title-section,
+.hero-page .title-section.center {
+	justify-items: start;
+	text-align: start;
+}
+
+.hero-page .title-section h1,
+.hero-page .title-section h2,
+.hero-page .title-section.center h1,
+.hero-page .title-section.center h2 {
+	max-width: 22ch;
+	margin-inline: 0;
+	font-size: var(--wp--preset--font-size--titre-page);
+	text-align: start;
+}
+
+.hero-page .title-section .separator {
+	display: none;
+}
+
+.hero-page .description {
+	margin: var(--wp--preset--spacing--50) 0 0;
+	max-width: 52ch;
+}

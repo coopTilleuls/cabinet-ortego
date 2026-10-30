@@ -1,0 +1,47 @@
+/* tilleuls-ortego-blocks/cards — domain cards; the plugin renders no link (see the "Domaines" pattern). */
+.section-expertise {
+	padding-block: var(--wp--preset--spacing--80);
+	background: var(--papier);
+}
+
+.section-expertise .container > * + * {
+	margin-top: var(--wp--preset--spacing--60);
+}
+
+.section-expertise .expertises-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
+	gap: var(--wp--preset--spacing--50);
+}
+
+.section-expertise .expertise-card {
+	display: grid;
+	align-content: start;
+	gap: var(--wp--preset--spacing--40);
+	padding: var(--wp--preset--spacing--60) var(--wp--preset--spacing--50);
+	border: 1px solid var(--filet);
+	border-radius: var(--radius-m);
+	background: var(--blanc);
+}
+
+.section-expertise .expertise-card > * {
+	margin: 0;
+}
+
+.section-expertise .expertise-card h3 {
+	display: grid;
+	gap: var(--wp--preset--spacing--40);
+	font-size: var(--wp--preset--font-size--xl);
+}
+
+.section-expertise .expertise-card h3 i {
+	justify-self: start;
+	padding-bottom: 0.6rem;
+	border-bottom: 2px solid var(--rouge);
+	color: var(--rouge);
+	font-size: 1.5rem;
+}
+
+.section-expertise .expertise-card p {
+	color: var(--encre-douce);
+}
