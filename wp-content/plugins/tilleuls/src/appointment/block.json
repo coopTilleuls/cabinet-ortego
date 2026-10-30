@@ -1,0 +1,36 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "tilleuls-ortego-blocks/appointment",
+	"version": "0.1.0",
+	"title": "Prise de rendez-vous en ligne",
+	"category": "cabinet-ortego",
+	"icon": "calendar-alt",
+	"description": "Affiche l'agenda Calendly pour que les visiteurs réservent un rendez-vous. Collez l'adresse de votre page Calendly dans le panneau « Agenda Calendly », à droite de l'écran.",
+	"keywords": [
+		"calendly",
+		"rendez-vous",
+		"contact",
+		"agenda",
+		"consultation",
+		"ortego"
+	],
+	"supports": {
+		"html": false,
+		"align": [
+			"wide",
+			"full"
+		],
+		"innerBlocks": true
+	},
+	"textdomain": "tilleuls",
+	"editorScript": "file:./index.js",
+	"style": "file:./style-index.css",
+	"render": "file:./render.php",
+	"attributes": {
+		"calendly": {
+			"type": "string",
+			"default": ""
+		}
+	}
+}

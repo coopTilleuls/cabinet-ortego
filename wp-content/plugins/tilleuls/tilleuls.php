@@ -1,11 +1,11 @@
 <?php
 /**
  * Plugin Name:       Tilleuls
- * Description:       Example block scaffolded with Create Block tool.
+ * Description:       Blocs Gutenberg sur mesure du site du Cabinet Ortego Sampedro.
  * Version:           0.1.0
  * Requires at least: 6.7
- * Requires PHP:      7.4
- * Author:            The WordPress Contributors
+ * Requires PHP:      8.0
+ * Author:            Les-Tilleuls.coop
  * License:           GPL-2.0-or-later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain:       tilleuls
@@ -16,6 +16,31 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
+
+require_once __DIR__ . '/includes/contact.php';
+require_once __DIR__ . '/includes/map.php';
+require_once __DIR__ . '/includes/media.php';
+
+/**
+ * Group all the firm's blocks under one "Cabinet Ortego" category, listed first in the block inserter.
+ *
+ * @param array $categories Registered block categories.
+ * @return array Categories with the firm's category first.
+ */
+function tilleuls_ortego_blocks_register_category( array $categories ): array {
+	return array_merge(
+		array(
+			array(
+				'slug'  => 'cabinet-ortego',
+				'title' => __( 'Cabinet Ortego', 'tilleuls' ),
+				'icon'  => null,
+			),
+		),
+		$categories
+	);
+}
+add_filter( 'block_categories_all', 'tilleuls_ortego_blocks_register_category' );
+
 /**
  * Registers the block using a `blocks-manifest.php` file, which improves the performance of block type registration.
  * Behind the scenes, it also registers all assets so they can be enqueued

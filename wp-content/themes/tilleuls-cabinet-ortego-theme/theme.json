@@ -1,15 +1,6 @@
 {
   "$schema": "https://schemas.wp.org/wp/6.8/theme.json",
   "version": 3,
-  "customTemplates": [
-    {
-      "name": "page-no-title",
-      "title": "Page sans titre",
-      "postTypes": [
-        "page"
-      ]
-    }
-  ],
   "settings": {
     "appearanceTools": true,
     "color": {
@@ -54,17 +45,17 @@
         },
         {
           "slug": "text-muted",
-          "name": "Texte clair",
+          "name": "Texte atténué",
           "color": "#666666"
         },
         {
           "slug": "border-light",
-          "name": "Texte clair",
+          "name": "Bordure claire",
           "color": "#eee"
         },
         {
           "slug": "bg-light",
-          "name": "Texte clair",
+          "name": "Fond clair",
           "color": "#f9f9f9"
         },
         {

@@ -1,8 +1,8 @@
 {
 	"name": "tilleuls",
 	"version": "0.1.0",
-	"description": "Example block scaffolded with Create Block tool.",
-	"author": "The WordPress Contributors",
+	"description": "Blocs Gutenberg sur mesure du site du Cabinet Ortego Sampedro.",
+	"author": "Les-Tilleuls.coop",
 	"license": "GPL-2.0-or-later",
 	"main": "build/index.js",
 	"scripts": {
@@ -15,13 +15,14 @@
 		"start": "wp-scripts start --webpack-copy-php --blocks-manifest"
 	},
 	"dependencies": {
-		"@wordpress/block-editor": "latest",
-		"@wordpress/blocks": "latest",
+		"@wordpress/block-editor": "^15.13.1",
+		"@wordpress/blocks": "^15.13.0",
 		"@wordpress/components": "^31.0.0",
 		"@wordpress/data": "^10.37.0",
-		"@wordpress/i18n": "latest"
+		"@wordpress/i18n": "^6.13.0"
 	},
 	"devDependencies": {
 		"@wordpress/scripts": "^31.2.0"
-	}
+	},
+	"packageManager": "yarn@4.3.1"
 }

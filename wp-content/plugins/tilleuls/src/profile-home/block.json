@@ -1,0 +1,63 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "tilleuls-ortego-blocks/profile-home",
+	"version": "0.1.0",
+	"title": "Présentation de l'avocate (page d'accueil)",
+	"category": "cabinet-ortego",
+	"icon": "admin-users",
+	"description": "Un aperçu de l'avocate pour la page d'accueil : photo, titre, court texte, langues parlées et un bouton. Le lien et le texte du bouton se règlent à droite de l'écran.",
+	"keywords": [
+		"avocat",
+		"profil",
+		"biographie",
+		"portrait",
+		"langues",
+		"ortego"
+	],
+	"example": {},
+	"supports": {
+		"html": false,
+		"align": [
+			"wide",
+			"full"
+		],
+		"innerBlocks": true
+	},
+	"textdomain": "tilleuls",
+	"editorScript": "file:./index.js",
+	"style": "file:./style-index.css",
+	"render": "file:./render.php",
+	"attributes": {
+		"imgId": {
+			"type": "number",
+			"default": 0
+		},
+		"imgUrl": {
+			"type": "string",
+			"default": ""
+		},
+		"surtitle": {
+			"type": "string",
+			"default": "À propos de l'avocate"
+		},
+		"buttonText": {
+			"type": "string",
+			"default": ""
+		},
+		"buttonLink": {
+			"type": "string",
+			"default": ""
+		},
+		"languages": {
+			"type": "array",
+			"default": [],
+			"items": {
+				"type": "object",
+				"default": {
+					"name": ""
+				}
+			}
+		}
+	}
+}

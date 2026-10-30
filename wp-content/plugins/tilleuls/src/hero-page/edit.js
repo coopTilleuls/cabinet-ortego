@@ -3,7 +3,7 @@
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-i18n/
  */
-import {__} from '@wordpress/i18n';
+import { __ } from '@wordpress/i18n';
 
 /**
  * React hook that is used to mark the block wrapper element.
@@ -11,50 +11,54 @@ import {__} from '@wordpress/i18n';
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
  */
-import {InnerBlocks, RichText, useBlockProps} from '@wordpress/block-editor';
+import { InnerBlocks, RichText, useBlockProps } from '@wordpress/block-editor';
 
-/**
- * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
- * Those files can contain any CSS code that gets applied to the editor.
- *
- * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
- */
-import './editor.scss';
-import {useSelect} from "@wordpress/data";
+import { useSelect } from '@wordpress/data';
 
 /**
  * The edit function describes the structure of your block in the context of the
  * editor. This represents what the editor will render when the block is used.
  *
+ * @param {Object}   root0
+ * @param {Object}   root0.attributes    Block attributes.
+ * @param {Function} root0.setAttributes Block attributes setter.
  * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-edit-save/#edit
  *
  * @return {Element} Element to render.
  */
-export default function Edit({attributes, setAttributes}) {
-	const {title, description} = attributes;
+export default function Edit( { attributes, setAttributes } ) {
+	const { description } = attributes;
 
-	const blockName = useBlockProps({
-		className: 'hero-page'
-	})
+	const blockName = useBlockProps( {
+		className: 'hero-page',
+	} );
 
-	const postTitle = useSelect((select) => {
-		return select('core/editor').getEditedPostAttribute('title');
-	}, []);
+	const postTitle = useSelect( ( select ) => {
+		return select( 'core/editor' ).getEditedPostAttribute( 'title' );
+	}, [] );
 
 	const INNER_BLOCKS = [
-		['tilleuls-ortego-blocks/title-section', {title: postTitle, blockPosition: 'center', subtitle: ''}]
-	]
+		[
+			'tilleuls-ortego-blocks/section-title',
+			{ title: postTitle, blockPosition: 'center', subtitle: '' },
+		],
+	];
 
 	return (
-		<div {...blockName}>
-			<InnerBlocks template={INNER_BLOCKS}/>
+		<div { ...blockName }>
+			<InnerBlocks template={ INNER_BLOCKS } />
 			<RichText
 				tagName="p"
 				className="description"
-				value={description}
-				allowedFormats={['core/bold', 'core/italic']}
-				placeholder={__('Langues parlées (ex: Français, Anglais...)', 'tilleuls')}
-				onChange={(value) => setAttributes({description: value})}
+				value={ description }
+				allowedFormats={ [ 'core/bold', 'core/italic' ] }
+				placeholder={ __(
+					'Courte phrase d’introduction…',
+					'tilleuls'
+				) }
+				onChange={ ( value ) =>
+					setAttributes( { description: value } )
+				}
 			/>
 		</div>
 	);

@@ -1,0 +1,62 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "tilleuls-ortego-blocks/call-to-action",
+	"version": "0.1.0",
+	"title": "Bandeau d'appel à l'action",
+	"category": "cabinet-ortego",
+	"icon": "external",
+	"description": "Un bandeau de couleur avec un titre, un court texte et des boutons (appeler, écrire un e-mail, ouvrir une page) pour inviter le visiteur à contacter le cabinet.",
+	"keywords": [
+		"contact",
+		"bouton",
+		"appel",
+		"cta",
+		"urgence"
+	],
+	"supports": {
+		"html": false,
+		"align": [
+			"full"
+		]
+	},
+	"textdomain": "tilleuls",
+	"editorScript": "file:./index.js",
+	"style": "file:./style-index.css",
+	"render": "file:./render.php",
+	"attributes": {
+		"title": {
+			"type": "string",
+			"default": ""
+		},
+		"description": {
+			"type": "string",
+			"default": ""
+		},
+		"cta": {
+			"type": "array",
+			"default": [],
+			"items": {
+				"type": "object",
+				"properties": {
+					"text": {
+						"type": "string",
+						"default": ""
+					},
+					"linkType": {
+						"type": "string",
+						"default": "url"
+					},
+					"url": {
+						"type": "string",
+						"default": ""
+					},
+					"style": {
+						"type": "string",
+						"default": "primary"
+					}
+				}
+			}
+		}
+	}
+}

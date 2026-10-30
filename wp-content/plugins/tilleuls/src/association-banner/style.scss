@@ -3,12 +3,6 @@
  * and in the editor.
  */
 
-.wp-block-create-block-asso-banner {
-	background-color: #21759b;
-	color: #fff;
-	padding: 2px;
-}
-
 .associations-banner {
 	padding: 60px 0;
 	color: var(--wp--preset--color--primary);
@@ -22,7 +16,7 @@
 		background-color: var(--wp--preset--color--accent);
 
 		.asso-item i {
-			color: white;
+			color: #fff;
 		}
 	}
 

@@ -1,0 +1,8 @@
+[
+	{ "slug": "accueil", "title": "Accueil", "front": true, "menu": true },
+	{ "slug": "le-cabinet", "title": "Le Cabinet", "menu": true },
+	{ "slug": "competences", "title": "Compétences", "menu": true },
+	{ "slug": "tarifs-rendez-vous", "title": "Tarifs & Rendez-vous", "menu": true },
+	{ "slug": "contact", "title": "Contact", "menu": true },
+	{ "slug": "mentions-legales", "title": "Mentions légales", "menu": false }
+]

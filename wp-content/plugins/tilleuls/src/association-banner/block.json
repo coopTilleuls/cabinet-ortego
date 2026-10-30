@@ -1,16 +1,25 @@
 {
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
-	"name": "tilleuls-ortego-blocks/banner-colored",
+	"name": "tilleuls-ortego-blocks/association-banner",
 	"version": "0.1.0",
-	"title": "Partenariats & Engagements",
-	"category": "design",
+	"title": "Bandeau des engagements",
+	"category": "cabinet-ortego",
 	"icon": "awards",
-	"description": "Section dédiée à l'affichage de vos logos partenaires, syndicats et associations professionnelles.",
-	"keywords": ["avocat", "syndicat", "expert", "partenaire", "réseau"],
+	"description": "Un bandeau de couleur qui liste les syndicats et associations dont le cabinet est membre. Ajoutez, modifiez ou supprimez chaque engagement directement dans le bandeau.",
+	"keywords": [
+		"avocat",
+		"syndicat",
+		"expert",
+		"partenaire",
+		"réseau"
+	],
 	"supports": {
 		"html": false,
-		"align": ["wide", "full"],
+		"align": [
+			"wide",
+			"full"
+		],
 		"innerBlocks": true
 	},
 	"textdomain": "tilleuls",

@@ -3,26 +3,29 @@
 	"apiVersion": 3,
 	"name": "tilleuls-ortego-blocks/hero-page",
 	"version": "0.1.0",
-	"title": "En-tête secondaire de Page",
-	"category": "design",
+	"title": "En-tête de page",
+	"category": "cabinet-ortego",
 	"icon": "align-center",
-	"description": "En-tête sobre pour les pages de services et d'informations.",
-	"keywords": ["hero", "titre", "bannière", "page", "ortego"],
+	"description": "Le bandeau de titre en haut des pages intérieures (Le Cabinet, Compétences, Contact…). Il reprend automatiquement le titre de la page : ajoutez simplement une courte phrase d'introduction en dessous.",
+	"keywords": [
+		"hero",
+		"titre",
+		"bannière",
+		"page",
+		"ortego"
+	],
 	"supports": {
 		"html": false,
-		"align": ["full"],
+		"align": [
+			"full"
+		],
 		"innerBlocks": true
 	},
-	"textdomain": "hero-page",
+	"textdomain": "tilleuls",
 	"editorScript": "file:./index.js",
-	"editorStyle": "file:./index.css",
 	"style": "file:./style-index.css",
 	"render": "file:./render.php",
 	"attributes": {
-		"title": {
-			"type": "string",
-			"default": "Mon Titre"
-		},
 		"description": {
 			"type": "string",
 			"default": ""

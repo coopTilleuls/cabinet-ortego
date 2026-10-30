@@ -6,42 +6,69 @@
 
 declare(strict_types=1);
 
-function tilleuls_register_contact_settings()
+/**
+ * @return array<string, array{label: string, type: string, class_name: string}>
+ */
+function tilleuls_contact_fields(): array
 {
-    $fields = [
-        'tilleuls_contact_name' => 'Nom complet / Raison sociale',
-        'tilleuls_address_street' => 'Numéro et voie',
-        'tilleuls_address_complement' => 'Complément d\'adresse (étage, etc.)',
-        'tilleuls_address_zip' => 'Code Postal',
-        'tilleuls_address_city' => 'Ville',
-        'tilleuls_address_country' => 'Pays',
-        'tilleuls_contact_phone' => 'Numéro de téléphone',
-        'tilleuls_contact_email' => 'Adresse e-mail'
+    return [
+        'tilleuls_contact_name' => ['label' => __('Nom complet / Raison sociale', 'tilleuls-cabinet-ortego-theme'), 'type' => 'text', 'class_name' => 'regular-text'],
+        'tilleuls_address_street' => ['label' => __('Numéro et voie', 'tilleuls-cabinet-ortego-theme'), 'type' => 'text', 'class_name' => 'large-text'],
+        'tilleuls_address_complement' => ['label' => __('Complément d\'adresse (étage, etc.)', 'tilleuls-cabinet-ortego-theme'), 'type' => 'text', 'class_name' => 'regular-text'],
+        'tilleuls_address_zip' => ['label' => __('Code Postal', 'tilleuls-cabinet-ortego-theme'), 'type' => 'text', 'class_name' => 'regular-text'],
+        'tilleuls_address_city' => ['label' => __('Ville', 'tilleuls-cabinet-ortego-theme'), 'type' => 'text', 'class_name' => 'regular-text'],
+        'tilleuls_address_country' => ['label' => __('Pays', 'tilleuls-cabinet-ortego-theme'), 'type' => 'text', 'class_name' => 'regular-text'],
+        'tilleuls_contact_phone' => ['label' => __('Numéro de téléphone', 'tilleuls-cabinet-ortego-theme'), 'type' => 'tel', 'class_name' => 'regular-text'],
+        'tilleuls_contact_email' => ['label' => __('Adresse e-mail', 'tilleuls-cabinet-ortego-theme'), 'type' => 'email', 'class_name' => 'regular-text'],
+        'tilleuls_opening_hours' => ['label' => __('Horaires d\'ouverture (une ligne par créneau)', 'tilleuls-cabinet-ortego-theme'), 'type' => 'textarea', 'class_name' => 'large-text'],
     ];
+}
 
-    foreach ($fields as $option_name => $label) {
+function tilleuls_contact_sanitize_callback(string $type): string
+{
+    return match ($type) {
+        'email' => 'sanitize_email',
+        'textarea' => 'sanitize_textarea_field',
+        default => 'sanitize_text_field',
+    };
+}
+
+/**
+ * Settings are registered on `init` so they are exposed to the REST API (block editor) and not only in wp-admin.
+ */
+function tilleuls_register_contact_settings(): void
+{
+    foreach (tilleuls_contact_fields() as $option_name => $field) {
         register_setting(
             'general',
             $option_name,
             [
                 'type' => 'string',
-                'sanitize_callback' => ($option_name === 'tilleuls_contact_email' ? 'sanitize_email' : 'sanitize_text_field'),
+                'sanitize_callback' => tilleuls_contact_sanitize_callback($field['type']),
                 'default' => '',
                 'show_in_rest' => true,
             ]
         );
+    }
+}
+
+add_action('init', 'tilleuls_register_contact_settings');
+
+function tilleuls_add_contact_settings_fields(): void
+{
+    foreach (tilleuls_contact_fields() as $option_name => $field) {
         add_settings_field(
             $option_name,
-            $label,
+            $field['label'],
             'tilleuls_render_generic_field',
             'general',
             'default',
-            array('label_for' => $option_name)
+            ['label_for' => $option_name, 'type' => $field['type'], 'class_name' => $field['class_name']]
         );
     }
 }
 
-add_action('admin_init', 'tilleuls_register_contact_settings');
+add_action('admin_init', 'tilleuls_add_contact_settings_fields');
 
 /**
  * @param array $args Les arguments passés par add_settings_field
@@ -49,19 +76,28 @@ add_action('admin_init', 'tilleuls_register_contact_settings');
 function tilleuls_render_generic_field($args)
 {
     $option_name = $args['label_for'];
-
     $value = get_option($option_name);
-    $type = (strpos($option_name, 'email') !== false) ? 'email' : 'text';
 
-    $class = 'regular-text';
-    if (strpos($option_name, 'street') !== false) {
-        $class = 'large-text';
+    if ('textarea' === $args['type']) {
+        ?>
+        <textarea
+                name="<?php
+                echo esc_attr($option_name); ?>"
+                id="<?php
+                echo esc_attr($option_name); ?>"
+                class="<?php
+                echo esc_attr($args['class_name']); ?>"
+                rows="4"
+        ><?php
+            echo esc_textarea($value); ?></textarea>
+        <?php
+        return;
     }
 
     ?>
     <input
             type="<?php
-            echo esc_attr($type); ?>"
+            echo esc_attr($args['type']); ?>"
             name="<?php
             echo esc_attr($option_name); ?>"
             id="<?php
@@ -69,7 +105,7 @@ function tilleuls_render_generic_field($args)
             value="<?php
             echo esc_attr($value); ?>"
             class="<?php
-            echo esc_attr($class); ?>"
+            echo esc_attr($args['class_name']); ?>"
     >
     <?php
 }
