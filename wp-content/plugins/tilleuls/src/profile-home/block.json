@@ -39,7 +39,7 @@
 		},
 		"surtitle": {
 			"type": "string",
-			"default": ""
+			"default": "À propos de l'avocate"
 		},
 		"buttonText": {
 			"type": "string",

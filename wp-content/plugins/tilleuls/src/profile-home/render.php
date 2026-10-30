@@ -55,7 +55,9 @@ $surtitle = $attributes['surtitle'] ?? '';
 				endforeach; ?>
 			</div>
 
-			<a href="<?php echo esc_url($buttonLink); ?>" class="profile-cta"> <?php echo esc_html($buttonText); ?></a>
+			<?php if ($buttonLink && $buttonText) : ?>
+				<a href="<?php echo esc_url($buttonLink); ?>" class="profile-cta"><?php echo esc_html($buttonText); ?></a>
+			<?php endif; ?>
 		</div>
 	</div>
 </section>

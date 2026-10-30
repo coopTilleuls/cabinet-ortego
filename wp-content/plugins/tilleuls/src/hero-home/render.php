@@ -25,7 +25,9 @@ echo get_block_wrapper_attributes([
 
 	<div class="container">
 		<div class="hero-content">
-			<span class="surtitle"><?php echo wp_kses_post($surtitle); ?></span>
+			<?php if ($surtitle) : ?>
+				<span class="surtitle"><?php echo wp_kses_post($surtitle); ?></span>
+			<?php endif; ?>
 			<?php
 			echo $content;
 			?>
