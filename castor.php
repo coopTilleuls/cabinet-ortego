@@ -179,8 +179,6 @@ function update(string $path = '.', string $wpVersion = 'latest'): void
     run('wp language core update', context: $context);
     run('wp language plugin update --all', context: $context);
     run('wp language theme update --all', context: $context);
-    // New or changed custom post types (expertise, union) need fresh rewrite rules
-    run('wp rewrite flush', context: $context);
 
     $after = trim(run('wp core version', context: $context->withQuiet())->getOutput());
     io()->success(sprintf('WordPress %s → %s', $before, $after));

@@ -19,13 +19,6 @@ require_once __DIR__ . '/includes/settings/function.php';
 require_once __DIR__ . '/includes/helpers.php';
 
 /**
- * Custom post types
- */
-require_once __DIR__ . '/includes/post-types/register.php';
-require_once __DIR__ . '/includes/post-types/expertise.php';
-require_once __DIR__ . '/includes/post-types/union.php';
-
-/**
  * Version a theme asset with its modification time so browsers drop stale caches.
  */
 function tilleuls_asset_version(string $relative_path): string
