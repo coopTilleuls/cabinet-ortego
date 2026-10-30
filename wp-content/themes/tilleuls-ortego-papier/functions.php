@@ -71,7 +71,7 @@ add_action('wp_enqueue_scripts', function (): void {
 // Font Awesome is still needed by the icons the "tilleuls" plugin blocks render (solid and regular only).
 // Self-hosted so no third party is contacted before consent.
 add_action('enqueue_block_assets', function (): void {
-    $base = get_stylesheet_directory_uri() . '/assets/vendor/fontawesome/css/';
+    $base = get_stylesheet_directory_uri() . '/assets/icons/fontawesome/css/';
     wp_enqueue_style('font-awesome', $base . 'fontawesome.min.css', [], '6.5.1');
     wp_enqueue_style('font-awesome-solid', $base . 'solid.min.css', ['font-awesome'], '6.5.1');
     wp_enqueue_style('font-awesome-regular', $base . 'regular.min.css', ['font-awesome'], '6.5.1');
